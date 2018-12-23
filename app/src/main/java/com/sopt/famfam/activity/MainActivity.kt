@@ -1,7 +1,8 @@
-package com.sopt.famfam
+package com.sopt.famfam.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.sopt.famfam.R
 
 class MainActivity : AppCompatActivity() {
 
