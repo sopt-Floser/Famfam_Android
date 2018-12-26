@@ -37,26 +37,53 @@
                 android:layout_height="44.4dp"
                 android:background="@drawable/login_act_white_signin_box"
                 android:text="로그인"
+                android:textColor="#366ce2"
         />
+
         <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
-            <TextView
+
+            <RelativeLayout
                     android:id="@+id/tv_login_act_find_pw"
-                    android:layout_marginLeft="27dp"
-                    android:textColor="#ffffff"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="비밀번호 찾기"/>
-            <TextView
+                    android:layout_weight="1"
+                    android:layout_marginVertical="8dp"
+            >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="비밀번호 찾기"
+                        android:textColor="#ffffff"
+                        android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+            <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:layout_marginVertical="5dp"/>
+
+            <RelativeLayout
                     android:id="@+id/tv_login_act_signup"
-                    android:layout_marginLeft="57dp"
-                    android:textColor="#ffffff"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="회원가입"/>
+                    android:layout_weight="1"
+                    android:layout_marginVertical="8dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="회원가입"
+                        android:textColor="#ffffff"
+                        android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
         </LinearLayout>
 
 

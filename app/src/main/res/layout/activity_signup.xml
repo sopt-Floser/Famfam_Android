@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.SignupActivity">
+    <RelativeLayout
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    >
+        <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="61.7dp"/>
+        <ImageView
+                android:id="@+id/check"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/logo"
+                android:layout_marginTop="46.2dp"
+                android:layout_width="160dp"
+                android:layout_height="33.2dp"
+                android:src="@mipmap/check"
+        />
+        <TextView
+                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/check"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="개인정보입력"
+                android:textColor="#656565"
+                android:textStyle="bold"/>
+    </RelativeLayout>
+
+</RelativeLayout>
