@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.LoginActivity"
+        android:background="#366ce2"
+>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="262.3dp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+    >
+        <EditText
+                android:id="@+id/et_login_act_id"
+                android:layout_width="260dp"
+                android:layout_height="44.4dp"
+                android:background="@drawable/login_act_grey_text_box"
+                android:drawableLeft="@mipmap/ic_launcher"
+        />
+        <EditText
+                android:id="@+id/et_login_act_pw"
+                android:layout_marginTop="10dp"
+                android:layout_width="260dp"
+                android:layout_height="44.4dp"
+                android:background="@drawable/login_act_grey_text_box"
+                android:drawableLeft="@mipmap/ic_launcher"
+        />
+        <Button
+                android:id="@+id/btn_login_act_signin"
+                android:layout_marginTop="10dp"
+                android:layout_width="260dp"
+                android:layout_height="44.4dp"
+                android:background="@drawable/login_act_white_signin_box"
+                android:text="로그인"
+        />
+        <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <TextView
+                    android:id="@+id/tv_login_act_find_pw"
+                    android:layout_marginLeft="27dp"
+                    android:textColor="#ffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="비밀번호 찾기"/>
+            <TextView
+                    android:id="@+id/tv_login_act_signup"
+                    android:layout_marginLeft="57dp"
+                    android:textColor="#ffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="회원가입"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
