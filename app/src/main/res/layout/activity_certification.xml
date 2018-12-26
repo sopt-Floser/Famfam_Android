@@ -4,7 +4,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.CertificationActivity">
+        tools:context=".activity.CertificationActivity"
+        android:background="#FFFFFF">
     <RelativeLayout
             android:id="@+id/layout_1"
             android:layout_width="match_parent"
@@ -31,11 +32,12 @@
                 android:layout_marginTop="10dp"
                 android:layout_centerInParent="true"
                 android:layout_below="@+id/check"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이용 약관 \u0026 개인 정보 취급 방침"
-                android:textColor="#656565"/>
+                android:text="본인 인증"
+                android:textColor="#656565"
+                android:textStyle="bold"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -109,9 +111,82 @@
             />
 
         </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/aa"
 
+                android:background="@drawable/login_act_grey_text_box"
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
 
+            <TextView
+                    android:id="@+id/tv_certification_act_request_authorization_code_btn"
+                    android:layout_width="112dp"
+                    android:layout_height="48dp"
+                    android:text="인증 요청"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:background="@drawable/certification_act_blue_request_authorization_code"
+
+            />
+
+            <EditText
+                    android:id="@+id/et_certification_act_input_authorization_code"
+                    android:hint="인증번호"
+                    android:layout_toRightOf="@+id/tv_certification_act_request_authorization_code_btn"
+                    android:layout_marginLeft="16dp"
+                    android:layout_width="108.4dp"
+                    android:layout_height="48dp"
+            />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp">
+            <TextView
+                    android:id="@+id/tv_certification_act_request_authoriztion_code_time"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="37dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="남은 시간 2분 10초"
+                    android:textSize="12sp"
+            />
+
+        </RelativeLayout>
     </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="#366ce2"
+            android:layout_alignParentBottom="true"
+    >
+        <TextView
+                android:id="@+id/tv_certification_act_next_btn"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이전 단계"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="40dp"
+
+        />
+        <TextView
+                android:id="@+id/tv_certification_act_previout_btn"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="다음 단계"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+        />
+
+    </RelativeLayout>
 
 </RelativeLayout>
 
