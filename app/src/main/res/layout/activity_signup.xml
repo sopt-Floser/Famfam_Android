@@ -22,13 +22,13 @@
                 android:id="@+id/check"
                 android:layout_centerInParent="true"
                 android:layout_below="@+id/logo"
-                android:layout_marginTop="46.2dp"
+                android:layout_marginTop="48dp"
                 android:layout_width="160dp"
                 android:layout_height="33.2dp"
                 android:src="@mipmap/check"
         />
         <TextView
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="40dp"
                 android:layout_centerInParent="true"
                 android:layout_below="@+id/check"
                 android:textSize="18sp"
@@ -38,5 +38,148 @@
                 android:textColor="#656565"
                 android:textStyle="bold"/>
     </RelativeLayout>
+    <RelativeLayout
+            android:layout_below="@+id/layout_1"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="360dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <RelativeLayout
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:id="@+id/tv_signup_act_name_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이름/닉네임"
+                        android:textSize="14sp"
+                        android:textColor="#8a8a8a"
+                />
+
+                <EditText
+                        android:layout_below="@+id/tv_signup_act_name_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="이름 입력"
+                />
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:id="@+id/tv_signup_act_birth_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="생년 월일/성별 구분"
+                        android:textSize="14sp"
+                        android:textColor="#8a8a8a"
+                />
+
+                <EditText
+                        android:layout_below="@+id/tv_signup_act_birth_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="생년 월일/성별 구분"
+                />
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:id="@+id/tv_signup_act_phone_number_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="휴대폰 번호"
+                        android:textSize="14sp"
+                        android:textColor="#8a8a8a"
+                />
+
+                <EditText
+                        android:layout_below="@+id/tv_signup_act_phone_number_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="010-1234-1234"
+                />
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:id="@+id/tv_signup_act_id_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ID"
+                        android:textSize="14sp"
+                        android:textColor="#8a8a8a"
+                />
+
+                <EditText
+                        android:layout_below="@+id/tv_signup_act_id_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="입력"
+                />
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:id="@+id/tv_signup_act_pw_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PW"
+                        android:textSize="14sp"
+                        android:textColor="#8a8a8a"
+                />
+
+                <EditText
+                        android:layout_below="@+id/tv_signup_act_pw_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="입력"
+                />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/tv_signup_act_complete_signup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="#366ce2"
+                android:text="가입완료"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:gravity="center"
+        />
+    </RelativeLayout>
+
 
 </RelativeLayout>
