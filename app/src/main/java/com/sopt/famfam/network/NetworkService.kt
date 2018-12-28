@@ -1,11 +1,5 @@
-package com.sopt_nyh.retrofit2_example.network
 
 import com.google.gson.JsonObject
-import com.sopt_nyh.retrofit2_example.get.GetBoardListResponse
-import com.sopt_nyh.retrofit2_example.get.GetDetailedBoardResponse
-import com.sopt_nyh.retrofit2_example.post.PostLogInResponse
-import com.sopt_nyh.retrofit2_example.post.PostSignUpResponse
-import com.sopt_nyh.retrofit2_example.post.PostWriteBoardResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
