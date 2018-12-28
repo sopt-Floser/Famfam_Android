@@ -39,7 +39,6 @@
                 android:textColor="#656565"
                 android:textStyle="bold"/>
     </RelativeLayout>
-
     <LinearLayout
             android:layout_marginTop="21.4dp"
             android:layout_below="@+id/layout_1"
@@ -47,69 +46,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
     >
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="이름"
-                android:textSize="14sp"
-                android:textColor="#8a8a8a"
-                android:layout_marginLeft="37dp"
-        />
-        <EditText
-                android:id="@+id/et_certification_act_input_user_name"
-                android:layout_marginTop="22dp"
-                android:hint="이름 입력"
-                android:layout_width="286dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="37.5dp"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="생년월일 / 성별구분"
-                android:textSize="14sp"
-                android:textColor="#8a8a8a"
-                android:layout_marginLeft="37dp"
-                android:layout_marginTop="12.6dp"
-        />
-        <EditText
-                android:id="@+id/et_certification_act_input_user_birth"
-                android:layout_marginTop="22dp"
-                android:hint="생년월일/성별구분"
-                android:layout_width="286dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="37.5dp"
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="핸드폰 번호"
-                android:textSize="14sp"
-                android:textColor="#8a8a8a"
-                android:layout_marginLeft="37dp"
-                android:layout_marginTop="12.6dp"
-        />
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp">
-
-            <Spinner
-                    android:layout_marginLeft="37dp"
-                    android:layout_marginTop="21dp"
-                    android:id="@+id/sp_certification_act_select_telecom"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/telecom_name">
-            </Spinner>
-
-            <EditText
-                    android:id="@+id/et_certification_act_input_user_phone_number"
-                    android:hint="010-1234-1234"
-                    android:layout_toRightOf="@+id/sp_certification_act_select_telecom"
-                    android:layout_width="200dp"
-                    android:layout_height="48dp"
-            />
-
         </RelativeLayout>
         <LinearLayout
                 android:layout_marginTop="24dp"
@@ -119,92 +58,49 @@
                 android:orientation="horizontal"
                 android:background="@drawable/certification_act_gray_request_authorization_code"
         >
-
             <RelativeLayout
-                    android:id="@+id/tv_certification_act_request_authorization_code_btn"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
-                <TextView
-                        android:layout_width="112dp"
-                        android:layout_height="48dp"
-                        android:text="인증 요청"
-                        android:textColor="#ffffff"
-                        android:gravity="center"
-                        android:background="@drawable/certification_act_blue_request_authorization_code"
-                />
-            </RelativeLayout>
-
-            <RelativeLayout
-                    android:id="@+id/et_certification_act_input_authorization_code"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
             >
-                <EditText
-                        android:hint="인증번호"
+                <Spinner
+                        android:id="@+id/sp_certification_act_select_telecom"
                         android:layout_marginLeft="16dp"
-                        android:layout_width="108.4dp"
-                        android:layout_height="48dp"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/telecom_name">
+                </Spinner>
+                <EditText
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/sp_certification_act_select_telecom"
+                        android:hint="01066873474"
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:background="#ffffff"
+                        android:letterSpacing="0.2"
                 />
-
             </RelativeLayout>
-
-
         </LinearLayout>
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <TextView
-                    android:id="@+id/tv_certification_act_request_authoriztion_code_time"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="37dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="남은 시간 2분 10초"
-                    android:textSize="12sp"
-            />
-
-        </RelativeLayout>
     </LinearLayout>
-
-
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:orientation="horizontal"
             android:background="#366ce2"
             android:layout_alignParentBottom="true">
-        <RelativeLayout
-                android:id="@+id/tv_certification_act_next_btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-            <TextView
-                    android:layout_alignParentLeft="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="이전 단계"
-                    android:textColor="#ffffff"
-                    android:textSize="16sp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="40dp"
 
-            />
-        </RelativeLayout>
         <RelativeLayout
                 android:id="@+id/tv_certification_act_previous_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
             <TextView
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="다음 단계"
+                    android:text="인증번호 요청하기"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
             />

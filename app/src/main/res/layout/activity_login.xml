@@ -7,8 +7,21 @@
         tools:context=".activity.LoginActivity"
         android:background="#366ce2"
 >
+    <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="128dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    >
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"
+                android:background="#ffffff"/>
+    </RelativeLayout>
 
     <LinearLayout
+            android:id="@+id/layout_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="262.3dp"
@@ -73,7 +86,6 @@
             />
 
         </RelativeLayout>
-
 
 
         <LinearLayout
