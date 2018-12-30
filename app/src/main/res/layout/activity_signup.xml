@@ -39,223 +39,225 @@
                 android:textColor="#656565"
                 android:textStyle="bold"/>
     </RelativeLayout>
-    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1">
+        <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1">
 
-        <LinearLayout
-                android:id="@+id/layout_2"
-                android:layout_below="@+id/layout_1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-            <RelativeLayout
+            <LinearLayout
+                    android:id="@+id/layout_2"
                     android:layout_below="@+id/layout_1"
-                    android:layout_marginTop="24dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <RelativeLayout
+                        android:layout_below="@+id/layout_1"
+                        android:layout_marginTop="24dp"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-                    <RelativeLayout
-                            android:layout_marginHorizontal="40dp"
+                        android:layout_height="match_parent">
+                    <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="80dp"
-                    >
-
-                        <TextView
-                                android:id="@+id/tv_signup_act_nickname_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="닉네임"
-                                android:textSize="14sp"
-                                android:textColor="#8a8a8a"
-                        />
-
-                        <TextView
-                                android:layout_marginLeft="8dp"
-                                android:layout_toRightOf="@+id/tv_signup_act_nickname_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="닉네임은 어플에서 이름으로 사용됩니다."
-                                android:textSize="11sp"
-                                android:textColor="#cacaca"
-                        />
-
-                        <EditText
-                                android:layout_below="@+id/tv_signup_act_nickname_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="닉네임 입력"
-                        />
-
-                    </RelativeLayout>
-                    <RelativeLayout
-                            android:layout_marginHorizontal="40dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="80dp">
-
-                        <TextView
-                                android:id="@+id/tv_signup_act_birth_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="성별 선택"
-                                android:textSize="14sp"
-                                android:textColor="#8a8a8a"
-                        />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
                         <RelativeLayout
-                                android:id="@+id/tv_signup_act_sex_female"
-                                android:layout_below="@+id/tv_signup_act_birth_text"
-                                android:layout_marginTop="16dp"
-                                android:layout_width="132dp"
-                                android:layout_height="32dp"
-                                android:background="@drawable/certification_act_blue_request_authorization_code"
+                                android:layout_marginHorizontal="40dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
                         >
+
                             <TextView
-                                    android:layout_centerInParent="true"
+                                    android:id="@+id/tv_signup_act_nickname_text"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="여자"
+                                    android:text="닉네임"
+                                    android:textSize="14sp"
+                                    android:textColor="#8a8a8a"
                             />
-                        </RelativeLayout>
-                        <RelativeLayout
-                                android:id="@+id/tv_signup_act_sex_male"
-                                android:layout_below="@+id/tv_signup_act_birth_text"
-                                android:layout_toRightOf="@+id/tv_signup_act_sex_female"
-                                android:layout_marginLeft="8dp"
-                                android:layout_marginTop="16dp"
-                                android:layout_width="132dp"
-                                android:layout_height="32dp"
-                                android:background="@drawable/certification_act_blue_request_authorization_code"
-                        >
+
                             <TextView
-                                    android:layout_centerInParent="true"
+                                    android:layout_marginLeft="8dp"
+                                    android:layout_toRightOf="@+id/tv_signup_act_nickname_text"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="남자"
+                                    android:text="닉네임은 어플에서 이름으로 사용됩니다."
+                                    android:textSize="11sp"
+                                    android:textColor="#cacaca"
                             />
+
+                            <EditText
+                                    android:layout_below="@+id/tv_signup_act_nickname_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="닉네임 입력"
+                            />
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                                android:layout_marginHorizontal="40dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp">
+
+                            <TextView
+                                    android:id="@+id/tv_signup_act_birth_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="성별 선택"
+                                    android:textSize="14sp"
+                                    android:textColor="#8a8a8a"
+                            />
+                            <RelativeLayout
+                                    android:id="@+id/tv_signup_act_sex_female"
+                                    android:layout_below="@+id/tv_signup_act_birth_text"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_width="132dp"
+                                    android:layout_height="32dp"
+                                    android:background="@drawable/certification_act_blue_request_authorization_code"
+                            >
+                                <TextView
+                                        android:layout_centerInParent="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="여자"
+                                />
+                            </RelativeLayout>
+                            <RelativeLayout
+                                    android:id="@+id/tv_signup_act_sex_male"
+                                    android:layout_below="@+id/tv_signup_act_birth_text"
+                                    android:layout_toRightOf="@+id/tv_signup_act_sex_female"
+                                    android:layout_marginLeft="8dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_width="132dp"
+                                    android:layout_height="32dp"
+                                    android:background="@drawable/certification_act_blue_request_authorization_code"
+                            >
+                                <TextView
+                                        android:layout_centerInParent="true"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="남자"
+                                />
+                            </RelativeLayout>
+
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                                android:layout_marginHorizontal="40dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp">
+
+                            <TextView
+                                    android:id="@+id/tv_signup_act_phone_number_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="생년월일"
+                                    android:textSize="14sp"
+                                    android:textColor="#8a8a8a"
+                            />
+
+                            <EditText
+                                    android:layout_below="@+id/tv_signup_act_phone_number_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="010-1234-1234"
+                            />
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                                android:layout_marginHorizontal="40dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp">
+
+                            <TextView
+                                    android:id="@+id/tv_signup_act_id_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="ID"
+                                    android:textSize="14sp"
+                                    android:textColor="#8a8a8a"
+                            />
+
+                            <EditText
+                                    android:layout_below="@+id/tv_signup_act_id_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="입력"
+                            />
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                                android:layout_marginHorizontal="40dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp">
+
+                            <TextView
+                                    android:id="@+id/tv_signup_act_pw_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="PW"
+                                    android:textSize="14sp"
+                                    android:textColor="#8a8a8a"
+                            />
+
+                            <TextView
+                                    android:layout_alignParentRight="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="한글/영어+숫자 조합의 최소 6글자 이상"
+                                    android:textSize="11sp"
+                                    android:textColor="#366ce2"
+                            />
+
+                            <EditText
+                                    android:layout_below="@+id/tv_signup_act_pw_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="입력"
+                            />
+
+                        </RelativeLayout>
+                        <RelativeLayout
+                                android:layout_marginTop="20dp"
+                                android:layout_marginHorizontal="40dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp">
+
+                            <TextView
+                                    android:id="@+id/tv_signup_act_pw_confirm_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="PW"
+                                    android:textSize="14sp"
+                                    android:textColor="#8a8a8a"
+                            />
+
+                            <TextView
+                                    android:layout_alignParentRight="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="한글/영어+숫자 조합의 최소 6글자 이상"
+                                    android:textSize="11sp"
+                                    android:textColor="#366ce2"
+                            />
+
+                            <EditText
+                                    android:layout_below="@+id/tv_signup_act_pw_confirm_text"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="입력"
+                                    android:layout_alignParentStart="true" android:layout_marginTop="-18dp"/>
+
                         </RelativeLayout>
 
-
-                    </RelativeLayout>
-                    <RelativeLayout
-                            android:layout_marginHorizontal="40dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="80dp">
-
-                        <TextView
-                                android:id="@+id/tv_signup_act_phone_number_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="생년월일"
-                                android:textSize="14sp"
-                                android:textColor="#8a8a8a"
-                        />
-
-                        <EditText
-                                android:layout_below="@+id/tv_signup_act_phone_number_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="010-1234-1234"
-                        />
-
-                    </RelativeLayout>
-                    <RelativeLayout
-                            android:layout_marginHorizontal="40dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="80dp">
-
-                        <TextView
-                                android:id="@+id/tv_signup_act_id_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="ID"
-                                android:textSize="14sp"
-                                android:textColor="#8a8a8a"
-                        />
-
-                        <EditText
-                                android:layout_below="@+id/tv_signup_act_id_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="입력"
-                        />
-
-                    </RelativeLayout>
-                    <RelativeLayout
-                            android:layout_marginHorizontal="40dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="80dp">
-
-                        <TextView
-                                android:id="@+id/tv_signup_act_pw_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="PW"
-                                android:textSize="14sp"
-                                android:textColor="#8a8a8a"
-                        />
-
-                        <TextView
-                                android:layout_alignParentRight="true"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="한글/영어+숫자 조합의 최소 6글자 이상"
-                                android:textSize="11sp"
-                                android:textColor="#366ce2"
-                        />
-
-                        <EditText
-                                android:layout_below="@+id/tv_signup_act_pw_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="입력"
-                        />
-
-                    </RelativeLayout>
-                    <RelativeLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_marginHorizontal="40dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="80dp">
-
-                        <TextView
-                                android:id="@+id/tv_signup_act_pw_confirm_text"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="PW"
-                                android:textSize="14sp"
-                                android:textColor="#8a8a8a"
-                        />
-
-                        <TextView
-                                android:layout_alignParentRight="true"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="한글/영어+숫자 조합의 최소 6글자 이상"
-                                android:textSize="11sp"
-                                android:textColor="#366ce2"
-                        />
-
-                        <EditText
-                                android:layout_below="@+id/tv_signup_act_pw_confirm_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="입력"
-                        />
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
 
     <RelativeLayout
             android:id="@+id/tv_signup_act_complete_signup"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
     >
         <TextView
                 android:layout_width="match_parent"
