@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.sopt.famfam.R
 
-class HomeStatisticsFragment : Fragment(){
+class HomeAlertFrament : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.fragment_home_statistics, container, false)
+        var view = inflater.inflate(R.layout.fragment_home_alert, container, false)
         return view
     }
 }

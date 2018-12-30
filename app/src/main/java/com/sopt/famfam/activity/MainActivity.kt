@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         init {
             this.context = context
             frags.add(HomeFragment())
+
         }
 
         override fun getItem(i: Int): android.support.v4.app.Fragment {

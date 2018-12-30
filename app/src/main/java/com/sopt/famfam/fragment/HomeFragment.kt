@@ -46,10 +46,8 @@ class HomeFragment : Fragment() {
         init {
             this.context = context
             frags.add(HomeCalendarFragment())
-
-            frags.add(HomeCalendarFragment())
-            frags.add(HomeCalendarFragment())
-
+            frags.add(HomeStatisticsFragment())
+            frags.add(HomeStatisticsFragment())
         }
 
         override fun getItem(i: Int): android.support.v4.app.Fragment {
