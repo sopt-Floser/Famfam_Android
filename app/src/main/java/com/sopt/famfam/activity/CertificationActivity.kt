@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.View
 import com.sopt.famfam.R
 import android.widget.AdapterView
-import android.widget.Spinner
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_certification.*
 
 
@@ -18,13 +16,21 @@ class CertificationActivity : AppCompatActivity() {
         sp_certification_act_select_telecom.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                        var telecom = parent!!.getItemAtPosition(position) // 통신사 뽑아내기
+                var telecom = parent!!.getItemAtPosition(position) // 통신사 뽑아내기
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 //
             }
         }
+        setOnBtnClickListener()
+    }
 
+    private fun setOnBtnClickListener() {
+        tv_certification_act_request_code_btn.setOnClickListener {
+            et_certification_act_input_code.requestFocus()
+            certification_act_request_code_layout.visibility = View.VISIBLE
+            et_certification_act_phone_number_layout.setBackgroundResource(R.drawable.certification_act_blue_request_authorization_code)
+        }
     }
 }

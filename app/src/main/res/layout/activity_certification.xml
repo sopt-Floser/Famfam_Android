@@ -24,9 +24,9 @@
                 android:layout_centerInParent="true"
                 android:layout_below="@+id/logo"
                 android:layout_marginTop="46.2dp"
-                android:layout_width="160dp"
-                android:layout_height="33.2dp"
-                android:src="@mipmap/check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/process_2"
         />
         <TextView
                 android:layout_marginTop="10dp"
@@ -43,14 +43,12 @@
             android:layout_marginTop="21.4dp"
             android:layout_below="@+id/layout_1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:orientation="vertical"
     >
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp">
-        </RelativeLayout>
+
         <LinearLayout
+                android:id="@+id/et_certification_act_phone_number_layout"
                 android:layout_marginTop="24dp"
                 android:layout_marginHorizontal="40dp"
                 android:layout_width="match_parent"
@@ -60,7 +58,7 @@
         >
             <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="48dp"
             >
                 <Spinner
                         android:id="@+id/sp_certification_act_select_telecom"
@@ -71,6 +69,7 @@
                         android:entries="@array/telecom_name">
                 </Spinner>
                 <EditText
+                        android:id="@+id/et_certification_act_input_phone_number"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/sp_certification_act_select_telecom"
                         android:hint="01066873474"
@@ -79,8 +78,85 @@
                         android:layout_height="40dp"
                         android:background="#ffffff"
                         android:letterSpacing="0.2"
+                        android:inputType="number"
+                        android:imeOptions="actionDone"
                 />
             </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/certification_act_request_code_layout"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="invisible"
+        >
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <RelativeLayout
+                        android:id="@+id/layout_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/certification_act_gray_request_authorization_code"
+                >
+                    <EditText
+                            android:id="@+id/et_certification_act_input_code"
+                            android:layout_centerInParent="true"
+                            android:layout_centerVertical="true"
+                            android:hint="인증번호 입력"
+                            android:layout_marginLeft="16dp"
+                            android:layout_width="150dp"
+                            android:layout_height="40dp"
+                            android:background="#ffffff"
+                            android:letterSpacing="0.2"
+                            android:singleLine="true"
+                    />
+                    <RelativeLayout
+                            android:layout_alignParentRight="true"
+                            android:id="@+id/tv_certification_act_code_complete"
+                            android:layout_width="64dp"
+                            android:layout_height="match_parent">
+                        <TextView
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textColor="#366ce2"
+                                android:layout_marginRight="16dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="완료"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+                <RelativeLayout
+                        android:layout_below="@+id/layout_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true">
+                    <TextView
+                            android:id="@+id/tv_certification_act_seconds"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="60"
+                            android:textColor="#366ce2"
+                    />
+                    <TextView
+                            android:layout_toRightOf="@+id/tv_certification_act_seconds"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="초내 미입력시 재인증해야 합니다."
+                    />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -91,7 +167,7 @@
             android:layout_alignParentBottom="true">
 
         <RelativeLayout
-                android:id="@+id/tv_certification_act_previous_btn"
+                android:id="@+id/tv_certification_act_request_code_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -103,6 +179,7 @@
                     android:text="인증번호 요청하기"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
+                    android:textStyle="bold"
             />
         </RelativeLayout>
 
