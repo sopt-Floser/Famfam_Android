@@ -7,7 +7,7 @@ import com.sopt.famfam.R
 import com.sopt.famfam.fragment.IntroFragmentStatePagerAdapter
 import kotlinx.android.synthetic.main.activity_intro.*
 
-class introActivity : AppCompatActivity() {
+class IntroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

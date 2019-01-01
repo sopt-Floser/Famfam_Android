@@ -43,9 +43,6 @@
         </RelativeLayout>
 
 
-        <!-- bottom navigation -->
-        <include layout="@layout/layout_today_bottom_navigation_view"/>
-
 
     </RelativeLayout>
 

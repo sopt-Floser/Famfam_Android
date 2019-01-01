@@ -1,12 +1,4 @@
-
 import com.google.gson.JsonObject
-<<<<<<< HEAD
-import com.sopt_nyh.retrofit2_example.post.PostLogInResponse
-import com.sopt_nyh.retrofit2_example.post.PostSignUpResponse
-import com.sopt_nyh.retrofit2_example.post.PostWriteBoardResponse
-=======
-
->>>>>>> 6b1e08b6ede9b357489bb3541d4be8cfa8381041
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
