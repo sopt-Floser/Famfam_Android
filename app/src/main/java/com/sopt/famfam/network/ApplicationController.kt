@@ -1,5 +1,3 @@
-package com.sopt_nyh.retrofit2_example.network
-
 import android.app.Application
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
