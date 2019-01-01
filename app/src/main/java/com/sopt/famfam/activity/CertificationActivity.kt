@@ -30,7 +30,7 @@ class CertificationActivity : AppCompatActivity() {
         tv_certification_act_request_code_btn.setOnClickListener {
             et_certification_act_input_code.requestFocus()
             certification_act_request_code_layout.visibility = View.VISIBLE
-            et_certification_act_phone_number_layout.setBackgroundResource(R.drawable.certification_act_blue_request_authorization_code)
+            et_certification_act_phone_number_layout.setBackgroundResource(R.drawable.certification_act_gray_request_authorization_code)
         }
     }
 }

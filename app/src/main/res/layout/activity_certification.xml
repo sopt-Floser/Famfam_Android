@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:orientation="horizontal"
-                android:background="@drawable/certification_act_gray_request_authorization_code"
+                android:background="@drawable/certification_act_blue_request_authorization_code"
         >
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -100,7 +100,7 @@
                         android:id="@+id/layout_2"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/certification_act_gray_request_authorization_code"
+                        android:background="@drawable/certification_act_blue_request_authorization_code"
                 >
                     <EditText
                             android:id="@+id/et_certification_act_input_code"
