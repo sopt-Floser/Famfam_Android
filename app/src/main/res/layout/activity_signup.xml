@@ -106,10 +106,13 @@
                             android:layout_weight="1">
 
                             <EditText
+                                android:id="@+id/et_signup_act_input_nickname"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_alignParentTop="true"
-                                android:hint="닉네임 입력" />
+                                android:hint="닉네임 입력"
+                                android:imeOptions="actionDone"
+                                android:singleLine="true"/>
 
                         </RelativeLayout>
 
