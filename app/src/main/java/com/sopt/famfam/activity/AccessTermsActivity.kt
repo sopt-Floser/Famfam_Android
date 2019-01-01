@@ -1,9 +1,9 @@
 package com.sopt.famfam.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.sopt.famfam.R
-
+// test test test test test test
 class AccessTermsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
