@@ -13,23 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
-
-        </activity>
-        <activity android:name=".activity.LoginActivity"></activity>
-        <activity
-            android:name=".activity.SignupActivity"
-            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SplashActivity"></activity>
-        <activity android:name=".activity.IntroActivity"></activity>
-        <activity android:name=".activity.AccessTermsActivity"></activity>
-        <activity android:name=".activity.CertificationActivity"></activity>
-        <activity android:name=".activity.ChatActivity"></activity>
+        <activity android:name=".activity.LoginActivity" />
+        <activity
+            android:name=".activity.SignupActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".activity.SplashActivity" />
+        <activity android:name=".activity.IntroActivity" />
+        <activity android:name=".activity.AccessTermsActivity" />
+        <activity android:name=".activity.CertificationActivity" />
+        <activity android:name=".activity.ChatActivity" />
 
         <service android:name=".FIreBaseMessagingService">
             <intent-filter>
@@ -41,6 +39,8 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".activity.AddScheduleActivity"></activity>
     </application>
 
 </manifest>

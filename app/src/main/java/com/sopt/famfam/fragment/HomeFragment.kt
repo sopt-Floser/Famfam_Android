@@ -17,17 +17,20 @@ import com.sopt.famfam.adapter.FamilyListAdapter
 import com.sopt.famfam.adapter.item.FamilyListItem
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.ArrayList
+import com.sopt.famfam.OnBackPressListener
+
+
 
 class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
     }
-
+    lateinit var content : ViewPager
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)
-        var familylist = view.rv_home_family
-        val content = view.vp_home_main_content
 
+        var familylist = view.rv_home_family
+        content = view.vp_home_main_content
         var list = ArrayList<FamilyListItem>();
         list.add(FamilyListItem(0,"","엄마"))
         list.add(FamilyListItem(0,"","아빠"))
@@ -62,4 +65,5 @@ class HomeFragment : Fragment() {
             return frags.size
         }
     }
+
 }
