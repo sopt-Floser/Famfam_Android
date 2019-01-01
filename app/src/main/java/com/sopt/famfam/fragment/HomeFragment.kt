@@ -19,6 +19,10 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.ArrayList
 
 class HomeFragment : Fragment() {
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)
         var familylist = view.rv_home_family
@@ -34,7 +38,7 @@ class HomeFragment : Fragment() {
         content.setPadding(160,0,160,0)
         content.clipToPadding=false
         content.pageMargin=80
-        content.adapter = PagerAdapter(fragmentManager!!, activity!!)
+        content.adapter = PagerAdapter(childFragmentManager!!, activity!!)
         content.offscreenPageLimit=3
         return view
     }
