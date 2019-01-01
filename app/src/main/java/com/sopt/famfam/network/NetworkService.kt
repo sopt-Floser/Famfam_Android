@@ -1,8 +1,12 @@
 
 import com.google.gson.JsonObject
+<<<<<<< HEAD
 import com.sopt_nyh.retrofit2_example.post.PostLogInResponse
 import com.sopt_nyh.retrofit2_example.post.PostSignUpResponse
 import com.sopt_nyh.retrofit2_example.post.PostWriteBoardResponse
+=======
+
+>>>>>>> 6b1e08b6ede9b357489bb3541d4be8cfa8381041
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -34,22 +38,22 @@ interface NetworkService {
     ) : Call<PostWriteBoardResponse>
 
 
-    //모든 게시판 보기
-    @GET("/contents")
-    fun getBoardListResponse(
-            @Header("Content-Type") content_type : String,
-            @Query("offset") offset : Int,
-            @Query("limit") limit : Int
-    ) : Call<GetBoardListResponse>
-
-    //게시물 상세 보기
-    @GET("/contents/{contentIdx}")
-    fun getDetailedBoardResponse(
-            @Header("Content-Type") content_type : String,
-            @Header("Authorization") token : String,
-            @Path("contentIdx") contentIdx : Int
-    ) : Call<GetDetailedBoardResponse>
-
+//    //모든 게시판 보기
+//    @GET("/contents")
+//    fun getBoardListResponse(
+//            @Header("Content-Type") content_type : String,
+//            @Query("offset") offset : Int,
+//            @Query("limit") limit : Int
+//    ) : Call<GetBoardListResponse>
+//
+//    //게시물 상세 보기
+//    @GET("/contents/{contentIdx}")
+//    fun getDetailedBoardResponse(
+//            @Header("Content-Type") content_type : String,
+//            @Header("Authorization") token : String,
+//            @Path("contentIdx") contentIdx : Int
+//    ) : Call<GetDetailedBoardResponse>
+//
 
 
 }

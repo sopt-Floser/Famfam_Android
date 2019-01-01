@@ -1,4 +1,3 @@
-package com.sopt_nyh.retrofit2_example.post
 
 data class PostLogInResponse(
         val status : Int,

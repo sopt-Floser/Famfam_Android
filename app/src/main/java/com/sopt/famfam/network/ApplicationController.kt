@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6b1e08b6ede9b357489bb3541d4be8cfa8381041
 import android.app.Application
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

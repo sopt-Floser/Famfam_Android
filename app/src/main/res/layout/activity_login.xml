@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.LoginActivity"
+        android:background="#366ce2"
+>
+    <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="128dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    >
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"
+                android:background="#ffffff"/>
+    </RelativeLayout>
+
+    <LinearLayout
+            android:id="@+id/layout_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="262.3dp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+    >
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="20dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_launcher_background"
+            />
+            <EditText
+                    android:id="@+id/et_login_act_id"
+                    android:layout_width="260dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/login_act_gray_text_box"
+
+            />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            <ImageView
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_width="20dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_launcher_background"
+            />
+            <EditText
+                    android:id="@+id/et_login_act_pw"
+                    android:layout_width="260dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/login_act_gray_text_box"
+
+            />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            <Button
+                    android:id="@+id/btn_login_act_signin"
+                    android:layout_width="260dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/login_act_white_signin_box"
+                    android:text="로그인"
+                    android:textColor="#366ce2"
+            />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+            <RelativeLayout
+                    android:id="@+id/tv_login_act_find_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginVertical="8dp"
+            >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="아이디 찾기"
+                        android:textColor="#ffffff"
+                        android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+            <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF"
+                    android:layout_marginVertical="5dp"/>
+
+            <RelativeLayout
+                    android:id="@+id/tv_login_act_find_pw"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginVertical="8dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="비밀번호 찾기"
+                        android:textColor="#ffffff"
+                        android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.AccessTermsActivity"
+>
+
+    <RelativeLayout
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    >
+        <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="61.7dp"/>
+        <ImageView
+                android:id="@+id/check"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/logo"
+                android:layout_marginTop="46.2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/process_1"
+        />
+        <TextView
+                android:layout_marginTop="10dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/check"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이용 약관 \u0026 개인 정보 취급 방침"
+                android:textColor="#656565"/>
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_marginTop="28.5dp"
+            android:layout_below="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginLeft="37dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="약관 동의 (필수)"
+                    android:textSize="18sp"
+                    android:textColor="#8c8c8c"
+            />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_marginTop="46dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginLeft="37dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="팸팸 이용약관 동의"
+                    android:textSize="14sp"
+                    android:textColor="#8c8c8c"
+            />
+            <ImageView
+                    android:id="@+id/iv_access_terms_act_second_btn"
+                    android:layout_marginRight="37dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_check_circle_gray"
+            />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_marginTop="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginLeft="37dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="개인정보 수집 및 이용에 대한 안내"
+                    android:textSize="14sp"
+                    android:textColor="#8c8c8c"
+            />
+            <ImageView
+                    android:id="@+id/iv_access_terms_act_third_btn"
+                    android:layout_marginRight="37dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_check_circle_gray"
+            />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_marginTop="62dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginLeft="37dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="서비스 알림 동의 (선택)"
+                    android:textSize="18sp"
+                    android:textColor="#8c8c8c"
+            />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_marginTop="46dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginLeft="37dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="기념일 및 가족 행사 캘린더 알림"
+                    android:textSize="14sp"
+                    android:textColor="#8c8c8c"
+            />
+            <ImageView
+                    android:id="@+id/iv_access_terms_act_fifth_btn"
+                    android:layout_marginRight="37dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_check_circle_gray"
+            />
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_marginTop="32dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginLeft="37dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="배경화면 상태 알림"
+                    android:textSize="14sp"
+                    android:textColor="#8c8c8c"
+            />
+            <ImageView
+                    android:id="@+id/iv_access_terms_act_sixth_btn"
+                    android:layout_marginRight="37dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_check_circle_gray"
+            />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/tv_access_terms_act_first_complete_btn"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="#366ce2"
+            android:text="동의 후 가입하기"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:gravity="center"
+    />
+
+
+</RelativeLayout>
