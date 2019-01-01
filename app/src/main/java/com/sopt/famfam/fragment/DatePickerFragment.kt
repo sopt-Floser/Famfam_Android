@@ -2,10 +2,10 @@ package com.sopt.famfam.fragment
 
 import android.app.*
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.DatePicker
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import com.sopt.famfam.R
+import kotlinx.android.synthetic.main.activity_signup.*
 import java.text.DateFormat
 import java.util.Calendar
 
@@ -58,14 +58,17 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
     // When date set and press ok button in date picker dialog
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-        Toast.makeText(
-                activity,
-                "Date Set : ${formatDate(year,month,day)}"
-                ,Toast.LENGTH_SHORT
-        ).show()
-
+//        Toast.makeText(
+//                activity,
+//                "Date Set : ${formatDate(year,month,day)}"
+//                ,Toast.LENGTH_SHORT
+//        ).show()
+        var birth: String ="      ${year}      년       ${month+1}      월       ${day}      일"
         // Display the selected date in text view
-        activity.findViewById<TextView>(R.id.tv_signup_act_datepicker_text).text = formatDate(year,month,day)
+        // formatDate(year,month,day)
+        activity.findViewById<TextView>(R.id.tv_signup_act_datepicker_text).text = birth
+        activity.findViewById<TextView>(R.id.tv_signup_act_birth_validation_check_text).visibility = View.INVISIBLE
+        activity.findViewById<ImageView>(R.id.iv_signup_act_birth_validation_check_ok).visibility = View.VISIBLE
     }
 
 

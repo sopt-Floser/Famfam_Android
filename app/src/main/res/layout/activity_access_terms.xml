@@ -30,7 +30,7 @@
                 android:src="@drawable/process_1"
         />
         <TextView
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="40dp"
                 android:layout_centerInParent="true"
                 android:layout_below="@+id/check"
                 android:textSize="16sp"
@@ -56,6 +56,7 @@
                     android:text="약관 동의 (필수)"
                     android:textSize="18sp"
                     android:textColor="#8c8c8c"
+                    android:textStyle="bold"
             />
 
         </RelativeLayout>
@@ -64,6 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="37dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -86,6 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="37dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -109,6 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:textStyle="bold"
                     android:layout_marginLeft="37dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -123,6 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="37dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -144,6 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
+                    android:layout_centerVertical="true"
                     android:layout_marginLeft="37dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -168,10 +174,11 @@
             android:id="@+id/tv_access_terms_act_first_complete_btn"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="56dp"
             android:background="#366ce2"
             android:text="동의 후 가입하기"
             android:textColor="#ffffff"
+            android:textStyle="bold"
             android:textSize="16sp"
             android:gravity="center"
     />

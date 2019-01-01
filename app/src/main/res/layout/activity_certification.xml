@@ -29,7 +29,7 @@
                 android:src="@drawable/process_2"
         />
         <TextView
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="40dp"
                 android:layout_centerInParent="true"
                 android:layout_below="@+id/check"
                 android:textSize="18sp"
@@ -60,24 +60,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
             >
-                <Spinner
-                        android:id="@+id/sp_certification_act_select_telecom"
-                        android:layout_marginLeft="16dp"
-                        android:layout_centerVertical="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:entries="@array/telecom_name">
-                </Spinner>
+
                 <EditText
+                        android:layout_centerInParent="true"
                         android:id="@+id/et_certification_act_input_phone_number"
                         android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/sp_certification_act_select_telecom"
+                        android:letterSpacing="0.2"
                         android:hint="01066873474"
                         android:layout_marginLeft="16dp"
                         android:layout_width="150dp"
                         android:layout_height="40dp"
                         android:background="#ffffff"
-                        android:letterSpacing="0.2"
                         android:inputType="number"
                         android:imeOptions="actionDone"
                 />
@@ -113,28 +106,13 @@
                             android:background="#ffffff"
                             android:letterSpacing="0.2"
                             android:singleLine="true"
+                            android:privateImeOptions="defaultInputmode=english"
                     />
-                    <RelativeLayout
-                            android:layout_alignParentRight="true"
-                            android:id="@+id/tv_certification_act_code_complete"
-                            android:layout_width="64dp"
-                            android:layout_height="match_parent">
-                        <TextView
-                                android:textSize="14sp"
-                                android:textStyle="bold"
-                                android:textColor="#366ce2"
-                                android:layout_marginRight="16dp"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentRight="true"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="완료"/>
-
-                    </RelativeLayout>
-
                 </RelativeLayout>
                 <RelativeLayout
+                        android:layout_marginTop="8dp"
                         android:layout_below="@+id/layout_2"
+                        android:id="@+id/layout_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true">
@@ -142,16 +120,31 @@
                             android:id="@+id/tv_certification_act_seconds"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="60"
+                            android:text="3:00"
                             android:textColor="#366ce2"
                     />
                     <TextView
                             android:layout_toRightOf="@+id/tv_certification_act_seconds"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="초내 미입력시 재인증해야 합니다."
+                            android:text="분내 미입력시 재인증해야 합니다."
                     />
 
+                </RelativeLayout>
+                <RelativeLayout
+                        android:layout_marginTop="8dp"
+                        android:layout_below="@+id/layout_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+
+                    <TextView
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="인증번호 재요청"
+                            android:textSize="16sp"
+                            android:textColor="#366ce2"
+                            android:textStyle="bold"/>
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -172,6 +165,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
             <TextView
+                    android:id="@+id/tv_certification_act_request_code_btn_text"
                     android:layout_centerVertical="true"
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
