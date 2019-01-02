@@ -8,7 +8,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/relLayout1">
 
-        <include layout="@layout/snippet_comment_top_toolbar"/>
+        <include layout="@layout/snippet_editpost_top_toolbar"/>
 
     </RelativeLayout>
 
@@ -29,30 +29,34 @@
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="55dp"
             android:id="@+id/relLayout3"
             android:layout_alignParentBottom="true"
             android:background="@color/white">
 
 
         <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="299dp"
+                android:layout_height="37dp"
                 android:padding="2dp"
-                android:background="@drawable/commentsquare"
+                android:hint="  가족들에게 사랑의 댓글을 적어주세요."
+                android:inputType="textNoSuggestions"
                 android:layout_marginRight="60dp"
                 android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"
-                android:textSize="14sp"
-                android:id="@+id/comment"/>
+                android:textSize="12sp"
+                android:id="@+id/comment_body"
+                android:background="@drawable/gray_border"/>
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="12dp"
                 android:text="등록"
-                android:id="@+id/ivPostComment"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/PostComment"
                 android:layout_alignParentRight="true"/>
 
     </RelativeLayout>

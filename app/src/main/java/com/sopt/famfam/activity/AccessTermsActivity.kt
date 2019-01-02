@@ -3,13 +3,11 @@ package com.sopt.famfam.activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import com.sopt.famfam.R
 import kotlinx.android.synthetic.main.activity_access_terms.*
-import kotlinx.android.synthetic.main.activity_certification.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
+
 
 class AccessTermsActivity : AppCompatActivity() {
     var checkFirst : Boolean = false

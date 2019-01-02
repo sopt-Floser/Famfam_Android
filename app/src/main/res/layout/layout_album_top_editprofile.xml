@@ -3,11 +3,7 @@
                                              >
 
 
-    <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/white"
-    >
+
 
         <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
@@ -25,29 +21,20 @@
                     android:layout_marginEnd="20dp"
                     android:layout_centerVertical="true"
                     android:id="@+id/backArrow"
-                    android:src="@drawable/icon_back_1"/>
+                    android:src="@drawable/icon_back_2"/>
 
             <TextView
-                    android:layout_toRightOf="@+id/backArrow"
+
+                    android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="프로필 수정"
+                    android:text="개인 설정"
                     android:textSize="20sp"
                     android:textColor="@color/black"
                     android:layout_marginStart="5dp"
                     android:id="@+id/profileName"/>
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:text="저장"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/saveChanges"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"/>
 
 
         </RelativeLayout>
@@ -57,6 +44,5 @@
 
 
 
-    </android.support.design.widget.AppBarLayout>
 
 </merge>

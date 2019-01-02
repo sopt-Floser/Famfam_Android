@@ -2,7 +2,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<ScrollView
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -12,33 +12,42 @@
                 android:background="@color/white"
                 android:padding="20dp">
 
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:id="@+id/profile_photo"
-                    android:layout_marginTop="20dp"
-                    app:civ_border_color="@color/black"
-                    app:civ_border_width="2dp"
-                    android:layout_centerHorizontal="true"/>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="사진 변경"
-                    android:id="@+id/changeProfilePhoto"
-                    android:layout_below="@+id/profile_photo"
+            <RelativeLayout
+                    android:layout_width="92dp"
+                    android:layout_height="92dp"
                     android:layout_centerHorizontal="true"
-                    android:textColor="@color/blue"
-                    android:textSize="16sp"/>
+                    android:id="@+id/edit_profilephoto"
+            >
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="92dp"
+                        android:layout_height="92dp"
+                        android:id="@+id/profile_photo"
+                        android:src="@drawable/kim_fam_big"
+                        android:layout_centerHorizontal="true"/>
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/changeProfilePhoto"
+                        android:layout_below="@+id/profile_photo"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/icon_camera"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+
+                        android:textSize="16sp">
+
+                </ImageView>
+
+            </RelativeLayout>
 
 
             <!-- username section -->
             <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_below="@+id/changeProfilePhoto"
+                    android:layout_below="@+id/edit_profilephoto"
                     android:layout_marginTop="80dp"
                     android:id="@+id/relLayout1">
 
@@ -60,7 +69,6 @@
                         android:hint="User Name"/>
 
             </RelativeLayout>
-
 
 
             <!-- description section -->
@@ -89,13 +97,6 @@
                         android:hint="Description"/>
 
             </RelativeLayout>
-
-
-
-
-
-
-
 
 
         </RelativeLayout>
