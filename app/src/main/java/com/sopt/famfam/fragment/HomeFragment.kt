@@ -43,6 +43,7 @@ class HomeFragment : Fragment() {
         content.pageMargin=80
         content.adapter = PagerAdapter(childFragmentManager!!, activity!!)
         content.offscreenPageLimit=3
+        content.setCurrentItem(1)
         return view
     }
 

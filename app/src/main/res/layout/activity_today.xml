@@ -7,12 +7,12 @@
         android:layout_height="match_parent">
 
 
-    <FrameLayvout
+    <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/container">
 
-    </FrameLayvout>
+    </FrameLayout>
 
     <RelativeLayout
             android:layout_width="match_parent"
