@@ -20,6 +20,10 @@ class DemoAdapter(var context: Context, var list : ArrayList<DemoItem>) : Recycl
         return list.size
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
+    }
+
     override fun onBindViewHolder(p0: Holder, position: Int) {
     }
 

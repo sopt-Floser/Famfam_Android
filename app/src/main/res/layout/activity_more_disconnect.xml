@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".activity.MoreDisconnectActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#707070"
+            android:lineSpacingExtra="2sp"
+            android:gravity="center_horizontal"
+            tools:text="메신저에 가족이 남아 있으면
+다시 참여 가능합니다."
+            />
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#707070"
+            android:lineSpacingExtra="2sp"
+            android:gravity="center_horizontal"
+            tools:text="메신저에 가족이 한 명만 있을 때
+탈퇴하면 메신저 자료 복구가 불가능합니다."
+            />
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#707070"
+            android:textStyle="bold"
+            android:lineSpacingExtra="2sp"
+            android:gravity="center_horizontal"
+            tools:text="정말 끊으시겠습니까?"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_more_disconnect_ok"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="연결끊기"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</LinearLayout>
