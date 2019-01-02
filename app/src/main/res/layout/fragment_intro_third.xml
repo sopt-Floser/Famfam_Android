@@ -11,7 +11,7 @@
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/splash_slogan"
+                android:src="@drawable/intro3"
                 android:layout_centerInParent="true"/>
     </RelativeLayout>
 

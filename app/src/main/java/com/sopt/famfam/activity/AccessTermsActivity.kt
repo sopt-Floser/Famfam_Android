@@ -13,7 +13,7 @@ import org.jetbrains.anko.startActivityForResult
 
 class AccessTermsActivity : AppCompatActivity() {
     var checkFirst : Boolean = false
-//    var checkSecond : Boolean = false
+    var checkSecond : Boolean = false
     var checkthird : Boolean = false
     var checkFourth : Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +27,9 @@ class AccessTermsActivity : AppCompatActivity() {
         iv_access_terms_act_second_btn.setOnClickListener {
             startActivityForResult<PoliciesActivity>(1004, "message" to "success")
         }
+        iv_access_terms_act_third_btn.setOnClickListener {
+            startActivityForResult<PersonalInformationProtectionActivity>(1004, "message" to "success")
+        }
         iv_access_terms_act_fifth_btn.setOnClickListener {
             iv_access_terms_act_fifth_btn.setImageResource(R.drawable.icon_check_circle)
             checkthird = true
@@ -36,7 +39,7 @@ class AccessTermsActivity : AppCompatActivity() {
             checkFourth = true
         }
         tv_access_terms_act_first_complete_btn.setOnClickListener {
-            if(checkFirst && checkthird && checkFourth ){
+            if(checkFirst && checkSecond){
                 startActivity<CertificationActivity>()
             }
         }
@@ -45,10 +48,12 @@ class AccessTermsActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Log.d("제발", resultCode.toString())
         if (resultCode == 201) {
             iv_access_terms_act_second_btn.setImageResource(R.drawable.icon_check_circle)
             checkFirst = true
+        } else if (resultCode == 203) {
+            iv_access_terms_act_third_btn.setImageResource(R.drawable.icon_check_circle)
+            checkSecond = true
         }
     }
 }

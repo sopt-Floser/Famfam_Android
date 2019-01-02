@@ -40,22 +40,28 @@ class HomeFragment : Fragment() {
     }
 
     class PagerAdapter(manager: FragmentManager, context: Context) : FragmentStatePagerAdapter(manager) {
-        var frags = ArrayList<android.support.v4.app.Fragment>()
-        var context: Context? = null
+//        var frags = ArrayList<android.support.v4.app.Fragment>()
+//        var context: Context? = null
 
-        init {
-            this.context = context
-            frags.add(HomeCalendarFragment())
-            frags.add(HomeStatisticsFragment())
-            frags.add(HomeStatisticsFragment())
-        }
+//        init {
+//            this.context = context
+//            frags.add(HomeCalendarFragment())
+//            frags.add(HomeStatisticsFragment())
+//            frags.add(HomeAlertFrament())
+//        }
 
-        override fun getItem(i: Int): android.support.v4.app.Fragment {
-            return frags[i]
+        override fun getItem(i: Int): android.support.v4.app.Fragment? {
+
+            when (i%3) {
+                0 -> return HomeCalendarFragment()
+                1 -> return HomeStatisticsFragment()
+                2 -> return HomeAlertFrament()
+                else -> return null
+            }
         }
 
         override fun getCount(): Int {
-            return frags.size
+            return Integer.MAX_VALUE
         }
     }
 }

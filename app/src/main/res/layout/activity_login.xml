@@ -16,8 +16,7 @@
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo"
-                android:background="#ffffff"/>
+                android:src="@drawable/logo_white"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -31,20 +30,21 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/login_act_gray_text_box">
             <ImageView
                     android:layout_centerVertical="true"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_width="20dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/ic_launcher_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_id"
             />
             <EditText
                     android:id="@+id/et_login_act_id"
-                    android:layout_width="260dp"
+                    android:layout_marginLeft="56dp"
+                    android:layout_width="170dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/login_act_gray_text_box"
-
+                    android:background="#86a7ed"
             />
 
         </RelativeLayout>
@@ -53,20 +53,21 @@
                 android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="@drawable/login_act_gray_text_box">
             <ImageView
                     android:layout_centerVertical="true"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_width="20dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/ic_launcher_background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_lock"
             />
             <EditText
                     android:id="@+id/et_login_act_pw"
-                    android:layout_width="260dp"
+                    android:layout_marginLeft="56dp"
+                    android:layout_width="170dp"
                     android:layout_height="48dp"
-                    android:background="@drawable/login_act_gray_text_box"
-
+                    android:background="#86a7ed"
             />
 
 

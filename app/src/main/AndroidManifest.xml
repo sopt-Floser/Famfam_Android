@@ -18,18 +18,17 @@
                 android:name=".activity.SignupActivity"
                 android:windowSoftInputMode="stateHidden">
         </activity>
-        <activity android:name=".activity.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".activity.SplashActivity"> <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
         <activity android:name=".activity.IntroActivity"></activity>
         <activity android:name=".activity.AccessTermsActivity"></activity>
         <activity android:name=".activity.CertificationActivity"></activity>
         <activity android:name=".activity.ChatActivity"></activity>
         <activity android:name=".activity.PoliciesActivity"></activity>
+        <activity android:name=".activity.PersonalInformationProtectionActivity"></activity>
 
         <service android:name=".FIreBaseMessagingService">
             <intent-filter>
@@ -41,6 +40,7 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
+
     </application>
 
 </manifest>

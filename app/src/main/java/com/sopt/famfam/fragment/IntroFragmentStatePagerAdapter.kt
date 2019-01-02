@@ -15,6 +15,7 @@ class IntroFragmentStatePagerAdapter(fm: FragmentManager, val fragmentCount: Int
             3 -> return IntroFourthFragment()
             else -> return null
         }
+
     }
 
     override fun getCount(): Int = fragmentCount
