@@ -35,6 +35,9 @@
         <activity android:name=".activity.ChatActivity"></activity>
         <activity android:name=".activity.PoliciesActivity"></activity>
         <activity android:name=".activity.PersonalInformationProtectionActivity"></activity>
+        <activity android:name=".activity.AddScheduleActivity"></activity>
+        <activity android:name=".activity.MoreDisconnectActivity"></activity>
+        <activity android:name=".activity.MoreSecedeActivity"></activity>
         <service android:name=".FIreBaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>

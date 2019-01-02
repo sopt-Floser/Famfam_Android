@@ -1,92 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/layout_more">
 
     <ImageView
-        android:id="@+id/iv_more_bg"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/feed_1" />
+            android:id="@+id/iv_more_bg"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/feed_1"/>
 
     <ImageView
-        android:id="@+id/iv_more_profile_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/iv_more_bg"
-        android:layout_marginLeft="27dp"
-        android:layout_marginBottom="-40dp"
-        android:src="@drawable/kim_fam_big" />
+            android:id="@+id/iv_more_profile_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_more_bg"
+            android:layout_marginLeft="27dp"
+            android:layout_marginBottom="-40dp"
+            android:src="@drawable/kim_fam_big"/>
 
     <TextView
-        android:id="@+id/tv_more_nickname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/iv_more_profile_img"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toRightOf="@id/iv_more_profile_img"
-        android:text="김팸팸"
-        android:textSize="18sp" />
+            android:id="@+id/tv_more_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_more_profile_img"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toRightOf="@id/iv_more_profile_img"
+            android:text="김팸팸"
+            android:textSize="18sp"/>
 
     <TextView
-        android:id="@+id/tv_more_intro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_more_nickname"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toRightOf="@id/iv_more_profile_img"
-        android:text="첫째 김팸팸 입니다."
-        android:textSize="16sp" />
+            android:id="@+id/tv_more_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_more_nickname"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toRightOf="@id/iv_more_profile_img"
+            android:text="첫째 김팸팸 입니다."
+            android:textSize="16sp"/>
+    <TextView
+            android:layout_marginRight="16dp"
+            android:layout_alignBottom="@+id/tv_more_intro"
+            android:textSize="18dp"
+            android:layout_alignParentRight="true"
+            android:id="@+id/btn_more_editprofile"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="편집"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tv_more_intro"
-        android:orientation="vertical"
-        android:paddingLeft="32dp"
-        android:paddingTop="16dp"
-        android:paddingRight="32dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_more_intro"
+            android:orientation="vertical"
+            android:paddingLeft="32dp"
+            android:paddingTop="16dp"
+            android:paddingRight="32dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#e6e6e6"></LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e6e6e6"></LinearLayout>
 
         <TextView
-            android:id="@+id/btn_more_version"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="버전 정보"
-            android:textSize="16dp" />
+                android:id="@+id/btn_more_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="버전 정보"
+                android:textSize="16dp"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#e6e6e6"></LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e6e6e6"></LinearLayout>
 
         <TextView
-            android:id="@+id/btn_more_alert_setting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="알림 설정"
-            android:textSize="16dp" />
+                android:id="@+id/btn_more_alert_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="알림 설정"
+                android:textSize="16dp"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#e6e6e6"></LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e6e6e6"></LinearLayout>
 
         <TextView
-            android:id="@+id/btn_more_cc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="이용약관  개인정보 처리방침"
-            android:textSize="16dp" />
+                android:id="@+id/btn_more_cc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="이용약관"
+                android:textSize="16dp"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e6e6e6"></LinearLayout>
+
+        <TextView
+                android:id="@+id/btn_more_cc1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="개인정보 처리방침"
+                android:textSize="16dp"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e6e6e6"></LinearLayout>
+
+        <TextView
+                android:id="@+id/btn_more_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="계정/보안"
+                android:textSize="16dp"/>
     </LinearLayout>
 </RelativeLayout>
