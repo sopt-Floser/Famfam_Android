@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:id="@+id/ViewPostToolBar"
+            android:background="@color/white">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/backArrow"
+                    android:src="@drawable/icon_back_2"/>
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="게시물"
+                    android:layout_marginRight="15dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/gray"
+                    android:id="@+id/viewpost_title"
+                    android:layout_centerInParent="true" />
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+</merge>

@@ -7,12 +7,12 @@
         android:layout_height="match_parent">
 
 
-    <FrameLayout
+    <FrameLayvout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/container">
 
-    </FrameLayout>
+    </FrameLayvout>
 
     <RelativeLayout
             android:layout_width="match_parent"
@@ -24,9 +24,11 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/relLayout1">
+                android:id="@+id/relLayout1"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true">
 
-            <include layout="@layout/layout_top_tabs"/>
+            <include layout="@layout/layout_today_top_toolbar"/>
 
         </RelativeLayout>
 
@@ -37,7 +39,7 @@
                 android:id="@+id/relLayout2"
                 android:layout_below="@+id/relLayout1">
 
-            <include layout="@layout/layout_today_center_viewpager"/>
+            <include layout="@layout/layout_today_post_listitem"/>
 
 
         </RelativeLayout>

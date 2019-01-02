@@ -5,7 +5,7 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            android:background="@drawable/back">
 
 
 
@@ -20,52 +20,61 @@
 
 
 
-            <LinearLayout
-                    android:id="@+id/linLayout"
+            <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="20dp"
-                    android:background="@color/white">
+                    android:layout_marginTop="50dp"
+                    android:id="@+id/album_profile">
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_photo"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="30dp"
+                        android:paddingTop="-44dp"
                         app:civ_border_color="@color/black"
-                        app:civ_border_width="0.5dp" />
+                        app:civ_border_width="0.5dp"/>
 
                 <TextView
+                        android:layout_toRightOf="@+id/profile_photo"
                         android:id="@+id/display_name"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="김팸팸"
+                        android:layout_marginStart="9dp"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:layout_alignBottom="@+id/profile_photo"
+                />
 
                 <TextView
-                        android:id="@+id/description"
-                        android:layout_width="match_parent"
+                        android:id="@+id/textEditProfile"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="첫째 김팸팸입니다 ^^"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:text="프로필 수정"
+                        android:textColor="@color/gray"
+                        android:textSize="14sp"
+                        android:layout_alignBottom="@+id/profile_photo"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="36dp"
+                        android:layout_alignParentRight="true"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profile_photo"
+                        android:text="첫째 김팸팸입니다."
+                        android:layout_marginTop="17dp"
+                        android:layout_marginStart="30dp"/>
+            </RelativeLayout>
 
-
-
-
-            </LinearLayout>
 
             <RelativeLayout
                     android:id="@+id/relLayout3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/linLayout"
+                    android:layout_below="@+id/album_profile"
                     android:layout_marginBottom="50dp"
             >
 

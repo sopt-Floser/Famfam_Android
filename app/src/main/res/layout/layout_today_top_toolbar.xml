@@ -1,63 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/white"
-    >
 
         <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/profileToolBar">
+                android:id="@+id/profileToolBar"
+                android:background="@color/white">
 
             <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    >
 
-                <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_centerVertical="true"
-                        android:id="@+id/backArrow"
-                        android:src="@drawable/icon_back"/>
+
 
 
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="오늘의 하루"
-                        android:layout_toRightOf="@+id/backArrow"
                         android:layout_marginRight="15dp"
-                        android:textSize="20sp"
-                        android:textColor="@color/blue"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
                         android:textStyle="bold"
-                        android:layout_centerVertical="true"
-                        android:id="@+id/tvNext"
-                />
+                        android:id="@+id/today_title"
+                        android:layout_centerInParent="true" />
 
-                <ImageView
-                        android:layout_toLeftOf="@+id/btn_add_post"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/icon_carmera"
-                        android:textSize="20sp"
-                        android:textColor="@color/blue"
-                        android:layout_centerVertical="true"
-                        android:id="@+id/btn_launch_camera"
-                />
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+
+                <ImageButton
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:src="@drawable/icon_carmera"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="20dp"
                         android:textSize="20sp"
-                        android:textColor="@color/blue"
                         android:layout_centerVertical="true"
                         android:id="@+id/btn_add_post"
+                        android:background="@android:color/transparent"
                 />
 
 
@@ -68,8 +48,5 @@
 
         </android.support.v7.widget.Toolbar>
 
-
-
-    </android.support.design.widget.AppBarLayout>
 
 </merge>
