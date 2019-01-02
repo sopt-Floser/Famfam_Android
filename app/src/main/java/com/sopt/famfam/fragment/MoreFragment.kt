@@ -1,11 +1,12 @@
 package com.sopt.famfam.fragment
+import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.simplemobiletools.calendar.pro.activities.CalendarSplashActivity
 import com.sopt.famfam.R
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_more.view.*
 
 class MoreFragment : Fragment(){
@@ -26,9 +27,11 @@ class MoreFragment : Fragment(){
             // 알람 성정
         })
 
-        view.btn_more_cc.setOnClickListener(View.OnClickListener {
-            // 이용정보
+        val intent = Intent(context , CalendarSplashActivity::class.java)
+        view.btn_more_cc.setOnClickListener({
+            startActivity(intent)
         })
+
 
 
         return view

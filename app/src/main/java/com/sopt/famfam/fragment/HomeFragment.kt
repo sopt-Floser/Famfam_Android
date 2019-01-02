@@ -2,11 +2,11 @@ package com.sopt.famfam.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager.widget.ViewPager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +36,8 @@ class HomeFragment : Fragment() {
         list.add(FamilyListItem(0,"","아빠"))
         list.add(FamilyListItem(0,"","동생"))
         familylist.adapter=FamilyListAdapter(context!!,list);
-        familylist.layoutManager= LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+        familylist.layoutManager=
+                LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
         val padding= 80
         content.setPadding(160,0,160,0)
         content.clipToPadding=false
@@ -47,7 +48,7 @@ class HomeFragment : Fragment() {
     }
 
     class PagerAdapter(manager: FragmentManager, context: Context) : FragmentStatePagerAdapter(manager) {
-        var frags = ArrayList<android.support.v4.app.Fragment>()
+        var frags = ArrayList<Fragment>()
         var context: Context? = null
 
         init {
@@ -57,7 +58,7 @@ class HomeFragment : Fragment() {
             frags.add(HomeStatisticsFragment())
         }
 
-        override fun getItem(i: Int): android.support.v4.app.Fragment {
+        override fun getItem(i: Int): Fragment {
             return frags[i]
         }
 

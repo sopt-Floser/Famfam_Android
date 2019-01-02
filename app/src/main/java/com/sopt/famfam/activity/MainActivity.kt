@@ -1,12 +1,12 @@
 package com.sopt.famfam.activity
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
+import com.google.android.material.tabs.TabLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import android.view.MotionEvent
 import android.view.View
 import android.widget.RelativeLayout
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             frags.add(MoreFragment())
         }
 
-        override fun getItem(i: Int): android.support.v4.app.Fragment {
+        override fun getItem(i: Int): Fragment {
             return frags[i]
         }
 

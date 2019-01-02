@@ -1,8 +1,8 @@
 package com.sopt.famfam.activity
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import com.sopt.famfam.R
 import com.sopt.famfam.fragment.IntroFragmentStatePagerAdapter
 import kotlinx.android.synthetic.main.activity_intro.*
