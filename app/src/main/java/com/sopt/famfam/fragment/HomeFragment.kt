@@ -18,7 +18,7 @@ import com.sopt.famfam.adapter.item.FamilyListItem
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.ArrayList
 import com.sopt.famfam.OnBackPressListener
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class HomeFragment : Fragment() {
@@ -28,13 +28,13 @@ class HomeFragment : Fragment() {
     lateinit var content : ViewPager
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)
-
         var familylist = view.rv_home_family
         content = view.vp_home_main_content
         var list = ArrayList<FamilyListItem>();
         list.add(FamilyListItem(0,"","엄마"))
         list.add(FamilyListItem(0,"","아빠"))
         list.add(FamilyListItem(0,"","동생"))
+
         familylist.adapter=FamilyListAdapter(context!!,list);
         familylist.layoutManager= LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
         val padding= 80
@@ -43,6 +43,7 @@ class HomeFragment : Fragment() {
         content.pageMargin=80
         content.adapter = PagerAdapter(childFragmentManager!!, activity!!)
         content.offscreenPageLimit=3
+        content.setCurrentItem(10,true)
         return view
     }
 
@@ -57,11 +58,12 @@ class HomeFragment : Fragment() {
 //            frags.add(HomeAlertFrament())
 //        }
 
+
         override fun getItem(i: Int): android.support.v4.app.Fragment? {
 
             when (i%3) {
-                0 -> return HomeCalendarFragment()
-                1 -> return HomeStatisticsFragment()
+                0 -> return HomeStatisticsFragment()
+                1 -> return HomeCalendarFragment()
                 2 -> return HomeAlertFrament()
                 else -> return null
             }

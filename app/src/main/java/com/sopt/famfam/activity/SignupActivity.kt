@@ -3,7 +3,6 @@ package com.sopt.famfam.activity
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.BoringLayout
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -11,7 +10,7 @@ import android.view.View
 import com.sopt.famfam.R
 import kotlinx.android.synthetic.main.activity_signup.*
 import com.sopt.famfam.fragment.DatePickerFragment
-import org.jetbrains.anko.sdk27.coroutines.textChangedListener
+import org.jetbrains.anko.startActivity
 
 
 class SignupActivity : AppCompatActivity() {
@@ -29,7 +28,7 @@ class SignupActivity : AppCompatActivity() {
             newFragment.show(fragmentManager, "Date Picker")
         }
         var sexType: Boolean
-        // female -> true male -> false
+        // female -> true, male -> false
 
         tv_signup_act_sex_female.setOnClickListener {
 
@@ -41,9 +40,8 @@ class SignupActivity : AppCompatActivity() {
             val grayColor = "#9a9a9a"
             tv_signup_act_male_text.setTextColor(Color.parseColor(grayColor))
             tv_signup_act_sex_validation_check_text.visibility = View.INVISIBLE
-            Log.d("버튼",sexType.toString())
+            Log.d("버튼", sexType.toString())
         }
-
 
         tv_signup_act_sex_male.setOnClickListener {
             sexType = false
@@ -54,9 +52,13 @@ class SignupActivity : AppCompatActivity() {
             tv_signup_act_male_text.setTextColor(Color.parseColor(blueColor))
             tv_signup_act_sex_female.setBackgroundResource(R.drawable.signup_act_gray_sex_type)
             tv_signup_act_sex_validation_check_text.visibility = View.INVISIBLE
-            Log.d("버튼",sexType.toString())
+            Log.d("버튼", sexType.toString())
         }
 
+        tv_signup_act_complete_signup.setOnClickListener {
+            startActivity<SelectActivity>()
+            finish()
+        }
     }
 
     private fun editTextChangeListener() {
@@ -64,17 +66,12 @@ class SignupActivity : AppCompatActivity() {
         et_signup_act_input_nickname.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
 
-            override fun beforeTextChanged(
-                s: CharSequence, start: Int,
-                count: Int, after: Int
-            ) {
-            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(
                 s: CharSequence, start: Int,
                 before: Int, count: Int
             ) {
-//                tvSample.setText("Text in EditText : "+s)
                 if (s.isEmpty()) {
                     tv_signup_act_nickname_validation_check_text.visibility = View.VISIBLE
                     iv_signup_act_nickname_validation_check_ok.visibility = View.INVISIBLE
@@ -84,30 +81,6 @@ class SignupActivity : AppCompatActivity() {
                 }
             }
         })
-//        // birth editText
-//        tv_signup_act_datepicker_text.addTextChangedListener(object : TextWatcher {
-//            override fun afterTextChanged(s: Editable) {}
-//
-//            override fun beforeTextChanged(
-//                s: CharSequence, start: Int,
-//                count: Int, after: Int
-//            ) {
-//
-//            }
-//
-//            override fun onTextChanged(
-//                s: CharSequence, start: Int,
-//                before: Int, count: Int
-//            ) {
-////                tvSample.setText("Text in EditText : "+s)
-//                if (s !== "               년               월               일") {
-//                    tv_signup_act_nickname_validation_check_text.visibility = View.INVISIBLE
-//                } else {
-//                    tv_signup_act_nickname_validation_check_text.visibility = View.VISIBLE
-//                }
-//            }
-//        })
-
         // id editText
         et_signup_act_input_id.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
@@ -122,7 +95,6 @@ class SignupActivity : AppCompatActivity() {
                 s: CharSequence, start: Int,
                 before: Int, count: Int
             ) {
-//                tvSample.setText("Text in EditText : "+s)
                 if (s.isEmpty()) {
                     tv_signup_act_id_validation_check_text.visibility = View.VISIBLE
                     iv_signup_act_id_validation_check_ok.visibility = View.INVISIBLE
@@ -146,7 +118,6 @@ class SignupActivity : AppCompatActivity() {
                 s: CharSequence, start: Int,
                 before: Int, count: Int
             ) {
-//                tvSample.setText("Text in EditText : "+s)
                 if (s.isEmpty()) {
                     tv_signup_act_pw_validation_check_text.visibility = View.VISIBLE
                     iv_signup_act_pw_validation_check_ok.visibility = View.INVISIBLE
@@ -171,7 +142,6 @@ class SignupActivity : AppCompatActivity() {
                 s: CharSequence, start: Int,
                 before: Int, count: Int
             ) {
-//                tvSample.setText("Text in EditText : "+s)
                 if (s.isEmpty()) {
                     tv_signup_act_pw_confirm_validation_check_text.visibility = View.VISIBLE
                     iv_signup_act_pw_confirm_validation_check_ok.visibility = View.GONE
@@ -179,12 +149,12 @@ class SignupActivity : AppCompatActivity() {
                 } else {
                     Log.d("비번 1", et_signup_act_input_pw.text.toString())
                     Log.d("비번 2", s.toString())
-                    if(et_signup_act_input_pw.text.toString() == s.toString()){
+                    if (et_signup_act_input_pw.text.toString() == s.toString()) {
                         iv_signup_act_pw_confirm_validation_check_ok.visibility = View.VISIBLE
                         tv_signup_act_pw_confirm_validation_check_text.visibility = View.GONE
                         tv_signup_act_pw_confirm_validation_check_error_text.visibility = View.GONE
                     } else {
-                        if("" == s.toString()){
+                        if ("" == s.toString()) {
                             iv_signup_act_pw_confirm_validation_check_ok.visibility = View.GONE
                             tv_signup_act_pw_confirm_validation_check_text.visibility = View.VISIBLE
                             tv_signup_act_pw_confirm_validation_check_error_text.visibility = View.GONE
@@ -196,7 +166,5 @@ class SignupActivity : AppCompatActivity() {
                 }
             }
         })
-
     }
-
 }

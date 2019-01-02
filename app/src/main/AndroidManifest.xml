@@ -14,8 +14,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity"></activity>
-        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.LoginActivity"/>
         <activity
                 android:name=".activity.SignupActivity"
                 android:windowSoftInputMode="stateHidden">
@@ -27,17 +27,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.TodayActivity"></activity>
-        <activity android:name=".activity.UploadActivity"></activity>
-        <activity android:name=".activity.IntroActivity"></activity>
-        <activity android:name=".activity.AccessTermsActivity"></activity>
-        <activity android:name=".activity.CertificationActivity"></activity>
-        <activity android:name=".activity.ChatActivity"></activity>
-        <activity android:name=".activity.PoliciesActivity"></activity>
-        <activity android:name=".activity.PersonalInformationProtectionActivity"></activity>
-        <activity android:name=".activity.AddScheduleActivity"></activity>
-        <activity android:name=".activity.MoreDisconnectActivity"></activity>
-        <activity android:name=".activity.MoreSecedeActivity"></activity>
+        <activity android:name=".activity.TodayActivity"/>
+        <activity android:name=".activity.UploadActivity"/>
+        <activity android:name=".activity.IntroActivity"/>
+        <activity android:name=".activity.AccessTermsActivity"/>
+        <activity android:name=".activity.CertificationActivity"/>
+        <activity android:name=".activity.ChatActivity"/>
+        <activity android:name=".activity.PoliciesActivity"/>
+        <activity android:name=".activity.PersonalInformationProtectionActivity"/>
+        <activity android:name=".activity.AddScheduleActivity"/>
+        <activity android:name=".activity.MoreDisconnectActivity"/>
+        <activity android:name=".activity.MoreSecedeActivity"/>
+
         <service android:name=".FIreBaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
@@ -48,5 +49,9 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
+
+        <activity android:name=".activity.SelectActivity">
+        </activity>
     </application>
+
 </manifest>
