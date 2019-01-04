@@ -1,3 +1,4 @@
+package com.sopt.famfam.post
 
 data class PostLogInResponse(
         val status : Int,
