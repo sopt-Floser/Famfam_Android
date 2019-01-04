@@ -19,5 +19,8 @@ class SelectActivity : AppCompatActivity() {
             startActivity<MainActivity>()
             finish()
         }
+        select_act_join_btn.setOnClickListener {
+            startActivity<JoinActivity>()
+        }
     }
 }

@@ -13,7 +13,9 @@ import android.widget.RelativeLayout
 import com.sopt.famfam.R
 import com.sopt.famfam.fragment.HomeFragment
 import com.sopt.famfam.fragment.MoreFragment
+import kotlinx.android.synthetic.main.activity_code_generator.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.startActivity
 import java.util.ArrayList
 
@@ -64,4 +66,6 @@ class MainActivity : AppCompatActivity() {
             return frags.size
         }
     }
+    //invite_btn
+
 }

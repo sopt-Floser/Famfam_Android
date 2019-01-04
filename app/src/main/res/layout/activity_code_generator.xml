@@ -19,28 +19,30 @@
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="61.7dp"/>
-        <ImageView
-                android:id="@+id/check"
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_marginTop="105dp"
                 android:layout_centerInParent="true"
                 android:layout_below="@+id/logo"
-                android:layout_marginTop="46.2dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/process_2"
-        />
-        <TextView
-                android:layout_marginTop="40dp"
-                android:layout_centerInParent="true"
-                android:layout_below="@+id/check"
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="전화번호입력"
-                android:textColor="#656565"
+                android:text="가족 초대 코드"
+                android:textColor="#8a8a8a"
                 android:textStyle="bold"/>
+        <TextView
+                android:layout_marginTop="8dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/title"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="코드 번호는 가족들을 초대할 때 필요합니다."
+                android:textColor="#656565"/>
     </RelativeLayout>
     <LinearLayout
-            android:layout_marginTop="21.4dp"
+            android:layout_marginTop="108dp"
             android:layout_below="@+id/layout_1"
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -48,8 +50,7 @@
     >
 
         <LinearLayout
-                android:id="@+id/et_certification_act_phone_number_layout"
-                android:layout_marginTop="24dp"
+                android:id="@+id/et_code_generattor_act_phone_number_layout"
                 android:layout_marginHorizontal="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -60,25 +61,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
             >
-
-                <EditText
-                        android:layout_centerInParent="true"
-                        android:id="@+id/et_certification_act_input_phone_number"
+                <TextView
+                        android:id="@+id/et_code_generator_act_show_code"
                         android:layout_centerVertical="true"
-                        android:letterSpacing="0.2"
-                        android:hint="01066873474"
-                        android:layout_marginLeft="16dp"
-                        android:layout_width="200dp"
-                        android:layout_height="40dp"
-                        android:background="#ffffff"
-                        android:inputType="number"
-                        android:imeOptions="actionDone"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="●●●● ●●●● ●●●●"
+                        android:textSize="18sp"
                 />
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout
-                android:id="@+id/certification_act_request_code_layout"
-                android:layout_marginTop="8dp"
+                android:id="@+id/code_generator_act_time_layout"
+                android:layout_marginTop="14dp"
                 android:layout_marginHorizontal="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,26 +85,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                <RelativeLayout
-                        android:id="@+id/layout_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:background="@drawable/certification_act_blue_request_authorization_code"
-                >
-                    <EditText
-                            android:id="@+id/et_certification_act_input_code"
-                            android:layout_centerInParent="true"
-                            android:layout_centerVertical="true"
-                            android:hint="인증번호 입력"
-                            android:layout_marginLeft="16dp"
-                            android:layout_width="150dp"
-                            android:layout_height="40dp"
-                            android:background="#ffffff"
-                            android:letterSpacing="0.2"
-                            android:singleLine="true"
-                            android:privateImeOptions="defaultInputmode=english"
-                    />
-                </RelativeLayout>
                 <RelativeLayout
                         android:layout_marginTop="8dp"
                         android:layout_below="@+id/layout_2"
@@ -127,25 +103,9 @@
                             android:layout_toRightOf="@+id/tv_certification_act_seconds"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="분내 미입력시 재인증해야 합니다."
+                            android:text="내 미입력시 재인증해야합니다."
                     />
 
-                </RelativeLayout>
-                <RelativeLayout
-                        android:id="@+id/btn_resend_code"
-                        android:layout_marginTop="8dp"
-                        android:layout_below="@+id/layout_3"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp">
-
-                    <TextView
-                            android:layout_centerInParent="true"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="인증번호 재요청"
-                            android:textSize="16sp"
-                            android:textColor="#366ce2"
-                            android:textStyle="bold"/>
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -161,37 +121,17 @@
             android:layout_alignParentBottom="true">
 
         <RelativeLayout
-                android:id="@+id/tv_certification_act_request_code_btn"
+                android:id="@+id/tv_code_generator_act_request_code_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:visibility="visible">
+                android:layout_weight="1">
             <TextView
-                    android:id="@+id/tv_certification_act_request_code_btn_text"
+                    android:id="@+id/tv_code_generator_act_request_code_btn_text"
                     android:layout_centerVertical="true"
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="인증번호 요청하기"
-                    android:textColor="#ffffff"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-            />
-        </RelativeLayout>
-
-        <RelativeLayout
-                android:id="@+id/tv_certification_act_complete_btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:visibility="gone">
-            <TextView
-                    android:id="@+id/tv_certification_act_complete_btn_text"
-                    android:layout_centerVertical="true"
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="완료"
+                    android:text="코드 생성"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     android:textStyle="bold"

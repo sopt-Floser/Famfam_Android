@@ -1,4 +1,4 @@
- <resources>
+<resources>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -30,6 +30,6 @@
     </style>
 
     <style name="CheckboxStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
-    <item name="android:fontFamily">@font/nanum</item>
+        <item name="android:fontFamily">@font/nanum</item>
     </style>
 </resources>

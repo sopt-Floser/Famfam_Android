@@ -38,6 +38,7 @@
         <activity android:name=".activity.AddScheduleActivity"/>
         <activity android:name=".activity.MoreDisconnectActivity"/>
         <activity android:name=".activity.MoreSecedeActivity"/>
+        <activity android:name=".activity.JoinActivity"/>
 
         <service android:name=".FIreBaseMessagingService">
             <intent-filter>
@@ -52,6 +53,9 @@
 
         <activity android:name=".activity.SelectActivity">
         </activity>
+        <activity android:name=".activity.CodeGeneratorActivity">
+        </activity>
+        <activity android:name=".activity.PhoneAuthActivity"></activity>
     </application>
 
 </manifest>

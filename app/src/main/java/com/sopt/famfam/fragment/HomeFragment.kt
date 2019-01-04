@@ -18,7 +18,11 @@ import com.sopt.famfam.adapter.item.FamilyListItem
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.ArrayList
 import com.sopt.famfam.OnBackPressListener
+import com.sopt.famfam.activity.CodeGeneratorActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.support.v4.startActivity
 
 
 class HomeFragment : Fragment() {
@@ -29,21 +33,24 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)
         var familylist = view.rv_home_family
+        view.invite_btn.setOnClickListener {
+            startActivity<CodeGeneratorActivity>()
+        }
         content = view.vp_home_main_content
         var list = ArrayList<FamilyListItem>();
         list.add(FamilyListItem(0,"","엄마"))
         list.add(FamilyListItem(0,"","아빠"))
         list.add(FamilyListItem(0,"","동생"))
-
         familylist.adapter=FamilyListAdapter(context!!,list);
         familylist.layoutManager= LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+
         val padding= 80
         content.setPadding(160,0,160,0)
         content.clipToPadding=false
         content.pageMargin=80
         content.adapter = PagerAdapter(childFragmentManager!!, activity!!)
         content.offscreenPageLimit=3
-        content.setCurrentItem(10,true)
+        content.setCurrentItem(100,true)
         return view
     }
 
