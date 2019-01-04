@@ -19,6 +19,12 @@ class LoginActivity : AppCompatActivity() {
             startActivity<MainActivity>()
             finish()
         }
+        tv_login_act_find_id.setOnClickListener {
+            startActivity<FindIdActivity>()
+        }
+        tv_login_act_find_pw.setOnClickListener {
+            startActivity<FindPwActivity>()
+        }
     }
 
 }

@@ -2,19 +2,19 @@ package com.sopt.famfam.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import com.sopt.famfam.R
-import kotlinx.android.synthetic.main.activity_certification.*
-import org.jetbrains.anko.startActivity
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
+import com.sopt.famfam.R
+import kotlinx.android.synthetic.main.activity_certification.*
+import kotlinx.android.synthetic.main.activity_find_id.*
+import org.jetbrains.anko.startActivity
 import java.util.concurrent.TimeUnit
 
-class CertificationActivity : AppCompatActivity(), View.OnClickListener {
-
+class FindIdActivity : AppCompatActivity(), View.OnClickListener {
 
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
@@ -28,7 +28,7 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_certification)
+        setContentView(R.layout.activity_find_id)
 
 
         // Restore instance state
@@ -37,9 +37,10 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         // Assign click listeners
-        tv_certification_act_request_code_btn.setOnClickListener(this)
-        tv_certification_act_complete_btn.setOnClickListener(this)
-        btn_resend_code.setOnClickListener(this)
+        tv_find_id_act_request_code_btn.setOnClickListener(this)
+        tv_find_id_act_complete_btn.setOnClickListener(this)
+        btn_find_id_resend_code.setOnClickListener(this)
+        tv_find_id_act_complete_2_btn.setOnClickListener(this)
 //        signOutButton.setOnClickListener(this)
 
         // [START initialize_auth]
@@ -83,7 +84,7 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
                 if (e is FirebaseAuthInvalidCredentialsException) {
                     // Invalid request
                     // [START_EXCLUDE]
-                    et_certification_act_input_phone_number.error = "Invalid phone number."
+                    et_find_id_act_input_phone_number.error = "Invalid phone number."
                     // [END_EXCLUDE]
                 } else if (e is FirebaseTooManyRequestsException) {
                     // The SMS quota for the project has been exceeded
@@ -130,7 +131,7 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
 
         // [START_EXCLUDE]
         if (verificationInProgress && validatePhoneNumber()) {
-            val number: String = et_certification_act_input_phone_number.text.toString()
+            val number: String = et_find_id_act_input_phone_number.text.toString()
             val phoneNumber: String = "+82" + number.substring(1, 10)
             startPhoneNumberVerification(phoneNumber)
             Log.v("uuuu1", "onStart1")
@@ -245,49 +246,49 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
         when (uiState) {
             STATE_INITIALIZED -> {
                 // Initialized state, show only the phone number field and start button
-                enableViews(tv_certification_act_request_code_btn_text, et_certification_act_input_phone_number)
-                disableViews(tv_certification_act_request_code_btn, btn_resend_code, et_certification_act_input_code)
+                enableViews(tv_find_id_act_request_code_btn_text, et_find_id_act_input_phone_number)
+                disableViews(tv_find_id_act_request_code_btn, btn_find_id_resend_code, et_find_id_act_input_code)
 //                detail.text = null
             }
             STATE_CODE_SENT -> {
                 // Code sent state, show the verification field, the
                 enableViews(
-                    tv_certification_act_request_code_btn_text,
-                    btn_resend_code,
-                    et_certification_act_input_phone_number,
-                    et_certification_act_input_code
+                    tv_find_id_act_request_code_btn_text,
+                    btn_find_id_resend_code,
+                    et_find_id_act_input_phone_number,
+                    et_find_id_act_input_code
                 )
-                disableViews(tv_certification_act_request_code_btn)
+                disableViews(tv_find_id_act_request_code_btn)
 //                detail.setText(R.string.status_code_sent)
             }
             STATE_VERIFY_FAILED -> {
                 // Verification has failed, show all options
                 enableViews(
-                    tv_certification_act_request_code_btn_text,
-                    tv_certification_act_request_code_btn,
-                    btn_resend_code,
-                    et_certification_act_input_phone_number,
-                    et_certification_act_input_code
+                    tv_find_id_act_request_code_btn_text,
+                    tv_find_id_act_request_code_btn,
+                    btn_find_id_resend_code,
+                    et_find_id_act_input_phone_number,
+                    et_find_id_act_input_code
                 )
 //                detail.setText(R.string.status_verification_failed)
             }
             STATE_VERIFY_SUCCESS -> {
                 // Verification has succeeded, proceed to firebase sign in
                 disableViews(
-                    tv_certification_act_request_code_btn_text,
-                    tv_certification_act_request_code_btn,
-                    btn_resend_code,
-                    et_certification_act_input_phone_number,
-                    et_certification_act_input_code
+                    tv_find_id_act_request_code_btn_text,
+                    tv_find_id_act_request_code_btn,
+                    btn_find_id_resend_code,
+                    et_find_id_act_input_phone_number,
+                    et_find_id_act_input_code
                 )
 //                detail.setText(R.string.status_verification_succeeded)
 
                 // Set the verification text based on the credential
                 if (cred != null) {
                     if (cred.smsCode != null) {
-                        et_certification_act_input_code.setText(cred.smsCode)
+                        et_find_id_act_input_code.setText(cred.smsCode)
                     } else {
-                        et_certification_act_input_code.setText(R.string.instant_validation)
+                        et_find_id_act_input_code.setText(R.string.instant_validation)
                     }
                 }
             }
@@ -322,9 +323,9 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun validatePhoneNumber(): Boolean {
         Log.v("uuuu1", "validatePhoneNumber")
-        val phoneNumber = et_certification_act_input_phone_number.text.toString()
+        val phoneNumber = et_find_id_act_input_phone_number.text.toString()
         if (TextUtils.isEmpty(phoneNumber)) {
-            et_certification_act_input_phone_number.error = "Invalid phone number."
+            et_find_id_act_input_phone_number.error = "Invalid phone number."
             return false
         }
         return true
@@ -345,35 +346,44 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
-        val number: String = et_certification_act_input_phone_number.text.toString()
+        val number: String = et_find_id_act_input_phone_number.text.toString()
         val phoneNumber: String = "+82" + number.substring(1, 11)
         when (view.id) {
-            R.id.tv_certification_act_request_code_btn -> {
+            R.id.tv_find_id_act_request_code_btn -> {
 
                 Log.v("uuuu1", "tv_certification_act_request_code_btn_text")
                 if (!validatePhoneNumber()) {
                     return
                 }
-                et_certification_act_input_code.requestFocus()
-                certification_act_request_code_layout.visibility = View.VISIBLE
-                tv_certification_act_complete_btn.visibility = View.VISIBLE
-                tv_certification_act_request_code_btn.visibility = View.GONE
+                et_find_id_act_input_code.requestFocus()
+                find_id_act_request_code_layout.visibility = View.VISIBLE
+                tv_find_id_act_complete_btn.visibility = View.VISIBLE
+                tv_find_id_act_request_code_btn.visibility = View.GONE
 
                 startPhoneNumberVerification(phoneNumber)
                 Log.d("uuuu1", phoneNumber)
             }
-            R.id.tv_certification_act_complete_btn -> {
-                val code = et_certification_act_input_code.text.toString()
-                startActivity<SignupActivity>()
+            R.id.tv_find_id_act_complete_btn -> {
+                et_find_id_act_phone_number_layout.visibility = View.INVISIBLE
+                find_id_act_request_code_layout.visibility = View.GONE
+                //tv_find_id_act_user_id 찾은 아이디 통신에서 받아서 붙이기
+                show_find_id_layout.visibility = View.VISIBLE
+                tv_find_id_act_complete_btn.visibility = View.GONE
+                tv_find_id_act_complete_2_btn.visibility = View.VISIBLE
+
+                val code = et_find_id_act_input_code.text.toString()
                 if (TextUtils.isEmpty(code)) {
-                    et_certification_act_input_code.error = "Cannot be empty."
+                    et_find_id_act_input_code.error = "Cannot be empty."
                     return
                 }
-
                 verifyPhoneNumberWithCode(storedVerificationId, code)
             }
+            R.id.tv_find_id_act_complete_2_btn -> {
+//                startActivity<LoginActivity>()
+                finish()
+            }
 
-            R.id.btn_resend_code -> resendVerificationCode(phoneNumber, resendToken)
+            R.id.btn_find_id_resend_code -> resendVerificationCode(phoneNumber, resendToken)
 //            R.id.signOutButton -> signOut()
         }
     }
@@ -388,5 +398,4 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
         private const val STATE_SIGNIN_FAILED = 5
         private const val STATE_SIGNIN_SUCCESS = 6
     }
-
 }

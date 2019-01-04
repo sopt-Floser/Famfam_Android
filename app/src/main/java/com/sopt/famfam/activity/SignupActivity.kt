@@ -27,12 +27,11 @@ class SignupActivity : AppCompatActivity() {
             val newFragment = DatePickerFragment()
             newFragment.show(fragmentManager, "Date Picker")
         }
-        var sexType: Boolean
+        var sexType: Int
         // female -> true, male -> false
 
         tv_signup_act_sex_female.setOnClickListener {
-
-            sexType = true
+            sexType = 0
             tv_signup_act_sex_female.setBackgroundResource(R.drawable.signup_act_blue_sex_type)
             val blueColor = "#366ce2"
             tv_signup_act_female_text.setTextColor(Color.parseColor(blueColor))
@@ -44,7 +43,7 @@ class SignupActivity : AppCompatActivity() {
         }
 
         tv_signup_act_sex_male.setOnClickListener {
-            sexType = false
+            sexType = 1
             tv_signup_act_sex_male.setBackgroundResource(R.drawable.signup_act_blue_sex_type)
             val grayColor = "#9a9a9a"
             tv_signup_act_female_text.setTextColor(Color.parseColor(grayColor))

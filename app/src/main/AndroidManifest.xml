@@ -55,7 +55,13 @@
         </activity>
         <activity android:name=".activity.CodeGeneratorActivity">
         </activity>
-        <activity android:name=".activity.PhoneAuthActivity"></activity>
+        <activity android:name=".activity.PhoneAuthActivity"/>
+        <activity android:name=".activity.FindIdActivity">
+        </activity>
+        <activity android:name=".activity.FindPwActivity">
+        </activity>
+        <activity android:name=".activity.ResettingPwActivity">
+        </activity>
     </application>
 
 </manifest>

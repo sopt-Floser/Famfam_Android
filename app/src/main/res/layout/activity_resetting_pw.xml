@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.CertificationActivity"
+        android:background="#FFFFFF">
+    <RelativeLayout
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    >
+        <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_small"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="61.7dp"/>
+
+        <TextView
+                android:layout_marginTop="40dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/logo"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비밀번호 찾기"
+                android:textColor="#656565"
+                android:textStyle="bold"/>
+    </RelativeLayout>
+    <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+    >
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="새로운 비밀번호"
+                android:textColor="#656565"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginLeft="40dp"
+        />
+        <LinearLayout
+                android:id="@+id/et_resetting_pw_act_user_pw_layout"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:background="@drawable/certification_act_blue_request_authorization_code"
+                android:visibility="visible"
+        >
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+            >
+
+                <EditText
+                        android:layout_centerInParent="true"
+                        android:id="@+id/et_resetting_pw_act_input_user_pw"
+                        android:layout_centerVertical="true"
+                        android:letterSpacing="0.2"
+                        android:hint="PW 입력"
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:background="#ffffff"
+                        android:imeOptions="actionDone"
+                        android:nextFocusDown="@id/et_resetting_pw_act_input_user_pw_confirm"
+                />
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비밀번호 확인하기"
+                android:textColor="#656565"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginLeft="40dp"
+        />
+        <LinearLayout
+                android:id="@+id/et_resetting_pw_act_input_user_pw_confirm_layout"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:background="@drawable/certification_act_blue_request_authorization_code"
+                android:visibility="visible"
+        >
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+            >
+
+                <EditText
+                        android:layout_centerInParent="true"
+                        android:id="@+id/et_resetting_pw_act_input_user_pw_confirm"
+                        android:layout_centerVertical="true"
+                        android:letterSpacing="0.2"
+                        android:hint="PW 입력"
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:background="#ffffff"
+                        android:imeOptions="actionDone"
+                />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:background="#366ce2"
+            android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+                android:id="@+id/tv_resetting_pw_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="visible">
+            <TextView
+                    android:id="@+id/tv_resetting_pw_btn_text"
+                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="비밀번호 변경하기"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+            />
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+
