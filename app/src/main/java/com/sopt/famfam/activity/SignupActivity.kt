@@ -11,6 +11,7 @@ import com.sopt.famfam.R
 import kotlinx.android.synthetic.main.activity_signup.*
 import com.sopt.famfam.fragment.DatePickerFragment
 import org.jetbrains.anko.startActivity
+import java.util.regex.Pattern
 
 
 class SignupActivity : AppCompatActivity() {
@@ -20,6 +21,46 @@ class SignupActivity : AppCompatActivity() {
 
         setOnBtnClickListener()
         editTextChangeListener()
+/*
+1# : 아이디
+
+2# : 비밀번호
+
+4# : 정규식 (영문(대소문자 구분), 숫자, 특수문자 조합, 9~12자리)
+
+5# : Pattern 클래스의 compile(), matcher() 함수를 활용하여 Matcher 클래스 생성
+
+7# : 정규식 (같은 문자 4개 이상 사용 불가)
+
+8# : Pattern 클래스의 compile(), matcher() 함수를 활용하여 Matcher 클래스 생성
+
+10# : Matcher 클래스의 matches() 함수를 활용하여 체크, true 일 경우 정규식을 만족함
+
+14# : Matcher 클래스의 find() 함수를 활용하여 체크, true 일 경우 정규식을 만족함
+
+18# : String 클래스의 contains() 함수를 활용하여 Id가 비밀번호 문자열에 있는지 체크함
+
+22# : String 클래스의 contains() 함수를 활용하여 공백문자가 비밀번호 문자열에 있는지 체크함*/
+
+//        val userId = "아이디"
+//        val password = "비밀번호"
+//
+//        var pwPattern = "^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-z])(?=.*[A-Z]).{9,12}$"
+//        val matcher = Pattern.compile(pwPattern).matcher(password)
+//
+//        pwPattern = "(.)\\1\\1\\1"
+//        val matcher2 = Pattern.compile(pwPattern).matcher(password)
+//
+//        if (!matcher.matches()) {
+//            if (matcher2.find()) {
+//
+//            }
+//        }
+
+
+
+
+
     }
 
     private fun setOnBtnClickListener() {

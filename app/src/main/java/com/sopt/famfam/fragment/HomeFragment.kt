@@ -18,9 +18,11 @@ import com.sopt.famfam.adapter.item.FamilyListItem
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import java.util.ArrayList
 import com.sopt.famfam.OnBackPressListener
+import com.sopt.famfam.activity.AlarmActivity
 import com.sopt.famfam.activity.CodeGeneratorActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home_alert.view.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.startActivity
 
