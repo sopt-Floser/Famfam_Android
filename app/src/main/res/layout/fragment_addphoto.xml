@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+        <!-- gallery toolbar -->
+        <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:id="@+id/addPhotoToolbar"
+                android:background="@color/white">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/ivCloseAddPhoto"
+                        android:src="@drawable/icon_x"
+                        android:layout_centerVertical="true"/>
+
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="완료"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/tvNext"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>>
+
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="100"
+            android:orientation="vertical"
+            android:layout_below="@id/addPhotoToolbar">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="255dp">
+
+
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/galleryImageView"
+                    android:scaleType="centerCrop"/>
+
+            <ProgressBar
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/progressBar"
+                    android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@color/white">
+
+            <Spinner
+                    android:id="@+id/spin_post_directory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="41.6dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_centerVertical="true"
+                    android:text="Gallery"
+                    android:textColor="#707070">
+
+            </Spinner>
+
+
+        </LinearLayout>
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+        <include layout="@layout/item_gallery_spinner"/>
+
+        </ImageView>
+
+
+
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rv_galleryView"
+                android:verticalSpacing="0dp"
+                android:horizontalSpacing="0dp">
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</LinearLayout>

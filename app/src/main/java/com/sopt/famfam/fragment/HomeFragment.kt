@@ -17,8 +17,6 @@ import com.sopt.famfam.adapter.FamilyListAdapter
 import com.sopt.famfam.adapter.item.FamilyListItem
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.jetbrains.anko.support.v4.startActivity
-import java.util.ArrayList
-
 
 
 class HomeFragment : Fragment() {
@@ -27,6 +25,7 @@ class HomeFragment : Fragment() {
     }
 
     lateinit var content: ViewPager
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)
         var familylist = view.rv_home_family

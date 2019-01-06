@@ -28,8 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.TodayActivity"/>
-        <activity android:name=".activity.UploadActivity"/>
         <activity android:name=".activity.IntroActivity"/>
         <activity android:name=".activity.AccessTermsActivity"/>
         <activity android:name=".activity.CertificationActivity"/>
@@ -40,7 +38,8 @@
         <activity android:name=".activity.MoreDisconnectActivity"/>
         <activity android:name=".activity.MoreSecedeActivity"/>
         <activity android:name=".activity.JoinActivity"/>
-
+        <activity android:name=".activity.AddPostActivity"></activity>
+        <activity android:name=".activity.AddPhotoActivity"></activity>
         <service android:name=".FIreBaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>

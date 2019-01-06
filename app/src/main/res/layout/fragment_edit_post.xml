@@ -6,7 +6,8 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/relLayoutParent">
+            android:id="@+id/relLayoutParent"
+            android:background="@color/white">
 
 
         <!-- top toolbar -->
@@ -17,7 +18,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true">
 
-            <include layout="@layout/snippet_addpost_top_toolbar"/>
+            <include layout="@layout/snippet_editpost_top_toolbar"/>
 
         </RelativeLayout>
 
@@ -32,20 +33,20 @@
 
 
             <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/img_sky"/>
+                    android:layout_width="107dp"
+                    android:layout_height="72dp"
+                    android:src="@drawable/famfeed_3"/>
 
             <EditText
+                    android:layout_marginTop="14.6dp"
+                    android:inputType="textImeMultiLine"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="2dp"
-                    android:hint="오늘 하루를 입력해주세요."
-                    android:inputType="textNoSuggestions"
+                    android:hint="엄마랑 함께 데이트"
                     android:layout_centerVertical="true"
                     android:textSize="16sp"
                     android:gravity="top"
-                    android:id="@+id/comment_body"
+                    android:id="@+id/caption_body"
                     android:background="@null"/>
 
         </LinearLayout>

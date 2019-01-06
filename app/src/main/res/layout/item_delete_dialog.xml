@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <RelativeLayout
+                android:layout_width="290dp"
+                android:layout_height="220dp"
+                android:background="@drawable/back"
+                android:layout_centerInParent="true">
+
+        <TextView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:text="게시물을 삭제 하시겠습니까?"
+                android:id="@+id/dial_delete_post"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#707070"/>
+
+        <LinearLayout android:layout_width="match_parent"
+              android:layout_height="60dp"
+              android:layout_alignParentBottom="true">
+
+        <TextView android:layout_width="145dp"
+              android:layout_height="match_parent"
+              android:text="취소"
+              android:textStyle="bold"
+              android:textSize="16sp"
+              android:textColor="#707070"
+              android:id="@+id/btn_cancel"
+              android:gravity="center"/>
+
+    <TextView android:layout_width="145dp"
+              android:layout_height="match_parent"
+              android:text="삭제"
+              android:textStyle="bold"
+              android:textSize="16sp"
+              android:textColor="#707070"
+              android:id="@+id/btn_delete"
+              android:gravity="center"/>
+
+</LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <!-- top toolbar -->
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/relLayoutParent"
+            android:background="@color/white">
+
+        <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:id="@+id/AddPostToolBar"
+                android:background="@color/white">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/btn_backArrow"
+                        android:src="@drawable/icon_back_2"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="게시물올리기"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#656565"
+                        android:layout_centerInParent="true" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="완료"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="25dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/blue"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/tvNext"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/AddPostToolBar"
+                android:orientation="vertical"
+                android:paddingLeft="37dp"
+                android:paddingRight="37dp"
+                android:paddingBottom="37dp">
+
+
+            <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="90dp"
+                    android:id="@+id/iv_add_post"
+                    android:src="@drawable/img_sky"/>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="14.6dp"
+                    android:inputType="textImeMultiLine"
+                    android:hint="오늘 하루를 입력해주세요."
+                    android:textSize="16sp"
+                    android:gravity="top"
+                    android:id="@+id/tv_add_post"
+                    android:background="@null"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

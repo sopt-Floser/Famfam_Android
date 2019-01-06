@@ -1,23 +1,22 @@
 package com.sopt.famfam.activity
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v7.app.AppCompatActivity
 import android.view.MotionEvent
 import android.view.View
 import android.widget.RelativeLayout
 import com.sopt.famfam.R
 import com.sopt.famfam.fragment.HomeFragment
 import com.sopt.famfam.fragment.MoreFragment
-import kotlinx.android.synthetic.main.activity_code_generator.*
+import com.sopt.famfam.fragment.TodayFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import org.jetbrains.anko.startActivity
-import java.util.ArrayList
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,6 +43,9 @@ class MainActivity : AppCompatActivity() {
             }
             return@OnTouchListener true
         })
+
+
+
     }
 
     class PagerAdapter(manager: FragmentManager, context: Context) : FragmentStatePagerAdapter(manager) {
@@ -52,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         init {
             this.context = context
-            frags.add(HomeFragment())
+            frags.add(TodayFragment())
             frags.add(HomeFragment())
             frags.add(MoreFragment())
             frags.add(MoreFragment())

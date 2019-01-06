@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Famfam</string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="status_code_sent">Code Sent</string>
     <string name="status_verification_failed">Verification failed</string>
