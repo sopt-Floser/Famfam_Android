@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             android:layout_width="match_parent"
-                                             android:layout_height="match_parent">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/layout_today">
 
-</android.support.constraint.ConstraintLayout>
+
+
+        <!-- top toolbar -->
+        <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:id="@+id/TodayToolBar"
+                android:background="@color/white">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/icon_allpicture"
+                        android:layout_marginRight="26dp"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/btn_allPhoto"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="오늘의 하루"
+                        android:textSize="18sp"
+                        android:textColor="#656565"
+                        android:textStyle="bold"
+                        android:layout_centerInParent="true" />
+
+                <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/icon_carmera"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="26dp"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/btn_today_addPost"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+        <!-- Middle section (body) -->
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_today_feed"
+                android:layout_below="@+id/TodayToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/item_post">
+
+        </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

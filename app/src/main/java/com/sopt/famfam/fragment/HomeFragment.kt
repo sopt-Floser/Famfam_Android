@@ -11,13 +11,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.bumptech.glide.Glide
 import com.sopt.famfam.R
 import com.sopt.famfam.adapter.FamilyListAdapter
 import com.sopt.famfam.adapter.item.FamilyListItem
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import java.util.ArrayList
-import com.sopt.famfam.OnBackPressListener
+import java.util.*
 
 
 
@@ -25,6 +23,8 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
     }
+
+
     lateinit var content : ViewPager
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)

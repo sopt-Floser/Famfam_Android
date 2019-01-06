@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:background="@color/white">
+
+    <!-- Toobar -->
+    <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/commentToolBar">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/backArrow"
+                    android:src="@drawable/icon_back_2"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="댓글"
+                    android:layout_centerVertical="true"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#656565"
+                    android:layout_toRightOf="@+id/backArrow"
+                    android:layout_marginLeft="20dp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_weight="1"
+                  android:orientation="vertical">
+        <!-- contents -->
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/rv_comment"
+                tools:listitem="@layout/item_comment"
+        ></android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:padding="5dp"
+                android:hint="     가족들에게 사랑의 댓글을 적어주세요."
+                android:inputType="textImeMultiLine"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:textSize="12sp"
+                android:id="@+id/et_comment"
+                android:background="@drawable/gray_border"/>
+
+        <TextView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="12dp"
+                android:text="등록"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/btn_post_comment"
+                android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+</LinearLayout>

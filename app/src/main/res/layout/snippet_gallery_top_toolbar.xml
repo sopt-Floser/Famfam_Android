@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="49.2dp"
-            android:id="@+id/PostToolBar"
+            android:layout_height="55dp"
+            android:id="@+id/addPhotoToolbar"
             android:background="@color/white">
 
         <RelativeLayout
@@ -13,10 +12,10 @@
                 android:layout_height="match_parent">
 
             <ImageView
-                    android:layout_width="17.4dp"
-                    android:layout_height="17.4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:id="@+id/ivCloseUpload"
+                    android:id="@+id/ivCloseAddPhoto"
                     android:src="@drawable/icon_x"
                     android:layout_centerVertical="true"/>
 
@@ -31,14 +30,10 @@
                     android:textStyle="bold"
                     android:textColor="@color/blue"
                     android:layout_centerVertical="true"
-                    android:id="@+id/tvNext"
-            />
-
+                    android:id="@+id/tvNext"/>
 
         </RelativeLayout>
 
-
     </android.support.v7.widget.Toolbar>
-
 
 </merge>
