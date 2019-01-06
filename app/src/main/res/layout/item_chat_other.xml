@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <de.hdodenhof.circleimageview.CircleImageView
-    android:layout_width="64dp"
-    android:layout_height="64dp"
-    android:id="@+id/iv_chat_other_profile"
-    app:civ_border_color="@color/black"
-    app:civ_border_width="2dp"/>
+        android:id="@+id/iv_chat_profile"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/kim_fam_big"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="0.5dp" />
+
+    <TextView
+        android:id="@+id/tv_chat_other_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_chat_profile"
+        android:layout_marginTop="4dp"
+        android:text="내가 엄마다" />
+
     <TextView
         android:id="@+id/tv_chat_other"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/other_chatbox"/>
-</LinearLayout>
+        android:layout_alignBottom="@id/iv_chat_profile"
+        android:layout_toRightOf="@id/iv_chat_profile"
+        android:background="@drawable/chatbox_gray"
+        android:padding="8dp"
+        android:text="asdasdasdasd" />
+
+    <TextView
+        android:id="@+id/tv_chat_other_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_chat_other"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@id/tv_chat_other"
+        android:text="오전 2:38" />
+</RelativeLayout>
