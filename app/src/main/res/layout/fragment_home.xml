@@ -11,15 +11,22 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
             <ImageView
                     android:id="@+id/home_logo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginBottom="32dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/logo"/>
+                    android:src="@drawable/logo_big"/>
+            <ImageView
+                    android:id="@+id/home_act_setting_btn"
+                    android:layout_marginLeft="48dp"
+                    android:layout_toRightOf="@+id/home_logo"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/amazing"/>
             <RelativeLayout
                     android:layout_below="@+id/home_logo"
                     android:id="@+id/layout_1"
