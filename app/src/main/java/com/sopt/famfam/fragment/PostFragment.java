@@ -109,4 +109,50 @@ public class PostFragment extends Fragment {
         ((MainActivity)context).setOnKeyBackPressedListener(this);
     }*/
 
+
+
+
+ /*   if (getdata() != null) {
+
+        uid = getdata().getString("destinationUid");
+
+        // 본인 계정인 경우 ->  Toolbar 설정
+        if (uid != null && uid.equals(currentUserUid)) {
+            binding.accountBtnFollowSignout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {   signOut();   }
+            });
+            activity.setToolbarDefault();
+        }
+
+        // 본인 계정이 아닌 경우 -> 팔로우, Toolbar 설정 변경(뒤로 버튼, UserId 표시)
+        else {
+            binding.accountBtnFollowSignout.setText(getString(R.string.follow));
+            binding.accountBtnFollowSignout.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+
+                    requestFollow();
+                }
+            });
+            activity.getBinding().toolbarTitleImage.setVisibility(View.GONE);
+            activity.getBinding().toolbarBtnBack.setVisibility(View.VISIBLE);
+            activity.getBinding().toolbarUsername.setVisibility(View.VISIBLE);
+            activity.getBinding().toolbarUsername.setText(getArguments().getString("userId"));
+            activity.getBinding().toolbarBtnBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    activity.getBinding().bottomNavigation.setSelectedItemId(R.id.action_home);
+                }
+            });
+        }
+    }*/
+
+
+
+
+
+
 }

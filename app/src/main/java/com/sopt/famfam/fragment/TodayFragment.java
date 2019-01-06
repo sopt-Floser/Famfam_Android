@@ -16,12 +16,12 @@ import java.util.ArrayList;
 
 public class TodayFragment extends Fragment {
 
+
+
     private RecyclerView rvc;
     private RecyclerView.Adapter revAdapter;
     private ArrayList<TodayItem> list = new ArrayList<>();
     private static final String ARG_PARAM1 = "param1";
-    private int mParam1;
-    int img;
 
     public static TodayFragment newInstance(int param1) {
 
@@ -32,6 +32,7 @@ public class TodayFragment extends Fragment {
         return fragment;
     }
 
+/*
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,13 +42,23 @@ public class TodayFragment extends Fragment {
         }
     }
 
+
+    //스크롤헀을때 사라진 뷰페이저의 상태를 저장장
+    @Oerride
+    public void onViewRecycled(ViewHolder holder) {
+        mViewPagerState.put(holder.getAdapterPosition(), holder.vp.getCurrentItem());
+        super.onViewRecycled(holder);
+    }
+
+
+
+*/
+
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         Fragment AllPhotoFragment = new Fragment();
 
         View view = inflater.inflate(R.layout.fragment_today, container, false);
-
-
 
         // 게시물 올리기
         ImageView btnAddPost = (ImageView)view.findViewById(R.id.btn_today_addPost);

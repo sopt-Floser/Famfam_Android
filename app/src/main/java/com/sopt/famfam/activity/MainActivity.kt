@@ -14,7 +14,6 @@ import com.sopt.famfam.R
 import com.sopt.famfam.fragment.HomeFragment
 import com.sopt.famfam.fragment.MoreFragment
 import com.sopt.famfam.fragment.PostFragment
-import com.sopt.famfam.fragment.TodayFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import java.util.*
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         init {
             this.context = context
-            frags.add(TodayFragment())
+            frags.add(PostFragment())
             frags.add(HomeFragment())
             frags.add(MoreFragment())
             frags.add(MoreFragment())
