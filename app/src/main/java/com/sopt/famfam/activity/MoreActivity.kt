@@ -27,6 +27,9 @@ class MoreActivity : AppCompatActivity() {
         btn_more_cc.setOnClickListener{
             // 이용정보
         }
+        btn_more_editprofile.setOnClickListener {
+            startActivity<MoreEditProfileActivity>()
+        }
     }
     private fun addFragment(fragment : Fragment){
 //        val transaction : FragmentTransaction = supportFragmentManager.beginTransaction()

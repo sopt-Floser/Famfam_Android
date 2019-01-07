@@ -69,6 +69,8 @@
         </activity>
         <activity android:name=".activity.MoreVersionActivity">
         </activity>
+        <activity android:name=".activity.MoreEditProfileActivity">
+        </activity>
     </application>
 
 </manifest>

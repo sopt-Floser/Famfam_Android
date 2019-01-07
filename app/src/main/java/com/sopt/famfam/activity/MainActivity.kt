@@ -43,9 +43,6 @@ class MainActivity : AppCompatActivity() {
             }
             return@OnTouchListener true
         })
-
-
-
     }
 
     class PagerAdapter(manager: FragmentManager, context: Context) : FragmentStatePagerAdapter(manager) {
