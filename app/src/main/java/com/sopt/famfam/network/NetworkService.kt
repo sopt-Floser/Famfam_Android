@@ -1,6 +1,10 @@
 package com.sopt.famfam.network
 
 import com.google.gson.JsonObject
+import com.sopt.famfam.get.GetCommentCountResponse
+import com.sopt.famfam.get.GetContentCountResponse
+import com.sopt.famfam.get.GetFeelCountResponse
+import com.sopt.famfam.get.GetGroupUserResponse
 import com.sopt.famfam.post.PostConfirmIdResponse
 import com.sopt.famfam.post.PostLogInResponse
 import com.sopt.famfam.post.PostSignUpResponse
@@ -43,13 +47,32 @@ interface NetworkService {
     ): Call<PostWriteBoardResponse>
 
 
-//    //모든 게시판 보기
-//    @GET("/contents")
-//    fun getBoardListResponse(
-//            @Header("Content-Type") content_type : String,
-//            @Query("offset") offset : Int,
-//            @Query("limit") limit : Int
-//    ) : Call<GetBoardListResponse>
+    // 그룹원 조회
+    @GET("/users/groups")
+    fun getGroupUserResponse(
+            @Header("Content-Type") content_type : String,
+            @Header("Authorization") token : String
+    ) : Call<GetGroupUserResponse>
+
+    // 감정표현 수 조회
+    @GET("/feels/count/week")
+    fun getFeelCountResponse(
+        @Header("Content-Type") content_type : String,
+        @Header("Authorization") token : String
+    ) : Call<GetFeelCountResponse>
+    // 댓글 수 조회
+    @GET("/contents/count/week")
+    fun getContentCountResponse(
+        @Header("Content-Type") content_type : String,
+        @Header("Authorization") token : String
+    ) : Call<GetContentCountResponse>
+    // 감정표현 수 조회
+    @GET("/comments/count/week")
+    fun getCommentCountResponse(
+        @Header("Content-Type") content_type : String,
+        @Header("Authorization") token : String
+    ) : Call<GetCommentCountResponse>
+
 //
 //    //게시물 상세 보기
 //    @GET("/contents/{contentIdx}")
