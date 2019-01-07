@@ -49,11 +49,11 @@ class ChatActivity : AppCompatActivity() {
             false
         })
 
-        btn_chat_send.setOnClickListener({
+        btn_chat_send.setOnClickListener{
             val chat = ChatItem(FamilyData.userId.toString(),FamilyData.userName!!, et_chat_comment.getText().toString(),sdf.format(time),0) //ChatDTO를 이용하여 데이터를 묶는다.
             databaseReference.child(FamilyData.groupId.toString()).push().setValue(chat) //databaseReference를 이용해 데이터 푸쉬
             et_chat_comment.setText("")
-        })
+        }
         var list = ArrayList<ChatItem>()
         var adapter = ChatAdapter(applicationContext,list)
         rv_chat_chatlist.adapter = adapter
@@ -70,6 +70,7 @@ class ChatActivity : AppCompatActivity() {
                     chatData.type=1
                 list.add(chatData!!)  // adapter에 추가합니다.
                 rv_chat_chatlist.adapter!!.notifyDataSetChanged()
+                rv_chat_chatlist.scrollToPosition(list.size - 1);
             }
 
             override fun onChildChanged(dataSnapshot: DataSnapshot, s: String?) {}
