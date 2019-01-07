@@ -1,13 +1,13 @@
 import com.sopt.famfam.data.BoardData
 
-data class GetCalendarListResponse(
-    val status : Int,
-    val message : String,
-    val data : CalendarData
-)
-data class CalendarData(
-    val individual :
-)
+//data class GetCalendarListResponse(
+//    val status : Int,
+//    val message : String,
+//    val data : CalendarData
+//)
+//data class CalendarData(
+//    val individual :
+//)
 
 data class individual(
     val calendarIdx : Int,
