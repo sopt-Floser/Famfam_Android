@@ -5,14 +5,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import com.sopt.famfam.R
-import kotlinx.android.synthetic.main.activity_signup.*
+import com.sopt.famfam.activity.SignupActivity
 import java.text.DateFormat
 import java.util.Calendar
 
 
 class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
-    private lateinit var calendar:Calendar
+    private lateinit var calendar: Calendar
+
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // Initialize a calendar instance
@@ -22,6 +23,8 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+
 
         /*
             **** reference source developer.android.com ***
@@ -45,13 +48,13 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
         // Initialize a new date picker dialog and return it
         return DatePickerDialog(
-                activity, // Context
-                // Put 0 to system default theme or remove this parameter
-                android.R.style.Theme_Holo_Light_Dialog_NoActionBar_MinWidth, // Theme
-                this, // DatePickerDialog.OnDateSetListener
-                year, // Year
-                month, // Month of year
-                day // Day of month
+            activity, // Context
+            // Put 0 to system default theme or remove this parameter
+            android.R.style.Theme_Holo_Light_Dialog_NoActionBar_MinWidth, // Theme
+            this, // DatePickerDialog.OnDateSetListener
+            year, // Year
+            month, // Month of year
+            day // Day of month
         )
     }
 
@@ -63,9 +66,38 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 //                "Date Set : ${formatDate(year,month,day)}"
 //                ,Toast.LENGTH_SHORT
 //        ).show()
-        var birth: String ="      ${year}      년       ${month+1}      월       ${day}      일"
+
+        var plushMonth : Int = month + 1
+        var realMonth : String = plushMonth.toString()
+        var realDay : String = day.toString()
+        when (realMonth) {
+            "1" -> realMonth = "01"
+            "2" -> realMonth = "02"
+            "3" -> realMonth = "03"
+            "4" -> realMonth = "04"
+            "5" -> realMonth = "05"
+            "6" -> realMonth = "06"
+            "7" -> realMonth = "07"
+            "8" -> realMonth = "08"
+            "9" -> realMonth = "09"
+        }
+
+        when (realDay) {
+            "1" -> realDay = "01"
+            "2" -> realDay = "02"
+            "3" -> realDay = "03"
+            "4" -> realDay = "04"
+            "5" -> realDay = "05"
+            "6" -> realDay = "06"
+            "7" -> realDay = "07"
+            "8" -> realDay = "08"
+            "9" -> realDay = "09"
+        }
+
+        var birth: String = "      ${year}      년       ${realMonth}      월       ${realDay}      일"
         // Display the selected date in text view
         // formatDate(year,month,day)
+        activity.findViewById<TextView>(R.id.tv_signup_act_datepicker_text).hint = "$year.$realMonth.$realDay"
         activity.findViewById<TextView>(R.id.tv_signup_act_datepicker_text).text = birth
         activity.findViewById<TextView>(R.id.tv_signup_act_birth_validation_check_text).visibility = View.INVISIBLE
         activity.findViewById<ImageView>(R.id.iv_signup_act_birth_validation_check_ok).visibility = View.VISIBLE
@@ -73,7 +105,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
 
     // Custom method to format date
-    private fun formatDate(year:Int, month:Int, day:Int):String{
+    private fun formatDate(year: Int, month: Int, day: Int): String {
         // Create a Date variable/object with user chosen date
         calendar.set(year, month, day, 0, 0, 0)
         val chosenDate = calendar.time

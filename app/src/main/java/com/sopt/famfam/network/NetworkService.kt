@@ -1,6 +1,7 @@
 package com.sopt.famfam.network
 
 import com.google.gson.JsonObject
+import com.sopt.famfam.post.PostConfirmIdResponse
 import com.sopt.famfam.post.PostLogInResponse
 import com.sopt.famfam.post.PostSignUpResponse
 import com.sopt.famfam.post.PostWriteBoardResponse
@@ -13,26 +14,33 @@ interface NetworkService {
     //회원가입
     @POST("/users")
     fun postSignUpResponse(
-            @Header("Content-Type") content_type : String,
-            @Body() body : JsonObject
-    ) : Call<PostSignUpResponse>
+        @Header("Content-Type") content_type: String,
+        @Body() body: JsonObject
+    ): Call<PostSignUpResponse>
 
     //로그인
     @POST("/login")
     fun postLoginResponse(
-            @Header("Content-Type") content_type : String,
-            @Body() body : JsonObject
-    ) : Call<PostLogInResponse>
+        @Header("Content-Type") content_type: String,
+        @Body() body: JsonObject
+    ): Call<PostLogInResponse>
+
+    //로그인
+    @POST("/users/id")
+    fun postConfirmIdResponse(
+        @Header("Content-Type") content_type: String,
+        @Body() body: JsonObject
+    ): Call<PostConfirmIdResponse>
 
     //게시판 글쓰기
     @Multipart
     @POST("/contents")
     fun postWriteBoardResponse(
-            @Header("Authorization") token : String,
-            @Part("title") title : RequestBody,
-            @Part("contents") contents : RequestBody,
-            @Part photo: MultipartBody.Part?
-    ) : Call<PostWriteBoardResponse>
+        @Header("Authorization") token: String,
+        @Part("title") title: RequestBody,
+        @Part("contents") contents: RequestBody,
+        @Part photo: MultipartBody.Part?
+    ): Call<PostWriteBoardResponse>
 
 
 //    //모든 게시판 보기

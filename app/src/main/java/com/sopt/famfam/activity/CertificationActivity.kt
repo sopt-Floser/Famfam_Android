@@ -364,7 +364,8 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.tv_certification_act_complete_btn -> {
                 val code = et_certification_act_input_code.text.toString()
-                startActivity<SignupActivity>()
+                val phoneNumber : String = et_certification_act_input_phone_number.text.toString()
+                startActivity<SignupActivity>("phoneNumber" to phoneNumber)
                 if (TextUtils.isEmpty(code)) {
                     et_certification_act_input_code.error = "Cannot be empty."
                     return
