@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.sopt.famfam.R
 import com.sopt.famfam.activity.CodeGeneratorActivity
+import com.sopt.famfam.activity.MoreActivity
 import com.sopt.famfam.adapter.FamilyListAdapter
 import com.sopt.famfam.adapter.item.FamilyListItem
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -29,15 +30,13 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)
         var familylist = view.rv_home_family
-        val newFragment = MoreVersionFragment()
         val transaction = childFragmentManager.beginTransaction()
         view.invite_btn.setOnClickListener {
             startActivity<CodeGeneratorActivity>()
         }
         view.home_act_setting_btn.setOnClickListener {
             // Store the Fragment in stack
-            transaction.addToBackStack(null)
-            transaction.replace(R.id.layout_more, newFragment).commit()
+            startActivity<MoreActivity>()
         }
         content = view.vp_home_main_content
         var list = ArrayList<FamilyListItem>();

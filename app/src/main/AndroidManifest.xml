@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="com.sopt.famfam">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.sopt.famfam">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -38,8 +39,9 @@
         <activity android:name=".activity.MoreDisconnectActivity"/>
         <activity android:name=".activity.MoreSecedeActivity"/>
         <activity android:name=".activity.JoinActivity"/>
-        <activity android:name=".activity.AddPostActivity"></activity>
-        <activity android:name=".activity.AddPhotoActivity"></activity>
+        <activity android:name=".activity.AddPostActivity"/>
+        <activity android:name=".activity.AddPhotoActivity"/>
+
         <service android:name=".FIreBaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
@@ -62,6 +64,10 @@
         <activity android:name=".activity.ResettingPwActivity">
         </activity>
         <activity android:name=".activity.AlarmActivity">
+        </activity>
+        <activity android:name=".activity.MoreActivity">
+        </activity>
+        <activity android:name=".activity.MoreVersionActivity">
         </activity>
     </application>
 

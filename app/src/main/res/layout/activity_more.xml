@@ -48,7 +48,7 @@
             android:layout_alignParentRight="true"
             android:id="@+id/btn_more_editprofile"
             android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:text="편집"/>
+            android:text="편집"/>
 
     <LinearLayout
             android:layout_width="match_parent"

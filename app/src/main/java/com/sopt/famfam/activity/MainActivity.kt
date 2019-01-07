@@ -11,8 +11,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.RelativeLayout
 import com.sopt.famfam.R
+import com.sopt.famfam.fragment.ChatFragment
 import com.sopt.famfam.fragment.HomeFragment
-import com.sopt.famfam.fragment.MoreFragment
 import com.sopt.famfam.fragment.TodayFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
@@ -30,10 +30,10 @@ class MainActivity : AppCompatActivity() {
         var bottomNaviLayout: View = this.layoutInflater.inflate(R.layout.menu_topmenubar, null, false)
         tab.getTabAt(0)!!.customView = bottomNaviLayout.findViewById(R.id.btn_top_home) as RelativeLayout
         tab.getTabAt(1)!!.customView = bottomNaviLayout.findViewById(R.id.btn_top_select_card) as RelativeLayout
-        tab.getTabAt(2)!!.customView = bottomNaviLayout.findViewById(R.id.btn_top_point) as RelativeLayout
-        tab.getTabAt(3)!!.customView = bottomNaviLayout.findViewById(R.id.btn_top_setting) as RelativeLayout
+        tab.getTabAt(2)?.customView = bottomNaviLayout.findViewById(R.id.btn_top_point) as RelativeLayout
+        tab.getTabAt(3)?.customView = bottomNaviLayout.findViewById(R.id.btn_top_setting) as RelativeLayout
 
-        tab.getTabAt(2)!!.customView!!.setOnTouchListener(View.OnTouchListener { v, event ->
+        tab.getTabAt(2)?.customView?.setOnTouchListener(View.OnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                 }
@@ -56,8 +56,7 @@ class MainActivity : AppCompatActivity() {
             this.context = context
             frags.add(TodayFragment())
             frags.add(HomeFragment())
-            frags.add(MoreFragment())
-            frags.add(MoreFragment())
+
         }
 
         override fun getItem(i: Int): android.support.v4.app.Fragment {

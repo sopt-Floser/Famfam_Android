@@ -29,7 +29,6 @@ import java.util.regex.Pattern
 class SignupActivity : AppCompatActivity() {
 
 
-
 //    companion object {
 //        private var instance: DatePickerFragment? = null
 //
@@ -50,7 +49,7 @@ class SignupActivity : AppCompatActivity() {
 
 
     var sexType: Int = 0
-    var idCheck : Boolean = false
+    var idCheck: Boolean = false
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -183,13 +182,16 @@ class SignupActivity : AppCompatActivity() {
                 before: Int, count: Int
             ) {
                 postConfirmIdResponse()
-                if (idCheck) {
-                    tv_signup_act_id_validation_check_text.visibility = View.INVISIBLE
-                    iv_signup_act_id_validation_check_ok.visibility = View.VISIBLE
-                    if (s.isEmpty()) {
-                        tv_signup_act_id_validation_check_text.visibility = View.VISIBLE
-                        iv_signup_act_id_validation_check_ok.visibility = View.INVISIBLE
+                if (s.isEmpty()) {
+                    tv_signup_act_id_validation_check_text.visibility = View.VISIBLE
+                    iv_signup_act_id_validation_check_ok.visibility = View.INVISIBLE
+                } else {
+                    if (idCheck) {
+                        tv_signup_act_id_validation_check_text.visibility = View.INVISIBLE
+                        iv_signup_act_id_validation_check_ok.visibility = View.VISIBLE
                     }
+                    tv_signup_act_id_validation_check_text.visibility = View.INVISIBLE
+                    iv_signup_act_id_validation_check_ok.visibility = View.INVISIBLE
                 }
             }
         })
@@ -267,7 +269,7 @@ class SignupActivity : AppCompatActivity() {
         val input_userId: String = et_signup_act_input_id.text.toString()
         val input_userPw: String = et_signup_act_input_confirm_pw.text.toString()
         val input_userPhone: String = intent.getStringExtra("phoneNumber")
-        val input_birthday: String = "$year-$month-$day"+"T00:00"
+        val input_birthday: String = "$year-$month-$day" + "T00:00"
         val input_sexType: Int = sexType
         //Json 형식의 객체 만들기
         var jsonObject = JSONObject()
@@ -328,7 +330,7 @@ class SignupActivity : AppCompatActivity() {
                     var message: String = response.body()!!.message
                     toast(message)
                     //tv_confirm_id_text
-                    if (message == "사용할 수 있는 아이디입니다."){
+                    if (message == "사용할 수 있는 아이디입니다.") {
                         val strColor = "#366ce2"
                         tv_confirm_id_text.setTextColor(Color.parseColor(strColor))
                         idCheck = true
