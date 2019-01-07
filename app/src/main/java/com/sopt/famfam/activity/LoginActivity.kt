@@ -6,6 +6,7 @@ import android.util.Log
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.famfam.R
+import com.sopt.famfam.database.FamilyData
 import com.sopt.famfam.database.SharedPreferenceController
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
@@ -28,7 +29,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         setOnBtnClickListener()
-
+        if (SharedPreferenceController.getLoginData(this).isNotEmpty()){
+            var tmp = SharedPreferenceController.getLoginData(this).split(",")
+            FamilyData.groupId=tmp[0].toInt()
+            FamilyData.userId=tmp[1]
+            FamilyData.userName=tmp[2]
+        }
         if (SharedPreferenceController.getAuthorization(this).isNotEmpty()){
             startActivity<MainActivity>()
         }
@@ -65,6 +71,16 @@ class LoginActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<PostLogInResponse>, response: Response<PostLogInResponse>) {
                     if (response.isSuccessful){
                         val token = response.body()!!.data.token
+                        FamilyData.groupId=response.body()!!.data.user.groupIdx
+                        FamilyData.userId=response.body()!!.data.user.userId
+                        FamilyData.userName=response.body()!!.data.user.userName
+                        FamilyData.token=token
+
+                        SharedPreferenceController.setLoginData(this@LoginActivity,
+                            FamilyData.groupId.toString()+","+
+                                    FamilyData.userId+","+
+                                    FamilyData.userName
+                        )
                         //저번 시간에 배웠던 SharedPreference에 토큰을 저장! 왜냐하면 토큰이 필요한 통신에 사용하기 위해서!!
                         SharedPreferenceController.setAuthorization(this@LoginActivity, token)
                         toast(SharedPreferenceController.getAuthorization(this@LoginActivity))

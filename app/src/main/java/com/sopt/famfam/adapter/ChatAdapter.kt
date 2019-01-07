@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.sopt.famfam.R
 import com.sopt.famfam.adapter.item.ChatItem
 import com.sopt.famfam.adapter.item.DemoItem
 import kotlinx.android.synthetic.main.item_chat_other.view.*
+import java.text.SimpleDateFormat
+import java.util.*
+
 val MY_CHAT = 0
 val OTHER_CHAT = 1
 val PHOTO = 2
@@ -53,9 +58,22 @@ class ChatAdapter(var context: Context, var list: ArrayList<ChatItem>) : Recycle
             holder.time.text = list.get(position).time
         } else if (viewType == OTHER_CHAT) {
             // 이미지 해
+            if (position>1)
+            {
+                // 이전 메시지와 타입이 같으면
+                if(list.get(position-1).type==list.get(position).type)
+                {
+                    holder.profile.visibility=View.GONE
+                    holder.time.visibility=View.GONE
+                    holder.nickname.visibility=View.GONE
+                }
+            }
             holder.content.text=list.get(position).content
             holder.nickname.text = list.get(position).name
-            holder.time.text = list.get(position).time
+            val dt = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+            val date = dt.parse(list.get(position).time)
+            holder.time.text = date.hours.toString()+":"+date.minutes.toString()
+
         } else if (viewType == PHOTO) {
 
         } else if (viewType == EMOTICON) {
