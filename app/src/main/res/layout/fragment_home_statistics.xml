@@ -125,13 +125,13 @@ android:layout_margin="32dp">
             </LinearLayout>
 
             <ImageView
-                android:layout_margin="16dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/circle"
-                android:src="@drawable/icon_carmera"/>
+                    android:layout_margin="16dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circle"
+                    android:src="@drawable/icon_carmera" android:id="@+id/test"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 

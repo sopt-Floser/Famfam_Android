@@ -48,7 +48,6 @@ public class TodayFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_today, container, false);
 
 
-
         // 게시물 올리기
         ImageView btnAddPost = (ImageView)view.findViewById(R.id.btn_today_addPost);
         btnAddPost.setOnClickListener(new View.OnClickListener() {

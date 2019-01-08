@@ -7,29 +7,52 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
+import com.sopt.famfam.FirebaseInstanceIDService
 import com.sopt.famfam.R
 import com.sopt.famfam.activity.CodeGeneratorActivity
+import com.sopt.famfam.activity.MainActivity
 import com.sopt.famfam.activity.MoreActivity
+import com.sopt.famfam.activity.MoreEditProfileActivity
 import com.sopt.famfam.adapter.FamilyListAdapter
 import com.sopt.famfam.adapter.item.FamilyListItem
+import com.sopt.famfam.database.FamilyData
+import com.sopt.famfam.database.SharedPreferenceController
+import com.sopt.famfam.get.GetGroupUserResponse
+import com.sopt.famfam.network.ApplicationController
+import com.sopt.famfam.network.NetworkService
+import com.sopt.famfam.post.PostLogInResponse
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.startActivity
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
     }
-
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
     lateinit var content: ViewPager
-
+    var familylist : RecyclerView? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)
-        var familylist = view.rv_home_family
+        familylist = view.rv_home_family
         val transaction = childFragmentManager.beginTransaction()
         view.invite_btn.setOnClickListener {
             startActivity<CodeGeneratorActivity>()
@@ -39,12 +62,7 @@ class HomeFragment : Fragment() {
             startActivity<MoreActivity>()
         }
         content = view.vp_home_main_content
-        var list = ArrayList<FamilyListItem>();
-        list.add(FamilyListItem(0, "", "엄마"))
-        list.add(FamilyListItem(0, "", "아빠"))
-        list.add(FamilyListItem(0, "", "동생"))
-        familylist.adapter = FamilyListAdapter(context!!, list);
-        familylist.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+
 
         val padding = 80
         content.setPadding(160, 0, 160, 0)
@@ -54,10 +72,38 @@ class HomeFragment : Fragment() {
 
         content.offscreenPageLimit = 3
         content.setCurrentItem(100, true)
+        getLoginResponse()
+        Log.d("asd",FirebaseInstanceId.getInstance().getToken())
+
+        view.iv_home_famliy_my.setOnClickListener{
+            startActivity<MoreEditProfileActivity>()
+        }
+
 
         return view
     }
+    private fun getLoginResponse(){
+        val postLogInResponse = networkService.getGroupUserResponse("application/json", FamilyData.token)
+        postLogInResponse.enqueue(object : Callback<GetGroupUserResponse> {
+            override fun onFailure(call: Call<GetGroupUserResponse>, t: Throwable) {
+                Log.e("Login fail", t.toString())
+            }
 
+            override fun onResponse(call: Call<GetGroupUserResponse>, response: Response<GetGroupUserResponse>) {
+                if (response.isSuccessful){
+                    val data = response.body()!!.data
+                    var list = ArrayList<FamilyListItem>();
+                    var i :Int =0
+                    for(item in data)
+                    {
+                        list.add(FamilyListItem(item.userIdx,  item.profilePhoto, item.userName))
+                    }
+                    familylist!!.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+                    Log.d("asd","여긴되나요")
+                }
+            }
+        })
+    }
     class PagerAdapter(manager: FragmentManager, context: Context) : FragmentStatePagerAdapter(manager) {
 //        var frags = ArrayList<android.support.v4.app.Fragment>()
 //        var context: Context? = null
