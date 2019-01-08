@@ -10,6 +10,8 @@ import android.view.View
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.famfam.R
+import com.sopt.famfam.database.FamilyData
+import com.sopt.famfam.database.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_signup.*
 import com.sopt.famfam.fragment.DatePickerFragment
 import com.sopt.famfam.network.ApplicationController
@@ -281,12 +283,6 @@ class SignupActivity : AppCompatActivity() {
         jsonObject.put("sexType", input_sexType)
         //Gson 라이브러리의 Json Parser을 통해 객체를 Json으로!
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
-        Log.e("uuuu1", input_userName)
-        Log.e("uuuu1", input_userId)
-        Log.e("uuuu1", input_userPw)
-        Log.e("uuuu1", input_userPhone)
-        Log.e("uuuu1", input_birthday)
-        Log.e("uuuu1", input_sexType.toString())
 
         //통신 시작
         val postSignUpResponse: Call<PostSignUpResponse> =
@@ -298,6 +294,17 @@ class SignupActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<PostSignUpResponse>, response: Response<PostSignUpResponse>) {
                 if (response.isSuccessful) {
+                    val token = response.body()!!.data.token
+                    FamilyData.groupId=response.body()!!.data.user.groupIdx
+                    FamilyData.userId=response.body()!!.data.user.userId
+                    FamilyData.userName=response.body()!!.data.user.userName
+                    FamilyData.token=token
+                    SharedPreferenceController.setLoginData(this@SignupActivity,
+                        FamilyData.groupId.toString()+","+
+                                FamilyData.userId+","+
+                                FamilyData.userName
+                    )
+                    SharedPreferenceController.setAuthorization(this@SignupActivity, token)
                     var message: String = response.body()!!.message
                     toast(message)
                     finish()

@@ -29,13 +29,13 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         setOnBtnClickListener()
-        if (SharedPreferenceController.getLoginData(this).isNotEmpty()){
+        if (SharedPreferenceController.getLoginData(this).isNotEmpty()) {
             var tmp = SharedPreferenceController.getLoginData(this).split(",")
-            FamilyData.groupId=tmp[0].toInt()
-            FamilyData.userId=tmp[1]
-            FamilyData.userName=tmp[2]
+            FamilyData.groupId = tmp[0].toInt()
+            FamilyData.userId = tmp[1]
+            FamilyData.userName = tmp[2]
         }
-        if (SharedPreferenceController.getAuthorization(this).isNotEmpty()){
+        if (SharedPreferenceController.getAuthorization(this).isNotEmpty()) {
             startActivity<MainActivity>()
         }
 
@@ -53,14 +53,14 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun getLoginResponse(){
-        if (et_login_act_id.text.toString().isNotEmpty() && et_login_act_pw.text.toString().isNotEmpty()){
+    private fun getLoginResponse() {
+        if (et_login_act_id.text.toString().isNotEmpty() && et_login_act_pw.text.toString().isNotEmpty()) {
             val input_id = et_login_act_id.text.toString()
             val input_pw = et_login_act_pw.text.toString()
-            val jsonObject : JSONObject = JSONObject()
+            val jsonObject: JSONObject = JSONObject()
             jsonObject.put("userId", input_id)
             jsonObject.put("userPw", input_pw)
-            val gsonObject : JsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
+            val gsonObject: JsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
 
             val postLogInResponse = networkService.postLoginResponse("application/json", gsonObject)
             postLogInResponse.enqueue(object : Callback<PostLogInResponse> {
@@ -69,23 +69,32 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(call: Call<PostLogInResponse>, response: Response<PostLogInResponse>) {
-                    if (response.isSuccessful){
+                    if (response.isSuccessful) {
                         val token = response.body()!!.data.token
-                        FamilyData.groupId=response.body()!!.data.user.groupIdx
-                        FamilyData.userId=response.body()!!.data.user.userId
-                        FamilyData.userName=response.body()!!.data.user.userName
-                        FamilyData.token=token
+                        FamilyData.groupId = response.body()!!.data.user.groupIdx
+                        FamilyData.userId = response.body()!!.data.user.userId
+                        FamilyData.userName = response.body()!!.data.user.userName
+                        FamilyData.token = token
 
-                        SharedPreferenceController.setLoginData(this@LoginActivity,
-                            FamilyData.groupId.toString()+","+
-                                    FamilyData.userId+","+
+                        SharedPreferenceController.setLoginData(
+                            this@LoginActivity,
+                            FamilyData.groupId.toString() + "," +
+                                    FamilyData.userId + "," +
                                     FamilyData.userName
                         )
                         //저번 시간에 배웠던 SharedPreference에 토큰을 저장! 왜냐하면 토큰이 필요한 통신에 사용하기 위해서!!
                         SharedPreferenceController.setAuthorization(this@LoginActivity, token)
                         toast(SharedPreferenceController.getAuthorization(this@LoginActivity))
-                        startActivity<MainActivity>()
-                        finish()
+//                        startActivity<MainActivity>()
+////                        finish()
+                        val groupIdx = FamilyData.groupId.toString()
+                        Log.e("uuuu1", groupIdx)
+                        if (groupIdx == "-1") {
+                            startActivity<SelectActivity>()
+                        } else {
+                            startActivity<MainActivity>()
+                            finish()
+                        }
                     }
                 }
             })

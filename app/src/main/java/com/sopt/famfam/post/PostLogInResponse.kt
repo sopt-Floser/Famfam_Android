@@ -8,9 +8,10 @@ data class PostLogInResponse(
 
 data class LoginData(
         val token : String,
-        val user : User
+        val user : LoginUser
 )
-data class User (
+
+data class LoginUser (
     val userId : String,
     val userName : String,
     val profilePhoto : String,
