@@ -37,6 +37,9 @@ class LoginActivity : AppCompatActivity() {
             FamilyData.statusMessage = tmp[3]
             FamilyData.birthday =tmp[4]
             FamilyData.sexType = tmp[5].toInt()
+
+            FamilyData.token=SharedPreferenceController.getAuthorization(this)
+
         }
         if (SharedPreferenceController.getAuthorization(this).isNotEmpty()) {
             startActivity<MainActivity>()

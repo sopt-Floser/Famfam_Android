@@ -25,9 +25,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HomeStatisticsFragment : Fragment(){
-    var feelTextView : TextView?=null
-    var commentTextView : TextView?=null
-    var contentTextView : TextView?=null
+    lateinit var feelTextView : TextView
+    lateinit var commentTextView : TextView
+    lateinit var contentTextView : TextView
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -36,7 +36,6 @@ class HomeStatisticsFragment : Fragment(){
         feelTextView=view.tv_home_statistics_heart
         commentTextView=view.tv_home_statistics_comment
         contentTextView=view.tv_home_statistics_post
-
         getCommentCountResponse()
         getContentCountResponse()
         getFeelCountResponse()
@@ -50,6 +49,7 @@ class HomeStatisticsFragment : Fragment(){
     }
 
     private fun getFeelCountResponse(){
+        Log.d("asd","여긴되나요feel")
         val postLogInResponse = networkService.getFeelCountResponse("application/json", FamilyData.token)
         postLogInResponse.enqueue(object : Callback<GetFeelCountResponse> {
             override fun onFailure(call: Call<GetFeelCountResponse>, t: Throwable) {
@@ -59,7 +59,7 @@ class HomeStatisticsFragment : Fragment(){
             override fun onResponse(call: Call<GetFeelCountResponse>, response: Response<GetFeelCountResponse>) {
                 if (response.isSuccessful){
                     val data = response.body()!!.data
-                    feelTextView!!.text = data.count.toString()
+                    feelTextView.text = data.count.toString()
                     Log.d("asd",data.count.toString())
                 }
                 Log.d("asd",response.message())
@@ -67,6 +67,7 @@ class HomeStatisticsFragment : Fragment(){
         })
     }
     private fun getContentCountResponse(){
+        Log.d("asd","여긴되나요con")
         val postLogInResponse = networkService.getContentCountResponse("application/json", FamilyData.token)
         postLogInResponse.enqueue(object : Callback<GetContentCountResponse> {
             override fun onFailure(call: Call<GetContentCountResponse>, t: Throwable) {
@@ -76,7 +77,7 @@ class HomeStatisticsFragment : Fragment(){
             override fun onResponse(call: Call<GetContentCountResponse>, response: Response<GetContentCountResponse>) {
                 if (response.isSuccessful){
                     val data = response.body()!!.data
-                    contentTextView!!.text = data.count.toString()
+                    contentTextView.text = data.count.toString()
 
                 }
             }
@@ -84,6 +85,8 @@ class HomeStatisticsFragment : Fragment(){
     }
     private fun getCommentCountResponse(){
         val postLogInResponse = networkService.getCommentCountResponse("application/json", FamilyData.token)
+
+        Log.d("asd","여긴되나요comment"+FamilyData.token)
         postLogInResponse.enqueue(object : Callback<GetCommentCountResponse> {
             override fun onFailure(call: Call<GetCommentCountResponse>, t: Throwable) {
                 Log.e("Login fail", t.toString())
@@ -92,7 +95,7 @@ class HomeStatisticsFragment : Fragment(){
             override fun onResponse(call: Call<GetCommentCountResponse>, response: Response<GetCommentCountResponse>) {
                 if (response.isSuccessful){
                     val data = response.body()!!.data
-                    commentTextView!!.text = data.count.toString()
+                    commentTextView.text = data.count.toString()
 
                 }
             }
