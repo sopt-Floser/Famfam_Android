@@ -85,9 +85,12 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {  return todayItemArrayList.size(); }
+
+    //뷰페이저 어댑터
     private class PagerAdapter extends FragmentStatePagerAdapter {
         ArrayList<Fragment> frags =new ArrayList<Fragment>();
         Context context = null;
+
         public PagerAdapter(FragmentManager fm,Context context) {
             super(fm);
             this.context=context;

@@ -34,6 +34,14 @@ interface NetworkService {
             @Part photo: MultipartBody.Part?
     ) : Call<PostWriteBoardResponse>
 
+//    //모든 컨텐츠 조회
+//    @GET("/contents")
+//    fun getBoardListResponse(
+//            @Header("Content-Type") content_type : String,
+//            @Query("offset") offset : Int,
+//            @Query("limit") limit : Int
+//    ) : Call<GetBoardListResponse>
+
 
 //    //모든 게시판 보기
 //    @GET("/contents")
