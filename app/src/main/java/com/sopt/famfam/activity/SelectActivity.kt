@@ -8,6 +8,7 @@ import com.google.gson.JsonParser
 import com.sopt.famfam.R
 import com.sopt.famfam.database.FamilyData
 import com.sopt.famfam.database.SharedPreferenceController
+import com.sopt.famfam.get.GetGroupsCreateCodeResponse
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
 import com.sopt.famfam.post.PostGroupsResponse
@@ -43,7 +44,7 @@ class SelectActivity : AppCompatActivity() {
     }
 
     private fun getGroupsCreateResponse() {
-        val token : String = FamilyData.token
+        val token: String = FamilyData.token
         //통신 시작
         val postGroupsResponse: Call<PostGroupsResponse> =
             networkService.postGroupsResponse("application/json", token)
@@ -51,6 +52,7 @@ class SelectActivity : AppCompatActivity() {
             override fun onFailure(call: Call<PostGroupsResponse>, t: Throwable) {
                 Log.e("Sign Up Fail", t.toString())
             }
+
             override fun onResponse(call: Call<PostGroupsResponse>, response: Response<PostGroupsResponse>) {
                 if (response.isSuccessful) {
                     var message: String = response.body()!!.message

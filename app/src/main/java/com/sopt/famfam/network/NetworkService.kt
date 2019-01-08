@@ -5,6 +5,7 @@ import com.sopt.famfam.get.GetCommentCountResponse
 import com.sopt.famfam.get.GetContentCountResponse
 import com.sopt.famfam.get.GetFeelCountResponse
 import com.sopt.famfam.get.GetGroupUserResponse
+import com.sopt.famfam.get.GetGroupsCreateCodeResponse
 import com.sopt.famfam.post.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -41,8 +42,15 @@ interface NetworkService {
         @Header("Authorization") token : String
     ): Call<PostGroupsResponse>
 
+    // 그룹초대코드 생성/조회
+    @GET("/groups/invitation")
+    fun getGroupsCreateCodeResponse (
+        @Header("Content-Type") content_type : String,
+        @Header("Authorization") token : String
+    ) : Call<GetGroupsCreateCodeResponse>
 
-    //게시판 글쓰기
+
+   //게시판 글쓰기
     @Multipart
     @POST("/contents")
     fun postWriteBoardResponse(

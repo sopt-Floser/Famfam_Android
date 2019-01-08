@@ -69,6 +69,9 @@
                         android:layout_height="wrap_content"
                         android:text="●●●● ●●●● ●●●●"
                         android:textSize="18sp"
+                        android:textColor="#656565"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.2"
                 />
             </RelativeLayout>
         </LinearLayout>
@@ -122,21 +125,43 @@
 
         <RelativeLayout
                 android:id="@+id/tv_code_generator_act_request_code_btn"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:visibility="visible">
             <TextView
                     android:id="@+id/tv_code_generator_act_request_code_btn_text"
                     android:layout_centerVertical="true"
                     android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="코드생성"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/tv_code_generator_act_complete_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="gone">
+            <TextView
+                    android:id="@+id/tv_code_generator_act_complete_btn_text"
+                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="코드 생성"
+                    android:text="완료"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     android:textStyle="bold"
             />
         </RelativeLayout>
+
+
 
     </LinearLayout>
 
