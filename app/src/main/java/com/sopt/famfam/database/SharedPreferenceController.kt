@@ -1,6 +1,7 @@
 package com.sopt.famfam.database
 
 import android.content.Context
+import android.content.SharedPreferences
 
 object SharedPreferenceController{
     private val USER_NAME = "MYKEY"
@@ -32,6 +33,13 @@ object SharedPreferenceController{
     fun clearSPC(context: Context){
         val pref = context.getSharedPreferences(USER_NAME, Context.MODE_PRIVATE) //현재 내 기기에서만 볼수 있는 데이터
         val editor = pref.edit()
+        editor.clear()
+        editor.commit()
+    }
+    //user_name 모든 데이터 제거
+    fun clearUserSharedPreferences(ctx: Context) {
+        val preference: SharedPreferences = ctx.getSharedPreferences(USER_NAME, Context.MODE_PRIVATE)
+        val editor: SharedPreferences.Editor = preference.edit()
         editor.clear()
         editor.commit()
     }

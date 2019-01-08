@@ -5,10 +5,7 @@ import com.sopt.famfam.get.GetCommentCountResponse
 import com.sopt.famfam.get.GetContentCountResponse
 import com.sopt.famfam.get.GetFeelCountResponse
 import com.sopt.famfam.get.GetGroupUserResponse
-import com.sopt.famfam.post.PostConfirmIdResponse
-import com.sopt.famfam.post.PostLogInResponse
-import com.sopt.famfam.post.PostSignUpResponse
-import com.sopt.famfam.post.PostWriteBoardResponse
+import com.sopt.famfam.post.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -29,12 +26,21 @@ interface NetworkService {
         @Body() body: JsonObject
     ): Call<PostLogInResponse>
 
-    //로그인
+
+    //아이디 중복체크
     @POST("/users/id")
     fun postConfirmIdResponse(
         @Header("Content-Type") content_type: String,
         @Body() body: JsonObject
     ): Call<PostConfirmIdResponse>
+
+    //그룹생성
+    @POST("/groups")
+    fun postGroupsResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("Authorization") token : String
+    ): Call<PostGroupsResponse>
+
 
     //게시판 글쓰기
     @Multipart

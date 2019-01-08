@@ -33,7 +33,7 @@
                         android:textSize="20dp"/>
                 <TextView
                         android:layout_below="@+id/tv_more_editprofile_nickname"
-                        android:id="@+id/tv_more_editprofile_intro"
+                        android:id="@+id/tv_more_editprofile_statusmessage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="안녕하세요 김팸팸 이다"/>
@@ -48,7 +48,7 @@
                 <ImageView
                         android:id="@+id/tv_more_editprofile_birth_icon"
                         android:layout_marginTop="32dp"
-                        android:layout_below="@+id/tv_more_editprofile_intro"
+                        android:layout_below="@+id/tv_more_editprofile_statusmessage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/icon_birtday"/>
@@ -73,6 +73,7 @@
                         android:textSize="16sp" />
 
                 <TextView
+                        android:id="@+id/tv_more_editprofile_birth_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@+id/tv_more_editprofile_birth_icon"
@@ -112,6 +113,7 @@
                         android:textSize="16sp" />
 
                 <TextView
+                        android:id="@+id/tv_more_editprofile_sexType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@+id/tv_more_editprofile_gender_icon"

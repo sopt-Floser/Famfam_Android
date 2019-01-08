@@ -5,13 +5,21 @@ internal object FamilyData {
     var groupId: Int = 0
     var userId: String = ""
     var token : String = ""
+    var statusMessage : String = ""
+    var profilePhoto : String = ""
+    var backPhoto : String = ""
+    var birthday : String = ""
+    var sexType : Int = 0
+
     lateinit var users : ArrayList<User>
 }
 data class User(
-    val userIdx : Int,
-    val userName:String,
-    val statusMessage : String,
-    val profilePhoto : String,
-    val backPhoto : String,
-    val groupIdx : Int
+    var userIdx : Int ,
+    var userName:String ,
+    var statusMessage : String ,
+    var profilePhoto : String ,
+    var backPhoto : String ,
+    var groupIdx : Int ,
+    var birthday : String ,
+    var sexType : Int
 )

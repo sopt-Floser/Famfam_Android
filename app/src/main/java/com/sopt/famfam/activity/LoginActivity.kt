@@ -34,6 +34,9 @@ class LoginActivity : AppCompatActivity() {
             FamilyData.groupId = tmp[0].toInt()
             FamilyData.userId = tmp[1]
             FamilyData.userName = tmp[2]
+            FamilyData.statusMessage = tmp[3]
+            FamilyData.birthday =tmp[4]
+            FamilyData.sexType = tmp[5].toInt()
         }
         if (SharedPreferenceController.getAuthorization(this).isNotEmpty()) {
             startActivity<MainActivity>()
@@ -75,12 +78,22 @@ class LoginActivity : AppCompatActivity() {
                         FamilyData.userId = response.body()!!.data.user.userId
                         FamilyData.userName = response.body()!!.data.user.userName
                         FamilyData.token = token
+                        FamilyData.statusMessage =response.body()!!.data.user.statusMessage
+                        FamilyData.birthday = response.body()!!.data.user.birthday
+//                        FamilyData.backPhoto = response.body()!!.data.user.backPhoto
+//                        FamilyData.profilePhoto = response.body()!!.data.user.profilePhoto
+                        FamilyData.sexType = response.body()!!.data.user.sexType
+                        Log.e("uuuu1", token)
 
                         SharedPreferenceController.setLoginData(
                             this@LoginActivity,
                             FamilyData.groupId.toString() + "," +
                                     FamilyData.userId + "," +
-                                    FamilyData.userName
+                                    FamilyData.userName+ ","+
+                                    FamilyData.statusMessage+","+
+                                    FamilyData.birthday+","+
+                                    FamilyData.sexType
+
                         )
                         //저번 시간에 배웠던 SharedPreference에 토큰을 저장! 왜냐하면 토큰이 필요한 통신에 사용하기 위해서!!
                         SharedPreferenceController.setAuthorization(this@LoginActivity, token)

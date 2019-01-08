@@ -299,10 +299,16 @@ class SignupActivity : AppCompatActivity() {
                     FamilyData.userId=response.body()!!.data.user.userId
                     FamilyData.userName=response.body()!!.data.user.userName
                     FamilyData.token=token
+                    FamilyData.statusMessage =response.body()!!.data.user.statusMessage
+                    FamilyData.birthday = response.body()!!.data.user.birthday
+                    FamilyData.sexType = response.body()!!.data.user.sexType
                     SharedPreferenceController.setLoginData(this@SignupActivity,
-                        FamilyData.groupId.toString()+","+
-                                FamilyData.userId+","+
-                                FamilyData.userName
+                        FamilyData.groupId.toString() + "," +
+                                FamilyData.userId + "," +
+                                FamilyData.userName+ ","+
+                                FamilyData.statusMessage+","+
+                                FamilyData.birthday+","+
+                                FamilyData.sexType
                     )
                     SharedPreferenceController.setAuthorization(this@SignupActivity, token)
                     var message: String = response.body()!!.message
