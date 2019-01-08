@@ -81,7 +81,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         todayViewHolder.profile.setImageResource(todayItemArrayList.get(position).profile);
         todayViewHolder.username.setText(todayItemArrayList.get(position).name);
         todayViewHolder.posted_time.setText(todayItemArrayList.get(position).posted_time);
-        getBoardListResponse( todayViewHolder.vp);
+        //getBoardListResponse( todayViewHolder.vp);
         todayViewHolder.emotion_off.setImageResource(todayItemArrayList.get(position).emotion);
         todayViewHolder.emotion_on.setImageResource(todayItemArrayList.get(position).emotion);
         todayViewHolder.emotion_lay1.setImageResource(todayItemArrayList.get(position).feel);
@@ -124,24 +124,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
 
     }
-    private void getBoardListResponse(final ViewPager pager){
-        Call<GetContentListResponse> getBoardListResponse = ApplicationController.instance.networkService.getContentListResponse(FamilyData.token, 0, 30);
-        getBoardListResponse.enqueue(new Callback<GetContentListResponse>() {
-            @Override
-            public void onResponse(Call<GetContentListResponse> call, Response<GetContentListResponse> response) {
-                if (response.isSuccessful()){
-                    ArrayList<Photos> temp  = response.body().getData().component2();
-                    if (temp.size() > 0){
-                        pager.setAdapter(new PagerAdapter(fragmentManager,context,temp));
-                    }
-                }
-            }
-            @Override
-            public void onFailure(Call<GetContentListResponse> call, Throwable t) {
-                // Code...
-            }
-        });
-    }
+
 }
 
 

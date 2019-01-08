@@ -83,12 +83,20 @@ interface NetworkService {
         @Header("Authorization") token : String
     ) : Call<GetCommentCountResponse>
 
+    // 게시글 내용 조회
     @GET("/contents")
     fun getContentListResponse(
         @Header("Authorization") token : String,
         @Query("page") page : Int,
         @Query("size") size : Int
     ) : Call<GetContentListResponse>
+
+    //
+    @GET("/comments/contents/")
+    fun getCommentListResponse(
+        @Header("Authorization") token : String,
+        @Path("contentIdx") contentIdx : Int
+    ) : Call<GetCommentListResponse>
 
     //
     @Multipart

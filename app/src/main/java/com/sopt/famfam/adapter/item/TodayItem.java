@@ -1,10 +1,12 @@
 package com.sopt.famfam.adapter.item;
 
+import java.util.ArrayList;
+
 public class TodayItem {
     public int profile;
     public String name;
     public String posted_time;
-    public int post_img;
+    public ArrayList<String> post_img;
     public int emotion;
     public int feel;
     public String img_likes;
@@ -12,7 +14,7 @@ public class TodayItem {
     public String comment;
     public String comment_count;
 
-    public TodayItem(int profile, String name, String posted_time, int post_img, int emotion, int feel, String img_likes, String caption, String comment, String comment_count) {
+    public TodayItem(int profile, String name, String posted_time, ArrayList<String>  post_img, int emotion, int feel, String img_likes, String caption, String comment, String comment_count) {
         this.profile = profile;
         this.name = name;
         this.posted_time = posted_time;
