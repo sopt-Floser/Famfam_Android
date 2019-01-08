@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
+
+<RelativeLayout android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical">
 
     <!--Toolbar-->
@@ -57,7 +59,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:id="@+id/spin_post_edit"
+                    android:id="@+id/btn_edit_post"
                     android:src="@drawable/icon_dot3"/>
 
         </RelativeLayout>
@@ -65,14 +67,274 @@
     </android.support.v7.widget.Toolbar>
 
 
-    <!--Recycler View-->
-
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_post"
+    <!--Post-->
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/item_post">
+                android:layout_height="match_parent"
+                android:id="@+id/sv_post_body"
+                android:layout_below="@+id/PostToolBar"
+                android:paddingBottom="55dp">
 
-    </android.support.v7.widget.RecyclerView>
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
 
-</LinearLayout>
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/relLayout1"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="36.2dp"
+                        android:layout_height="36.2dp"
+                        android:id="@+id/iv_profile_photo"
+                        android:layout_marginTop="15.6dp"
+                        android:layout_marginLeft="37dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/kim_fam_big"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:text="김팸팸"
+                        android:layout_toRightOf="@+id/iv_profile_photo"
+                        android:layout_marginLeft="11.7dp"
+                        android:layout_centerVertical="true"
+                        android:textStyle="bold"
+                        android:id="@+id/tv_username"
+                        android:textColor="@color/black"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2018.07.02"
+                        android:textColor="@color/gray"
+                        android:textSize="11sp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="37dp"
+                        android:id="@+id/tv_posted_time"/>
+
+            </RelativeLayout>
+
+
+            <android.support.v4.view.ViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:id="@+id/vp_post_img"
+                    android:layout_below="@id/relLayout1">
+            </android.support.v4.view.ViewPager>
+
+            <com.sopt.famfam.indicator.CircleAnimIndicator
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:id="@+id/ci_post_vp"
+                    android:layout_below="@+id/vp_post_img"
+                    android:layout_centerHorizontal="true">
+            </com.sopt.famfam.indicator.CircleAnimIndicator>
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/relLayout2"
+                    android:layout_below="@+id/ci_post_vp"
+                    android:background="@color/white">
+
+                <RelativeLayout
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/emotion_Layout"
+                        android:layout_marginLeft="7dp"
+                        android:background="@color/white">
+
+                    <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:id="@+id/iv_emotion_off"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/icon_emotion_blue"
+                            android:visibility="invisible"/>
+
+                    <ImageView
+                            android:layout_width="22.7dp"
+                            android:layout_height="22.7dp"
+                            android:id="@+id/iv_emotion_on"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/icon_emotion"
+                            android:visibility="visible"/>
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:id="@+id/relLayout3"
+                    android:layout_below="@+id/relLayout2"
+                    android:background="@color/white"
+                    android:layout_marginTop="9dp">
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/emotion_activation_Layout"
+                        android:background="@color/white">
+
+                    <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:id="@+id/iv_feel"
+                            android:layout_marginLeft="40dp"
+                            android:src="@drawable/smile"
+                            android:visibility="visible"/>
+
+                    <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:id="@+id/iv_feel2"
+                            android:layout_marginLeft="20dp"
+                            android:src="@drawable/like"
+                            android:visibility="visible"/>
+
+                </RelativeLayout>
+
+                <TextView
+                        android:layout_toRightOf="@+id/emotion_activation_Layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="엄마님 외 2명"
+                        android:textColor="@color/gray"
+                        android:textSize="11sp"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/tv_image_likes"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relLayout4"
+                    android:layout_below="@+id/relLayout3"
+                    android:layout_marginBottom="18dp"
+                    android:background="@color/white">
+
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="엄마와 함께 즐거운 데이트"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp"
+                        android:id="@+id/tv_post_caption"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="15dp"/>
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/gray"
+                    android:layout_below="@id/relLayout4"/>
+
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/relLayout4"
+                    android:id="@+id/btn_open_comment"
+                    android:layout_marginTop="10dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="댓글"
+                        android:textColor="@color/black"
+                        android:textSize="13sp"
+                        android:id="@+id/tv_comment"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1개"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:id="@+id/tv_comment_count"/>
+
+
+            </RelativeLayout>
+
+            <!--Comment Recycler View-->
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_comment"
+                    android:layout_below="@+id/btn_open_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_comment"
+                    android:background="@color/white"
+                    android:visibility="visible">
+            </android.support.v7.widget.RecyclerView>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white"
+            android:layout_alignParentBottom="true"
+    >
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:padding="5dp"
+                android:hint="     가족들에게 사랑의 댓글을 적어주세요."
+                android:inputType="textImeMultiLine"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:textSize="12sp"
+                android:id="@+id/et_comment"
+                android:background="@drawable/gray_border"/>
+
+        <TextView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="12dp"
+                android:text="등록"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/btn_post_comment"
+                android:layout_alignParentRight="true"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+
+

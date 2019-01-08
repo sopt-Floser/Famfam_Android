@@ -17,7 +17,7 @@ public class AddPostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_add_post);
+        setContentView(R.layout.activity_add_post);
     //권한이 있는지 확인
         if(checkPermissionsArray(com.sopt.famfam.adapter.Permissions.PERMISSIONS)) {
 

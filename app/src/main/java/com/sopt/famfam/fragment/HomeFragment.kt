@@ -12,11 +12,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.sopt.famfam.R
+import com.sopt.famfam.activity.CodeGeneratorActivity
 import com.sopt.famfam.adapter.FamilyListAdapter
 import com.sopt.famfam.adapter.item.FamilyListItem
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import java.util.*
-
+import org.jetbrains.anko.support.v4.startActivity
 
 
 class HomeFragment : Fragment() {
@@ -24,25 +24,38 @@ class HomeFragment : Fragment() {
         super.onResume()
     }
 
+    lateinit var content: ViewPager
 
-    lateinit var content : ViewPager
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_home, container, false)
-
         var familylist = view.rv_home_family
+        val newFragment = MoreVersionFragment()
+        val transaction = childFragmentManager.beginTransaction()
+        view.invite_btn.setOnClickListener {
+            startActivity<CodeGeneratorActivity>()
+        }
+        view.home_act_setting_btn.setOnClickListener {
+            // Store the Fragment in stack
+            transaction.addToBackStack(null)
+            transaction.replace(R.id.layout_more, newFragment).commit()
+        }
         content = view.vp_home_main_content
         var list = ArrayList<FamilyListItem>();
-        list.add(FamilyListItem(0,"","엄마"))
-        list.add(FamilyListItem(0,"","아빠"))
-        list.add(FamilyListItem(0,"","동생"))
-        familylist.adapter=FamilyListAdapter(context!!,list);
-        familylist.layoutManager= LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
-        val padding= 80
-        content.setPadding(160,0,160,0)
-        content.clipToPadding=false
-        content.pageMargin=80
+        list.add(FamilyListItem(0, "", "엄마"))
+        list.add(FamilyListItem(0, "", "아빠"))
+        list.add(FamilyListItem(0, "", "동생"))
+        familylist.adapter = FamilyListAdapter(context!!, list);
+        familylist.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+
+        val padding = 80
+        content.setPadding(160, 0, 160, 0)
+        content.clipToPadding = false
+        content.pageMargin = 80
         content.adapter = PagerAdapter(childFragmentManager!!, activity!!)
-        content.offscreenPageLimit=3
+
+        content.offscreenPageLimit = 3
+        content.setCurrentItem(100, true)
+
         return view
     }
 
@@ -57,11 +70,12 @@ class HomeFragment : Fragment() {
 //            frags.add(HomeAlertFrament())
 //        }
 
+
         override fun getItem(i: Int): android.support.v4.app.Fragment? {
 
-            when (i%3) {
-                0 -> return HomeCalendarFragment()
-                1 -> return HomeStatisticsFragment()
+            when (i % 3) {
+                0 -> return HomeStatisticsFragment()
+                1 -> return HomeCalendarFragment()
                 2 -> return HomeAlertFrament()
                 else -> return null
             }

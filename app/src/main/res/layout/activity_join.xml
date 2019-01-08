@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.CertificationActivity"
+        android:background="#FFFFFF">
+    <RelativeLayout
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    >
+        <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_small"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="61.7dp"/>
+        <TextView
+                android:layout_below="@+id/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="참여"
+                android:textSize="18sp"
+                android:textColor="#656565"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_marginTop="105dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/logo"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="코드 번호를 입력해주세요."
+                android:textColor="#656565"
+                android:textStyle="bold"/>
+        <TextView
+                android:layout_marginTop="8dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/title"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="생성자의 계정 더보기에서 확인 가능합니다."
+                android:textColor="#656565"/>
+    </RelativeLayout>
+    <LinearLayout
+            android:layout_marginTop="108dp"
+            android:layout_below="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+    >
+
+        <LinearLayout
+                android:id="@+id/et_code_generattor_act_phone_number_layout"
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:background="@drawable/certification_act_blue_request_authorization_code"
+        >
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+            >
+                <EditText
+                        android:layout_centerInParent="true"
+                        android:id="@+id/et_join_act_input_code"
+                        android:layout_centerVertical="true"
+                        android:letterSpacing="0.2"
+                        android:hint="●●●● ●●●● ●●●●"
+                        android:layout_marginLeft="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="#ffffff"
+                        android:inputType="number"
+                        android:imeOptions="actionDone"
+                />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/code_join_act_wrong_layout"
+                android:layout_marginTop="14dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="invisible"
+        >
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <RelativeLayout
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/layout_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="시간이 초과되었거나 잘못 입력한 번호입니다."
+                            android:textColor="#ee2a51"
+                    />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:background="#8a8a8a"
+            android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+                android:id="@+id/tv_code_generator_act_request_code_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/tv_code_generator_act_request_code_btn_text"
+                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="입력 완료"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+            />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+

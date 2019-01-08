@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.sopt.famfam">
+    xmlns:tools="http://schemas.android.com/tools" package="com.sopt.famfam">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -8,38 +8,40 @@
     <uses-permission android:name="android.permission.WRITH_EXTERNAL_STORAGE"/>
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+        android:name=".network.ApplicationController"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".activity.LoginActivity">
-
-        </activity>
-        <activity android:name=".activity.SignupActivity"
-                  android:windowSoftInputMode="stateHidden">
+            </activity>
+        <activity android:name=".activity.LoginActivity"/>
+        <activity
+            android:name=".activity.SignupActivity"
+            android:windowSoftInputMode="stateHidden">
         </activity>
         <activity android:name=".activity.SplashActivity">
+
         </activity>
+        <activity android:name=".activity.IntroActivity"/>
+        <activity android:name=".activity.AccessTermsActivity"/>
+        <activity android:name=".activity.CertificationActivity"/>
+        <activity android:name=".activity.ChatActivity"/>
+        <activity android:name=".activity.PoliciesActivity"/>
+        <activity android:name=".activity.PersonalInformationProtectionActivity"/>
+        <activity android:name=".activity.AddScheduleActivity"/>
+        <activity android:name=".activity.MoreDisconnectActivity"/>
+        <activity android:name=".activity.MoreSecedeActivity"/>
+        <activity android:name=".activity.JoinActivity"/>
         <activity android:name=".activity.AddPostActivity"></activity>
         <activity android:name=".activity.AddPhotoActivity"></activity>
-        <activity android:name=".activity.IntroActivity"></activity>
-        <activity android:name=".activity.CommentActivity"></activity>
-        <activity android:name=".activity.AccessTermsActivity"></activity>
-        <activity android:name=".activity.CertificationActivity"></activity>
-        <activity android:name=".activity.ChatActivity"></activity>
-        <activity android:name=".activity.PoliciesActivity"></activity>
-        <activity android:name=".activity.PersonalInformationProtectionActivity"></activity>
-        <activity android:name=".activity.AddScheduleActivity"></activity>
-        <activity android:name=".activity.MoreDisconnectActivity"></activity>
-        <activity android:name=".activity.MoreSecedeActivity"></activity>
         <service android:name=".FIreBaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
@@ -50,5 +52,19 @@
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
         </service>
+
+        <activity android:name=".activity.SelectActivity">
+        </activity>
+        <activity android:name=".activity.CodeGeneratorActivity">
+        </activity>
+        <activity android:name=".activity.FindIdActivity">
+        </activity>
+        <activity android:name=".activity.FindPwActivity">
+        </activity>
+        <activity android:name=".activity.ResettingPwActivity">
+        </activity>
+        <activity android:name=".activity.AlarmActivity">
+        </activity>
     </application>
+
 </manifest>

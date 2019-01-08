@@ -1,19 +1,9 @@
 package com.sopt.famfam.activity;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.sopt.famfam.R;
-import com.sopt.famfam.adapter.CommentAdapter;
-import com.sopt.famfam.adapter.item.CommentItem;
-
-import java.util.ArrayList;
 
 public class CommentActivity extends AppCompatActivity{
+/*
 
     RecyclerView.LayoutManager LayoutManager;
     protected void onCreate(Bundle savedInstanceState){
@@ -57,5 +47,6 @@ public class CommentActivity extends AppCompatActivity{
 
     }
 
+*/
 
 }

@@ -15,6 +15,14 @@
             android:src="@drawable/kim_fam_big"/>
     >
 
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+
+    </RelativeLayout>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -32,7 +40,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="재밌었어?재밌었어?재밌었어?재밌었어?재밌었어?재밌었어?재밌었어?재밌었어?재밌었어?"
+                    android:text="재밌었어?재밌었어?재밌었어?재밌었어?재밌었어?재밌었어?재밌었어?"
                     android:layout_marginLeft="20dp"
                     android:textColor="@color/black"
                     android:textSize="12sp"
@@ -44,12 +52,12 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_comment"
                     android:text="2018.07.02.14:20"
                     android:textColor="@color/gray"
                     android:textSize="9sp"
                     android:id="@+id/tv_comment_time"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:layout_alignBottom="@+id/tv_comment_comment"/>
 
 
 

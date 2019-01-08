@@ -4,11 +4,12 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.sopt.famfam.BaseBackPressedListener
 import com.sopt.famfam.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.sopt.famfam.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_more.view.*
 
-class MoreFragment : Fragment(){
+class MoreFragment : RootFragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.fragment_more, container, false)
 

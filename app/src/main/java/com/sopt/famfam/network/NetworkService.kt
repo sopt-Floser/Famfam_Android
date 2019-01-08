@@ -1,4 +1,9 @@
+package com.sopt.famfam.network
+
 import com.google.gson.JsonObject
+import com.sopt.famfam.post.PostLogInResponse
+import com.sopt.famfam.post.PostSignUpResponse
+import com.sopt.famfam.post.PostWriteBoardResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call

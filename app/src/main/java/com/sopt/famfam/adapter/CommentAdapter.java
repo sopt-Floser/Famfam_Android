@@ -27,7 +27,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_comment, parent, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
 
-        //클릭이벤트 추가 view.setOnClickListener(clickListener);
         return viewHolder;
     }
 
@@ -55,6 +54,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     public int getItemCount() {
         return commentItemArrayList.size();
     }
+    //클릭이벤트 추가 view.setOnClickListener(clickListener);
 
 /*   URL 받아오기
 
