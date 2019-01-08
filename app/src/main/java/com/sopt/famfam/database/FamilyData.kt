@@ -4,7 +4,7 @@ internal object FamilyData {
     var userName: String? = "김팸팸"
     var groupId: Int = 0
     var userId: String = ""
-    var token : String = ""
+    lateinit var token : String
     var statusMessage : String = ""
     var profilePhoto : String = ""
     var backPhoto : String = ""

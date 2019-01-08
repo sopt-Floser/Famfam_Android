@@ -1,15 +1,19 @@
 package com.sopt.famfam.network
 
 import com.google.gson.JsonObject
-import com.sopt.famfam.get.GetCommentCountResponse
-import com.sopt.famfam.get.GetContentCountResponse
-import com.sopt.famfam.get.GetFeelCountResponse
-import com.sopt.famfam.get.GetGroupUserResponse
 import com.sopt.famfam.post.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.ArrayList
+import android.provider.MediaStore
+import android.provider.DocumentsContract
+import android.content.ContentUris
+import android.os.Environment.getExternalStorageDirectory
+import android.os.Build
+import com.sopt.famfam.get.*
+
 
 interface NetworkService {
     //회원가입
@@ -48,7 +52,7 @@ interface NetworkService {
     fun postWriteBoardResponse(
         @Header("Authorization") token: String,
         @Part("title") title: RequestBody,
-        @Part("contents") contents: RequestBody,
+        @Part contents: MultipartBody.Part?,
         @Part photo: MultipartBody.Part?
     ): Call<PostWriteBoardResponse>
 
@@ -79,6 +83,23 @@ interface NetworkService {
         @Header("Authorization") token : String
     ) : Call<GetCommentCountResponse>
 
+    @GET("/contents")
+    fun getContentListResponse(
+        @Header("Authorization") token : String,
+        @Query("page") page : Int,
+        @Query("size") size : Int
+    ) : Call<GetContentListResponse>
+
+    //
+    @Multipart
+    @POST("/contents")
+    fun postWriteContentResponse(
+            @Header("Authorization") token : String,
+            @Header("Content-Type") content_type: String,
+            @Part("content") content: RequestBody,
+            @Part photos: List<MultipartBody.Part>
+    ): Call<PostWriteContentResponse>
+
 //
 //    //게시물 상세 보기
 //    @GET("/contents/{contentIdx}")
@@ -104,3 +125,5 @@ interface NetworkService {
 //"email" : "2",
 //"password" : "1234",
 //"part" : "서버"
+
+
