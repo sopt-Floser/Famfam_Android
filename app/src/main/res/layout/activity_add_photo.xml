@@ -61,11 +61,14 @@
         </RelativeLayout>
 
 
-        <gun0912.tedbottompicker.view.TedSquareFrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/select_photo">
-        </gun0912.tedbottompicker.view.TedSquareFrameLayout>
+    <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/select_photo"
+            android:fillViewport="false"
+            android:foregroundGravity="left">
+
+    </HorizontalScrollView>
 
 
 

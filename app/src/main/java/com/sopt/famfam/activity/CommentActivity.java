@@ -1,34 +1,28 @@
 package com.sopt.famfam.activity;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.sopt.famfam.R;
-import com.sopt.famfam.adapter.CommentAdapter;
-import com.sopt.famfam.adapter.item.CommentItem;
-
-import java.util.ArrayList;
 
 public class CommentActivity extends AppCompatActivity{
+/*
 
-    private CommentAdapter adapter = new CommentAdapter();
-
+    RecyclerView.LayoutManager LayoutManager;
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
 
         RecyclerView recyclerView = findViewById(R.id.rv_comment);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-        ArrayList<CommentItem> items = new ArrayList<>();
-        items.add(new CommentItem("","","",""));
-        items.add(new CommentItem("","","",""));
-        items.add(new CommentItem("","",".",""));
-        items.add(new CommentItem("","",".",""));
+        recyclerView.setLayoutManager(LayoutManager);
+
+
+        ArrayList<CommentItem> commentItemArrayList = new ArrayList<>();
+        commentItemArrayList.add(new CommentItem("","김팸팸","댓글입니다","2019-01-06"));
+        commentItemArrayList.add(new CommentItem("","김팸팸","댓글입니다","2019-01-06"));
+
+        CommentAdapter commentAdapter = new CommentAdapter(commentItemArrayList);
+        recyclerView.setAdapter(commentAdapter);
+
 
         ImageView btn_back = findViewById(R.id.backArrow);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -53,5 +47,6 @@ public class CommentActivity extends AppCompatActivity{
 
     }
 
+*/
 
 }

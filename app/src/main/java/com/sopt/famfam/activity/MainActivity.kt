@@ -12,12 +12,12 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.RelativeLayout
 import com.sopt.famfam.R
-import com.sopt.famfam.fragment.ChatFragment
 import com.sopt.famfam.fragment.HomeFragment
 import com.sopt.famfam.fragment.TodayFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     var adapter = PagerAdapter(supportFragmentManager, this)

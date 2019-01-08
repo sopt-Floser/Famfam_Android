@@ -6,13 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import com.sopt.famfam.R
 import com.sopt.famfam.adapter.item.ChatItem
-import com.sopt.famfam.adapter.item.DemoItem
-import kotlinx.android.synthetic.main.item_chat_other.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 

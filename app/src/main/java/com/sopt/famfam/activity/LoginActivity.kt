@@ -1,7 +1,7 @@
 package com.sopt.famfam.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser

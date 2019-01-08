@@ -14,7 +14,10 @@ import java.util.ArrayList;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
-    private ArrayList<CommentItem> items = new ArrayList<>();
+    private ArrayList<CommentItem> commentItemArrayList;
+    public CommentAdapter(ArrayList<CommentItem> commentItemArrayList) {
+        this.commentItemArrayList = commentItemArrayList;
+    }
     //View.OnClickListener clickListener;
 
     @NonNull
@@ -24,40 +27,13 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_comment, parent, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
 
-        //클릭이벤트 추가 view.setOnClickListener(clickListener);
         return viewHolder;
     }
 
+
     @Override
-    public void onBindViewHolder(@NonNull CommentAdapter.ViewHolder viewHolder, int position) {
-
-       CommentItem item = items.get(position);
-
-/*   URL 받아오기
-
-        Glide.with(viewHolder.itemView.getContext())
-                .load(item.get())
-                .into(viewHolder.ivMovie);
-
-
-        viewHolder.tvTitle.setText(item.getTitle());
-        viewHolder.tvContent.setText(item.getContent());
-        viewHolder.tvGenre.setText(item.getGenre());
-        viewHolder.tvGenre.setText(item.getGenre());
-
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
     }
-
-
-    public void setItems(ArrayList<CommentItem> items) {
-        this.items = items;
-    }
-
- */}
-    @Override
-    public int getItemCount() {
-        return items.size();
-    }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -69,9 +45,36 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
             ivProfile = itemView.findViewById(R.id.iv_comment_profile);
             tvName = itemView.findViewById(R.id.tv_comment_username);
-            tvComment = itemView.findViewById(R.id.tv_comment);
+            tvComment = itemView.findViewById(R.id.tv_comment_comment);
             tvCommenttime = itemView.findViewById(R.id.tv_comment_time);
         }
     }
+
+    @Override
+    public int getItemCount() {
+        return commentItemArrayList.size();
+    }
+    //클릭이벤트 추가 view.setOnClickListener(clickListener);
+
+/*   URL 받아오기
+
+        Glide.with(viewHolder.itemView.getContext())
+                .load(item.get())
+                .into(viewHolder.ivMovie);
+
+        viewHolder.tvTitle.setText(item.getTitle());
+        viewHolder.tvContent.setText(item.getContent());
+        viewHolder.tvGenre.setText(item.getGenre());
+        viewHolder.tvGenre.setText(item.getGenre());
+    }
+
+    public void setItems(ArrayList<CommentItem> items) {
+        this.items = items;
+    }
+
+ */
+
+
+
 }
 

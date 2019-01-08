@@ -6,20 +6,64 @@
                 android:layout_height="match_parent">
 
     <!-- top toolbar -->
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:id="@+id/albumToolBar"
+        android:background="@color/white">
+
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/relLay_album_top"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true">
+            android:layout_height="match_parent">
 
-        <include layout="@layout/snippet_album_top_profilebar"/>
+
+        <ImageView
+                android:id="@+id/btn_backArrow"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/icon_back_2" />
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/album_title"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/username"
+                    android:textSize="18sp"
+                    android:textColor="#656565"
+                    android:text="김팸팸"
+                    android:textStyle="bold"/>
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="의 사진첩"
+                    android:textColor="#656565"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 
+
+</android.support.v7.widget.Toolbar>
+
+
     <!-- Middle section (body) -->
     <ImageView
-            android:layout_below="@+id/relLay_album_top"
+            android:layout_below="@+id/albumToolBar"
             android:id="@+id/iv_album_bg"
             android:layout_width="match_parent"
             android:layout_height="200dp"

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
+
+<RelativeLayout android:layout_width="match_parent"
               android:layout_height="match_parent"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical">
 
     <!--Toolbar-->
@@ -57,7 +59,7 @@
                     android:layout_marginRight="20dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:id="@+id/spin_post_edit"
+                    android:id="@+id/btn_edit_post"
                     android:src="@drawable/icon_dot3"/>
 
         </RelativeLayout>
@@ -65,28 +67,25 @@
     </android.support.v7.widget.Toolbar>
 
 
-    <!-- Post -->
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
+    <!--Post-->
+    <ScrollView
+            android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/sv_post_body"
+                android:layout_below="@+id/PostToolBar"
+                android:paddingBottom="55dp">
 
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true">
+                android:background="@color/white">
 
             <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:id="@+id/relLayout1"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginStart="0dp">
+                    android:layout_alignParentTop="true">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="36.2dp"
@@ -96,7 +95,6 @@
                         android:layout_marginLeft="37dp"
                         android:layout_centerVertical="true"
                         android:src="@drawable/kim_fam_big"/>
-
 
                 <TextView
                         android:layout_width="wrap_content"
@@ -131,12 +129,13 @@
                     android:layout_below="@id/relLayout1">
             </android.support.v4.view.ViewPager>
 
-            <com.sopt.famfam.indicator.CircleIndicator
+            <com.sopt.famfam.indicator.CircleAnimIndicator
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:id="@+id/ci_post_vp"
                     android:layout_below="@+id/vp_post_img"
->            </com.sopt.famfam.indicator.CircleIndicator>
+                    android:layout_centerHorizontal="true">
+            </com.sopt.famfam.indicator.CircleAnimIndicator>
 
 
             <RelativeLayout
@@ -165,22 +164,13 @@
                     <ImageView
                             android:layout_width="22.7dp"
                             android:layout_height="22.7dp"
-                            android:id="@+id/image_emotion_on"
+                            android:id="@+id/iv_emotion_on"
                             android:layout_centerInParent="true"
                             android:layout_marginLeft="20dp"
                             android:src="@drawable/icon_emotion"
                             android:visibility="visible"/>
 
                 </RelativeLayout>
-
-                <ImageView
-                        android:layout_width="22.7dp"
-                        android:layout_height="22.7dp"
-                        android:id="@+id/speech_bubble"
-                        android:layout_toRightOf="@+id/emotion_Layout"
-                        android:src="@drawable/icon_share"
-                        android:visibility="visible"
-                        android:layout_centerVertical="true"/>
 
 
             </RelativeLayout>
@@ -248,7 +238,7 @@
                         android:textSize="12sp"
                         android:id="@+id/tv_post_caption"
                         android:layout_marginTop="15dp"
-                        android:layout_marginLeft="20dp"/>
+                        android:layout_marginStart="15dp"/>
 
 
             </RelativeLayout>
@@ -259,9 +249,10 @@
                     android:background="@color/gray"
                     android:layout_below="@id/relLayout4"/>
 
+
             <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:layout_below="@+id/relLayout4"
                     android:id="@+id/btn_open_comment"
                     android:layout_marginTop="10dp">
@@ -274,6 +265,7 @@
                         android:textColor="@color/black"
                         android:textSize="13sp"
                         android:id="@+id/tv_comment"
+                        android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"/>
 
                 <TextView
@@ -287,10 +279,62 @@
                         android:layout_marginRight="20dp"
                         android:id="@+id/tv_comment_count"/>
 
+
             </RelativeLayout>
+
+            <!--Comment Recycler View-->
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_comment"
+                    android:layout_below="@+id/btn_open_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_comment"
+                    android:background="@color/white"
+                    android:visibility="visible">
+            </android.support.v7.widget.RecyclerView>
 
 
         </RelativeLayout>
 
+
+    </ScrollView>
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/white"
+            android:layout_alignParentBottom="true"
+    >
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:padding="5dp"
+                android:hint="     가족들에게 사랑의 댓글을 적어주세요."
+                android:inputType="textImeMultiLine"
+                android:layout_marginRight="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
+                android:textSize="12sp"
+                android:id="@+id/et_comment"
+                android:background="@drawable/gray_border"/>
+
+        <TextView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="12dp"
+                android:text="등록"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:id="@+id/btn_post_comment"
+                android:layout_alignParentRight="true"/>
+
     </RelativeLayout>
-</LinearLayout>
+
+
+</RelativeLayout>
+
+
+

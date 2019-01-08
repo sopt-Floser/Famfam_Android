@@ -6,39 +6,7 @@
               android:orientation="vertical"
               android:background="@color/white">
 
-    <!-- Toobar -->
-    <android.support.v7.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/commentToolBar">
-
-        <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/backArrow"
-                    android:src="@drawable/icon_back_2"/>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="댓글"
-                    android:layout_centerVertical="true"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#656565"
-                    android:layout_toRightOf="@+id/backArrow"
-                    android:layout_marginLeft="20dp"/>
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.Toolbar>
-
+    <!-- view comment -->
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -59,7 +27,6 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
 
         <EditText
                 android:layout_width="match_parent"
