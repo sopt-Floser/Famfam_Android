@@ -7,6 +7,8 @@ import com.sopt.famfam.get.GetFeelCountResponse
 import com.sopt.famfam.get.GetGroupUserResponse
 import com.sopt.famfam.get.GetGroupsCreateCodeResponse
 import com.sopt.famfam.post.*
+import com.sopt.famfam.put.PutEditProfileResponse
+import com.sopt.famfam.put.PutResetPwResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -35,6 +37,14 @@ interface NetworkService {
         @Body() body: JsonObject
     ): Call<PostConfirmIdResponse>
 
+    ///users/password 비밀번호 수정
+    @PUT("/users/password")
+    fun putResetPwResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("Authorization") token : String,
+        @Body() body: JsonObject
+    ): Call<PutResetPwResponse>
+
     //그룹생성
     @POST("/groups")
     fun postGroupsResponse(
@@ -49,6 +59,13 @@ interface NetworkService {
         @Header("Authorization") token : String
     ) : Call<GetGroupsCreateCodeResponse>
 
+    // 프로필 정보 수정
+    @PUT("/users")
+    fun putEditProfileResponse (
+        @Header("Content-Type") content_type : String,
+        @Header("Authorization") token : String,
+        @Body() body: JsonObject
+    ) : Call<PutEditProfileResponse>
 
    //게시판 글쓰기
     @Multipart
