@@ -7,17 +7,67 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.sopt.famfam.R
+import com.sopt.famfam.database.FamilyData
+import com.sopt.famfam.database.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_signup.*
 import com.sopt.famfam.fragment.DatePickerFragment
+import com.sopt.famfam.network.ApplicationController
+import com.sopt.famfam.network.NetworkService
+import com.sopt.famfam.post.PostConfirmIdResponse
+import com.sopt.famfam.post.PostSignUpResponse
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.textColor
+import org.jetbrains.anko.toast
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.regex.Pattern
 
 
 class SignupActivity : AppCompatActivity() {
+
+
+//    companion object {
+//        private var instance: DatePickerFragment? = null
+//
+//        @Synchronized
+//        fun getInstance(year: Int, month: Int, day: Int): DatePickerFragment {
+//            if (instance == null) {
+//                instance = DatePickerFragment().apply {
+//                    arguments = Bundle().apply {
+//                        putString("year", year.toString())
+//                        putString("month", month.toString())
+//                        putString("day", day.toString())
+//                    }
+//                }
+//            }
+//            return instance!!
+//        }
+//    }
+
+
+    var sexType: Int = 0
+    var idCheck: Boolean = false
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
+//        savedInstanceState?.let {
+//            year = it.getString("year")
+//            month = it.getString("month")
+//            day = it.getString("day")
+//            Log.e("uuuu1", year)
+//            Log.e("uuuu1", month)
+//        Log.e("uuuu1", day)
+//        }
 
         setOnBtnClickListener()
         editTextChangeListener()
@@ -58,9 +108,6 @@ class SignupActivity : AppCompatActivity() {
 //        }
 
 
-
-
-
     }
 
     private fun setOnBtnClickListener() {
@@ -68,7 +115,7 @@ class SignupActivity : AppCompatActivity() {
             val newFragment = DatePickerFragment()
             newFragment.show(fragmentManager, "Date Picker")
         }
-        var sexType: Int
+
         // female -> true, male -> false
 
         tv_signup_act_sex_female.setOnClickListener {
@@ -96,6 +143,7 @@ class SignupActivity : AppCompatActivity() {
         }
 
         tv_signup_act_complete_signup.setOnClickListener {
+            getSignUpResponse()
             startActivity<SelectActivity>()
             finish()
         }
@@ -135,12 +183,17 @@ class SignupActivity : AppCompatActivity() {
                 s: CharSequence, start: Int,
                 before: Int, count: Int
             ) {
+                postConfirmIdResponse()
                 if (s.isEmpty()) {
                     tv_signup_act_id_validation_check_text.visibility = View.VISIBLE
                     iv_signup_act_id_validation_check_ok.visibility = View.INVISIBLE
                 } else {
+                    if (idCheck) {
+                        tv_signup_act_id_validation_check_text.visibility = View.INVISIBLE
+                        iv_signup_act_id_validation_check_ok.visibility = View.VISIBLE
+                    }
                     tv_signup_act_id_validation_check_text.visibility = View.INVISIBLE
-                    iv_signup_act_id_validation_check_ok.visibility = View.VISIBLE
+                    iv_signup_act_id_validation_check_ok.visibility = View.INVISIBLE
                 }
             }
         })
@@ -207,4 +260,103 @@ class SignupActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun getSignUpResponse() {
+        //EditText에 있는 값 받기
+        val hint = tv_signup_act_datepicker_text.hint
+        val year = hint.split('.')[0]
+        val month = hint.split('.')[1]
+        val day = hint.split('.')[2]
+        val input_userName: String = et_signup_act_input_nickname.text.toString()
+        val input_userId: String = et_signup_act_input_id.text.toString()
+        val input_userPw: String = et_signup_act_input_confirm_pw.text.toString()
+        val input_userPhone: String = intent.getStringExtra("phoneNumber")
+        val input_birthday: String = "$year-$month-$day" + "T00:00"
+        val input_sexType: Int = sexType
+        //Json 형식의 객체 만들기
+        var jsonObject = JSONObject()
+        jsonObject.put("userName", input_userName)
+        jsonObject.put("userId", input_userId)
+        jsonObject.put("userPw", input_userPw)
+        jsonObject.put("userPhone", input_userPhone)
+        jsonObject.put("birthday", input_birthday)
+        jsonObject.put("sexType", input_sexType)
+        //Gson 라이브러리의 Json Parser을 통해 객체를 Json으로!
+        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+        //통신 시작
+        val postSignUpResponse: Call<PostSignUpResponse> =
+            networkService.postSignUpResponse("application/json", gsonObject)
+        postSignUpResponse.enqueue(object : Callback<PostSignUpResponse> {
+            override fun onFailure(call: Call<PostSignUpResponse>, t: Throwable) {
+                Log.e("Sign Up Fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostSignUpResponse>, response: Response<PostSignUpResponse>) {
+                if (response.isSuccessful) {
+                    val token = response.body()!!.data.token
+                    FamilyData.groupId=response.body()!!.data.user.groupIdx
+                    FamilyData.userId=response.body()!!.data.user.userId
+                    FamilyData.userName=response.body()!!.data.user.userName
+                    FamilyData.token=token
+                    FamilyData.statusMessage =response.body()!!.data.user.statusMessage
+                    FamilyData.birthday = response.body()!!.data.user.birthday
+                    FamilyData.sexType = response.body()!!.data.user.sexType
+                    SharedPreferenceController.setLoginData(this@SignupActivity,
+                        FamilyData.groupId.toString() + "," +
+                                FamilyData.userId + "," +
+                                FamilyData.userName+ ","+
+                                FamilyData.statusMessage+","+
+                                FamilyData.birthday+","+
+                                FamilyData.sexType
+                    )
+                    SharedPreferenceController.setAuthorization(this@SignupActivity, token)
+                    var message: String = response.body()!!.message
+                    toast(message)
+                    finish()
+                }
+            }
+        })
+    }
+
+    private fun postConfirmIdResponse() {
+        //EditText에 있는 값 받기
+        val input_userId: String = et_signup_act_input_id.text.toString()
+        //Json 형식의 객체 만들기
+        var jsonObject = JSONObject()
+        jsonObject.put("userId", input_userId)
+        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
+
+        Log.e("uuuu1", input_userId)
+
+
+        //통신 시작
+        val postConfirmIdResponse: Call<PostConfirmIdResponse> =
+            networkService.postConfirmIdResponse("application/json", gsonObject)
+        postConfirmIdResponse.enqueue(object : Callback<PostConfirmIdResponse> {
+            override fun onFailure(call: Call<PostConfirmIdResponse>, t: Throwable) {
+                Log.e("Sign Up Fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostConfirmIdResponse>, response: Response<PostConfirmIdResponse>) {
+                if (response.isSuccessful) {
+                    var message: String = response.body()!!.message
+                    toast(message)
+                    //tv_confirm_id_text
+                    if (message == "사용할 수 있는 아이디입니다.") {
+                        val strColor = "#366ce2"
+                        tv_confirm_id_text.setTextColor(Color.parseColor(strColor))
+                        idCheck = true
+                    } else {
+                        val strColor = "#8a8a8a"
+                        tv_confirm_id_text.setTextColor(Color.parseColor(strColor))
+                        idCheck = false
+                    }
+
+//                    finish()
+                }
+            }
+        })
+    }
 }
+

@@ -21,6 +21,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ChildEventListener
 import org.jetbrains.anko.toast
+import java.text.SimpleDateFormat
+import java.time.LocalDate
 
 
 class ChatActivity : AppCompatActivity() {
@@ -30,6 +32,7 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
         var time = Date()
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
         //data class ChatItem(var id:String, var name : String,var content : String, var time : String, var type : Int){
 
         et_chat_comment.setOnKeyListener(View.OnKeyListener { view, i, keyEvent ->
@@ -38,7 +41,7 @@ class ChatActivity : AppCompatActivity() {
                 KeyEvent.KEYCODE_ENTER -> {
                     if (keyEvent.action == 1)
                         return@OnKeyListener true
-                    val chat = ChatItem(FamilyData.userId.toString(),FamilyData.userName!!, et_chat_comment.getText().toString(),time.toString(),0) //ChatDTO를 이용하여 데이터를 묶는다.
+                    val chat = ChatItem(FamilyData.userId.toString(),FamilyData.userName!!, et_chat_comment.getText().toString(),sdf.format(time),0) //ChatDTO를 이용하여 데이터를 묶는다.
                     databaseReference.child(FamilyData.groupId.toString()).push().setValue(chat) //databaseReference를 이용해 데이터 푸쉬
                     et_chat_comment.setText("")
                 }
@@ -46,11 +49,11 @@ class ChatActivity : AppCompatActivity() {
             false
         })
 
-        btn_chat_send.setOnClickListener({
-            val chat = ChatItem(FamilyData.userId.toString(),FamilyData.userName!!, et_chat_comment.getText().toString(),time.toString(),0) //ChatDTO를 이용하여 데이터를 묶는다.
+        btn_chat_send.setOnClickListener{
+            val chat = ChatItem(FamilyData.userId.toString(),FamilyData.userName!!, et_chat_comment.getText().toString(),sdf.format(time),0) //ChatDTO를 이용하여 데이터를 묶는다.
             databaseReference.child(FamilyData.groupId.toString()).push().setValue(chat) //databaseReference를 이용해 데이터 푸쉬
             et_chat_comment.setText("")
-        })
+        }
         var list = ArrayList<ChatItem>()
         var adapter = ChatAdapter(applicationContext,list)
         rv_chat_chatlist.adapter = adapter
@@ -61,9 +64,13 @@ class ChatActivity : AppCompatActivity() {
         databaseReference.child(FamilyData.groupId.toString()).addChildEventListener(object : ChildEventListener {  // message는 child의 이벤트를 수신합니다.
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
                 val chatData = dataSnapshot.getValue(ChatItem::class.java)  // chatData를 가져오고
+                if((chatData as ChatItem).id==FamilyData.userId)
+                    chatData.type=0
+                else
+                    chatData.type=1
                 list.add(chatData!!)  // adapter에 추가합니다.
                 rv_chat_chatlist.adapter!!.notifyDataSetChanged()
-                toast("받음")
+                rv_chat_chatlist.scrollToPosition(list.size - 1);
             }
 
             override fun onChildChanged(dataSnapshot: DataSnapshot, s: String?) {}

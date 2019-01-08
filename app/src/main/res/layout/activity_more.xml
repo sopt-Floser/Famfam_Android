@@ -32,7 +32,7 @@
             android:textSize="18sp"/>
 
     <TextView
-            android:id="@+id/tv_more_intro"
+            android:id="@+id/tv_more_statusMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_more_nickname"
@@ -41,19 +41,25 @@
             android:layout_toRightOf="@id/iv_more_profile_img"
             android:text="첫째 김팸팸 입니다."
             android:textSize="16sp"/>
-    <TextView
-            android:layout_marginRight="16dp"
-            android:layout_alignBottom="@+id/tv_more_intro"
-            android:textSize="18dp"
-            android:layout_alignParentRight="true"
+    <RelativeLayout
             android:id="@+id/btn_more_editprofile"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:text="편집"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp"
+            android:layout_alignBottom="@+id/tv_more_statusMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp">
+        <TextView
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="편집"/>
+    </RelativeLayout>
+
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/tv_more_intro"
+            android:layout_below="@id/tv_more_statusMessage"
             android:orientation="vertical"
             android:paddingLeft="32dp"
             android:paddingTop="16dp"

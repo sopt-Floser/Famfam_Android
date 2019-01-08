@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit
 
 class CertificationActivity : AppCompatActivity(), View.OnClickListener {
 
-
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
     // [END declare_auth]
@@ -30,14 +29,15 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_certification)
 
-
+        Log.d("uuuu1", "1")
         // Restore instance state
         if (savedInstanceState != null) {
             onRestoreInstanceState(savedInstanceState)
         }
+        Log.d("uuuu1","2")
 
         // Assign click listeners
-        tv_certification_act_request_code_btn.setOnClickListener(this)
+        tv_certification_act_request_code_btn_text1.setOnClickListener(this)
         tv_certification_act_complete_btn.setOnClickListener(this)
         btn_resend_code.setOnClickListener(this)
 //        signOutButton.setOnClickListener(this)
@@ -117,8 +117,6 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
         // [END phone_auth_callbacks]
-
-//        setOnBtnClickListener()
     }
 
     // [START on_start_check_user]
@@ -135,6 +133,7 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
             startPhoneNumberVerification(phoneNumber)
             Log.v("uuuu1", "onStart1")
         }
+        Log.v("uuuu1", et_certification_act_input_phone_number.text.toString())
         Log.v("uuuu1", "onStart2")
         // [END_EXCLUDE]
     }
@@ -198,7 +197,7 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "핸드폰 가입 성공:success")
+                    Log.d("uuuu1", "핸드폰 가입 성공:success")
 
                     val user = task.result?.user
                     // [START_EXCLUDE]
@@ -206,7 +205,7 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
                     // [END_EXCLUDE]
                 } else {
                     // Sign in failed, display a message and update the UI
-                    Log.w(TAG, "핸드폰 가입 실패:failure", task.exception)
+                    Log.w("uuuu1", "핸드폰 가입 실패:failure", task.exception)
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
                         // [START_EXCLUDE silent]
@@ -245,26 +244,26 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
         when (uiState) {
             STATE_INITIALIZED -> {
                 // Initialized state, show only the phone number field and start button
-                enableViews(tv_certification_act_request_code_btn_text, et_certification_act_input_phone_number)
-                disableViews(tv_certification_act_request_code_btn, btn_resend_code, et_certification_act_input_code)
+                enableViews(tv_certification_act_request_code_btn1, et_certification_act_input_phone_number)
+                disableViews(tv_certification_act_request_code_btn1, btn_resend_code, et_certification_act_input_code)
 //                detail.text = null
             }
             STATE_CODE_SENT -> {
                 // Code sent state, show the verification field, the
                 enableViews(
-                    tv_certification_act_request_code_btn_text,
+                    tv_certification_act_request_code_btn_text1,
                     btn_resend_code,
                     et_certification_act_input_phone_number,
                     et_certification_act_input_code
                 )
-                disableViews(tv_certification_act_request_code_btn)
+                disableViews(tv_certification_act_request_code_btn1)
 //                detail.setText(R.string.status_code_sent)
             }
             STATE_VERIFY_FAILED -> {
                 // Verification has failed, show all options
                 enableViews(
-                    tv_certification_act_request_code_btn_text,
-                    tv_certification_act_request_code_btn,
+                    tv_certification_act_request_code_btn_text1,
+                    tv_certification_act_request_code_btn1,
                     btn_resend_code,
                     et_certification_act_input_phone_number,
                     et_certification_act_input_code
@@ -274,8 +273,8 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
             STATE_VERIFY_SUCCESS -> {
                 // Verification has succeeded, proceed to firebase sign in
                 disableViews(
-                    tv_certification_act_request_code_btn_text,
-                    tv_certification_act_request_code_btn,
+                    tv_certification_act_request_code_btn_text1,
+                    tv_certification_act_request_code_btn1,
                     btn_resend_code,
                     et_certification_act_input_phone_number,
                     et_certification_act_input_code
@@ -347,24 +346,25 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         val number: String = et_certification_act_input_phone_number.text.toString()
         val phoneNumber: String = "+82" + number.substring(1, 11)
+        Log.d("uuuu1","onclixk")
         when (view.id) {
-            R.id.tv_certification_act_request_code_btn -> {
-
-                Log.v("uuuu1", "tv_certification_act_request_code_btn_text")
+            R.id.tv_certification_act_request_code_btn_text1 -> {
+                Log.v("uuuu1", "버튼 눌림")
                 if (!validatePhoneNumber()) {
                     return
                 }
                 et_certification_act_input_code.requestFocus()
                 certification_act_request_code_layout.visibility = View.VISIBLE
                 tv_certification_act_complete_btn.visibility = View.VISIBLE
-                tv_certification_act_request_code_btn.visibility = View.GONE
+                tv_certification_act_request_code_btn1.visibility = View.GONE
 
                 startPhoneNumberVerification(phoneNumber)
                 Log.d("uuuu1", phoneNumber)
             }
             R.id.tv_certification_act_complete_btn -> {
                 val code = et_certification_act_input_code.text.toString()
-                startActivity<SignupActivity>()
+                val phoneNumber : String = et_certification_act_input_phone_number.text.toString()
+                startActivity<SignupActivity>("phoneNumber" to phoneNumber)
                 if (TextUtils.isEmpty(code)) {
                     et_certification_act_input_code.error = "Cannot be empty."
                     return
@@ -377,6 +377,8 @@ class CertificationActivity : AppCompatActivity(), View.OnClickListener {
 //            R.id.signOutButton -> signOut()
         }
     }
+
+
 
     companion object {
         private const val TAG = "PhoneAuthActivity"

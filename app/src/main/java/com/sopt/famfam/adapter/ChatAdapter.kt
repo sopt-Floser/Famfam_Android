@@ -9,12 +9,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.sopt.famfam.R
 import com.sopt.famfam.adapter.item.ChatItem
+import java.text.SimpleDateFormat
+import java.util.*
+
 val MY_CHAT = 0
 val OTHER_CHAT = 1
 val PHOTO = 2
 val EMOTICON = 3
 val VIDEO = 4
 val SYSTEM = 5
+
 class ChatAdapter(var context: Context, var list: ArrayList<ChatItem>) : RecyclerView.Adapter<ChatAdapter.Holder>() {
     var preItemType = 0;
     override fun onCreateViewHolder(p0: ViewGroup, viewType: Int): Holder {
@@ -47,13 +51,32 @@ class ChatAdapter(var context: Context, var list: ArrayList<ChatItem>) : Recycle
     override fun onBindViewHolder(holder: Holder, position: Int) {
         var viewType = holder.viewType
         if (viewType == MY_CHAT) {
-            holder.content.text=list.get(position).content
-            holder.time.text = list.get(position).time
+            holder.content.text = list.get(position).content
+            if (position > 0) {
+                // 이전 메시지와 타입이 같으면
+                if (list.get(position - 1).type == list.get(position).type) {
+                    holder.time.visibility = View.GONE
+                }
+            }
+            val dt = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+            val date = dt.parse(list.get(position).time)
+            holder.time.text = date.hours.toString() + ":" + date.minutes.toString()
         } else if (viewType == OTHER_CHAT) {
             // 이미지 해
-            holder.content.text=list.get(position).content
+            if (position > 0) {
+                // 이전 메시지와 타입이 같으면
+                if (list.get(position - 1).type == list.get(position).type) {
+                    holder.profile.visibility = View.GONE
+                    holder.time.visibility = View.GONE
+                    holder.nickname.visibility = View.GONE
+                }
+            }
+            holder.content.text = list.get(position).content
             holder.nickname.text = list.get(position).name
-            holder.time.text = list.get(position).time
+            val dt = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+            val date = dt.parse(list.get(position).time)
+            holder.time.text = date.hours.toString() + ":" + date.minutes.toString()
+
         } else if (viewType == PHOTO) {
 
         } else if (viewType == EMOTICON) {
@@ -66,19 +89,20 @@ class ChatAdapter(var context: Context, var list: ArrayList<ChatItem>) : Recycle
     }
 
     class Holder(var view: View?, var viewType: Int) : RecyclerView.ViewHolder(view!!) {
-        lateinit var nickname : TextView
-        lateinit var content : TextView
-        lateinit var profile : ImageView
-        lateinit var time : TextView
+        lateinit var nickname: TextView
+        lateinit var content: TextView
+        lateinit var profile: ImageView
+        lateinit var time: TextView
+
         init {
             if (viewType == MY_CHAT) {
-                time=view!!.findViewById(R.id.tv_chat_me_time)
-                content=view!!.findViewById(R.id.tv_chat_me)
+                time = view!!.findViewById(R.id.tv_chat_me_time)
+                content = view!!.findViewById(R.id.tv_chat_me)
             } else if (viewType == OTHER_CHAT) {
-                time=view!!.findViewById(R.id.tv_chat_other_time)
-                content=view!!.findViewById(R.id.tv_chat_other)
-                profile=view!!.findViewById(R.id.iv_chat_profile)
-                nickname=view!!.findViewById(R.id.tv_chat_other_nickname)
+                time = view!!.findViewById(R.id.tv_chat_other_time)
+                content = view!!.findViewById(R.id.tv_chat_other)
+                profile = view!!.findViewById(R.id.iv_chat_profile)
+                nickname = view!!.findViewById(R.id.tv_chat_other_nickname)
             } else if (viewType == PHOTO) {
 
             } else if (viewType == EMOTICON) {

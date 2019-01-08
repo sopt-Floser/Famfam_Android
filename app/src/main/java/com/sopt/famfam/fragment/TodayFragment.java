@@ -48,8 +48,8 @@ public class TodayFragment extends Fragment {
         recyclerView.setAdapter(todayAdapter);
 
 
-        // 게시물 올리기 버튼
         ImageView btnAddPost = (ImageView)rootView.findViewById(R.id.btn_today_addPost);
+
         btnAddPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

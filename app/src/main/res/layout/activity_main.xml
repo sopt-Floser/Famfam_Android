@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             app:tabTextColor="#adadad"
-            app:tabIndicatorColor="#F0D992"
-            app:tabIndicatorHeight="3dp"></android.support.design.widget.TabLayout>
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabIndicatorHeight="1dp"></android.support.design.widget.TabLayout>
 
 </LinearLayout>
