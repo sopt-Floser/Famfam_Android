@@ -34,6 +34,8 @@ class LoginActivity : AppCompatActivity() {
             FamilyData.groupId = tmp[0].toInt()
             FamilyData.userId = tmp[1]
             FamilyData.userName = tmp[2]
+            FamilyData.token=SharedPreferenceController.getAuthorization(this)
+
         }
         if (SharedPreferenceController.getAuthorization(this).isNotEmpty()) {
             startActivity<MainActivity>()

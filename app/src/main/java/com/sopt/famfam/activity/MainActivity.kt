@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
             }
+
             override fun onPageSelected(position: Int) {
                 index = position
             }
@@ -59,10 +60,21 @@ class MainActivity : AppCompatActivity() {
             }
             return@OnTouchListener true
         })
+        tab.getTabAt(3)?.customView?.setOnTouchListener(View.OnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                }
+                MotionEvent.ACTION_UP -> {
+                    //startActivity<ChatActivity>()
+                    //달력
+                }
+            }
+            return@OnTouchListener true
+        })
     }
 
     override fun onBackPressed() {
-        var curFrags  = adapter.getItem(index).childFragmentManager
+        var curFrags = adapter.getItem(index).childFragmentManager
 
         val count = curFrags.backStackEntryCount
 
@@ -82,11 +94,15 @@ class MainActivity : AppCompatActivity() {
             this.context = context
             frags.add(TodayFragment())
             frags.add(HomeFragment())
+            frags.add(HomeFragment())
+            frags.add(HomeFragment())
+
 
         }
 
         override fun getItem(i: Int): android.support.v4.app.Fragment {
-            return frags[i]
+                return frags[i]
+
         }
 
         override fun getCount(): Int {
