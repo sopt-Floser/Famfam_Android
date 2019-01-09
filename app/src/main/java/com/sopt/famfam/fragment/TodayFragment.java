@@ -125,7 +125,7 @@ public class TodayFragment extends Fragment {
                                 "1개"));
 
                     }
-                    TodayAdapter todayAdapter = new TodayAdapter(todayItemArrayList, getContext());
+                    TodayAdapter todayAdapter = new TodayAdapter(getChildFragmentManager(),todayItemArrayList, getContext());
                     recyclerView.setAdapter(todayAdapter);
                 }
             }
