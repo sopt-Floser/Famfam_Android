@@ -4,15 +4,25 @@ import android.animation.Animator
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
-import android.widget.Toast
 import com.airbnb.lottie.LottieAnimationView
 import com.sopt.famfam.R
-import kotlinx.android.synthetic.main.activity_splash.*
+import com.sopt.famfam.database.FamilyData
+import com.sopt.famfam.database.SharedPreferenceController
+import com.sopt.famfam.network.ApplicationController
+import com.sopt.famfam.network.NetworkService
+import com.sopt.famfam.post.GetLogInResponse
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SplashActivity : AppCompatActivity() {
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,12 +37,8 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-//                val handler = Handler()
-//                handler.postDelayed({
-                    startActivity(Intent(applicationContext, IntroActivity::class.java))
-                    finish()
-//                }, 1100)
-
+                val token = SharedPreferenceController.getAuthorization(applicationContext)
+                getLoginResponse(token)
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -43,5 +49,55 @@ class SplashActivity : AppCompatActivity() {
                 Log.e("Animation:", "start")
             }
         })
+    }
+
+    private fun getLoginResponse(token: String) {
+        if (token.isNotEmpty()) {
+            val getLoginResponse = networkService.getLoginResponse("application/json", token)
+            getLoginResponse.enqueue(object : Callback<GetLogInResponse> {
+                override fun onFailure(call: Call<GetLogInResponse>, t: Throwable) {
+                    Log.e("Login fail", t.toString())
+                }
+
+                override fun onResponse(call: Call<GetLogInResponse>, response: Response<GetLogInResponse>) {
+                    if (response.isSuccessful) {
+                        val token = response.body()!!.data.token
+                        FamilyData.groupId = response.body()!!.data.user.groupIdx
+                        FamilyData.userId = response.body()!!.data.user.userId
+                        FamilyData.userName = response.body()!!.data.user.userName
+                        FamilyData.token = token
+                        FamilyData.statusMessage = response.body()!!.data.user.statusMessage
+                        FamilyData.birthday = response.body()!!.data.user.birthday
+//                        FamilyData.backPhoto = response.body()!!.data.user.backPhoto
+//                        FamilyData.profilePhoto = response.body()!!.data.user.profilePhoto
+                        FamilyData.sexType = response.body()!!.data.user.sexType
+                        Log.e("uuuu1", token)
+
+                        SharedPreferenceController.setLoginData(
+                            this@SplashActivity,
+                            FamilyData.groupId.toString() + "," +
+                                    FamilyData.userId + "," +
+                                    FamilyData.userName + "," +
+                                    FamilyData.statusMessage + "," +
+                                    FamilyData.birthday + "," +
+                                    FamilyData.sexType
+                        )
+                        SharedPreferenceController.setAuthorization(this@SplashActivity, token)
+                        toast(SharedPreferenceController.getAuthorization(this@SplashActivity))
+                        val groupIdx = FamilyData.groupId.toString()
+                        Log.e("uuuu1", groupIdx)
+                        if (groupIdx == "-1") {
+                            startActivity<SelectActivity>()
+                        } else {
+                            startActivity<MainActivity>()
+                            finish()
+                        }
+                    }
+                }
+            })
+        } else {
+            startActivity(Intent(applicationContext, IntroActivity::class.java))
+            finish()
+        }
     }
 }

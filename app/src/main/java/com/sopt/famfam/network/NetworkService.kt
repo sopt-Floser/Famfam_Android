@@ -27,6 +27,13 @@ interface NetworkService {
         @Body() body: JsonObject
     ): Call<PostLogInResponse>
 
+    //자동로그인
+    //로그인
+    @GET("/login")
+    fun getLoginResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("Authorization") token : String
+    ): Call<GetLogInResponse>
 
     //아이디 중복체크
     @POST("/users/id")
