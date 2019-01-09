@@ -65,12 +65,12 @@ interface NetworkService {
     ): Call<PostGroupsResponse>
 
     // 그룹참여
-//    @POST("/groups/join")
-//    fun postJoinGroupsPwResponse(
-//        @Header("Content-Type") content_type: String,
-//        @Header("Authorization") token : String,
-//        @Body() body: JsonObject
-//    ): Call<PostJoinGroupsPwResponse>
+    @POST("/groups/join")
+    fun postJoinGroupsResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("Authorization") token : String,
+        @Body() body: JsonObject
+    ): Call<PostJoinGroupsResponse>
 
     // 그룹초대코드 생성/조회
     @GET("/groups/invitation")
