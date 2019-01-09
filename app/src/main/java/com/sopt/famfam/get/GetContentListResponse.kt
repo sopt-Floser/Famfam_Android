@@ -4,11 +4,15 @@ package com.sopt.famfam.get
 data class GetContentListResponse(
     val status : Int,
     val message : String,
-    val data : ArrayList<Contents>
+    val data : PostContent
+)
+data class PostContent(
+    val totalPage : Int,
+    val contents : ArrayList<Contents>
 )
 
 data class Contents(
-    val totalPage : Int,
+    val userName : String,
     val photos : ArrayList<Photos>,
     val content : MainContents
 )

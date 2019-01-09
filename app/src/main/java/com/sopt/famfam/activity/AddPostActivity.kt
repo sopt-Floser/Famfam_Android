@@ -104,7 +104,7 @@ class AddPostActivity : AppCompatActivity() {
         if (input_contents.isNotEmpty()) {
             //Multipart 형식은 String을 RequestBody 타입으로 바꿔줘야 합니다!
             val token = SharedPreferenceController.getAuthorization(this)
-            var contents = RequestBody.create(MediaType.parse("text/plain"), input_contents)
+            var contents = RequestBody.create(MediaType.parse("text/plain"), "sada")
 
             var images = ArrayList<MultipartBody.Part>()
             //images.add(MultipartBody.Part.createFormData("contents",input_contents))
@@ -113,20 +113,19 @@ class AddPostActivity : AppCompatActivity() {
                 val surveyBody = RequestBody.create(MediaType.parse("image/*"), file)
                 images.add(MultipartBody.Part.createFormData("photos", file.name, surveyBody))
             }
-            Log.d("asd","업로드")
-            val postWriteBoardResponse = networkService.postWriteContentResponse(FamilyData.token, "multipart/form-data", contents)
+            Log.d("asd","업로드"+FamilyData.token)
+            val postWriteBoardResponse = networkService.postWriteContentResponse(token, "application/x-www-form-urlencoded", contents,images)
             postWriteBoardResponse.enqueue(object : Callback<PostWriteContentResponse> {
                 override fun onFailure(call: Call<PostWriteContentResponse>, t: Throwable) {
                     Log.e("asd", t.toString())
                 }
                 override fun onResponse(call: Call<PostWriteContentResponse>, response: Response<PostWriteContentResponse>) {
-                    Log.d("asd",response.message())
+                    Log.d("asd","asdhhh"+response.body().toString())
                     if (response.isSuccessful) {
                         toast(response.body()!!.message)
-
-                        //BoardActivity로 결과 보내기
-                        setResult(Activity.RESULT_OK)
                         finish()
+                    } else {
+                         toast(response.body()!!.message)
                     }
                 }
             })

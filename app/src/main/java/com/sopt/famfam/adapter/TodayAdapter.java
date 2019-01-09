@@ -78,7 +78,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         TodayViewHolder todayViewHolder = (TodayViewHolder) viewHolder;
 
-        todayViewHolder.profile.setImageResource(todayItemArrayList.get(position).profile);
+        //todayViewHolder.profile.setImageResource(todayItemArrayList.get(position).profile);
         todayViewHolder.username.setText(todayItemArrayList.get(position).name);
         todayViewHolder.posted_time.setText(todayItemArrayList.get(position).posted_time);
         //getBoardListResponse( todayViewHolder.vp);
