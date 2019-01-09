@@ -88,28 +88,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                <RelativeLayout
-                        android:layout_marginTop="8dp"
-                        android:layout_below="@+id/layout_2"
-                        android:id="@+id/layout_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true">
-                    <TextView
-                            android:id="@+id/tv_certification_act_seconds"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3:00"
-                            android:textColor="#366ce2"
-                    />
-                    <TextView
-                            android:layout_toRightOf="@+id/tv_certification_act_seconds"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="내 미입력시 재인증해야합니다."
-                    />
+                <!--<RelativeLayout-->
+                        <!--android:layout_marginTop="8dp"-->
+                        <!--android:layout_below="@+id/layout_2"-->
+                        <!--android:id="@+id/layout_3"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_alignParentRight="true">-->
+                    <!--<TextView-->
+                            <!--android:id="@+id/tv_certification_act_seconds"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="3:00"-->
+                            <!--android:textColor="#366ce2"-->
+                    <!--/>-->
+                    <!--<TextView-->
+                            <!--android:layout_toRightOf="@+id/tv_certification_act_seconds"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="내 미입력시 재인증해야합니다."-->
+                    <!--/>-->
 
-                </RelativeLayout>
+                <!--</RelativeLayout>-->
 
             </RelativeLayout>
 
@@ -135,7 +135,7 @@
                     android:layout_centerInParent="true"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="코드생성"
+                    android:text="코드 조회"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     android:textStyle="bold"

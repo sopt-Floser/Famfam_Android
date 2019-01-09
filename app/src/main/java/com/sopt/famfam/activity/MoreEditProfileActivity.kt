@@ -10,6 +10,8 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.famfam.R
 import com.sopt.famfam.database.FamilyData
+import com.sopt.famfam.fragment.DatePickerFragment
+import com.sopt.famfam.fragment.DatePickerFragment3
 import com.sopt.famfam.get.GetGroupsCreateCodeResponse
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
@@ -56,24 +58,19 @@ class MoreEditProfileActivity : AppCompatActivity() {
         edit_nickname_statusMessage_btn.setOnClickListener {
             // 닉네임 수정
             tv_more_editprofile_nickname.isEnabled = true
-//            val grayColor = "#9a9a9a"
-//            tv_more_editprofile_nickname.setBackgroundColor(Color.parseColor(grayColor))
             tv_more_editprofile_statusmessage.isEnabled = true
-//            tv_more_editprofile_statusmessage.setBackgroundColor(Color.parseColor(grayColor))
-//            nickname = tv_more_editprofile_nickname.text
-//            statusMessage = tv_more_editprofile_statusmessage.text
             more_edit_complete_btn.visibility = View.VISIBLE
         }
         tv_more_editprofile_birth_edit.setOnClickListener {
             // 생일 수정
             tv_more_editprofile_birth_text.isEnabled = true
-//            birth = tv_more_editprofile_birth_text.text
+            val newFragment = DatePickerFragment3()
+            newFragment.show(fragmentManager, "Date Picker")
             more_edit_complete_btn.visibility = View.VISIBLE
         }
         tv_more_editprofile_gender_edit.setOnClickListener {
             // 성별 수정
             tv_more_editprofile_sexType.isEnabled = true
-//            sex = tv_more_editprofile_sexType.text
             more_edit_complete_btn.visibility = View.VISIBLE
         }
         more_edit_complete_btn.setOnClickListener {

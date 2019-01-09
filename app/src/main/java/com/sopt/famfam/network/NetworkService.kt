@@ -28,7 +28,6 @@ interface NetworkService {
     ): Call<PostLogInResponse>
 
     //자동로그인
-    //로그인
     @GET("/login")
     fun getLoginResponse(
         @Header("Content-Type") content_type: String,

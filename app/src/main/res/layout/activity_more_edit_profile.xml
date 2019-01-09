@@ -80,21 +80,26 @@
                         android:text="생일"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
-
-                <TextView
+                <RelativeLayout
                         android:id="@+id/tv_more_editprofile_birth_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/tv_more_editprofile_birth_icon"
                         android:layout_alignParentRight="true"
-                        android:text="수정"
-                        android:textSize="16sp"/>
+                        android:layout_alignTop="@+id/tv_more_editprofile_birth_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:text="수정"
+                            android:textSize="16sp"/>
+                </RelativeLayout>
+
                 <EditText
                         android:id="@+id/tv_more_editprofile_birth_text"
                         android:background="#ffffff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1995.11.28"
+                        android:text="1995-11-28"
                         android:layout_marginRight="32dp"
                         android:layout_alignTop="@+id/tv_more_editprofile_birth_icon"
                         android:layout_toLeftOf="@+id/tv_more_editprofile_birth_edit"
@@ -121,15 +126,20 @@
                         android:text="성별"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
-
-                <TextView
+                <RelativeLayout
                         android:id="@+id/tv_more_editprofile_gender_edit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/tv_more_editprofile_gender_icon"
                         android:layout_alignParentRight="true"
-                        android:text="수정"
-                        android:textSize="16sp"/>
+                        android:layout_alignTop="@+id/tv_more_editprofile_gender_icon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp">
+                    <TextView
+                            android:layout_alignParentTop="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="수정"
+                            android:textSize="16sp"/>
+                </RelativeLayout>
+
 
                 <EditText
                         android:id="@+id/tv_more_editprofile_sexType"
