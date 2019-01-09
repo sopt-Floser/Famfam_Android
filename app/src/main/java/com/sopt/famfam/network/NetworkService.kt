@@ -2,17 +2,14 @@ package com.sopt.famfam.network
 
 import com.google.gson.JsonObject
 import com.sopt.famfam.post.*
+import com.sopt.famfam.put.PutEditProfileResponse
+import com.sopt.famfam.put.PutResetPwResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
-import java.util.ArrayList
-import android.provider.MediaStore
-import android.provider.DocumentsContract
-import android.content.ContentUris
-import android.os.Environment.getExternalStorageDirectory
-import android.os.Build
 import com.sopt.famfam.get.*
+
 
 
 interface NetworkService {
@@ -38,6 +35,14 @@ interface NetworkService {
         @Body() body: JsonObject
     ): Call<PostConfirmIdResponse>
 
+    ///users/password 비밀번호 수정
+    @PUT("/users/password")
+    fun putResetPwResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("Authorization") token : String,
+        @Body() body: JsonObject
+    ): Call<PutResetPwResponse>
+
     //그룹생성
     @POST("/groups")
     fun postGroupsResponse(
@@ -45,8 +50,22 @@ interface NetworkService {
         @Header("Authorization") token : String
     ): Call<PostGroupsResponse>
 
+    // 그룹초대코드 생성/조회
+    @GET("/groups/invitation")
+    fun getGroupsCreateCodeResponse (
+        @Header("Content-Type") content_type : String,
+        @Header("Authorization") token : String
+    ) : Call<GetGroupsCreateCodeResponse>
 
-    //게시판 글쓰기
+    // 프로필 정보 수정
+    @PUT("/users")
+    fun putEditProfileResponse (
+        @Header("Content-Type") content_type : String,
+        @Header("Authorization") token : String,
+        @Body() body: JsonObject
+    ) : Call<PutEditProfileResponse>
+
+   //게시판 글쓰기
     @Multipart
     @POST("/contents")
     fun postWriteBoardResponse(
