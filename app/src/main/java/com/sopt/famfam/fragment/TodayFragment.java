@@ -17,9 +17,7 @@ import com.sopt.famfam.activity.AddPostActivity;
 import com.sopt.famfam.adapter.TodayAdapter;
 import com.sopt.famfam.adapter.item.TodayItem;
 import com.sopt.famfam.database.FamilyData;
-import com.sopt.famfam.get.GetCommentListResponse;
-import com.sopt.famfam.get.GetContentListResponse;
-import com.sopt.famfam.get.Photos;
+import com.sopt.famfam.get.*;
 import com.sopt.famfam.network.ApplicationController;
 import gun0912.tedbottompicker.TedBottomPicker;
 import retrofit2.Call;
@@ -103,9 +101,10 @@ public class TodayFragment extends Fragment {
             @Override
             public void onResponse(Call<GetContentListResponse> call, Response<GetContentListResponse> response) {
                 if (response.isSuccessful()) {
-                    response.body().getData().component2();
-                    ArrayList<TodayItem> todayItemArrayList = new ArrayList<>();
-                    //todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
+//                    MainContents con = response.body().getData().component3();
+//                    int id
+//                    ArrayList<TodayItem> todayItemArrayList = new ArrayList<>();
+//                    todayItemArrayList.add(new TodayItem(con., "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
 
                 }
             }

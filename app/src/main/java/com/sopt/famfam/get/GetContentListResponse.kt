@@ -4,7 +4,7 @@ package com.sopt.famfam.get
 data class GetContentListResponse(
     val status : Int,
     val message : String,
-    val data : Contents
+    val data : ArrayList<Contents>
 )
 
 data class Contents(
