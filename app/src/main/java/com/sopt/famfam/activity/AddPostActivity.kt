@@ -114,7 +114,7 @@ class AddPostActivity : AppCompatActivity() {
                 images.add(MultipartBody.Part.createFormData("photos", file.name, surveyBody))
             }
             Log.d("asd","업로드")
-            val postWriteBoardResponse = networkService.postWriteContentResponse(FamilyData.token, "multipart/form-data", contents,images)
+            val postWriteBoardResponse = networkService.postWriteContentResponse(FamilyData.token, "multipart/form-data", contents)
             postWriteBoardResponse.enqueue(object : Callback<PostWriteContentResponse> {
                 override fun onFailure(call: Call<PostWriteContentResponse>, t: Throwable) {
                     Log.e("asd", t.toString())
