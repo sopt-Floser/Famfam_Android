@@ -76,6 +76,7 @@ class LoginActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call<PostLogInResponse>, response: Response<PostLogInResponse>) {
                     if (response.isSuccessful) {
+                        Log.d("Login",response.body().toString())
                         val token = response.body()!!.data.token
                         FamilyData.groupId = response.body()!!.data.user.groupIdx
                         FamilyData.userId = response.body()!!.data.user.userId

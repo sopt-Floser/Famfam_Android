@@ -52,8 +52,7 @@ public class TodayFragment extends Fragment {
 //        todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
 //        todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
 
-        TodayAdapter todayAdapter = new TodayAdapter(todayItemArrayList, getContext());
-        recyclerView.setAdapter(todayAdapter);
+
 
 
         ImageView btnAddPost = (ImageView) rootView.findViewById(R.id.btn_today_addPost);
@@ -74,7 +73,7 @@ public class TodayFragment extends Fragment {
                 new Fragment();
             }
         });
-
+        getCotentListResponse();
         return rootView;
     }
 
@@ -95,17 +94,39 @@ public class TodayFragment extends Fragment {
             super.onViewRecycled(holder);
         }
     */
-    private void getCotentListResponse(final ViewPager pager) {
+    private void getCotentListResponse() {
         Call<GetContentListResponse> getBoardListResponse = ApplicationController.instance.networkService.getContentListResponse(FamilyData.token, 0, 30);
         getBoardListResponse.enqueue(new Callback<GetContentListResponse>() {
             @Override
             public void onResponse(Call<GetContentListResponse> call, Response<GetContentListResponse> response) {
                 if (response.isSuccessful()) {
-//                    MainContents con = response.body().getData().component3();
-//                    int id
-//                    ArrayList<TodayItem> todayItemArrayList = new ArrayList<>();
-//                    todayItemArrayList.add(new TodayItem(con., "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
+                    Log.d("asd",response.body().toString());
+                    ArrayList<Contents> con = response.body().getData().component2();
+                  //  int id
+                    ArrayList<TodayItem> todayItemArrayList = new ArrayList<>();
+                    for(int i =0;i<con.size();i++)
+                    {
+                        int userId = con.get(i).component3().getUserIdx();
+                        String profile="test";
+//                        for(int j=0;j<FamilyData.users.size();j++)
+//                        {
+//                           if( FamilyData.users.get(i).getUserIdx()==userId)
+//                               profile=FamilyData.users.get(i).getProfilePhoto();
+//                        }
+                        todayItemArrayList.add(new TodayItem(profile,
+                                con.get(i).getUserName()
+                                ,con.get(i).getContent().getCreatedAt(),
+                                con.get(i).getPhotos(),
+                                R.drawable.icon_emoticon,
+                                R.drawable.like,
+                                "엄마님 외 2명",
+                                con.get(i).getContent().getContent(),
+                                "댓글",
+                                "1개"));
 
+                    }
+                    TodayAdapter todayAdapter = new TodayAdapter(todayItemArrayList, getContext());
+                    recyclerView.setAdapter(todayAdapter);
                 }
             }
 

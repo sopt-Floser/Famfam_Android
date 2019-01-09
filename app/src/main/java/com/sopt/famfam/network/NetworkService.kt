@@ -65,16 +65,6 @@ interface NetworkService {
         @Body() body: JsonObject
     ) : Call<PutEditProfileResponse>
 
-   //게시판 글쓰기
-    @Multipart
-    @POST("/contents")
-    fun postWriteBoardResponse(
-        @Header("Authorization") token: String,
-        @Part("title") title: RequestBody,
-        @Part contents: MultipartBody.Part?,
-        @Part photo: MultipartBody.Part?
-    ): Call<PostWriteBoardResponse>
-
 
     // 그룹원 조회
     @GET("/users/groups")
@@ -123,7 +113,8 @@ interface NetworkService {
     fun postWriteContentResponse(
             @Header("Authorization") token : String,
             @Header("Content-Type") content_type: String,
-            @Part("content") content: RequestBody
+            @Part("content") content: RequestBody,
+            @Part photos: List<MultipartBody.Part>
     ): Call<PostWriteContentResponse>
 
 //
