@@ -13,6 +13,17 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/intro4"
                 android:layout_centerInParent="true"/>
+        <TextView
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이모티콘과 함께 가족들과 화목한 채팅을 해보세요!"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="#366ce2"
+        />
     </RelativeLayout>
 
 </RelativeLayout>

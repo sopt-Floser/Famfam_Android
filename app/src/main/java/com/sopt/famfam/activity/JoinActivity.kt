@@ -9,7 +9,7 @@ import com.sopt.famfam.database.FamilyData
 import com.sopt.famfam.get.GetGroupsCreateCodeResponse
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
-import kotlinx.android.synthetic.main.activity_code_generator.*
+import kotlinx.android.synthetic.main.activity_join.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import retrofit2.Call
@@ -29,7 +29,7 @@ class JoinActivity : AppCompatActivity() {
 
     private fun setOnBtnClickListener() {
         tv_code_generator_act_request_code_btn.setOnClickListener {
-            code_generator_act_time_layout.visibility = View.VISIBLE
+//            code_generator_act_time_layout.visibility = View.VISIBLE
             tv_code_generator_act_request_code_btn_text.text = "완료"
         }
     }

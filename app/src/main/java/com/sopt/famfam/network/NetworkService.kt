@@ -34,6 +34,7 @@ interface NetworkService {
         @Header("Content-Type") content_type: String,
         @Header("Authorization") token : String
     ): Call<GetLogInResponse>
+
     ///users 회원탈퇴
     @DELETE("/users")
     fun deleteUserResponse(
@@ -62,6 +63,14 @@ interface NetworkService {
         @Header("Content-Type") content_type: String,
         @Header("Authorization") token : String
     ): Call<PostGroupsResponse>
+
+    // 그룹참여
+//    @POST("/groups/join")
+//    fun postJoinGroupsPwResponse(
+//        @Header("Content-Type") content_type: String,
+//        @Header("Authorization") token : String,
+//        @Body() body: JsonObject
+//    ): Call<PostJoinGroupsPwResponse>
 
     // 그룹초대코드 생성/조회
     @GET("/groups/invitation")
