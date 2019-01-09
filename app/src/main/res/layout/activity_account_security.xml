@@ -1,10 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.AccountSecurityActivity">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.AlarmActivity"
+        android:orientation="vertical">
+    <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
 
-</android.support.constraint.ConstraintLayout>
+            <ImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/icon_back"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="계정/보안"
+                    android:textColor="#656565"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <RelativeLayout
+            android:id="@+id/tv_more_disconnect_btn"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="24dp">
+
+        <TextView
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가족이랑 연결 끊기"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        <LinearLayout
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#e6e6e6"></LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/logout_btn"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp">
+
+        <TextView
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그아웃"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        <LinearLayout
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#e6e6e6"></LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/membership_withdrawal_btn"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp">
+
+        <TextView
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회원탈퇴"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        <LinearLayout
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:background="#e6e6e6"></LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

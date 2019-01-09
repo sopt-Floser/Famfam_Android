@@ -43,8 +43,7 @@ class MoreActivity : AppCompatActivity() {
             finish()
         }
         btn_more_account.setOnClickListener {
-            SharedPreferenceController.clearUserSharedPreferences(this)
-            startActivity<LoginActivity>()
+            startActivity<AccountSecurityActivity>()
             finish()
         }
     }

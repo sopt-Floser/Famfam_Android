@@ -38,6 +38,7 @@ class SplashActivity : AppCompatActivity() {
 
             override fun onAnimationEnd(animation: Animator?) {
                 val token = SharedPreferenceController.getAuthorization(applicationContext)
+                Log.d("uuuu1", "들어온다1")
                 getLoginResponse(token)
             }
 
@@ -53,6 +54,8 @@ class SplashActivity : AppCompatActivity() {
 
     private fun getLoginResponse(token: String) {
         if (token.isNotEmpty()) {
+            Log.d("uuuu1", "들어온다2")
+            Log.d("uuuu1", token)
             val getLoginResponse = networkService.getLoginResponse("application/json", token)
             getLoginResponse.enqueue(object : Callback<GetLogInResponse> {
                 override fun onFailure(call: Call<GetLogInResponse>, t: Throwable) {
@@ -60,6 +63,7 @@ class SplashActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(call: Call<GetLogInResponse>, response: Response<GetLogInResponse>) {
+                    Log.d("uuuu1", response.message())
                     if (response.isSuccessful) {
                         val token = response.body()!!.data.token
                         FamilyData.groupId = response.body()!!.data.user.groupIdx
@@ -96,6 +100,7 @@ class SplashActivity : AppCompatActivity() {
                 }
             })
         } else {
+            Log.d("uuuu1", "들어온다3")
             startActivity(Intent(applicationContext, IntroActivity::class.java))
             finish()
         }

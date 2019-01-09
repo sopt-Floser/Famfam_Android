@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(call: Call<PostLogInResponse>, response: Response<PostLogInResponse>) {
-                    if (response.isSuccessful) {
+                    if (response.message() == "로그인 성공") {
                         val token = response.body()!!.data.token
                         FamilyData.groupId = response.body()!!.data.user.groupIdx
                         FamilyData.userId = response.body()!!.data.user.userId
@@ -111,6 +111,8 @@ class LoginActivity : AppCompatActivity() {
                             startActivity<MainActivity>()
                             finish()
                         }
+                    } else {
+                        toast("아이디 또는 비밀번호가 틀렸습니다.")
                     }
                 }
             })
