@@ -6,8 +6,10 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.MotionEventCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.widget.RelativeLayout
@@ -17,8 +19,6 @@ import com.sopt.famfam.fragment.TodayFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import java.util.*
-import android.support.v4.view.MotionEventCompat
-import android.util.AttributeSet
 
 
 class MainActivity : AppCompatActivity() {

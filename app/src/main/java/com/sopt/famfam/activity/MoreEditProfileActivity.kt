@@ -1,22 +1,17 @@
 package com.sopt.famfam.activity
 
-import android.graphics.Color
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.famfam.R
 import com.sopt.famfam.database.FamilyData
-import com.sopt.famfam.fragment.DatePickerFragment
 import com.sopt.famfam.fragment.DatePickerFragment3
-import com.sopt.famfam.get.GetGroupsCreateCodeResponse
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
 import com.sopt.famfam.put.PutEditProfileResponse
-import kotlinx.android.synthetic.main.activity_code_generator.*
 import kotlinx.android.synthetic.main.activity_more_edit_profile.*
 import org.jetbrains.anko.startActivity
 import org.json.JSONObject

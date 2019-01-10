@@ -1,12 +1,9 @@
 package com.sopt.famfam.activity
 
-import android.app.Activity
 import android.content.ContentUris
 import android.content.Context
 import android.content.pm.PackageManager
 import android.database.Cursor
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -19,7 +16,6 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-
 import com.sopt.famfam.R
 import com.sopt.famfam.adapter.Permissions
 import com.sopt.famfam.database.FamilyData
@@ -27,9 +23,6 @@ import com.sopt.famfam.database.SharedPreferenceController
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
 import com.sopt.famfam.post.PostWriteContentResponse
-
-import org.w3c.dom.Text
-
 import gun0912.tedbottompicker.TedBottomPicker
 import kotlinx.android.synthetic.main.activity_add_post.*
 import okhttp3.MediaType
@@ -39,10 +32,8 @@ import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 import java.io.File
-import java.net.URI
-import java.util.ArrayList
+import java.util.*
 
 class AddPostActivity : AppCompatActivity() {
     private var photoSize = 0

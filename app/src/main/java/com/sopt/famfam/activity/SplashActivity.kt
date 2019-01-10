@@ -2,8 +2,8 @@ package com.sopt.famfam.activity
 
 import android.animation.Animator
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.airbnb.lottie.LottieAnimationView
 import com.sopt.famfam.R
