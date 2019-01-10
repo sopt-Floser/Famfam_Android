@@ -104,7 +104,7 @@ class AddPostActivity : AppCompatActivity() {
         if (input_contents.isNotEmpty()) {
             //Multipart 형식은 String을 RequestBody 타입으로 바꿔줘야 합니다!
             val token = SharedPreferenceController.getAuthorization(this)
-            var contents = RequestBody.create(MediaType.parse("text/plain"), "sada")
+            var contents = RequestBody.create(MediaType.parse("text/plain"), input_contents)
 
             var images = ArrayList<MultipartBody.Part>()
             //images.add(MultipartBody.Part.createFormData("contents",input_contents))
@@ -114,7 +114,7 @@ class AddPostActivity : AppCompatActivity() {
                 images.add(MultipartBody.Part.createFormData("photos", file.name, surveyBody))
             }
             Log.d("asd","업로드"+FamilyData.token)
-            val postWriteBoardResponse = networkService.postWriteContentResponse(token, "application/x-www-form-urlencoded", contents,images)
+            val postWriteBoardResponse = networkService.postWriteContentResponse(token, contents,images)
             postWriteBoardResponse.enqueue(object : Callback<PostWriteContentResponse> {
                 override fun onFailure(call: Call<PostWriteContentResponse>, t: Throwable) {
                     Log.e("asd", t.toString())
@@ -125,7 +125,7 @@ class AddPostActivity : AppCompatActivity() {
                         toast(response.body()!!.message)
                         finish()
                     } else {
-                         toast(response.body()!!.message)
+                         toast(response.body().toString())
                     }
                 }
             })

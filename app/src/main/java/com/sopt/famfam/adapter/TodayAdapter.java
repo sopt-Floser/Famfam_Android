@@ -26,7 +26,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -80,18 +83,30 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         todayViewHolder.i=position;
         //todayViewHolder.profile.setImageResource(todayItemArrayList.get(position).profile);
         todayViewHolder.username.setText(todayItemArrayList.get(position).name);
-        todayViewHolder.posted_time.setText(todayItemArrayList.get(position).posted_time);
+        SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Date date=new Date();
+        try {
+            date = sim.parse(todayItemArrayList.get(position).posted_time);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        todayViewHolder.posted_time.setText((1900+date.getYear())+"."+(date.getMonth()+1)+"."+date.getDate());
         todayViewHolder.vp.setAdapter(new PagerAdapter(fragmentManager,context, todayItemArrayList.get(position).post_img));
         todayViewHolder.vp.setId(1+position);
         if (mViewPagerState.containsKey(position)) {
             todayViewHolder.vp.setCurrentItem(mViewPagerState.get(position));
         }
-        todayViewHolder.emotion_off.setImageResource(todayItemArrayList.get(position).emotion);
-        todayViewHolder.emotion_on.setImageResource(todayItemArrayList.get(position).emotion);
+//        todayViewHolder.emotion_off.setImageResource(todayItemArrayList.get(position).emotion);
+//        todayViewHolder.emotion_on.setImageResource(todayItemArrayList.get(position).emotion);
+
         todayViewHolder.emotion_lay1.setImageResource(todayItemArrayList.get(position).feel);
         todayViewHolder.emotion_lay2.setImageResource(todayItemArrayList.get(position).feel);
         todayViewHolder.img_likes.setText(todayItemArrayList.get(position).img_likes);
-        todayViewHolder.cation.setText(todayItemArrayList.get(position).caption);
+
+        if(todayViewHolder.cation.equals("")||todayViewHolder.cation==null)
+            todayViewHolder.cation.setText("내용 없음");
+        else
+            todayViewHolder.cation.setText(todayItemArrayList.get(position).caption);
         todayViewHolder.comment.setText(todayItemArrayList.get(position).comment);
         todayViewHolder.comment_count.setText(todayItemArrayList.get(position).comment_count);
 

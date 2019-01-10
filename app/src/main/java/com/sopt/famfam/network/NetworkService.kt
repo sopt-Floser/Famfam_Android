@@ -134,7 +134,6 @@ interface NetworkService {
     @POST("/contents")
     fun postWriteContentResponse(
             @Header("Authorization") token : String,
-            @Header("Content-Type") content_type: String,
             @Part("content") content: RequestBody,
             @Part photos: List<MultipartBody.Part>
     ): Call<PostWriteContentResponse>
