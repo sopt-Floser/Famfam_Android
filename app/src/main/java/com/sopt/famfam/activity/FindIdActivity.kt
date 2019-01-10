@@ -9,9 +9,8 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.sopt.famfam.R
-import kotlinx.android.synthetic.main.activity_certification.*
+import com.sopt.famfam.fragment.DatePickerFragment4
 import kotlinx.android.synthetic.main.activity_find_id.*
-import org.jetbrains.anko.startActivity
 import java.util.concurrent.TimeUnit
 
 class FindIdActivity : AppCompatActivity(), View.OnClickListener {
@@ -37,10 +36,12 @@ class FindIdActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         // Assign click listeners
-        tv_find_id_act_request_code_btn.setOnClickListener(this)
+        tv_find_id_act_request_code_btn_text.setOnClickListener(this)
         tv_find_id_act_complete_btn.setOnClickListener(this)
         btn_find_id_resend_code.setOnClickListener(this)
         tv_find_id_act_complete_2_btn.setOnClickListener(this)
+        et_find_id_act_input_birthday.setOnClickListener(this)
+//        val newFragment = DatePickerFragment()
 //        signOutButton.setOnClickListener(this)
 
         // [START initialize_auth]
@@ -211,7 +212,7 @@ class FindIdActivity : AppCompatActivity(), View.OnClickListener {
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         // The verification code entered was invalid
                         // [START_EXCLUDE silent]
-                        et_certification_act_input_code.error = "Invalid code."
+                        et_find_id_act_input_code.error = "Invalid code."
                         // [END_EXCLUDE]
                     }
                     // [START_EXCLUDE silent]
@@ -349,7 +350,7 @@ class FindIdActivity : AppCompatActivity(), View.OnClickListener {
         val number: String = et_find_id_act_input_phone_number.text.toString()
         val phoneNumber: String = "+82" + number.substring(1, 11)
         when (view.id) {
-            R.id.tv_find_id_act_request_code_btn -> {
+            R.id.tv_find_id_act_request_code_btn_text -> {
 
                 Log.v("uuuu1", "tv_certification_act_request_code_btn_text")
                 if (!validatePhoneNumber()) {
@@ -363,9 +364,15 @@ class FindIdActivity : AppCompatActivity(), View.OnClickListener {
                 startPhoneNumberVerification(phoneNumber)
                 Log.d("uuuu1", phoneNumber)
             }
+            R.id.et_find_id_act_input_birthday -> {
+                Log.d("클릭", "클릭!")
+                val newFragment = DatePickerFragment4()
+                newFragment.show(fragmentManager, "Date Picker")
+            }
             R.id.tv_find_id_act_complete_btn -> {
                 et_find_id_act_phone_number_layout.visibility = View.INVISIBLE
                 find_id_act_request_code_layout.visibility = View.GONE
+                et_find_id_act_birth_layout.visibility = View.GONE
                 //tv_find_id_act_user_id 찾은 아이디 통신에서 받아서 붙이기
                 show_find_id_layout.visibility = View.VISIBLE
                 tv_find_id_act_complete_btn.visibility = View.GONE
@@ -377,6 +384,8 @@ class FindIdActivity : AppCompatActivity(), View.OnClickListener {
                     return
                 }
                 verifyPhoneNumberWithCode(storedVerificationId, code)
+
+                // 통신코드 보내기
             }
             R.id.tv_find_id_act_complete_2_btn -> {
 //                startActivity<LoginActivity>()
@@ -385,8 +394,11 @@ class FindIdActivity : AppCompatActivity(), View.OnClickListener {
 
             R.id.btn_find_id_resend_code -> resendVerificationCode(phoneNumber, resendToken)
 //            R.id.signOutButton -> signOut()
+
         }
     }
+
+    //tv_find_id_act_user_id 유저아이디 텍스트
 
     companion object {
         private const val TAG = "PhoneAuthActivity"

@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.CertificationActivity"
+        tools:context=".activity.FindIdActivity"
         android:background="#FFFFFF">
     <RelativeLayout
             android:id="@+id/layout_1"
@@ -35,7 +35,7 @@
             android:layout_marginTop="21.4dp"
             android:layout_below="@+id/layout_1"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:orientation="vertical"
     >
 
@@ -44,8 +44,8 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginHorizontal="40dp"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:background="@drawable/certification_act_blue_request_authorization_code"
                 android:visibility="visible"
         >
@@ -76,13 +76,48 @@
             </RelativeLayout>
         </LinearLayout>
         <LinearLayout
+                android:id="@+id/et_find_id_act_birth_layout"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/certification_act_blue_request_authorization_code"
+                android:visibility="visible"
+        >
+            <RelativeLayout
+                    android:id="@+id/et_find_id_act_input_birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+            >
+
+                <EditText
+                        android:id="@+id/et_find_id_act_input_birthday_text"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:letterSpacing="0.2"
+                        android:hint="    년    월    일"
+                        android:layout_marginLeft="40dp"
+                        android:layout_width="250dp"
+                        android:layout_height="40dp"
+                        android:background="#ffffff"
+                        android:inputType="number"
+                        android:imeOptions="actionDone"
+                />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
                 android:id="@+id/find_id_act_request_code_layout"
                 android:layout_marginTop="8dp"
                 android:layout_marginHorizontal="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone"
+                android:visibility="invisible"
         >
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -151,6 +186,7 @@
 
 
         </LinearLayout>
+
         <LinearLayout
                 android:id="@+id/show_find_id_layout"
                 android:layout_width="match_parent"
@@ -202,10 +238,9 @@
             android:orientation="horizontal"
             android:background="#366ce2"
             android:layout_alignParentBottom="true">
-
         <RelativeLayout
                 android:id="@+id/tv_find_id_act_request_code_btn"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:visibility="visible">
@@ -213,13 +248,13 @@
                     android:id="@+id/tv_find_id_act_request_code_btn_text"
                     android:layout_centerVertical="true"
                     android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:text="인증번호 요청하기"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     android:textStyle="bold"
-            />
+                    android:gravity="center"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -240,6 +275,7 @@
                     android:textStyle="bold"
             />
         </RelativeLayout>
+
 
         <RelativeLayout
                 android:id="@+id/tv_find_id_act_complete_2_btn"
