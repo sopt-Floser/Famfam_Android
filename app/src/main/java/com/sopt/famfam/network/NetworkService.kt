@@ -97,6 +97,15 @@ interface NetworkService {
         @Header("Authorization") token : String
     ) : Call<GetGroupsCreateCodeResponse>
 
+    //감정표현 추가/수
+    @POST("/feels/contents/{contentIdx}")
+    fun postFeelResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("Authorization") token : String,
+        @Path("contentIdx") contentIdx : Int,
+        @Body() body: JsonObject
+    ): Call<PostFeelResponse>
+
     // 프로필 정보 수정
     @PUT("/users")
     fun putEditProfileResponse (
