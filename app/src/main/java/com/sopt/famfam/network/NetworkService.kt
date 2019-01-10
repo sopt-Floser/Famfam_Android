@@ -95,6 +95,12 @@ interface NetworkService {
 //            @Query("limit") limit : Int
 //    ) : Call<GetBoardListResponse>
 
+    // 알림 조회
+    @GET("/history")
+    fun gethistoryResponse (
+        @Header("Content-Type") content_type : String,
+        @Header("Authorization") token : String
+    ) : Call<GethistoryResponse>
 
     // 그룹원 조회
     @GET("/users/groups")
