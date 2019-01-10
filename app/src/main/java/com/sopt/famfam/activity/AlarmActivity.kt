@@ -53,6 +53,10 @@ class AlarmActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<GethistoryResponse>, response: Response<GethistoryResponse>) {
                 if (response.isSuccessful) {
+                    val data1 = response.body()!!.data
+                    when(data1){
+                        null -> return
+                    }
                     val data = response.body()!!.data.histories
                     var list = ArrayList<AlarmData>()
                     var i: Int = 0

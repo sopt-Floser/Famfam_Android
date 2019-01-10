@@ -80,7 +80,7 @@ class HomeFragment : Fragment() {
         content.offscreenPageLimit = 3
         content.setCurrentItem(100, true)
 
-        Log.d("asd", FirebaseInstanceId.getInstance().getToken())
+//        Log.d("asd", FirebaseInstanceId.getInstance().getToken())
 
         view.iv_home_famliy_my.setOnClickListener {
             startActivity<MoreEditProfileActivity>()

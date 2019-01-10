@@ -97,8 +97,12 @@ class TodayFragment : Fragment() {
         getBoardListResponse.enqueue(object : Callback<GetContentListResponse> {
             override fun onResponse(call: Call<GetContentListResponse>, response: Response<GetContentListResponse>) {
                 if (response.isSuccessful) {
-                    Log.d("asd", response.body()!!.toString())
-                    val con = response.body()!!.data.contents
+                    Log.d("asd", response.body().toString())
+                    val conn = response.body()?.data
+                    when(conn){
+                        null -> return
+                    }
+                    var con = response.body()!!.data.contents
                     //  int id
                     val todayItemArrayList = ArrayList<TodayItem>()
                     for (i in con.indices) {
