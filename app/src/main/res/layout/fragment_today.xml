@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:id="@+id/fragment_today">
-
+        android:id="@+id/fragment_today1">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
         <!-- top toolbar -->
@@ -36,7 +39,7 @@
                         android:textSize="18sp"
                         android:textColor="#656565"
                         android:textStyle="bold"
-                        android:layout_centerInParent="true" />
+                        android:layout_centerInParent="true"/>
 
                 <ImageView
                         android:layout_width="48dp"
@@ -52,13 +55,19 @@
         </android.support.v7.widget.Toolbar>
 
         <!-- Middle section (body) -->
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_today_feed"
-                android:layout_below="@+id/TodayToolBar"
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:listitem="@layout/item_today"
-        android:background="#e0e0e0">
-        </android.support.v7.widget.RecyclerView>
+                android:layout_below="@+id/TodayToolBar"
+                android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_today_feed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_today"
+                    android:background="#e0e0e0">
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
 
-</LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

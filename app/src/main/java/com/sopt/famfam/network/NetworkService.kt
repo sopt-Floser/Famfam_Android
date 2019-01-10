@@ -2,14 +2,15 @@ package com.sopt.famfam.network
 
 import com.google.gson.JsonObject
 import com.sopt.famfam.delete.DeleteUserResponse
+import com.sopt.famfam.get.*
 import com.sopt.famfam.post.*
+
 import com.sopt.famfam.put.PutEditProfileResponse
 import com.sopt.famfam.put.PutResetPwResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
-import com.sopt.famfam.get.*
 
 
 
@@ -137,7 +138,7 @@ interface NetworkService {
         @Path("contentIdx") contentIdx : Int
     ) : Call<GetCommentListResponse>
 
-    //
+    //upload
     @Multipart
     @POST("/contents")
     fun postWriteContentResponse(
@@ -146,6 +147,13 @@ interface NetworkService {
             @Part photos: List<MultipartBody.Part>
     ): Call<PostWriteContentResponse>
 
+    @GET("/photos")
+    fun getPhotoListResponse(
+        @Header("Authorization") token : String,
+        @Query("userIdx") userIdx : Int,
+        @Query("page") page_no : Int,
+        @Query("size") page_size : Int
+    ) : Call<GetPhotoListResponse>
 //
 //    //게시물 상세 보기
 //    @GET("/contents/{contentIdx}")

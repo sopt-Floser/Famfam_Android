@@ -65,7 +65,7 @@ class ChatAdapter(var context: Context, var list: ArrayList<ChatItem>) : Recycle
             // 이미지 해
             if (position > 0) {
                 // 이전 메시지와 타입이 같으면
-                if (list.get(position - 1).type == list.get(position).type) {
+                if (list.get(position - 1).type == list.get(position).type && list.get(position - 1).id.equals(list.get(position).id )) {
                     holder.profile.visibility = View.GONE
                     holder.time.visibility = View.GONE
                     holder.nickname.visibility = View.GONE

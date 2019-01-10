@@ -2,6 +2,7 @@
 package com.sopt.famfam.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,9 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import com.sopt.famfam.R;
 import com.sopt.famfam.adapter.item.TodayItem;
 import com.sopt.famfam.database.FamilyData;
+import com.sopt.famfam.fragment.AlbumFragment;
 import com.sopt.famfam.fragment.PostFirstFragment;
 import com.sopt.famfam.get.GetContentListResponse;
 import com.sopt.famfam.get.Photos;
@@ -81,7 +84,20 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TodayViewHolder todayViewHolder = (TodayViewHolder) viewHolder;
         todayViewHolder.setIsRecyclable(false);
         todayViewHolder.i=position;
-        //todayViewHolder.profile.setImageResource(todayItemArrayList.get(position).profile);
+        final int p=position;
+        Glide.with(context).load(todayItemArrayList.get(position).profile).into(todayViewHolder.profile);
+        todayViewHolder.profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("today","onclick");
+                Fragment frag = new AlbumFragment();
+                Bundle data = new Bundle();
+                data.putInt("useridx", todayItemArrayList.get(p).useridx);
+                frag.setArguments(data);
+                fragmentManager.beginTransaction().add(R.id.fragment_today1, frag).addToBackStack(null).commit();
+                //fragmentManager.beginTransaction().attach(frag);
+            }
+        });
         todayViewHolder.username.setText(todayItemArrayList.get(position).name);
         SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
         Date date=new Date();
@@ -132,7 +148,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             {
                 Log.d("asd","어뎁터 반복"+list.get(i).getPhotoName());
                 frags.add(new PostFirstFragment());
-                ((PostFirstFragment)frags.get(i)).setImageUri(list.get(i).getPhotoName());
+                ((PostFirstFragment)frags.get(i)).setImageUri(list.get(i).getPhotoName(),fm);
             }
 
         }

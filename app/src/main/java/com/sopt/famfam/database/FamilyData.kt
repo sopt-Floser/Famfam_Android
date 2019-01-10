@@ -12,6 +12,7 @@ internal object FamilyData {
     var birthday : String = ""
     var sexType : Int = 0
     lateinit var users : ArrayList<User>
+
 }
 data class User(
     var userIdx : Int,
