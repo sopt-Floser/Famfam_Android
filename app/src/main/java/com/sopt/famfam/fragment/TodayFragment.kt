@@ -58,9 +58,19 @@ class TodayFragment : Fragment() {
             val intent = Intent(activity, AddPostActivity::class.java)
             startActivity(intent)
         }
+
         // 사진 전체보기 버튼
         val btnAllPhoto = rootView.findViewById<View>(R.id.btn_allPhoto) as ImageView
-        btnAllPhoto.setOnClickListener { Fragment() }
+        btnAllPhoto.setOnClickListener {
+            val fragment = AllPhotoFragment()
+            val fragmentManager = childFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_today1, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+
         getCotentListResponse()
         fm = childFragmentManager
         return rootView
