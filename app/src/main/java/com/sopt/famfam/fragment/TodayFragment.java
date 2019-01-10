@@ -109,9 +109,11 @@ public class TodayFragment extends Fragment {
 //                           if( FamilyData.users.get(i).getUserIdx()==userId)
 //                               profile=FamilyData.users.get(i).getProfilePhoto();
 //                        }
-                        todayItemArrayList.add(new TodayItem(profile,
-                                con.get(i).getUserName()
-                                ,con.get(i).getContent().getCreatedAt(),
+                        todayItemArrayList.add(new TodayItem(
+                                con.get(i).getContent().getUserIdx(),
+                                profile,
+                                con.get(i).getUserName(),
+                                con.get(i).getContent().getCreatedAt(),
                                 con.get(i).getPhotos(),
                                 R.drawable.icon_emoticon,
                                 R.drawable.like,
