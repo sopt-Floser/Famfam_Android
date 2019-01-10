@@ -375,12 +375,12 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_centerVertical="true"
-                android:layout_margin="12dp"
                 android:text="등록"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:id="@+id/btn_post_comment"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true" android:layout_marginTop="12dp" android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp" android:layout_marginBottom="12dp"/>
 
     </RelativeLayout>
 

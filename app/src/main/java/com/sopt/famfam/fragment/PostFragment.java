@@ -30,6 +30,7 @@ import com.sopt.famfam.get.GetCommentListResponse;
 import com.sopt.famfam.get.Photos;
 import com.sopt.famfam.indicator.CircleAnimIndicator;
 import com.sopt.famfam.network.ApplicationController;
+import com.sopt.famfam.post.PostWriteCommentResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -97,6 +98,13 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         emotion_amazing.setOnClickListener(this);
         emotion_like.setOnClickListener(this);
 
+        editText = view.findViewById(R.id.et_comment);
+        view.findViewById(R.id.btn_post_comment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getWriteCommentResponse(item.post_img.get(0).getContentIdx(),editText.getText().toString());
+            }
+        });
         //게시물 수정,삭제
         ImageButton popup = (ImageButton) view.findViewById(R.id.ib_edit_post);
         popup.setOnClickListener(new View.OnClickListener() {
@@ -169,7 +177,7 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         post_comment = (TextView)view.findViewById(R.id.btn_post_comment);
         editText =(EditText)view.findViewById(R.id.et_comment);
         editText.getText().toString();
-        getCommentListResponse(item.useridx);
+        getCommentListResponse(item.post_img.get(0).getContentIdx());
 
         if (editText.getText().toString().length()==0){
             // 댓글 공백일 때 처리할 내용
@@ -323,7 +331,24 @@ public class PostFragment extends Fragment implements View.OnClickListener {
             }
         });
     }
+    private void getWriteCommentResponse(int contentIdx,String message){
+        Call<PostWriteCommentResponse> getBoardListResponse = ApplicationController.instance.networkService.postWriteCommentResponse(FamilyData.token, "application/json",contentIdx,message);
+        getBoardListResponse.enqueue(new Callback<PostWriteCommentResponse>() {
+            @Override
+            public void onResponse(Call<PostWriteCommentResponse> call, Response<PostWriteCommentResponse> response) {
+                if (response.isSuccessful()){
+                    Log.d("asd",response.body().getMessage());
+                    if(response.body().getData()==null)
+                        return;
 
+                }
+            }
+            @Override
+            public void onFailure(Call<PostWriteCommentResponse> call, Throwable t) {
+                // Code...
+            }
+        });
+    }
 
     //뷰페이저 인디케이터
     private void initIndicator(){
