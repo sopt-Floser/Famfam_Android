@@ -10,6 +10,15 @@
             android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:src="@drawable/feed_1"/>
+    <ImageView
+            android:id="@+id/edit_user_back_photo"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="140dp"
+            android:layout_marginRight="16dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/circle"
+            android:src="@drawable/icon_home_carmera"/>
 
     <LinearLayout
             android:layout_below="@+id/iv_more_bg"
@@ -170,13 +179,14 @@
             android:src="@drawable/kim_fam_big"
             android:translationY="1dp"/>
     <ImageView
+            android:id="@+id/edit_user_profile_photo"
             android:layout_marginTop="-10dp"
             android:layout_below="@+id/iv_more_profile_img"
             android:layout_alignEnd="@+id/iv_more_profile_img"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@drawable/circle"
-            android:src="@drawable/icon_carmera"/>
+            android:src="@drawable/icon_home_carmera"/>
     <RelativeLayout
             android:id="@+id/more_edit_complete_btn"
             android:layout_alignParentBottom="true"

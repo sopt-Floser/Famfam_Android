@@ -7,6 +7,7 @@ import com.sopt.famfam.post.*
 
 import com.sopt.famfam.put.PutEditProfileResponse
 import com.sopt.famfam.put.PutResetPwResponse
+import com.sopt.famfam.put.PutUserPhotoResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -58,6 +59,22 @@ interface NetworkService {
         @Body() body: JsonObject
     ): Call<PutResetPwResponse>
 
+    // 회원 프로필 수정
+    @Multipart
+    @PUT("/users/photo")
+    fun putUserPhotoResponse(
+        @Header("Authorization") token : String,
+        @Part profilePhoto: MultipartBody.Part?
+    ): Call<PutUserPhotoResponse>
+
+    // 배경 사진 수정
+    @Multipart
+    @PUT("/users/photo")
+    fun putUserBackPhotoResponse(
+        @Header("Authorization") token : String,
+        @Part backPhoto: MultipartBody.Part?
+    ): Call<PutUserPhotoResponse>
+
     //그룹생성
     @POST("/groups")
     fun postGroupsResponse(
@@ -87,6 +104,13 @@ interface NetworkService {
         @Header("Authorization") token : String,
         @Body() body: JsonObject
     ) : Call<PutEditProfileResponse>
+
+    // 자기자신 조회
+    @GET("/users")
+    fun getUserResponse (
+        @Header("Content-Type") content_type : String,
+        @Header("Authorization") token : String
+    ) : Call<GetUserResponse>
 
 //    //모든 컨텐츠 조회
 //    @GET("/contents")
