@@ -1,59 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/relLayoutParent"
-            android:background="@color/white">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
 
         <!-- top toolbar -->
-        <RelativeLayout
-                android:id="@+id/addpost_top"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/EditPostToolBar"
+            android:background="@color/white">
 
-            <include layout="@layout/snippet_editpost_top_toolbar"/>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/backArrow"
+                    android:src="@drawable/icon_back_2"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="수정하기"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#656565"
+                    android:layout_centerInParent="true" />
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="완료"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="37dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/tvNext"/>
 
         </RelativeLayout>
 
+    </android.support.v7.widget.Toolbar>
 
-        <LinearLayout
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/EditPostToolBar"
+            android:orientation="vertical"
+            android:layout_marginStart="37dp"
+            android:layout_marginEnd="37dp">
+
+
+        <ImageView
+                android:layout_width="107dp"
+                android:layout_height="72dp"
+                android:src="@drawable/famfeed_3"/>
+
+        <EditText
+                android:layout_marginTop="14.6dp"
+                android:inputType="textImeMultiLine"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/addpost_top"
-                android:orientation="vertical"
-                android:layout_marginStart="37dp"
-                android:layout_marginEnd="37dp">
+                android:hint="엄마랑 함께 데이트"
+                android:layout_centerVertical="true"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:id="@+id/caption_body"
+                android:background="@null"/>
+
+    </LinearLayout>
 
 
-            <ImageView
-                    android:layout_width="107dp"
-                    android:layout_height="72dp"
-                    android:src="@drawable/famfeed_3"/>
-
-            <EditText
-                    android:layout_marginTop="14.6dp"
-                    android:inputType="textImeMultiLine"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="엄마랑 함께 데이트"
-                    android:layout_centerVertical="true"
-                    android:textSize="16sp"
-                    android:gravity="top"
-                    android:id="@+id/caption_body"
-                    android:background="@null"/>
-
-        </LinearLayout>
 
 
-    </RelativeLayout>
-
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

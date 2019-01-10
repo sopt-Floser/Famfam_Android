@@ -20,7 +20,6 @@
             <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:layout_marginLeft="20dp"
                     android:layout_centerVertical="true"
                     android:id="@+id/btn_backArrow"
                     android:src="@drawable/icon_back_2"/>
@@ -53,14 +52,16 @@
 
             </LinearLayout>
 
-            <ImageView
+            <ImageButton
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginRight="20dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:id="@+id/btn_edit_post"
-                    android:src="@drawable/icon_dot3"/>
+                    android:id="@+id/ib_edit_post"
+                    android:src="@drawable/icon_dot3"
+                    />
+
 
         </RelativeLayout>
 
@@ -68,9 +69,10 @@
 
 
     <!--Post-->
+
     <ScrollView
             android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/sv_post_body"
                 android:layout_below="@+id/PostToolBar"
                 android:paddingBottom="55dp">
@@ -122,59 +124,113 @@
             </RelativeLayout>
 
 
-            <android.support.v4.view.ViewPager
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:id="@+id/vp_post_img"
-                    android:layout_below="@id/relLayout1">
-            </android.support.v4.view.ViewPager>
 
-            <com.sopt.famfam.indicator.CircleAnimIndicator
+            <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:id="@+id/ci_post_vp"
-                    android:layout_below="@+id/vp_post_img"
-                    android:layout_centerHorizontal="true">
-            </com.sopt.famfam.indicator.CircleAnimIndicator>
+                    android:layout_height="wrap_content"
+                    android:id="@+id/PostCenter"
+                    android:layout_below="@+id/relLayout1">
 
+                <android.support.v4.view.ViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:id="@+id/vp_post_img">
+                </android.support.v4.view.ViewPager>
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/emotion_bar"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="35dp"
+                        android:id="@+id/emotion_bar"
+                        android:visibility="gone">
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:src="@drawable/smile"
+                            android:id="@+id/iv_emotion_smile"
+                            android:layout_centerVertical="true"/>
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/sad"
+                            android:id="@+id/iv_emotion_sad"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iv_emotion_smile"/>
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/amazing"
+                            android:id="@+id/iv_emotion_amazing"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iv_emotion_sad"/>
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/like"
+                            android:id="@+id/iv_emotion_like"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iv_emotion_amazing"/>
+
+                </RelativeLayout>
+
+
+
+
+            </RelativeLayout>
+
+
+
+            <!-- Emotion Bar, Indicator-->
 
             <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:id="@+id/relLayout2"
-                    android:layout_below="@+id/ci_post_vp"
+                    android:layout_below="@+id/PostCenter"
+                    android:layout_marginTop="10dp"
                     android:background="@color/white">
 
                 <RelativeLayout
-                        android:layout_width="60dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/emotion_Layout"
-                        android:layout_marginLeft="7dp"
                         android:background="@color/white">
 
                     <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:id="@+id/iv_emotion_off"
-                            android:layout_centerInParent="true"
-                            android:layout_marginLeft="20dp"
+                            android:layout_width="22.7dp"
+                            android:layout_height="22.7dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/iv_emotion_on"
                             android:src="@drawable/icon_emotion_blue"
                             android:visibility="invisible"/>
 
                     <ImageView
                             android:layout_width="22.7dp"
                             android:layout_height="22.7dp"
-                            android:id="@+id/iv_emotion_on"
-                            android:layout_centerInParent="true"
-                            android:layout_marginLeft="20dp"
+                            android:layout_marginLeft="30dp"
+                            android:id="@+id/iv_emotion_off"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/icon_emotion"
                             android:visibility="visible"/>
+
+                    <com.sopt.famfam.indicator.CircleAnimIndicator
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:id="@+id/ci_post_vp"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true">
+                    </com.sopt.famfam.indicator.CircleAnimIndicator>
+
 
                 </RelativeLayout>
 
 
             </RelativeLayout>
-
 
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -182,6 +238,7 @@
                     android:id="@+id/relLayout3"
                     android:layout_below="@+id/relLayout2"
                     android:background="@color/white"
+                    android:layout_marginLeft="25dp"
                     android:layout_marginTop="9dp">
 
                 <RelativeLayout
@@ -194,7 +251,7 @@
                             android:layout_width="35dp"
                             android:layout_height="35dp"
                             android:id="@+id/iv_feel"
-                            android:layout_marginLeft="40dp"
+                            android:layout_marginLeft="20dp"
                             android:src="@drawable/smile"
                             android:visibility="visible"/>
 
@@ -202,7 +259,6 @@
                             android:layout_width="35dp"
                             android:layout_height="35dp"
                             android:id="@+id/iv_feel2"
-                            android:layout_marginLeft="20dp"
                             android:src="@drawable/like"
                             android:visibility="visible"/>
 
@@ -226,6 +282,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/relLayout4"
                     android:layout_below="@+id/relLayout3"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginBottom="18dp"
                     android:background="@color/white">
 
@@ -237,8 +294,7 @@
                         android:textColor="@color/gray"
                         android:textSize="12sp"
                         android:id="@+id/tv_post_caption"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginStart="15dp"/>
+                        android:layout_marginTop="15dp"/>
 
 
             </RelativeLayout>
@@ -289,8 +345,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:listitem="@layout/item_comment"
-                    android:background="@color/white"
-                    android:visibility="visible">
+                    android:background="@color/white">
             </android.support.v7.widget.RecyclerView>
 
 

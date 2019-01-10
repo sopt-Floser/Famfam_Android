@@ -14,25 +14,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/smile"
-                android:id="@+id/emotion1"/>
+                android:id="@+id/btn_emotion_smile"/>
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/sad"
-                android:id="@+id/emotion2"
-                android:layout_toRightOf="@+id/emotion1"/>
+                android:id="@+id/btn_emotion_sad"
+                android:layout_toRightOf="@+id/btn_emotion_smile"/>
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/amazing"
-                android:id="@+id/emotion3"
-                android:layout_toRightOf="@+id/emotion2"/>
+                android:id="@+id/btn_emotion_amazing"
+                android:layout_toRightOf="@+id/btn_emotion_sad"/>
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/like"
-                android:id="@+id/emotion4"
-                android:layout_toRightOf="@+id/emotion3"/>
+                android:id="@+id/btn_emotion_like"
+                android:layout_toRightOf="@+id/btn_emotion_amazing"/>
 
         </RelativeLayout>
 

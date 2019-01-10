@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/fragment_album"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -23,7 +24,7 @@
                 android:layout_height="48dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/icon_back_2" />
+                android:src="@drawable/icon_back" />
 
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -50,23 +51,27 @@
                     android:textColor="#656565"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
-
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
-
-
-</android.support.v7.widget.Toolbar>
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
 
 
     <!-- Middle section (body) -->
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sv_album"
+            android:layout_below="@+id/albumToolBar">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
     <ImageView
-            android:layout_below="@+id/albumToolBar"
             android:id="@+id/iv_album_bg"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:src="@drawable/img_motifyback_big" />
 
@@ -91,7 +96,7 @@
             android:layout_height="74.8dp"
             android:layout_alignBottom="@+id/iv_album_bg"
             android:layout_marginLeft="37dp"
-            android:layout_marginBottom="-20dp"
+            android:layout_marginBottom="-40dp"
             android:src="@drawable/kim_fam_big"
             android:translationY="1dp"/>
 
@@ -106,18 +111,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="김팸팸"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="120.8dp"
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 android:textStyle="bold"/>
 
         <TextView
-                android:id="@+id/textEditProfile"
+                android:id="@+id/tv_edit_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="프로필 수정"
                 android:textColor="@color/gray"
                 android:textSize="9sp"
+                android:layout_marginTop="25dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="35.6dp"
                 android:layout_alignParentRight="true"/>
@@ -126,8 +133,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="첫째 김팸팸입니다."
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginStart="37dp"
+                android:layout_marginBottom="15dp"
                 android:textSize="12sp"/>
 
     </RelativeLayout>
@@ -140,11 +148,15 @@
 
         <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rv_album">
+                android:layout_height="match_parent"
+                android:id="@+id/rv_album"
+                tools:listitem="@layout/item_album">
         </android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
+            </RelativeLayout>
+    </ScrollView>
 
 
 </RelativeLayout>
+

@@ -65,7 +65,8 @@ interface NetworkService {
     @GET("/users/groups")
     fun getGroupUserResponse(
             @Header("Content-Type") content_type : String,
-            @Header("Authorization") token : String
+            @Header("Authorization") token : String,
+            @Path("contentidx") conidx : String
     ) : Call<GetGroupUserResponse>
 
     // 감정표현 수 조회
@@ -86,6 +87,8 @@ interface NetworkService {
         @Header("Content-Type") content_type : String,
         @Header("Authorization") token : String
     ) : Call<GetCommentCountResponse>
+
+//    abstract fun getGroupUserResponse(content_type: String, token: String): Call<GetGroupUserResponse>
 
 //
 //    //게시물 상세 보기

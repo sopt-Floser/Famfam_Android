@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITH_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
             android:name=".network.ApplicationController"
@@ -16,18 +16,19 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.LoginActivity"/>
         <activity
                 android:name=".activity.SignupActivity"
                 android:windowSoftInputMode="stateHidden">
         </activity>
         <activity android:name=".activity.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".activity.IntroActivity"/>
         <activity android:name=".activity.AccessTermsActivity"/>
@@ -41,6 +42,7 @@
         <activity android:name=".activity.JoinActivity"/>
         <activity android:name=".activity.AddPostActivity"/>
         <activity android:name=".activity.AddPhotoActivity"/>
+        <activity android:name=".activity.EditPostActivity"/>
 
         <service android:name=".FIreBaseMessagingService">
             <intent-filter>
