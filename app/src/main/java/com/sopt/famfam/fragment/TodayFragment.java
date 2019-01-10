@@ -85,8 +85,6 @@ public class TodayFragment extends Fragment {
                 mParam1 = getArguments().getInt(ARG_PARAM1);
             }
         }
-
-
         //스크롤했을때 사라진 뷰페이저의 상태를 저장
         @Override
         public void onViewRecycled(ViewHolder holder) {
@@ -102,7 +100,7 @@ public class TodayFragment extends Fragment {
                 if (response.isSuccessful()) {
                     Log.d("asd",response.body().toString());
                     ArrayList<Contents> con = response.body().getData().component2();
-                  //  int id
+                    //  int id
                     ArrayList<TodayItem> todayItemArrayList = new ArrayList<>();
                     for(int i =0;i<con.size();i++)
                     {

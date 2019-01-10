@@ -17,7 +17,7 @@ public class CircleAnimIndicator  extends LinearLayout {
     private int itemMargin = 10;
 
     //애니메이션 시간
-    private int animDuration = 250;
+    private int animDuration = 300;
 
     private int mDefaultCircle;
     private int mSelectCircle;
@@ -89,12 +89,12 @@ public class CircleAnimIndicator  extends LinearLayout {
         for (int i = 0; i < imageDot.length; i++) {
             if (i == position) {
                 imageDot[i].setImageResource(mSelectCircle);
-                selectScaleAnim(imageDot[i],1f,1.5f);
+                selectScaleAnim(imageDot[i],0.8f,1.2f);
             } else {
 
                 if((boolean)imageDot[i].getTag(imageDot[i].getId()) == true){
                     imageDot[i].setImageResource(mDefaultCircle);
-                    defaultScaleAnim(imageDot[i], 1.5f, 1f);
+                    defaultScaleAnim(imageDot[i], 1.2f, 0.8f);
                 }
             }
         }

@@ -87,6 +87,14 @@ interface NetworkService {
         @Body() body: JsonObject
     ) : Call<PutEditProfileResponse>
 
+//    //모든 컨텐츠 조회
+//    @GET("/contents")
+//    fun getBoardListResponse(
+//            @Header("Content-Type") content_type : String,
+//            @Query("offset") offset : Int,
+//            @Query("limit") limit : Int
+//    ) : Call<GetBoardListResponse>
+
 
     // 그룹원 조회
     @GET("/users/groups")
