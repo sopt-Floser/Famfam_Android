@@ -1,6 +1,7 @@
 package com.sopt.famfam.network
 
 import com.google.gson.JsonObject
+import com.sopt.famfam.delete.DeleteUserResponse
 import com.sopt.famfam.post.*
 import com.sopt.famfam.put.PutEditProfileResponse
 import com.sopt.famfam.put.PutResetPwResponse
@@ -27,6 +28,19 @@ interface NetworkService {
         @Body() body: JsonObject
     ): Call<PostLogInResponse>
 
+    //자동로그인
+    @GET("/login")
+    fun getLoginResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("Authorization") token : String
+    ): Call<GetLogInResponse>
+
+    ///users 회원탈퇴
+    @DELETE("/users")
+    fun deleteUserResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("Authorization") token : String
+    ): Call<DeleteUserResponse>
 
     //아이디 중복체크
     @POST("/users/id")
@@ -49,6 +63,14 @@ interface NetworkService {
         @Header("Content-Type") content_type: String,
         @Header("Authorization") token : String
     ): Call<PostGroupsResponse>
+
+    // 그룹참여
+    @POST("/groups/join")
+    fun postJoinGroupsResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("Authorization") token : String,
+        @Body() body: JsonObject
+    ): Call<PostJoinGroupsResponse>
 
     // 그룹초대코드 생성/조회
     @GET("/groups/invitation")

@@ -47,7 +47,7 @@ class CodeGeneratorActivity : AppCompatActivity() {
             tv_code_generator_act_request_code_btn.visibility = View.GONE
             tv_code_generator_act_complete_btn.visibility = View.VISIBLE
             code_generator_act_time_layout.visibility = View.VISIBLE
-            h.sendEmptyMessage(0)
+//            h.sendEmptyMessage(0)
         }
         tv_code_generator_act_complete_btn.setOnClickListener {
             startActivity<MainActivity>()
@@ -75,17 +75,17 @@ class CodeGeneratorActivity : AppCompatActivity() {
             }
         })
     }
-    var timer : Int = 60
-    var h: Handler = object : Handler() {
-       override fun handleMessage(msg: Message) {
-            // text 카운트 다운
-            timer --
-            if(timer == 0){
-                tv_certification_act_seconds.text = "인증시간 만료"
-            }
-            tv_certification_act_seconds.text = timer.toString()+"초"
-                this.sendEmptyMessageDelayed(0, 1000)
-           Log.d("uuuu1", timer.toString())
-        }
-    }
+//    var timer : Int = 60
+//    var h: Handler = object : Handler() {
+//       override fun handleMessage(msg: Message) {
+//            // text 카운트 다운
+//            timer --
+//            if(timer == 0){
+//                tv_certification_act_seconds.text = "인증시간 만료"
+//            }
+//            tv_certification_act_seconds.text = timer.toString()+"초"
+//                this.sendEmptyMessageDelayed(0, 1000)
+//           Log.d("uuuu1", timer.toString())
+//        }
+//    }
 }
