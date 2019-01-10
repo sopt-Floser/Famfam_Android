@@ -1,3 +1,3 @@
 package com.sopt.famfam.adapter.item
 
-data class FamilyListItem(var id : Int, var img : String, var name : String  ){}
+data class FamilyListItem(var useridx : Int, var profilePhoto : String, var userName : String)

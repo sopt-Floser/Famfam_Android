@@ -64,7 +64,7 @@ class JoinActivity : AppCompatActivity() {
                 ) {
                     if (response.body()!!.message == "그룹 참여 성공") {
                      FamilyData.groupId = response.body()!!.data.groupIdx
-                    FamilyData.groupIdx = response.body()!!.data.groupId
+                     FamilyData.groupIdx = response.body()!!.data.groupId
                         startActivity<MainActivity>()
                         finish()
                     } else if (response.body()!!.message == "회원을 찾을 수 없습니다.") {
