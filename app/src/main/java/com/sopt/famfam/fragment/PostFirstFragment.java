@@ -11,24 +11,31 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.sopt.famfam.R;
+import com.sopt.famfam.adapter.item.TodayItem;
 
 public class PostFirstFragment extends Fragment {
     String uri;
+    TodayItem item;
     FragmentManager fm;
     ImageView image;
-    public void setImageUri(String uri, FragmentManager fm)
+    PostFragment frag = new PostFragment();
+    public void setImageUri(String uri, FragmentManager fm, TodayItem item)
     {
         this.uri=uri;
         this.fm = fm;
+        this.item=item;
+        frag.setItem(item);
+        Log.d("asdpf",item.name);
     }
 
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_post_first, container, false);
         image = view.findViewById(R.id.iv_post_mainimage);
+
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.fragment_today1,new PostFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment_today1,frag).addToBackStack(null).commit();
             }
         });
         Glide.with(this).load(uri).into(image);

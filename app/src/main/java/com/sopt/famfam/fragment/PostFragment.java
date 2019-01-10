@@ -1,25 +1,41 @@
 package com.sopt.famfam.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.bumptech.glide.Glide;
 import com.sopt.famfam.R;
 import com.sopt.famfam.activity.EditPostActivity;
 import com.sopt.famfam.adapter.CommentAdapter;
 import com.sopt.famfam.adapter.item.CommentItem;
+import com.sopt.famfam.adapter.item.TodayItem;
+import com.sopt.famfam.database.FamilyData;
+import com.sopt.famfam.database.User;
+import com.sopt.famfam.get.Comments;
+import com.sopt.famfam.get.GetCommentListResponse;
+import com.sopt.famfam.get.Photos;
 import com.sopt.famfam.indicator.CircleAnimIndicator;
+import com.sopt.famfam.network.ApplicationController;
+import com.sopt.famfam.post.PostWriteCommentResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class PostFragment extends Fragment implements View.OnClickListener {
@@ -31,19 +47,43 @@ public class PostFragment extends Fragment implements View.OnClickListener {
     RecyclerView.LayoutManager layoutManager;
     ScrollView scrollView;
     RelativeLayout emotionbar;
-    ImageView emotion_on, emotion_off, emotion_smile, emotion_sad, emotion_amazing, emotion_like, edit_post;
-    TextView post_comment;
+    ImageView emotion_on, emotion_off, emotion_smile, emotion_sad, emotion_amazing, emotion_like, iv_photo;
+    TextView post_comment, username, tv_username, tv_caption;
     EditText editText;
     PopupWindow popupWindow;
     int count=0;
-
+    TodayItem item;
+    private User getUserDate(int idx )
+    {
+        for(int i=0;i< FamilyData.users.size();i++)
+        {
+            if(FamilyData.users.get(i).getUserIdx()==idx)
+                return FamilyData.users.get(i);
+        }
+        return FamilyData.users.get(0);
+    }
+    public void setItem(TodayItem item)
+    {
+        this.item=item;
+        Log.d("asdpost",item.name);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_post, container, false);
+
         scrollView = (ScrollView)view.findViewById(R.id.sv_post_body);
         scrollView.smoothScrollTo(0,0);// scroll to top of screen
 
+        username = view.findViewById(R.id.username);
+        username.setText(item.name);
+        tv_username = view.findViewById(R.id.tv_username);
+        tv_username.setText(item.name);
+
+        iv_photo = view.findViewById(R.id.iv_profile_photo);
+        Glide.with(this).load(item.profile).into(iv_photo);
+
+        tv_caption=view.findViewById(R.id.tv_post_caption);
+        tv_caption.setText(item.caption);
         emotion_on = (ImageView)view.findViewById(R.id.iv_emotion_on);
         emotion_off = (ImageView)view.findViewById(R.id.iv_emotion_off);
         emotionbar = (RelativeLayout)view.findViewById(R.id.emotion_bar);
@@ -58,6 +98,13 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         emotion_amazing.setOnClickListener(this);
         emotion_like.setOnClickListener(this);
 
+        editText = view.findViewById(R.id.et_comment);
+        view.findViewById(R.id.btn_post_comment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getWriteCommentResponse(item.post_img.get(0).getContentIdx(),editText.getText().toString());
+            }
+        });
         //게시물 수정,삭제
         ImageButton popup = (ImageButton) view.findViewById(R.id.ib_edit_post);
         popup.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +152,7 @@ public class PostFragment extends Fragment implements View.OnClickListener {
 
         //포스트 사진 뷰페이저
         viewPager = (ViewPager)view.findViewById(R.id.vp_post_img);
-        viewPager.setAdapter(new adapter(getChildFragmentManager()));
+        viewPager.setAdapter(new PagerAdapter(getChildFragmentManager(),getContext(),item.post_img));
         viewPager.addOnPageChangeListener(onPageChangeListener);
 
         //뷰페이저 인디케이터
@@ -118,18 +165,19 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        ArrayList<CommentItem> commentItemArrayList = new ArrayList<>();
-        commentItemArrayList.add(new CommentItem(R.drawable.mom, "엄마", "재밌었어?", "2019-01-07"));
-        commentItemArrayList.add(new CommentItem(R.drawable.mom, "엄마", "재밌었어?", "2019-01-07"));
-        commentItemArrayList.add(new CommentItem(R.drawable.mom, "엄마", "재밌었어?", "2019-01-07"));
-
-        CommentAdapter commentAdapter = new CommentAdapter(commentItemArrayList);
-        recyclerView.setAdapter(commentAdapter);
+//        ArrayList<CommentItem> commentItemArrayList = new ArrayList<>();
+//        commentItemArrayList.add(new CommentItem(R.drawable.mom, "엄마", "재밌었어?", "2019-01-07"));
+//        commentItemArrayList.add(new CommentItem(R.drawable.mom, "엄마", "재밌었어?", "2019-01-07"));
+//        commentItemArrayList.add(new CommentItem(R.drawable.mom, "엄마", "재밌었어?", "2019-01-07"));
+//
+//        CommentAdapter commentAdapter = new CommentAdapter(commentItemArrayList);
+//        recyclerView.setAdapter(commentAdapter);
 
         //댓글 받아오기
         post_comment = (TextView)view.findViewById(R.id.btn_post_comment);
         editText =(EditText)view.findViewById(R.id.et_comment);
         editText.getText().toString();
+        getCommentListResponse(item.post_img.get(0).getContentIdx());
 
         if (editText.getText().toString().length()==0){
             // 댓글 공백일 때 처리할 내용
@@ -194,7 +242,40 @@ public class PostFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+    private class PagerAdapter extends FragmentStatePagerAdapter {
+        ArrayList<Fragment> frags =new ArrayList<Fragment>();
+        Context context = null;
+        ArrayList<Photos>  list;
+        public PagerAdapter(FragmentManager fm,Context context,ArrayList<Photos> list) {
+            super(fm);
+            this.context=context;
+            this.list=list;
+            Log.d("asd","어뎁터"+list.size());
+            for(int i=0;i<list.size();i++)
+            {
+                Log.d("asd","어뎁터 반복"+list.get(i).getPhotoName());
+                frags.add(new PostFirstFragment());
+                TodayItem t =  new TodayItem(0,"","asd","asd",null,0,0,"asd","asd","asd","asd");
+                ((PostFirstFragment)frags.get(i)).setImageUri(list.get(i).getPhotoName(),fm,t);
+            }
 
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            // 해당하는 page의 Fragment를 생성합니다.
+            return PostFirstFragment.newInstance(list.get(position).getPhotoName());
+        }
+        //        @Override
+//        public Fragment getItem(int position) {
+//            return BlankFragment.newInstance(position);
+//        }
+        @Override
+        public int getCount() {
+            return list.size();  // 총 5개의 page를 보여줍니다.
+        }
+
+    }
     // 뷰페이저 어댑터
     public class adapter extends FragmentPagerAdapter {
         public adapter(FragmentManager fragmentManager) { super(fragmentManager);  }
@@ -223,22 +304,51 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         @Override
         public int getCount() { return MAX_PAGE; }
     }
-//    private void getCommentListResponse(int contentIdx){
-//        Call<GetCommentListResponse> getBoardListResponse = ApplicationController.instance.networkService.getCommentListResponse(FamilyData.token, contentIdx);
-//        getBoardListResponse.enqueue(new Callback<GetCommentListResponse>() {
-//            @Override
-//            public void onResponse(Call<GetCommentListResponse> call, Response<GetCommentListResponse> response) {
-//                if (response.isSuccessful()){
-//
-//                }
-//            }
-//            @Override
-//            public void onFailure(Call<GetCommentListResponse> call, Throwable t) {
-//                // Code...
-//            }
-//        });
-//    }
+    private void getCommentListResponse(int contentIdx){
+        Call<GetCommentListResponse> getBoardListResponse = ApplicationController.instance.networkService.getCommentListResponse(FamilyData.token, contentIdx);
+        getBoardListResponse.enqueue(new Callback<GetCommentListResponse>() {
+            @Override
+            public void onResponse(Call<GetCommentListResponse> call, Response<GetCommentListResponse> response) {
+                if (response.isSuccessful()){
+                    Log.d("asd",response.body().getMessage());
+                    if(response.body().getData()==null)
+                        return;
+                    ArrayList<CommentItem> list = new ArrayList<>();
+                    ArrayList<Comments> tmp  = response.body().getData();
+                    for(int i=0;i<tmp.size();i++)
+                    {
+                        list.add(new CommentItem(getUserDate(tmp.get(i).getUserIdx()).getProfilePhoto(),
+                                getUserDate(tmp.get(i).getUserIdx()).getUserId(),
+                                tmp.get(i).getContent(),
+                                tmp.get(i).getCreatedAt()));
+                    }
+                    recyclerView.setAdapter(new CommentAdapter(list));
+                }
+            }
+            @Override
+            public void onFailure(Call<GetCommentListResponse> call, Throwable t) {
+                // Code...
+            }
+        });
+    }
+    private void getWriteCommentResponse(int contentIdx,String message){
+        Call<PostWriteCommentResponse> getBoardListResponse = ApplicationController.instance.networkService.postWriteCommentResponse(FamilyData.token, "application/json",contentIdx,message);
+        getBoardListResponse.enqueue(new Callback<PostWriteCommentResponse>() {
+            @Override
+            public void onResponse(Call<PostWriteCommentResponse> call, Response<PostWriteCommentResponse> response) {
+                if (response.isSuccessful()){
+                    Log.d("asd",response.body().getMessage());
+                    if(response.body().getData()==null)
+                        return;
 
+                }
+            }
+            @Override
+            public void onFailure(Call<PostWriteCommentResponse> call, Throwable t) {
+                // Code...
+            }
+        });
+    }
 
     //뷰페이저 인디케이터
     private void initIndicator(){
@@ -248,7 +358,7 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         //애니메이션 속도
         circleAnimIndicator.setAnimDuration(300);
         //indicator 생성
-        circleAnimIndicator.createDotPanel(MAX_PAGE, R.drawable.indicator_dot_off_squareimg , R.drawable.indicator_dot_on_squareimg);
+        circleAnimIndicator.createDotPanel(item.post_img.size(), R.drawable.indicator_dot_off_squareimg , R.drawable.indicator_dot_on_squareimg);
     }
 
 

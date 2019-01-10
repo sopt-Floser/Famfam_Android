@@ -171,7 +171,7 @@ interface NetworkService {
     ) : Call<GetContentListResponse>
 
     //
-    @GET("/comments/contents/")
+    @GET("/comments/contents/{contentIdx}")
     fun getCommentListResponse(
         @Header("Authorization") token : String,
         @Path("contentIdx") contentIdx : Int
@@ -193,6 +193,14 @@ interface NetworkService {
         @Query("page") page_no : Int,
         @Query("size") page_size : Int
     ) : Call<GetPhotoListResponse>
+
+    @POST("/comments/contents/{contentIdx}")
+    fun postWriteCommentResponse(
+        @Header("Authorization") token : String,
+        @Header("Content-Type") content_type : String,
+        @Path("contentIdx") contentIdx : Int,
+        @Body content : String
+    ) : Call<PostWriteCommentResponse>
 //
 //    //게시물 상세 보기
 //    @GET("/contents/{contentIdx}")

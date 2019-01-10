@@ -4,7 +4,7 @@ package com.sopt.famfam.get
 data class GetCommentListResponse(
     val status : Int,
     val message : String,
-    val data : Comments
+    val data : ArrayList<Comments>
 )
 
 data class Comments(
