@@ -1,6 +1,7 @@
 
 package com.sopt.famfam.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,6 +37,15 @@ public class AllPhotoAdapter extends RecyclerView.Adapter<AllPhotoAdapter.ViewHo
                 .load(item.getUrl())
                 .into(viewHolder.iv_allphoto);
 
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+
+
+            }
+        });
     }
 
     @Override

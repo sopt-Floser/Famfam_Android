@@ -9,8 +9,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <ImageView
+                android:id="@+id/iv_post_mainimage"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/img_coffee_small"
                 android:layout_centerInParent="true"/>
     </RelativeLayout>

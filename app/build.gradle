@@ -36,6 +36,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'org.jetbrains.anko:anko:0.10.7'
     implementation 'com.google.firebase:firebase-auth:16.0.5'
     implementation 'com.google.firebase:firebase-core:16.0.4'
@@ -49,6 +50,6 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.airbnb.android:lottie:2.6.0-beta19'
     implementation 'com.google.firebase:firebase-database:16.0.3'
-
+    implementation 'gun0912.ted:tedbottompicker:1.2.6'
 }
 com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

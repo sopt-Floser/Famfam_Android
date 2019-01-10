@@ -60,7 +60,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun getLoginResponse() {
+        Log.d("uuuu1", "ok")
         if (et_login_act_id.text.toString().isNotEmpty() && et_login_act_pw.text.toString().isNotEmpty()) {
+            Log.d("uuuu1", "ok2")
+            Log.d("uuuu1", et_login_act_id.text.toString())
+            Log.d("uuuu1", et_login_act_pw.text.toString())
             val input_id = et_login_act_id.text.toString()
             val input_pw = et_login_act_pw.text.toString()
             val jsonObject: JSONObject = JSONObject()
@@ -75,7 +79,9 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(call: Call<PostLogInResponse>, response: Response<PostLogInResponse>) {
+                    Log.d("uuuu1", response.message())
                     if (response.isSuccessful) {
+                        Log.d("Login",response.body().toString())
                         val token = response.body()!!.data.token
                         FamilyData.groupId = response.body()!!.data.user.groupIdx
                         FamilyData.userId = response.body()!!.data.user.userId

@@ -13,6 +13,7 @@ import com.google.firebase.messaging.RemoteMessage
 
 import android.util.Log
 import com.sopt.famfam.activity.MainActivity
+import java.net.URLDecoder
 
 class FIreBaseMessagingService : FirebaseMessagingService() {
 
@@ -51,8 +52,8 @@ class FIreBaseMessagingService : FirebaseMessagingService() {
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("FCM Message")
-            .setContentText(messageBody)
+            .setContentTitle("팸팸")
+            .setContentText(URLDecoder.decode(messageBody, "utf-8"))
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
             .setContentIntent(pendingIntent)

@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
-              android:background="@color/white"
-              android:orientation="vertical"
-              android:id="@+id/fragment_allphoto">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+             android:layout_height="match_parent"
+             android:layout_width="match_parent"
+             android:background="@color/white"
+             android:id="@+id/fragment_allphoto">
+
+<LinearLayout
+                android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp">
+            android:layout_height="55dp"
+            android:id="@+id/allPhotoToolbar">
 
         <ImageView
                 android:layout_width="48dp"
@@ -34,7 +40,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/rv_allphoto"
+            android:layout_below="@+id/allPhotoToolbar"
             tools:listitem="@layout/item_all_photo">
     </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
+
+</RelativeLayout>

@@ -40,10 +40,10 @@ class MoreActivity : AppCompatActivity() {
         }
         btn_more_editprofile.setOnClickListener {
             startActivity<MoreEditProfileActivity>()
+            finish()
         }
         btn_more_account.setOnClickListener {
-            SharedPreferenceController.clearUserSharedPreferences(this)
-            startActivity<LoginActivity>()
+            startActivity<AccountSecurityActivity>()
             finish()
         }
     }

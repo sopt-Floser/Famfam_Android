@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.sopt.famfam">
 
-
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -16,19 +15,19 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity" android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.MainActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity
                 android:name=".activity.SignupActivity"
                 android:windowSoftInputMode="stateHidden">
         </activity>
         <activity android:name=".activity.SplashActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
         </activity>
         <activity android:name=".activity.IntroActivity"/>
         <activity android:name=".activity.AccessTermsActivity"/>
@@ -43,6 +42,7 @@
         <activity android:name=".activity.AddPostActivity"/>
         <activity android:name=".activity.AddPhotoActivity"/>
         <activity android:name=".activity.EditPostActivity"/>
+
 
         <service android:name=".FIreBaseMessagingService">
             <intent-filter>
@@ -72,6 +72,8 @@
         <activity android:name=".activity.MoreVersionActivity">
         </activity>
         <activity android:name=".activity.MoreEditProfileActivity">
+        </activity>
+        <activity android:name=".activity.AccountSecurityActivity">
         </activity>
     </application>
 
