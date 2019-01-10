@@ -54,11 +54,18 @@ class SelectActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<PostGroupsResponse>, response: Response<PostGroupsResponse>) {
-                if (response.isSuccessful) {
+                if (response.body()!!.message == "그룹 생성 성공") {
                     var message: String = response.body()!!.message
                     toast(message)
                     startActivity<MainActivity>()
                     finish()
+                } else if (response.body()!!.message == "이미 가입된 그룹이 있습니다."){
+                    startActivity<MainActivity>()
+                    finish()
+                } else if (response.body()!!.message == "회원을 찾을 수 없습니다."){
+                    toast(response.body()!!.message)
+                } else {
+                    toast(response.body()!!.message)
                 }
             }
         })

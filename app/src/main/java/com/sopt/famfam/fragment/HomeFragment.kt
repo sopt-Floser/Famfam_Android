@@ -13,6 +13,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
@@ -34,6 +36,7 @@ import com.sopt.famfam.network.NetworkService
 import com.sopt.famfam.post.PostLogInResponse
 import kotlinx.android.synthetic.main.activity_alarm.*
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_more.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.jetbrains.anko.startActivity
@@ -59,6 +62,14 @@ class HomeFragment : Fragment() {
         getGroupMemberListResponse()
         // 가족 리스트 통신
         var view = inflater.inflate(R.layout.fragment_home, container, false)
+        view.tv_home_user_name.text = FamilyData.userName
+        val requestOptions1 = RequestOptions()
+        requestOptions1.placeholder(R.drawable.myimg)
+        Glide.with(context!!)
+            .setDefaultRequestOptions(requestOptions1)
+            .load(FamilyData.profilePhoto)
+            .thumbnail(0.5f)
+            .into(view.iv_home_famliy_my)
         // 패밀리 붙이기
         familylist = view.rv_home_family
 

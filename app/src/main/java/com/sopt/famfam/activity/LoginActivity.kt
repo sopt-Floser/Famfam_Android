@@ -34,11 +34,25 @@ class LoginActivity : AppCompatActivity() {
             FamilyData.groupId = tmp[0].toInt()
             FamilyData.userId = tmp[1]
             FamilyData.userName = tmp[2]
-            FamilyData.statusMessage = tmp[3]
-            FamilyData.birthday =tmp[4]
-            FamilyData.sexType = tmp[5].toInt()
+            FamilyData.statusMessage = tmp[4]
+            FamilyData.birthday = tmp[5]
+            FamilyData.backPhoto = tmp[6]
+            FamilyData.profilePhoto = tmp[7]
+            FamilyData.sexType = tmp[8].toInt()
 
-            FamilyData.token=SharedPreferenceController.getAuthorization(this)
+                FamilyData.token = SharedPreferenceController.getAuthorization(this)
+
+            /*
+                        FamilyData.groupId = response.body()!!.data.user.groupIdx
+                        FamilyData.userId = response.body()!!.data.user.userId
+                        FamilyData.userName = response.body()!!.data.user.userName
+                        FamilyData.token = token
+                        FamilyData.statusMessage = response.body()!!.data.user.statusMessage
+                        FamilyData.birthday = response.body()!!.data.user.birthday
+                        FamilyData.backPhoto = response.body()!!.data.user?.backPhoto
+                        FamilyData.profilePhoto = response.body()!!.data.user?.profilePhoto
+                        FamilyData.sexType = response.body()!!.data.user.sexType
+             */
 
         }
         if (SharedPreferenceController.getAuthorization(this).isNotEmpty()) {
@@ -81,16 +95,16 @@ class LoginActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<PostLogInResponse>, response: Response<PostLogInResponse>) {
                     Log.d("uuuu1", response.message())
                     if (response.isSuccessful) {
-                        Log.d("Login",response.body().toString())
+                        Log.d("Login", response.body().toString())
                         val token = response.body()!!.data.token
                         FamilyData.groupId = response.body()!!.data.user.groupIdx
                         FamilyData.userId = response.body()!!.data.user.userId
                         FamilyData.userName = response.body()!!.data.user.userName
                         FamilyData.token = token
-                        FamilyData.statusMessage =response.body()!!.data.user.statusMessage
+                        FamilyData.statusMessage = response.body()!!.data.user.statusMessage
                         FamilyData.birthday = response.body()!!.data.user.birthday
-//                        FamilyData.backPhoto = response.body()!!.data.user.backPhoto
-//                        FamilyData.profilePhoto = response.body()!!.data.user.profilePhoto
+                        FamilyData.backPhoto = response.body()!!.data.user?.backPhoto
+                        FamilyData.profilePhoto = response.body()!!.data.user?.profilePhoto
                         FamilyData.sexType = response.body()!!.data.user.sexType
                         Log.e("uuuu1", token)
 
@@ -98,10 +112,12 @@ class LoginActivity : AppCompatActivity() {
                             this@LoginActivity,
                             FamilyData.groupId.toString() + "," +
                                     FamilyData.userId + "," +
-                                    FamilyData.userName+ ","+
-                                    FamilyData.statusMessage+","+
-                                    FamilyData.birthday+","+
-                                    FamilyData.sexType
+                                    FamilyData.userName + "," +
+                                    FamilyData.statusMessage + "," +
+                                    FamilyData.birthday + "," +
+                                    FamilyData.sexType + "," +
+                                    FamilyData.profilePhoto + "," +
+                                    FamilyData.backPhoto
 
                         )
                         //저번 시간에 배웠던 SharedPreference에 토큰을 저장! 왜냐하면 토큰이 필요한 통신에 사용하기 위해서!!

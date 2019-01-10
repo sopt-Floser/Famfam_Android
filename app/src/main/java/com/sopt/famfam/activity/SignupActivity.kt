@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import com.google.firebase.iid.FirebaseInstanceId
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.famfam.R
@@ -273,6 +274,7 @@ class SignupActivity : AppCompatActivity() {
         val input_userPhone: String = intent.getStringExtra("phoneNumber")
         val input_birthday: String = "$year-$month-$day" + "T00:00"
         val input_sexType: Int = sexType
+        val input_fcmToken : String? = FirebaseInstanceId.getInstance().getToken()
         //Json 형식의 객체 만들기
         var jsonObject = JSONObject()
         jsonObject.put("userName", input_userName)
@@ -281,6 +283,7 @@ class SignupActivity : AppCompatActivity() {
         jsonObject.put("userPhone", input_userPhone)
         jsonObject.put("birthday", input_birthday)
         jsonObject.put("sexType", input_sexType)
+        jsonObject.put("fcmToken", input_fcmToken)
         //Gson 라이브러리의 Json Parser을 통해 객체를 Json으로!
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
 

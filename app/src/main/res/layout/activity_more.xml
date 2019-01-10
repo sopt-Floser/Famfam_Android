@@ -11,14 +11,16 @@
             android:scaleType="centerCrop"
             android:src="@drawable/feed_1"/>
 
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_more_profile_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_alignBottom="@+id/iv_more_bg"
             android:layout_marginLeft="27dp"
             android:layout_marginBottom="-40dp"
-            android:src="@drawable/kim_fam_big"/>
+            android:src="@drawable/kim_fam_big"
+    />
 
     <TextView
             android:id="@+id/tv_more_nickname"

@@ -29,7 +29,7 @@ class FamilyListAdapter(var context: Context, var list : ArrayList<FamilyListIte
     override fun onBindViewHolder(holder: Holder, position: Int) {
         //list[position].profilePhoto
         val requestOptions = RequestOptions()
-        requestOptions.placeholder(R.drawable.amazing)
+//        requestOptions.placeholder(R.drawable.amazing)
         Glide.with(context)
                 .setDefaultRequestOptions(requestOptions)
                 .load(list[position].profilePhoto)
