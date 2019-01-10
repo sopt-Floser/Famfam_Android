@@ -17,6 +17,8 @@ import com.sopt.famfam.fragment.TodayFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import java.util.*
+import android.support.v4.view.MotionEventCompat
+import android.util.AttributeSet
 
 
 class MainActivity : AppCompatActivity() {
@@ -112,3 +114,39 @@ class MainActivity : AppCompatActivity() {
     //invite_btn
 
 }
+
+class SwipeViewPager : ViewPager {
+    var enabled1: Boolean = false
+
+    constructor(context: Context) : super(context) {}
+
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {}
+
+    override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
+        if (enabled1) {
+            return super.onInterceptTouchEvent(ev)
+        } else {
+            if (MotionEventCompat.getActionMasked(ev) == MotionEvent.ACTION_MOVE) {
+                // ignore move action
+            } else {
+                if (super.onInterceptTouchEvent(ev)) {
+                    super.onTouchEvent(ev)
+                }
+            }
+            return false
+        }
+    }
+
+    override fun onTouchEvent(ev: MotionEvent): Boolean {
+        return if (enabled1) {
+            super.onTouchEvent(ev)
+        } else {
+            MotionEventCompat.getActionMasked(ev) != MotionEvent.ACTION_MOVE && super.onTouchEvent(ev)
+        }
+    }
+
+    fun setPagingEnabled(enabled: Boolean) {
+        this.enabled1 = enabled
+    }
+}
+
