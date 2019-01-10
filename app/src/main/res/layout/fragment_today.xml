@@ -57,7 +57,8 @@
                 android:layout_below="@+id/TodayToolBar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/item_today">
+                tools:listitem="@layout/item_today"
+        android:background="#e0e0e0">
         </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
