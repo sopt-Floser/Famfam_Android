@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/linLay_allphoto_detail">
+
+    <ImageView
+            android:layout_width="360dp"
+            android:layout_height="245dp"
+            android:scaleType="centerCrop"
+            android:background="@color/white"
+            android:src="@drawable/famfeed_6"
+            android:id="@+id/iv_allphoto_detail"/>
+
+</LinearLayout>

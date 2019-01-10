@@ -30,8 +30,6 @@ public class AllPhotoFragment extends Fragment {
 
         return view;
 
-
-
     }
 
 }

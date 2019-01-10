@@ -18,7 +18,6 @@ public class AllPhotoAdapter extends RecyclerView.Adapter<AllPhotoAdapter.ViewHo
 
     private ArrayList<AllPhotoItem> items = new ArrayList<>();
 
-
     @NonNull
     @Override
     public AllPhotoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {

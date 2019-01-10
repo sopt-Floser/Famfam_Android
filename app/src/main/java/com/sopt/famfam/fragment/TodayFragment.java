@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -62,13 +63,13 @@ public class TodayFragment extends Fragment  {
 
             @Override
             public void onClick(View v) {
-//                Fragment fragment = new AllPhotoFragment();
-//
-//                    FragmentManager fragmentManager = getChildFragmentManager();
-//                    FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.fragment_allphoto, fragment);
-//                    transaction.addToBackStack(null);
-//                    transaction.commit();
+                AllPhotoFragment fragment = new AllPhotoFragment();
+
+                    FragmentManager fragmentManager = getChildFragmentManager();
+                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment_allphoto, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 }
         });
 
