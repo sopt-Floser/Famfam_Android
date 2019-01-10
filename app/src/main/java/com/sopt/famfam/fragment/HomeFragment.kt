@@ -30,6 +30,7 @@ import com.sopt.famfam.adapter.item.FamilyListItem
 import com.sopt.famfam.data.AlarmData
 import com.sopt.famfam.database.FamilyData
 import com.sopt.famfam.database.SharedPreferenceController
+import com.sopt.famfam.database.User
 import com.sopt.famfam.get.GetGroupUserResponse
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
@@ -122,21 +123,14 @@ class HomeFragment : Fragment() {
                             list.add(FamilyListItem(item.userIdx, "https://s3.ap-northeast-2.amazonaws.com/testfamfam/default/profile.png", item.userName))
                         } else {
                             list.add(FamilyListItem(item.userIdx, item.profilePhoto, item.userName))
+                            Log.d("asdphoto",item.profilePhoto)
                         }
                     }
-//                    for (user in data) {
-//                        i++
-//                        FamilyData.users[i].userId = user.userId
-//                        FamilyData.users[i].userIdx = user.userIdx
-//                        FamilyData.users[i].sexType = user.sexType
-//                        FamilyData.users[i].birthday = user.birthday
-//                        FamilyData.users[i].statusMessage = user.statusMessage
-//                        FamilyData.users[i].userName = user.userName
-//                        FamilyData.users[i].userPhone = user.userPhone
-////                       FamilyData.users[i].backPhoto = user.backPhoto
-////                       FamilyData.users[i].profilePhoto = user.profilePhoto
-//                        FamilyData.users[i].groupIdx = user.groupIdx
-//                    }
+                    FamilyData.users= ArrayList<User>()
+                    for (user in data) {
+                        FamilyData.users.add(User(user.userIdx,user.userId,user.userName,user.userPhone,user.birthday,user.sexType,user.statusMessage,
+                                "","",user.groupIdx))
+                    }
                     familylist!!.adapter=FamilyListAdapter(context!!,list)
                     familylist!!.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
                     Log.d("asd", "여긴되나요")
