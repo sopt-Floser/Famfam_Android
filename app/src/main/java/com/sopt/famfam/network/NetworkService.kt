@@ -138,7 +138,7 @@ interface NetworkService {
     ) : Call<GetContentListResponse>
 
     //
-    @GET("/comments/contents/")
+    @GET("/comments/contents/{contentIdx}")
     fun getCommentListResponse(
         @Header("Authorization") token : String,
         @Path("contentIdx") contentIdx : Int

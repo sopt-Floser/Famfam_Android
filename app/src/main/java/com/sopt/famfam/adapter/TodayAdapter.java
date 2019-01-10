@@ -107,7 +107,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             e.printStackTrace();
         }
         todayViewHolder.posted_time.setText((1900+date.getYear())+"."+(date.getMonth()+1)+"."+date.getDate());
-        todayViewHolder.vp.setAdapter(new PagerAdapter(fragmentManager,context, todayItemArrayList.get(position).post_img));
+        todayViewHolder.vp.setAdapter(new PagerAdapter(fragmentManager,context, todayItemArrayList.get(position).post_img,position));
         todayViewHolder.vp.setId(1+position);
         if (mViewPagerState.containsKey(position)) {
             todayViewHolder.vp.setCurrentItem(mViewPagerState.get(position));
@@ -139,24 +139,26 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         ArrayList<Fragment> frags =new ArrayList<Fragment>();
         Context context = null;
         ArrayList<Photos>  list;
-        public PagerAdapter(FragmentManager fm,Context context,ArrayList<Photos> list) {
+        public PagerAdapter(FragmentManager fm,Context context,ArrayList<Photos> list,int position) {
             super(fm);
             this.context=context;
             this.list=list;
             Log.d("asd","어뎁터"+list.size());
             for(int i=0;i<list.size();i++)
             {
-                Log.d("asd","어뎁터 반복"+list.get(i).getPhotoName());
+                Log.d("asd","어뎁터 반복"+todayItemArrayList.get(position));
                 frags.add(new PostFirstFragment());
-                ((PostFirstFragment)frags.get(i)).setImageUri(list.get(i).getPhotoName(),fm);
+                ((PostFirstFragment)frags.get(i)).setImageUri(list.get(i).getPhotoName(),fm,todayItemArrayList.get(position));
             }
 
         }
 
         @Override
         public Fragment getItem(int position) {
-            // 해당하는 page의 Fragment를 생성합니다.
-            return PostFirstFragment.newInstance(list.get(position).getPhotoName());
+//            // 해당하는 page의 Fragment를 생성합니다.
+//            return PostFirstFragment.newInstance(list.get(position).getPhotoName());
+
+            return frags.get(position);
         }
 //        @Override
 //        public Fragment getItem(int position) {

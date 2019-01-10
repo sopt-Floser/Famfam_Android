@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" android:background="@color/white">
 
     <!--Toolbar-->
     <android.support.v7.widget.Toolbar
@@ -60,7 +60,7 @@
                     android:layout_centerVertical="true"
                     android:id="@+id/ib_edit_post"
                     android:src="@drawable/icon_dot3"
-                    />
+            />
 
 
         </RelativeLayout>
@@ -72,10 +72,10 @@
 
     <ScrollView
             android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/sv_post_body"
-                android:layout_below="@+id/PostToolBar"
-                android:paddingBottom="55dp">
+            android:layout_height="wrap_content"
+            android:id="@+id/sv_post_body"
+            android:layout_below="@+id/PostToolBar"
+            android:paddingBottom="55dp">
 
         <RelativeLayout
                 android:layout_width="wrap_content"
@@ -122,7 +122,6 @@
                         android:id="@+id/tv_posted_time"/>
 
             </RelativeLayout>
-
 
 
             <RelativeLayout
@@ -178,10 +177,7 @@
                 </RelativeLayout>
 
 
-
-
             </RelativeLayout>
-
 
 
             <!-- Emotion Bar, Indicator-->
@@ -343,7 +339,7 @@
                     android:id="@+id/rv_comment"
                     android:layout_below="@+id/btn_open_comment"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     tools:listitem="@layout/item_comment"
                     android:background="@color/white">
             </android.support.v7.widget.RecyclerView>
