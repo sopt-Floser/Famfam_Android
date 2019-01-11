@@ -36,18 +36,25 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         android:textColor="#656565"
-                        android:layout_centerInParent="true" />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="완료"
+                        android:layout_centerInParent="true"/>
+                <RelativeLayout
+                        android:id="@+id/tvNext"
+                        android:layout_width="64dp"
+                        android:layout_height="56dp"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="25dp"
-                        android:textSize="20sp"
-                        android:textColor="@color/blue"
-                        android:layout_centerVertical="true"
-                        android:id="@+id/tvNext"/>
+                        android:layout_marginRight="25dp">
+                    <TextView
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="완료"
+                            android:textSize="20sp"
+                            android:textColor="@color/blue"
+                            android:layout_centerVertical="true"
+                            />
+
+                </RelativeLayout>
+
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -63,37 +70,37 @@
                 android:paddingBottom="37dp">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="140dp"
-                    android:id="@+id/iv_add_post"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_sky"/>
-                <TextView
-                    android:id="@+id/tv_add_post_count"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_alignRight="@id/iv_add_post"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/white"
-                    android:text="0"/>
+                    android:layout_height="wrap_content">
+                <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="140dp"
+                        android:id="@+id/iv_add_post"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_sky"/>
+                <TextView
+                        android:id="@+id/tv_add_post_count"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_alignRight="@id/iv_add_post"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        android:text="0"/>
             </RelativeLayout>
 
 
             <EditText
-                android:id="@+id/tv_add_post"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="14.6dp"
-                android:background="@null"
-                android:gravity="top"
-                android:hint="오늘 하루를 입력해주세요."
-                android:inputType="textImeMultiLine"
-                android:textSize="16sp" />
+                    android:id="@+id/tv_add_post"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="14.6dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="오늘 하루를 입력해주세요."
+                    android:inputType="textImeMultiLine"
+                    android:textSize="16sp"/>
 
         </LinearLayout>
 

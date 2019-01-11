@@ -124,7 +124,7 @@ class HomeFragment : Fragment() {
                             list.add(
                                 FamilyListItem(
                                     item.userIdx,
-                                    "https://s3.ap-northeast-2.amazonaws.com/testfamfam/default/profile.png",
+                                    "https://s3.ap-northeast-2.amazonaws.com/testfamfam/default/profile_default.png",
                                     item.userName
                                 )
                             )

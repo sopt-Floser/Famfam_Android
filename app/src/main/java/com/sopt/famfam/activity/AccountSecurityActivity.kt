@@ -16,6 +16,8 @@ import org.jetbrains.anko.startActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.content.Intent
+
 
 class AccountSecurityActivity : AppCompatActivity() {
 
@@ -26,7 +28,7 @@ class AccountSecurityActivity : AppCompatActivity() {
     }
 
 
-    private fun setOnClickListenr () {
+    private fun setOnClickListenr() {
         membership_withdrawal_btn.setOnClickListener {
             // 회원탈퇴
             startActivity<MoreSecedeActivity>()
@@ -34,7 +36,7 @@ class AccountSecurityActivity : AppCompatActivity() {
         logout_btn.setOnClickListener {
             // logout
             SharedPreferenceController.clearUserSharedPreferences(this)
-            startActivity<IntroActivity>()
+            startActivity<IntroActivity>("intent" to intent)
             finish()
         }
         tv_more_disconnect_btn.setOnClickListener {
