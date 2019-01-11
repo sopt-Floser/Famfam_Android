@@ -31,6 +31,8 @@ import com.sopt.famfam.get.GetCommentListResponse;
 import com.sopt.famfam.get.Photos;
 import com.sopt.famfam.indicator.CircleAnimIndicator;
 import com.sopt.famfam.network.ApplicationController;
+import com.sopt.famfam.network.NetworkService;
+import com.sopt.famfam.post.PostFeelResponse;
 import com.sopt.famfam.post.PostWriteCommentResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,7 +40,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PostFragment extends Fragment implements View.OnClickListener {
     ViewPager viewPager;
@@ -69,6 +73,28 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         this.item=item;
         Log.d("asdpost",item.name);
     }
+
+    private void postFeelResponse(int contentIdx,int feel) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("feelType", feel);
+        JsonObject gsonObject = (JsonObject) new JsonParser().parse(jsonObject.toString());
+        Call<PostFeelResponse> getBoardListResponse = ApplicationController.instance.networkService.postFeelResponse("application/json",FamilyData.token, contentIdx , gsonObject);
+        getBoardListResponse.enqueue(new Callback<PostFeelResponse>() {
+            @Override
+            public void onResponse(Call<PostFeelResponse> call, Response<PostFeelResponse> response) {
+                if (response.isSuccessful()) {
+                    Log.d("성공", response.message());
+                }else {
+                    Log.e("에러", response.message());
+                }
+            }
+            @Override
+            public void onFailure(Call<PostFeelResponse> call, Throwable t) {
+                // Code...
+            }
+        });
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_post, container, false);
@@ -175,6 +201,15 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
+        SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        Date date=new Date();
+        try {
+            date = sim.parse(item.posted_time);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ((TextView)view.findViewById(R.id.tv_posted_time)).setText((1900+date.getYear())+"."+(date.getMonth()+1)+"."+date.getDate());
+
 //        ArrayList<CommentItem> commentItemArrayList = new ArrayList<>();
 //        commentItemArrayList.add(new CommentItem(R.drawable.mom, "엄마", "재밌었어?", "2019-01-07"));
 //        commentItemArrayList.add(new CommentItem(R.drawable.mom, "엄마", "재밌었어?", "2019-01-07"));
@@ -233,21 +268,41 @@ public class PostFragment extends Fragment implements View.OnClickListener {
             case R.id.iv_emotion_smile:
                 // 스마일 이미지 클릭시 처리할 내용
                 // feel type int 0
+                try {
+                    postFeelResponse(item.post_img.get(0).getContentIdx(),0);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 emotionbar.setVisibility(View.INVISIBLE);
                 break;
             case R.id.iv_emotion_sad:
                 // 우는 이미지 클릭시 처리할 내용
                 // feel type int 1
+                try {
+                    postFeelResponse(item.post_img.get(0).getContentIdx(),1);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 emotionbar.setVisibility(View.INVISIBLE);
                 break;
             case R.id.iv_emotion_amazing:
                 // 놀라는 이미지 클릭시 처리할 내용
                 // feel type int 2
+                try {
+                    postFeelResponse(item.post_img.get(0).getContentIdx(),2);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 emotionbar.setVisibility(View.INVISIBLE);
                 break;
             case R.id.iv_emotion_like:
                 // 하트 이미지 클릭시 처리할 내용
                 // feel type int 4
+                try {
+                    postFeelResponse(item.post_img.get(0).getContentIdx(),3);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 emotionbar.setVisibility(View.INVISIBLE);
                 break;
         }
@@ -327,8 +382,8 @@ public class PostFragment extends Fragment implements View.OnClickListener {
                     ArrayList<Comments> tmp  = response.body().getData();
                     for(int i=0;i<tmp.size();i++)
                     {
-                        list.add(new CommentItem(tmp.get(i).getUserName(),
-                                tmp.get(i).getUserProfile(),
+                        list.add(new CommentItem(tmp.get(i).getUserProfile(),
+                                tmp.get(i).getUserName(),
                                 tmp.get(i).getContent(),
                                 tmp.get(i).getCreatedAt()));
                     }

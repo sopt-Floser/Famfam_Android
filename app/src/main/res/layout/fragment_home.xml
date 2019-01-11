@@ -85,6 +85,7 @@
                         android:text="팸팸"/>
 
                 <androidx.recyclerview.widget.RecyclerView
+                        android:fadingEdge="none"
                         android:layout_marginLeft="24dp"
                         android:id="@+id/rv_home_family"
                         android:layout_width="match_parent"
