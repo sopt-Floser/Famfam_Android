@@ -276,7 +276,7 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         @Override
         public Fragment getItem(int position) {
             // 해당하는 page의 Fragment를 생성합니다.
-            return PostFirstFragment.newInstance(list.get(position).getPhotoName());
+            return frags.get(position);
         }
         //        @Override
 //        public Fragment getItem(int position) {

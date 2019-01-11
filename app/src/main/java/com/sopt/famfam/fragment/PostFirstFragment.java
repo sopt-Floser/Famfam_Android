@@ -1,6 +1,8 @@
 package com.sopt.famfam.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.sopt.famfam.R;
 import com.sopt.famfam.adapter.item.TodayItem;
 
@@ -17,19 +21,32 @@ public class PostFirstFragment extends Fragment {
     String uri;
     TodayItem item;
     FragmentManager fm;
-    ImageView image;
+    ImageView image=null;
+    RequestOptions options = new RequestOptions();
     PostFragment frag = new PostFragment();
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Log.d("asdoncreat",item.name);
+    }
+
     public void setImageUri(String uri, FragmentManager fm, TodayItem item)
     {
         this.uri=uri;
         this.fm = fm;
         this.item=item;
         frag.setItem(item);
+        if(image!=null)
+            Glide.with(this).load(uri).apply(options).into(image);
         Log.d("asdpf",item.name);
     }
 
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_post_first, container, false);
+        options.diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true);
         image = view.findViewById(R.id.iv_post_mainimage);
 
         image.setOnClickListener(new View.OnClickListener() {
@@ -38,45 +55,32 @@ public class PostFirstFragment extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.fragment_today1,frag).addToBackStack(null).commit();
             }
         });
-        Glide.with(this).load(uri).into(image);
+        Glide.with(this).load(uri).apply(options).into(image);
         Log.d("asd","photo"+uri);
         return view;
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        Glide.with(this).load(uri).into(image);
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        options.diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true);
+        image = view.findViewById(R.id.iv_post_mainimage);
 
-        Glide.with(this).load(uri).into(image);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        Glide.with(this).load(uri).into(image);
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_today1,frag).addToBackStack(null).commit();
+            }
+        });
+        Glide.with(this).load(uri).apply(options).into(image);
+        Log.d("asdviewcreat","aaa"+uri);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        Glide.with(this).load(uri).into(image);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Glide.with(this).load(uri).into(image);
-    }
-
-    public static PostFirstFragment newInstance(String uri) {
+    public static PostFirstFragment newInstance(String uri, TodayItem item) {
         PostFirstFragment fragment = new PostFirstFragment();
         fragment.uri=uri;
+        fragment.item=item;
         return fragment;
     }
 }
