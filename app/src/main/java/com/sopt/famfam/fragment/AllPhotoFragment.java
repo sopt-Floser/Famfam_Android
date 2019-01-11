@@ -3,6 +3,8 @@ package com.sopt.famfam.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +17,9 @@ import com.sopt.famfam.data.SampleData2;
 
 
 public class AllPhotoFragment extends Fragment {
+
+    AllPhotoAdapter allPhotoAdapter;
+    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState){
@@ -33,11 +38,39 @@ public class AllPhotoFragment extends Fragment {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                TodayFragment fragment = new TodayFragment();
+                FragmentManager fragmentManager = getChildFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.fragment_allphoto, fragment);
+                transaction.commit();
+                }
                // popBackStack();
-            }
         });
 
+//        getPhotoListResponse();
         return view;
     }
+
+//    private void getPhotoListResponse() {
+//        Call<GetPhotoListResponse> getBoardListResponse = ApplicationController.instance.networkService.getPhotoListResponse(FamilyData.token);
+//        getBoardListResponse.enqueue(new Callback<GetPhotoListResponse>() {
+//            @Override
+//            public void onResponse(Call<GetPhotoListResponse> call, Response<GetPhotoListResponse> response) {
+//                if (response.isSuccessful()) {
+//
+//                    ArrayList<Photos> list = response.body().getData().getPhotos();
+//                    ArrayList<AllPhotoItem> list2 = new ArrayList<>();
+//
+//                    allPhotoAdapter.setItems(list2);
+//                    recyclerView.setAdapter(allPhotoAdapter);
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<GetPhotoListResponse> call, Throwable t) {
+//                // Code...
+//            }
+//        });
+//    }
 }
