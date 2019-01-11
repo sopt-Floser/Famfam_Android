@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.famfam.R
@@ -27,6 +28,7 @@ import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
 import com.sopt.famfam.put.PutEditProfileResponse
 import com.sopt.famfam.put.PutUserPhotoResponse
+import kotlinx.android.synthetic.main.activity_more.*
 import kotlinx.android.synthetic.main.activity_more_edit_profile.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -66,8 +68,30 @@ class MoreEditProfileActivity : AppCompatActivity() {
         }
         tv_more_editprofile_sexType.setText(parsedSexType)
         setOnClickListener()
+//        iv_more_profile_img
+        val requestOptions1 = RequestOptions()
+        requestOptions1.placeholder(R.drawable.myimg)
+        Glide.with(applicationContext)
+            .setDefaultRequestOptions(requestOptions1)
+            .load(FamilyData.profilePhoto)
+            .thumbnail(0.5f)
+            .into(iv_more_edit_profile_img)
 
+        val requestOptions2 = RequestOptions()
+        requestOptions1.placeholder(R.drawable.myimg)
+        Glide.with(applicationContext)
+            .setDefaultRequestOptions(requestOptions2)
+            .load(FamilyData.backPhoto)
+            .thumbnail(0.5f)
+            .into(iv_more_edit_bg)
     }
+
+    override fun onResume() {
+        super.onResume()
+        getUserResponse()
+    }
+
+
 
 //    var nickname : Editable =
 //    var statusMessage : Editable = tv_more_editprofile_statusmessage.text
@@ -164,7 +188,7 @@ class MoreEditProfileActivity : AppCompatActivity() {
                         1 -> putUserProfileImagedResponse()
                         2 -> putUserBackImagedResponse()
                     }
-                    getUserResponse()
+//                    getUserResponse()
                 }
             }
         }
@@ -250,6 +274,8 @@ class MoreEditProfileActivity : AppCompatActivity() {
                         toast(response.body()!!.message)
                         //BoardActivity로 결과 보내기
                         setResult(Activity.RESULT_OK)
+                        getUserResponse()
+                        startActivity<MainActivity>()
                         finish()
                     }
                 }
@@ -282,6 +308,7 @@ class MoreEditProfileActivity : AppCompatActivity() {
                         toast(response.body()!!.message)
                         //BoardActivity로 결과 보내기
                         setResult(Activity.RESULT_OK)
+                        getUserResponse()
                         finish()
                     }
                 }

@@ -10,18 +10,33 @@ import android.support.v4.view.MotionEventCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.RelativeLayout
 import com.sopt.famfam.R
+import com.sopt.famfam.database.FamilyData
 import com.sopt.famfam.fragment.HomeFragment
 import com.sopt.famfam.fragment.TodayFragment
+import com.sopt.famfam.get.GetUserResponse
+import com.sopt.famfam.network.ApplicationController
+import com.sopt.famfam.network.NetworkService
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.toast
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
+
     var adapter = PagerAdapter(supportFragmentManager, this)
     var index: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,6 +90,12 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        getUserResponse()
+    }
+
+
     override fun onBackPressed() {
         var curFrags = adapter.getItem(index).childFragmentManager
 
@@ -111,6 +132,32 @@ class MainActivity : AppCompatActivity() {
             return frags.size
         }
     }
+
+    private fun getUserResponse() {
+        if (FamilyData.token != null) {
+            Log.d("uuuu1", FamilyData.token)
+            val getUserResponse =
+                networkService.getUserResponse("application/json", FamilyData.token)
+
+            getUserResponse.enqueue(object : Callback<GetUserResponse> {
+                override fun onFailure(call: Call<GetUserResponse>, t: Throwable) {
+                    Log.e("uuuu1", t.toString())
+                }
+
+                override fun onResponse(call: Call<GetUserResponse>, response: Response<GetUserResponse>) {
+                    if (response.body()!!.message == "회원 정보 조회 성공") {
+                        FamilyData.profilePhoto = response.body()!!.data.profilePhoto
+                        FamilyData.backPhoto = response.body()!!.data.backPhoto
+                        Log.d("uuuu1", FamilyData.profilePhoto)
+                        toast(FamilyData.profilePhoto)
+                    } else {
+                        toast("fail")
+                    }
+                }
+            })
+        }
+    }
+
     //invite_btn
 
 }
