@@ -100,6 +100,8 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("uuuu1", response.message())
                     if (response.isSuccessful) {
                         Log.d("Login", response.body().toString())
+                        if(response.body()!!.status==400)
+                            return
                         val token = response.body()!!.data.token
                         FamilyData.groupId = response.body()!!.data.user.groupIdx
                         FamilyData.userId = response.body()!!.data.user.userId
