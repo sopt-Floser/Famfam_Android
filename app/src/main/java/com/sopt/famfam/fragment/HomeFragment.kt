@@ -206,7 +206,6 @@ class HomeFragment : Fragment() {
                         else
                             FamilyData.backPhoto =""
                         Log.d("uuuu1", FamilyData.profilePhoto)
-                        toast(FamilyData.profilePhoto)
                     } else {
                         toast("fail")
                     }
