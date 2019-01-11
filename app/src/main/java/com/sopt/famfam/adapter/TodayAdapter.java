@@ -35,6 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Random;
 
 
 public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -70,6 +71,19 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.todayItemArrayList = todayItemArrayList;
         this.context=context;
         this.fragmentManager = fragmentManager;
+
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    @Override
+    public void onViewAttachedToWindow(@NonNull RecyclerView.ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        TodayViewHolder todayViewHolder = (TodayViewHolder) holder;
+        todayViewHolder.vp.getAdapter().notifyDataSetChanged();
     }
 
     @NonNull
@@ -86,7 +100,8 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         todayViewHolder.setIsRecyclable(false);
         todayViewHolder.i=position;
         final int p=position;
-        Glide.with(context).load(todayItemArrayList.get(position).profile).into(todayViewHolder.profile);
+        if (todayItemArrayList.get(position).profile.equals("")==false)
+            Glide.with(context).load(todayItemArrayList.get(position).profile).into(todayViewHolder.profile);
         Log.d("today",todayItemArrayList.get(position).profile);
         todayViewHolder.profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,14 +123,13 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         } catch (Exception e) {
             e.printStackTrace();
         }
+        PagerAdapter adap = new PagerAdapter(fragmentManager,context, todayItemArrayList.get(position).post_img,position);
         todayViewHolder.posted_time.setText((1900+date.getYear())+"."+(date.getMonth()+1)+"."+date.getDate());
-        todayViewHolder.vp.setAdapter(new PagerAdapter(fragmentManager,context, todayItemArrayList.get(position).post_img,position));
-        todayViewHolder.vp.setId(1+position);
+        todayViewHolder.vp.setAdapter(adap);
+        adap.notifyDataSetChanged();
+        Random rand = new Random();
+        todayViewHolder.vp.setId(1+position+rand.nextInt(50000));
         todayViewHolder.vp.setOffscreenPageLimit(5);
-
-        if (mViewPagerState.containsKey(position)) {
-            todayViewHolder.vp.setCurrentItem(mViewPagerState.get(position));
-        }
 //        todayViewHolder.emotion_off.setImageResource(todayItemArrayList.get(position).emotion);
 //        todayViewHolder.emotion_on.setImageResource(todayItemArrayList.get(position).emotion);
 
@@ -131,6 +145,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         todayViewHolder.comment_count.setText(todayItemArrayList.get(position).comment_count);
 
     }
+
     @Override
     public void onViewRecycled(RecyclerView.ViewHolder holder) {
         mViewPagerState.put(holder.getAdapterPosition(), ((TodayViewHolder)holder).vp.getCurrentItem());
@@ -139,18 +154,26 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemCount() {  return todayItemArrayList.size(); }
 
+
+
     private class PagerAdapter extends FragmentPagerAdapter {
         ArrayList<Fragment> frags =new ArrayList<Fragment>();
         Context context = null;
         ArrayList<Photos>  list;
-        public PagerAdapter(FragmentManager fm,Context context,ArrayList<Photos> list,int position) {
+
+        @Override
+        public int getItemPosition(@NonNull Object object) {
+            return POSITION_NONE;
+        }
+
+        public PagerAdapter(FragmentManager fm, Context context, ArrayList<Photos> list, int position) {
             super(fm);
             this.context=context;
             this.list=list;
             Log.d("asd","어뎁터"+list.size());
             for(int i=0;i<list.size();i++)
             {
-                Log.d("asd","어뎁터 반복"+todayItemArrayList.get(position));
+                Log.d("asd","어뎁터 반복"+list.get(i).getPhotoName());
                 frags.add(new PostFirstFragment());
                 ((PostFirstFragment)frags.get(i)).setImageUri(list.get(i).getPhotoName(),fm,todayItemArrayList.get(position));
             }
@@ -160,7 +183,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         @Override
         public Fragment getItem(int position) {
 //            // 해당하는 page의 Fragment를 생성합니다.
-//            return PostFirstFragment.newInstance(list.get(position).getPhotoName());
+           // return PostFirstFragment.newInstance(list.get(position).getPhotoName(),todayItemArrayList.get(position));
 
             return frags.get(position);
         }

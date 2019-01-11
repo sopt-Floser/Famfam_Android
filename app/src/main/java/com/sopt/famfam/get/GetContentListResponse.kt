@@ -13,6 +13,7 @@ data class PostContent(
 
 data class Contents(
     val userName : String,
+    val userProfile:String,
     val photos : ArrayList<Photos>,
     val content : MainContents
 )

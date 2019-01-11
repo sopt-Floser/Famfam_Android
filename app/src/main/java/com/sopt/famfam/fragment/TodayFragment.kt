@@ -73,24 +73,28 @@ class TodayFragment : Fragment() {
 
         getCotentListResponse()
         fm = childFragmentManager
+        fragmentManager!!.removeOnBackStackChangedListener{
+            getCotentListResponse()
+            Log.d("asd","다시매핑")
+        }
+        fragmentManager!!.addOnBackStackChangedListener{
+            getCotentListResponse()
+            Log.d("asd","다시매핑")
+        }
         return rootView
     }
 
-    /*
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            if (getArguments() != null) {
-                mParam1 = getArguments().getInt(ARG_PARAM1);
-            }
-        }
-        //스크롤했을때 사라진 뷰페이저의 상태를 저장
-        @Override
-        public void onViewRecycled(ViewHolder holder) {
-            mViewPagerState.put(holder.getAdapterPosition(), holder.vp.getCurrentItem());
-            super.onViewRecycled(holder);
-        }
-    */
+    override fun onResume() {
+        super.onResume()
+        getCotentListResponse()
+        Log.d("asd","다시매핑")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        getCotentListResponse()
+        Log.d("asd","다시매핑")
+    }
     private fun getUserDate(idx: Int): User {
         for (i in FamilyData.users.indices) {
             if (FamilyData.users[i].userIdx == idx)
@@ -114,10 +118,14 @@ class TodayFragment : Fragment() {
                     val todayItemArrayList = ArrayList<TodayItem>()
                     for (i in con.indices) {
                         val userId = con[i].content.userIdx
-                        val profile = "test"
+                        var profile = "test"
+                        if(con[i].userProfile == null)
+                            profile=""
+                        else
+                            profile = con[i].userProfile
                         todayItemArrayList.add(
                             TodayItem(
-                                con[i].content.userIdx, "asd",
+                                con[i].content.userIdx, profile,
                                 con[i].userName, con[i].content.createdAt,
                                 con[i].photos,
                                 R.drawable.icon_emoticon,
@@ -132,6 +140,7 @@ class TodayFragment : Fragment() {
                     }
                     val todayAdapter = TodayAdapter(fm, todayItemArrayList, context)
                     recyclerView.adapter = todayAdapter
+                    todayAdapter.notifyDataSetChanged();
                 }
             }
 
