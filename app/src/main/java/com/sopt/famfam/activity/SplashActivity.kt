@@ -4,11 +4,18 @@ import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.widget.LinearLayout
 import com.airbnb.lottie.LottieAnimationView
 import com.sopt.famfam.R
+import com.sopt.famfam.adapter.FamilyListAdapter
+import com.sopt.famfam.adapter.item.FamilyListItem
 import com.sopt.famfam.database.FamilyData
+import com.sopt.famfam.database.FamilyData.token
 import com.sopt.famfam.database.SharedPreferenceController
+import com.sopt.famfam.database.User
+import com.sopt.famfam.get.GetGroupUserResponse
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
 import com.sopt.famfam.post.GetLogInResponse
@@ -37,9 +44,8 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                val token = SharedPreferenceController.getAuthorization(applicationContext)
                 Log.d("uuuu1", "들어온다1")
-                getLoginResponse(token)
+
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -48,6 +54,9 @@ class SplashActivity : AppCompatActivity() {
 
             override fun onAnimationStart(animation: Animator?) {
                 Log.e("Animation:", "start")
+                val token = SharedPreferenceController.getAuthorization(applicationContext)
+                getLoginResponse(token)
+                getGroupMemberListResponse()
             }
         })
     }
@@ -113,5 +122,57 @@ class SplashActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, IntroActivity::class.java))
             finish()
         }
+    }
+
+
+    private fun getGroupMemberListResponse() {
+        val token = SharedPreferenceController.getLoginData(applicationContext)
+        val postLogInResponse = networkService.getGroupUserResponse("application/json", token)
+        postLogInResponse.enqueue(object : Callback<GetGroupUserResponse> {
+            override fun onFailure(call: Call<GetGroupUserResponse>, t: Throwable) {
+                Log.e("Login fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetGroupUserResponse>, response: Response<GetGroupUserResponse>) {
+                if (response.isSuccessful) {
+                    val data = response.body()!!.data.users
+                    var list = ArrayList<FamilyListItem>();
+                    var i: Int = 0
+                    for (item in data) {
+                        Log.d("uuuu1", item.toString())
+                        if (item.profilePhoto.isNullOrEmpty()) {
+                            list.add(
+                                FamilyListItem(
+                                    item.userIdx,
+                                    "",
+                                    item.userName
+                                )
+                            )
+                        } else {
+                            list.add(FamilyListItem(item.userIdx, item.profilePhoto, item.userName))
+                            Log.d("asdphoto", item.profilePhoto)
+                        }
+                    }
+                    FamilyData.users = ArrayList<User>()
+                    for (user in data) {
+                        FamilyData.users.add(
+                            User(
+                                user.userIdx,
+                                user.userId,
+                                user.userName,
+                                user.userPhone,
+                                user.birthday,
+                                user.sexType,
+                                user.statusMessage,
+                                user.profilePhoto,
+                                user.backPhoto,
+                                user.groupIdx
+                            )
+                        )
+                    }
+                    Log.d("asd", "여긴되나요")
+                }
+            }
+        })
     }
 }

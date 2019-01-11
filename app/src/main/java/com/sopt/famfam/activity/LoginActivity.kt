@@ -6,8 +6,11 @@ import android.util.Log
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.sopt.famfam.R
+import com.sopt.famfam.adapter.item.FamilyListItem
 import com.sopt.famfam.database.FamilyData
 import com.sopt.famfam.database.SharedPreferenceController
+import com.sopt.famfam.database.User
+import com.sopt.famfam.get.GetGroupUserResponse
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
 import com.sopt.famfam.post.PostLogInResponse
@@ -64,6 +67,7 @@ class LoginActivity : AppCompatActivity() {
     private fun setOnBtnClickListener() {
         btn_login_act_signin.setOnClickListener {
             getLoginResponse()
+
         }
         tv_login_act_find_id.setOnClickListener {
             startActivity<FindIdActivity>()
@@ -133,6 +137,7 @@ class LoginActivity : AppCompatActivity() {
                         //저번 시간에 배웠던 SharedPreference에 토큰을 저장! 왜냐하면 토큰이 필요한 통신에 사용하기 위해서!!
                         SharedPreferenceController.setAuthorization(this@LoginActivity, token)
                         toast(SharedPreferenceController.getAuthorization(this@LoginActivity))
+                        getGroupMemberListResponse()
 //                        startActivity<MainActivity>()
 ////                        finish()
                         val groupIdx = FamilyData.groupId.toString()
@@ -147,6 +152,56 @@ class LoginActivity : AppCompatActivity() {
                 }
             })
         }
+    }
+
+    private fun getGroupMemberListResponse() {
+        val postLogInResponse = networkService.getGroupUserResponse("application/json", FamilyData.token)
+        postLogInResponse.enqueue(object : Callback<GetGroupUserResponse> {
+            override fun onFailure(call: Call<GetGroupUserResponse>, t: Throwable) {
+                Log.e("Login fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetGroupUserResponse>, response: Response<GetGroupUserResponse>) {
+                if (response.isSuccessful) {
+                    val data = response.body()!!.data.users
+                    var list = ArrayList<FamilyListItem>();
+                    var i: Int = 0
+                    for (item in data) {
+                        Log.d("uuuu1", item.toString())
+                        if (item.profilePhoto.isNullOrEmpty()) {
+                            list.add(
+                                FamilyListItem(
+                                    item.userIdx,
+                                    "",
+                                    item.userName
+                                )
+                            )
+                        } else {
+                            list.add(FamilyListItem(item.userIdx, item.profilePhoto, item.userName))
+                            Log.d("asdphoto", item.profilePhoto)
+                        }
+                    }
+                    FamilyData.users = ArrayList<User>()
+                    for (user in data) {
+                        FamilyData.users.add(
+                            User(
+                                user.userIdx,
+                                user.userId,
+                                user.userName,
+                                user.userPhone,
+                                user.birthday,
+                                user.sexType,
+                                user.statusMessage,
+                                user.profilePhoto,
+                                user.backPhoto,
+                                user.groupIdx
+                            )
+                        )
+                    }
+                    Log.d("asd", "여긴되나요")
+                }
+            }
+        })
     }
 
 }
