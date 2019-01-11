@@ -69,21 +69,38 @@ class MoreEditProfileActivity : AppCompatActivity() {
         tv_more_editprofile_sexType.setText(parsedSexType)
         setOnClickListener()
 //        iv_more_profile_img
-        val requestOptions1 = RequestOptions()
-        requestOptions1.placeholder(R.drawable.myimg)
-        Glide.with(applicationContext)
-            .setDefaultRequestOptions(requestOptions1)
-            .load(FamilyData.profilePhoto)
-            .thumbnail(0.5f)
-            .into(iv_more_edit_profile_img)
+        if (FamilyData.backPhoto == ""){
+            val requestOptions2 = RequestOptions()
+            Glide.with(applicationContext)
+                .setDefaultRequestOptions(requestOptions2)
+                .load(R.drawable.mybackimg)
+                .thumbnail(0.5f)
+                .into(iv_more_edit_bg)
+        }else {
+            val requestOptions2 = RequestOptions()
+            Glide.with(applicationContext)
+                .setDefaultRequestOptions(requestOptions2)
+                .load(FamilyData.backPhoto)
+                .thumbnail(0.5f)
+                .into(iv_more_edit_bg)
+        }
 
-        val requestOptions2 = RequestOptions()
-        requestOptions1.placeholder(R.drawable.myimg)
-        Glide.with(applicationContext)
-            .setDefaultRequestOptions(requestOptions2)
-            .load(FamilyData.backPhoto)
-            .thumbnail(0.5f)
-            .into(iv_more_edit_bg)
+        if (FamilyData.profilePhoto == ""){
+            val requestOptions1 = RequestOptions()
+            Glide.with(applicationContext)
+                .setDefaultRequestOptions(requestOptions1)
+                .load(R.drawable.myimg)
+                .thumbnail(0.5f)
+                .into(iv_more_edit_profile_img)
+        } else {
+            val requestOptions1 = RequestOptions()
+            Glide.with(applicationContext)
+                .setDefaultRequestOptions(requestOptions1)
+                .load(FamilyData.profilePhoto)
+                .thumbnail(0.5f)
+                .into(iv_more_edit_profile_img)
+        }
+
     }
 
     override fun onResume() {
@@ -332,9 +349,23 @@ class MoreEditProfileActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<GetUserResponse>, response: Response<GetUserResponse>) {
                     if (response.isSuccessful) {
                         when(FLAG){
-                            1 -> FamilyData.profilePhoto = response.body()!!.data.profilePhoto
-                            2 -> FamilyData.backPhoto = response.body()!!.data.backPhoto
+                            1 ->{
+                                if(response.body()!!.data.profilePhoto != null){
+                                    FamilyData.profilePhoto = response.body()!!.data.profilePhoto
+                                } else {
+                                    FamilyData.profilePhoto = ""
+                                }
+                            }
+                            2 -> {
+                                if (response.body()!!.data.backPhoto != null){
+                                    FamilyData.backPhoto = response.body()!!.data.backPhoto
+                                } else {
+                                    FamilyData.backPhoto = ""
+                                }
+
+                            }
                         }
+
                     }
                 }
             })

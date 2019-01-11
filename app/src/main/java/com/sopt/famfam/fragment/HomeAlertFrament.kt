@@ -42,14 +42,8 @@ class HomeAlertFrament : Fragment() {
 
             override fun onResponse(call: Call<GethistoryResponse>, response: Response<GethistoryResponse>) {
                 if (response.body()!!.message == "히스토리 조회 성공") {
-                    val data = response.body()!!.data.histories
                     var i: Int = 0
-//                    히스토리 타입
-//                            일정 추가 ADD_SCHEDULE /
-//                            기념일 추가 ADD_ANNIVERSARY /
-//                            게시글 등록 ADD_CONTENT /
-//                            댓글 등록 ADD_COMMENT /
-//                            감정 표현 ADD_EMOTION
+                    val data = response.body()!!.data.histories
                     for (item in data) {
                         if (i == 0) {
                             when (response.body()!!.data.histories[0].historyType) {
@@ -107,7 +101,23 @@ class HomeAlertFrament : Fragment() {
                             history_text6.text = response.body()!!.data.histories[5].content
                         }
                         i++
+
                     }
+//                    히스토리 타입
+//                            일정 추가 ADD_SCHEDULE /
+//                            기념일 추가 ADD_ANNIVERSARY /
+//                            게시글 등록 ADD_CONTENT /
+//                            댓글 등록 ADD_COMMENT /
+//                            감정 표현 ADD_EMOTION
+
+                } else {
+                    history_image1.visibility = View.INVISIBLE
+                    history_image2.visibility = View.INVISIBLE
+                    history_image3.visibility = View.INVISIBLE
+                    history_image4.visibility = View.INVISIBLE
+                    history_image5.visibility = View.INVISIBLE
+                    history_image6.visibility = View.INVISIBLE
+                    history_text1.text = "알림이 없습니다."
                 }
             }
         })

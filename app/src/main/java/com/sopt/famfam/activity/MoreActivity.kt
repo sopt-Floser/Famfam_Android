@@ -3,6 +3,7 @@ package com.sopt.famfam.activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.sopt.famfam.R
@@ -12,6 +13,7 @@ import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
 import kotlinx.android.synthetic.main.activity_more.*
 import kotlinx.android.synthetic.main.activity_more.view.*
+import kotlinx.android.synthetic.main.activity_policies.*
 import org.jetbrains.anko.startActivity
 
 class MoreActivity : AppCompatActivity() {
@@ -25,41 +27,40 @@ class MoreActivity : AppCompatActivity() {
         setContentView(R.layout.activity_more)
         setOnClickListener()
 
-        when(FamilyData.profilePhoto){
-            "" -> {
-                val requestOptions1 = RequestOptions()
-                Glide.with(applicationContext)
-                    .setDefaultRequestOptions(requestOptions1)
-                    .load(R.drawable.myimg)
-                    .thumbnail(0.5f)
-                    .into(iv_more_profile_img)
-            }
-        }
-        val requestOptions1 = RequestOptions()
-           requestOptions1.placeholder(R.drawable.myimg)
-        Glide.with(applicationContext)
-            .setDefaultRequestOptions(requestOptions1)
-            .load(FamilyData.profilePhoto)
-            .thumbnail(0.5f)
-            .into(iv_more_profile_img)
+        if (FamilyData.profilePhoto == "") {
+            val requestOptions1 = RequestOptions()
+            Glide.with(applicationContext)
+                .setDefaultRequestOptions(requestOptions1)
+                .load(R.drawable.myimg)
+                .thumbnail(0.5f)
+                .into(iv_more_profile_img)
+        } else {
+            val requestOptions1 = RequestOptions()
+            requestOptions1.placeholder(R.drawable.myimg)
+            Glide.with(applicationContext)
+                .setDefaultRequestOptions(requestOptions1)
+                .load(FamilyData.profilePhoto)
+                .thumbnail(0.5f)
+                .into(iv_more_profile_img)
 
-        when(FamilyData.backPhoto){
-            "" -> {
-                val requestOptions2 = RequestOptions()
-                Glide.with(applicationContext)
-                    .setDefaultRequestOptions(requestOptions2)
-                    .load(R.drawable.mybackimg)
-                    .thumbnail(0.5f)
-                    .into(iv_more_bg)
-            }
         }
-        val requestOptions2 = RequestOptions()
-        requestOptions1.placeholder(R.drawable.mybackimg)
-        Glide.with(applicationContext)
-            .setDefaultRequestOptions(requestOptions2)
-            .load(FamilyData.backPhoto)
-            .thumbnail(0.5f)
-            .into(iv_more_bg)
+
+        if (FamilyData.backPhoto == "") {
+            val requestOptions2 = RequestOptions()
+            Glide.with(applicationContext)
+                .setDefaultRequestOptions(requestOptions2)
+                .load(R.drawable.mybackimg)
+                .thumbnail(0.5f)
+                .into(iv_more_bg)
+        } else {
+            val requestOptions2 = RequestOptions()
+            requestOptions2.placeholder(R.drawable.mybackimg)
+            Glide.with(applicationContext)
+                .setDefaultRequestOptions(requestOptions2)
+                .load(FamilyData.backPhoto)
+                .thumbnail(0.5f)
+                .into(iv_more_bg)
+        }
         tv_more_nickname.text = FamilyData.userName
         tv_more_statusMessage.text = FamilyData.statusMessage
     }
@@ -76,6 +77,8 @@ class MoreActivity : AppCompatActivity() {
 
         btn_more_cc.setOnClickListener {
             // 이용정보
+            startActivity<PoliciesActivity>()
+
         }
         btn_more_editprofile.setOnClickListener {
             startActivity<MoreEditProfileActivity>()
@@ -84,6 +87,9 @@ class MoreActivity : AppCompatActivity() {
         btn_more_account.setOnClickListener {
             startActivity<AccountSecurityActivity>()
             finish()
+        }
+        btn_more_cc1.setOnClickListener {
+            startActivity<PersonalInformationProtectionActivity>()
         }
     }
 }

@@ -67,6 +67,8 @@ class MainActivity : AppCompatActivity() {
         tab.getTabAt(3)?.customView = bottomNaviLayout.findViewById(R.id.btn_top_setting) as RelativeLayout
 
 
+
+
         tab.getTabAt(2)?.customView?.setOnTouchListener(View.OnTouchListener { v, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {

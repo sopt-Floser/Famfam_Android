@@ -28,6 +28,7 @@ import com.sopt.famfam.get.GetGroupUserResponse
 import com.sopt.famfam.get.GetUserResponse
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -54,23 +55,23 @@ class HomeFragment : Fragment() {
         // 가족 리스트 통신
         var view = inflater.inflate(R.layout.fragment_home, container, false)
         view.tv_home_user_name.text = FamilyData.userName
-        if(FamilyData.profilePhoto == ""){
-            val requestOptions1 = RequestOptions()
-            Glide.with(this.context!!)
-                .setDefaultRequestOptions(requestOptions1)
-                .load(R.drawable.myimg)
-                .thumbnail(0.5f)
-                .into(view.iv_home_famliy_my)
-        } else {
-            val requestOptions1 = RequestOptions()
-            Glide.with(this.context!!)
-                .setDefaultRequestOptions(requestOptions1)
-                .load(FamilyData.profilePhoto)
-                .thumbnail(0.5f)
-                .into(view.iv_home_famliy_my)
-        }
-
-        Log.d("이미지", FamilyData.profilePhoto)
+//        if (FamilyData.profilePhoto == "") {
+//            val requestOptions1 = RequestOptions()
+//            Glide.with(this.context!!)
+//                .setDefaultRequestOptions(requestOptions1)
+//                .load(R.drawable.myimg)
+//                .thumbnail(0.5f)
+//                .into(view.iv_home_famliy_my)
+//        } else {
+//            val requestOptions1 = RequestOptions()
+//            Glide.with(this.context!!)
+//                .setDefaultRequestOptions(requestOptions1)
+//                .load(FamilyData.profilePhoto)
+//                .thumbnail(0.5f)
+//                .into(view.iv_home_famliy_my)
+//        }
+//
+//        Log.d("이미지", FamilyData.profilePhoto)
         // 패밀리 붙이기
         familylist = view.rv_home_family
 
@@ -197,21 +198,30 @@ class HomeFragment : Fragment() {
 
                 override fun onResponse(call: Call<GetUserResponse>, response: Response<GetUserResponse>) {
                     if (response.body()!!.message == "회원 정보 조회 성공") {
-                        if(response.body()!!.data.profilePhoto!=null)
+                        if (response.body()!!.data.profilePhoto != null) {
                             FamilyData.profilePhoto = response.body()!!.data.profilePhoto
-                        else
-                            FamilyData.profilePhoto =""
-                        if(response.body()!!.data.backPhoto!=null)
+                            val requestOptions1 = RequestOptions()
+                            Glide.with(context!!)
+                                .setDefaultRequestOptions(requestOptions1)
+                                .load(response.body()!!.data.profilePhoto)
+                                .thumbnail(0.5f)
+                                .into(iv_home_famliy_my)
+                        } else {
+                            val requestOptions1 = RequestOptions()
+                            Glide.with(context!!)
+                                .setDefaultRequestOptions(requestOptions1)
+                                .load(R.drawable.myimg)
+                                .thumbnail(0.5f)
+                                .into(iv_home_famliy_my)
+                        }
+                        if (response.body()!!.data.backPhoto != null) {
                             FamilyData.backPhoto = response.body()!!.data.backPhoto
-                        else
-                            FamilyData.backPhoto =""
-                        Log.d("uuuu1", FamilyData.profilePhoto)
-                    } else {
-                        toast("fail")
-                    }
+                        } else {
+                            FamilyData.backPhoto = ""
+                        }
+                    } else toast("fail")
                 }
             })
         }
     }
-
 }

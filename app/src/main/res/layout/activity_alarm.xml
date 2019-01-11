@@ -46,7 +46,7 @@
                         android:layout_height="match_parent"
                         android:background="#66707070">
             <android.support.v7.widget.RecyclerView
-                    android:paddingHorizontal="56dp"
+                    android:paddingHorizontal="40dp"
                     android:paddingTop="40dp"
                     android:id="@+id/rv_alarm_list"
                     android:layout_width="match_parent"

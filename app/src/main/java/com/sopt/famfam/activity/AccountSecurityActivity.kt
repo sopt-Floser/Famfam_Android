@@ -34,7 +34,7 @@ class AccountSecurityActivity : AppCompatActivity() {
         logout_btn.setOnClickListener {
             // logout
             SharedPreferenceController.clearUserSharedPreferences(this)
-            startActivity<LoginActivity>()
+            startActivity<IntroActivity>()
             finish()
         }
         tv_more_disconnect_btn.setOnClickListener {

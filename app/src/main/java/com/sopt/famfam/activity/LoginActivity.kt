@@ -120,7 +120,6 @@ class LoginActivity : AppCompatActivity() {
                             FamilyData.backPhoto = response.body()!!.data.user.backPhoto
                         else
                             FamilyData.backPhoto = ""
-                        FamilyData.backPhoto = response.body()!!.data.user.backPhoto
 
                         FamilyData.sexType = response.body()!!.data.user.sexType
                         Log.e("uuuu1", token)
@@ -184,23 +183,23 @@ class LoginActivity : AppCompatActivity() {
                             Log.d("asdphoto", item.profilePhoto)
                         }
                     }
-                    FamilyData.users = ArrayList<User>()
-                    for (user in data) {
-                        FamilyData.users.add(
-                            User(
-                                user.userIdx,
-                                user.userId,
-                                user.userName,
-                                user.userPhone,
-                                user.birthday,
-                                user.sexType,
-                                user.statusMessage,
-                                user.profilePhoto,
-                                user.backPhoto,
-                                user.groupIdx
-                            )
-                        )
-                    }
+
+//                    for (user in data) {
+//                        FamilyData.users.add(
+//                            User(
+//                                user.userIdx,
+//                                user.userId,
+//                                user.userName,
+//                                user.userPhone,
+//                                user.birthday,
+//                                user.sexType,
+//                                user.statusMessage,
+//                                user.profilePhoto,
+//                                user.backPhoto,
+//                                user.groupIdx
+//                            )
+//                        )
+//                    }
                     Log.d("asd", "여긴되나요")
                 }
             }
