@@ -118,7 +118,7 @@ class TodayFragment : Fragment() {
                         val profile = "test"
                         todayItemArrayList.add(
                             TodayItem(
-                                con[i].content.userIdx, getUserDate(con[i].content.userIdx).profilePhoto,
+                                con[i].content.userIdx, "asd",
                                 con[i].userName, con[i].content.createdAt,
                                 con[i].photos,
                                 R.drawable.icon_emoticon,
