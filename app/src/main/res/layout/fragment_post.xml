@@ -7,7 +7,7 @@
                 android:orientation="vertical" android:background="@color/white">
 
     <!--Toolbar-->
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:id="@+id/PostToolBar"
@@ -65,7 +65,7 @@
 
         </RelativeLayout>
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
 
     <!--Post-->
@@ -130,11 +130,11 @@
                     android:id="@+id/PostCenter"
                     android:layout_below="@+id/relLayout1">
 
-                <android.support.v4.view.ViewPager
+                <androidx.viewpager.widget.ViewPager
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
                         android:id="@+id/vp_post_img">
-                </android.support.v4.view.ViewPager>
+                </androidx.viewpager.widget.ViewPager>
 
                 <RelativeLayout
                         android:layout_width="wrap_content"
@@ -335,14 +335,14 @@
             </RelativeLayout>
 
             <!--Comment Recycler View-->
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_comment"
                     android:layout_below="@+id/btn_open_comment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/item_comment"
                     android:background="@color/white">
-            </android.support.v7.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
 
 
         </RelativeLayout>

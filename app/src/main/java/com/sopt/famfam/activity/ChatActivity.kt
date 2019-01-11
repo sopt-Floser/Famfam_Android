@@ -1,9 +1,9 @@
 package com.sopt.famfam.activity
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.KeyEvent
 import android.view.View
 import android.widget.LinearLayout
@@ -57,7 +57,8 @@ class ChatActivity : AppCompatActivity() {
         var list = ArrayList<ChatItem>()
         var adapter = ChatAdapter(applicationContext,list)
         rv_chat_chatlist.adapter = adapter
-        rv_chat_chatlist.layoutManager= LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
+        rv_chat_chatlist.layoutManager=
+                LinearLayoutManager(applicationContext, LinearLayout.VERTICAL, false)
 
 
 

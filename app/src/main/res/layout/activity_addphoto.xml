@@ -5,7 +5,7 @@
               android:orientation="vertical">
 
         <!-- gallery toolbar -->
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:id="@+id/addPhotoToolbar"
@@ -38,7 +38,7 @@
 
             </RelativeLayout>
 
-        </android.support.v7.widget.Toolbar>>
+        </androidx.appcompat.widget.Toolbar>>
 
 
 
@@ -98,13 +98,13 @@
 
 
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/rv_galleryView"
                 android:verticalSpacing="0dp"
                 android:horizontalSpacing="0dp">
-        </android.support.v7.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 

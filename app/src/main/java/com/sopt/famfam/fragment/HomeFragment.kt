@@ -2,12 +2,12 @@ package com.sopt.famfam.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager.widget.ViewPager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -151,7 +151,8 @@ class HomeFragment : Fragment() {
                         )
                     }
                     familylist!!.adapter = FamilyListAdapter(context!!, list)
-                    familylist!!.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+                    familylist!!.layoutManager =
+                            LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
                     Log.d("asd", "여긴되나요")
                 }
             }
@@ -170,13 +171,13 @@ class HomeFragment : Fragment() {
 //        }
 
 
-        override fun getItem(i: Int): android.support.v4.app.Fragment? {
+        override fun getItem(i: Int): Fragment {
 
             when (i % 3) {
                 0 -> return HomeStatisticsFragment()
                 1 -> return HomeCalendarFragment()
                 2 -> return HomeAlertFrament()
-                else -> return null
+                else -> return HomeStatisticsFragment()
             }
         }
 

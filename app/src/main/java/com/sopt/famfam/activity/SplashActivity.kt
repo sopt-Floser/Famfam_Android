@@ -3,8 +3,8 @@ package com.sopt.famfam.activity
 import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.LinearLayout
 import com.airbnb.lottie.LottieAnimationView

@@ -1,7 +1,7 @@
 
 package com.sopt.famfam.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AddPhotoActivity extends AppCompatActivity {
     /*

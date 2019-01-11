@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".activity.AlarmActivity"
         android:orientation="vertical">
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <RelativeLayout
@@ -32,7 +32,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold"/>
         </RelativeLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
     <LinearLayout
@@ -45,13 +45,13 @@
         <RelativeLayout android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="#66707070">
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                     android:paddingHorizontal="40dp"
                     android:paddingTop="40dp"
                     android:id="@+id/rv_alarm_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-            </android.support.v7.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
 
         </RelativeLayout>
     </LinearLayout>

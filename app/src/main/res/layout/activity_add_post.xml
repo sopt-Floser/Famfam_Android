@@ -11,7 +11,7 @@
             android:id="@+id/relLayoutParent"
             android:background="@color/white">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
                 android:id="@+id/AddPostToolBar"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
@@ -50,7 +50,7 @@
                         android:id="@+id/tvNext"/>
             </RelativeLayout>
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
 
         <LinearLayout

@@ -1,6 +1,6 @@
 package com.sopt.famfam.activity
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.sopt.famfam.R
 import kotlinx.android.synthetic.main.activity_personal_information_protection.*

@@ -14,7 +14,7 @@
 
 
         <!-- top toolbar -->
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:id="@+id/TodayToolBar"
@@ -52,20 +52,20 @@
 
             </RelativeLayout>
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
         <!-- Middle section (body) -->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_below="@+id/TodayToolBar"
                 android:layout_height="match_parent">
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_today_feed"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/item_today"
                     android:background="#e0e0e0">
-            </android.support.v7.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
 
 

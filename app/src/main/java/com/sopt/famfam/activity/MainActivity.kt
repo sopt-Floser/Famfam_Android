@@ -2,18 +2,19 @@ package com.sopt.famfam.activity
 
 import android.content.Context
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.view.MotionEventCompat
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import com.google.android.material.tabs.TabLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.core.view.MotionEventCompat
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.RelativeLayout
+import com.simplemobiletools.calendar.pro.activities.CalendarMainActivity
 import com.sopt.famfam.R
 import com.sopt.famfam.database.FamilyData
 import com.sopt.famfam.fragment.HomeFragment
@@ -84,8 +85,8 @@ class MainActivity : AppCompatActivity() {
                 MotionEvent.ACTION_DOWN -> {
                 }
                 MotionEvent.ACTION_UP -> {
-                    //startActivity<ChatActivity>()
-                    //달력
+                    startActivity<CalendarMainActivity>()
+
                 }
             }
             return@OnTouchListener true
@@ -130,7 +131,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        override fun getItem(i: Int): android.support.v4.app.Fragment {
+        override fun getItem(i: Int): Fragment {
                 return frags[i]
 
         }

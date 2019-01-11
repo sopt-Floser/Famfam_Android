@@ -1,10 +1,10 @@
 package com.sopt.famfam.activity
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.widget.LinearLayout
 import com.sopt.famfam.R
@@ -80,7 +80,11 @@ class AlarmActivity : AppCompatActivity() {
 //                    alarmlist!!.adapter= FamilyListAdapter(context!!,list)
 //                    alarmlist!!.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
                     rv_alarm_list.adapter = AlarmAdapter(applicationContext!!, list)
-                    rv_alarm_list.layoutManager =LinearLayoutManager(application, LinearLayoutManager.VERTICAL, false)
+                    rv_alarm_list.layoutManager = LinearLayoutManager(
+                        application,
+                        LinearLayoutManager.VERTICAL,
+                        false
+                    )
                 }
             }
         })

@@ -18,7 +18,7 @@
                 android:src="@drawable/logo_big"
                 android:layout_gravity="center"/>
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vp_intro_act_frag_pager"
                 android:layout_width="match_parent"
                 android:layout_height="534.9dp"
@@ -26,7 +26,7 @@
                 android:overScrollMode="never"
         >
 
-        </android.support.v4.view.ViewPager>
+        </androidx.viewpager.widget.ViewPager>
 
 
         <com.sopt.famfam.indicator.CircleIndicator
