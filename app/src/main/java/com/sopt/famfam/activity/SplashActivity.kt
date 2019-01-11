@@ -45,7 +45,8 @@ class SplashActivity : AppCompatActivity() {
 
             override fun onAnimationEnd(animation: Animator?) {
                 Log.d("uuuu1", "들어온다1")
-
+                val token = SharedPreferenceController.getAuthorization(applicationContext)
+                getLoginResponse(token)
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -54,8 +55,6 @@ class SplashActivity : AppCompatActivity() {
 
             override fun onAnimationStart(animation: Animator?) {
                 Log.e("Animation:", "start")
-                val token = SharedPreferenceController.getAuthorization(applicationContext)
-                getLoginResponse(token)
                 getGroupMemberListResponse()
             }
         })
