@@ -30,16 +30,17 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_comment, parent, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
-        viewHolder.tvComment.setText(commentItemArrayList.get(i).comment);
-        viewHolder.tvName.setText(commentItemArrayList.get(i).name);
-        Glide.with(context).load(commentItemArrayList.get(i).profile).into(viewHolder.ivProfile);
-        viewHolder.tvCommenttime.setText(commentItemArrayList.get(i).comment_time);
+
         return viewHolder;
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        viewHolder.tvComment.setText(commentItemArrayList.get(position).comment);
+        viewHolder.tvName.setText(commentItemArrayList.get(position).name);
+        Glide.with(context).load(commentItemArrayList.get(position).profile).into(viewHolder.ivProfile);
+        viewHolder.tvCommenttime.setText(commentItemArrayList.get(position).comment_time);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -73,6 +73,7 @@ class SplashActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<GetLogInResponse>, response: Response<GetLogInResponse>) {
                     Log.d("uuuu1", response.message())
                     if (response.isSuccessful) {
+                        Log.d("uuuu1", response.body().toString())
                         val token = response.body()!!.data.token
                         FamilyData.groupId = response.body()!!.data.user.groupIdx
                         FamilyData.userId = response.body()!!.data.user.userId
@@ -80,17 +81,18 @@ class SplashActivity : AppCompatActivity() {
                         FamilyData.token = token
                         FamilyData.statusMessage = response.body()!!.data.user.statusMessage
                         FamilyData.birthday = response.body()!!.data.user.birthday
-                        val user_profilePhoto = response.body()!!.data.user.profilePhoto
-                        when(user_profilePhoto){
-                            null -> FamilyData.profilePhoto = ""
-                        }
-                        FamilyData.profilePhoto = user_profilePhoto
+
+                        if(response.body()!!.data.user.profilePhoto!=null)
+                            FamilyData.profilePhoto = response.body()!!.data.user.profilePhoto
+                        else
+                            FamilyData.profilePhoto = ""
                         Log.d("uuuu1", "로그인"+FamilyData.profilePhoto)
-                        val user_backPhoto = response.body()!!.data.user.backPhoto
-                        when(user_backPhoto){
-                            null -> FamilyData.backPhoto = ""
-                        }
-                        FamilyData.backPhoto = user_backPhoto
+
+                        if(response.body()!!.data.user.backPhoto!=null)
+                            FamilyData.backPhoto = response.body()!!.data.user.backPhoto
+                        else
+                            FamilyData.backPhoto = ""
+
                         FamilyData.sexType = response.body()!!.data.user.sexType
                         Log.e("uuuu1", token)
 

@@ -25,6 +25,16 @@ class MoreActivity : AppCompatActivity() {
         setContentView(R.layout.activity_more)
         setOnClickListener()
 
+        when(FamilyData.profilePhoto){
+            "" -> {
+                val requestOptions1 = RequestOptions()
+                Glide.with(applicationContext)
+                    .setDefaultRequestOptions(requestOptions1)
+                    .load(R.drawable.myimg)
+                    .thumbnail(0.5f)
+                    .into(iv_more_profile_img)
+            }
+        }
         val requestOptions1 = RequestOptions()
            requestOptions1.placeholder(R.drawable.myimg)
         Glide.with(applicationContext)

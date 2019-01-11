@@ -110,15 +110,16 @@ class LoginActivity : AppCompatActivity() {
                         FamilyData.statusMessage = response.body()!!.data.user.statusMessage
                         FamilyData.birthday = response.body()!!.data.user.birthday
                         val user_profilePhoto = response.body()!!.data.user.profilePhoto
-                        when(user_profilePhoto){
-                            null -> FamilyData.profilePhoto = ""
-                        }
-                        FamilyData.profilePhoto = response.body()!!.data.user.profilePhoto
+                        if(response.body()!!.data.user.profilePhoto!=null)
+                            FamilyData.profilePhoto = response.body()!!.data.user.profilePhoto
+                        else
+                            FamilyData.profilePhoto = ""
                         Log.d("uuuu1", "로그인"+FamilyData.profilePhoto)
-                        val user_backPhoto = response.body()!!.data.user.backPhoto
-                        when(user_backPhoto){
-                            null -> FamilyData.backPhoto = ""
-                        }
+
+                        if(response.body()!!.data.user.backPhoto!=null)
+                            FamilyData.backPhoto = response.body()!!.data.user.backPhoto
+                        else
+                            FamilyData.backPhoto = ""
                         FamilyData.backPhoto = response.body()!!.data.user.backPhoto
 
                         FamilyData.sexType = response.body()!!.data.user.sexType

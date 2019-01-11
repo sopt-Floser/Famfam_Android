@@ -146,8 +146,16 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call<GetUserResponse>, response: Response<GetUserResponse>) {
                     if (response.body()!!.message == "회원 정보 조회 성공") {
-                        FamilyData.profilePhoto = response.body()!!.data.profilePhoto
-                        FamilyData.backPhoto = response.body()!!.data.backPhoto
+                        if(response.body()!!.data.profilePhoto!=null)
+                            FamilyData.profilePhoto = response.body()!!.data.profilePhoto
+                        else
+                            FamilyData.profilePhoto = ""
+                        Log.d("uuuu1", "로그인"+FamilyData.profilePhoto)
+
+                        if(response.body()!!.data.backPhoto!=null)
+                            FamilyData.backPhoto = response.body()!!.data.backPhoto
+                        else
+                            FamilyData.backPhoto = ""
                         Log.d("uuuu1", FamilyData.profilePhoto)
                     } else {
                         toast("fail")
