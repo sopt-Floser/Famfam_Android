@@ -52,7 +52,7 @@ class MoreDisconnectActivity : AppCompatActivity() {
             override fun onResponse(call: Call<DeleteGroupsResponse>, response: Response<DeleteGroupsResponse>) {
                 if (response.body()!!.message == "그룹 탈퇴 성공") {
                     SharedPreferenceController.clearUserSharedPreferences(this@MoreDisconnectActivity)
-                    startActivity<MainActivity>()
+                    startActivity<IntroActivity>()
                     finish()
                 } else {
                     Log.e("error", "error")
