@@ -54,14 +54,21 @@ public class AllPhotoAdapter extends RecyclerView.Adapter<AllPhotoAdapter.ViewHo
     public void setItems(ArrayList<AllPhotoItem> items){ this.items = items;}
 
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView iv_allphoto;
 
         ViewHolder(View itemView){
             super(itemView);
+            itemView.setOnClickListener(this);
 
             iv_allphoto = itemView.findViewById(R.id.iv_allphoto);
+        }
+
+        @Override
+        public void onClick(View v) {
+            System.out.println(getPosition());
+
         }
     }
 }

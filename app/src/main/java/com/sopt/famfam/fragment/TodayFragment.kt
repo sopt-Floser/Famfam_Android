@@ -1,11 +1,9 @@
 package com.sopt.famfam.fragment
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.view.ViewPager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -18,14 +16,13 @@ import com.sopt.famfam.activity.AddPostActivity
 import com.sopt.famfam.adapter.TodayAdapter
 import com.sopt.famfam.adapter.item.TodayItem
 import com.sopt.famfam.database.FamilyData
-import com.sopt.famfam.get.*
+import com.sopt.famfam.get.GetCommentListResponse
+import com.sopt.famfam.get.GetContentListResponse
 import com.sopt.famfam.network.ApplicationController
-import gun0912.tedbottompicker.TedBottomPicker
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
-import java.util.ArrayList
+import java.util.*
 
 class TodayFragment : Fragment() {
     lateinit var fm: FragmentManager
@@ -60,7 +57,15 @@ class TodayFragment : Fragment() {
         }
         // 사진 전체보기 버튼
         val btnAllPhoto = rootView.findViewById<View>(R.id.btn_allPhoto) as ImageView
-        btnAllPhoto.setOnClickListener { Fragment() }
+        btnAllPhoto.setOnClickListener {
+            val fragment = AllPhotoFragment()
+            val fragmentManager = childFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_today1, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
         getCotentListResponse()
         fm = childFragmentManager
         return rootView
@@ -187,9 +192,9 @@ class TodayFragment : Fragment() {
 //
 //
 //        ArrayList<TodayItem> todayItemArrayList = new ArrayList<>();
-////        todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
-////        todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
-////        todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
+//        todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
+//        todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
+//        todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
 //
 //
 //
@@ -246,11 +251,11 @@ class TodayFragment : Fragment() {
 //                    {
 //                        int userId = con.get(i).component3().getUserIdx();
 //                        String profile="test";
-////                        for(int j=0;j<FamilyData.users.size();j++)
-////                        {
-////                           if( FamilyData.users.get(i).getUserIdx()==userId)
-////                               profile=FamilyData.users.get(i).getProfilePhoto();
-////                        }
+//                        for(int j=0;j<FamilyData.users.size();j++)
+//                        {
+//                           if( FamilyData.users.get(i).getUserIdx()==userId)
+//                               profile=FamilyData.users.get(i).getProfilePhoto();
+//                        }
 //                        todayItemArrayList.add(new TodayItem(con.get(i).getContent().getUserIdx(),profile,
 //                            con.get(i).getUserName()
 //                            ,con.get(i).getContent().getCreatedAt(),

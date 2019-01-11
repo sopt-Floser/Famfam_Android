@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.sopt.famfam.R;
 import com.sopt.famfam.adapter.AlbumAdapter;
 import com.sopt.famfam.adapter.item.AlbumItem;
-import com.sopt.famfam.data.SampleData;
 import com.sopt.famfam.database.FamilyData;
 import com.sopt.famfam.database.User;
 import com.sopt.famfam.get.GetPhotoListResponse;
@@ -92,7 +91,6 @@ public class AlbumFragment extends Fragment {
                         list2.add(new AlbumItem(list.get(i).getPhotoName()));
                     albumAdapter.setItems(list2);
                     recyclerView.setAdapter(albumAdapter);
-
 
                 }
             }

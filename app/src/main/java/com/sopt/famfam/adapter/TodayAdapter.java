@@ -18,18 +18,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.sopt.famfam.R;
 import com.sopt.famfam.adapter.item.TodayItem;
-import com.sopt.famfam.database.FamilyData;
 import com.sopt.famfam.fragment.AlbumFragment;
 import com.sopt.famfam.fragment.PostFirstFragment;
-import com.sopt.famfam.get.GetContentListResponse;
 import com.sopt.famfam.get.Photos;
-import com.sopt.famfam.network.ApplicationController;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -123,8 +115,8 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             todayViewHolder.cation.setText("내용 없음");
         else
             todayViewHolder.cation.setText(todayItemArrayList.get(position).caption);
-        todayViewHolder.comment.setText(todayItemArrayList.get(position).comment);
-        todayViewHolder.comment_count.setText(todayItemArrayList.get(position).comment_count);
+            todayViewHolder.comment.setText(todayItemArrayList.get(position).comment);
+            todayViewHolder.comment_count.setText(todayItemArrayList.get(position).comment_count);
 
     }
     @Override
