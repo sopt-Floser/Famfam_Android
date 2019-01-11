@@ -1,5 +1,6 @@
 package com.sopt.famfam.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import com.sopt.famfam.R;
 import com.sopt.famfam.adapter.item.CommentItem;
 
@@ -15,8 +17,10 @@ import java.util.ArrayList;
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
     private ArrayList<CommentItem> commentItemArrayList;
-    public CommentAdapter(ArrayList<CommentItem> commentItemArrayList) {
+    private Context context;
+    public CommentAdapter(ArrayList<CommentItem> commentItemArrayList, Context context) {
         this.commentItemArrayList = commentItemArrayList;
+        this.context=context;
     }
     //View.OnClickListener clickListener;
 
@@ -26,7 +30,10 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_comment, parent, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
-
+        viewHolder.tvComment.setText(commentItemArrayList.get(i).comment);
+        viewHolder.tvName.setText(commentItemArrayList.get(i).name);
+        Glide.with(context).load(commentItemArrayList.get(i).profile).into(viewHolder.ivProfile);
+        viewHolder.tvCommenttime.setText(commentItemArrayList.get(i).comment_time);
         return viewHolder;
     }
 

@@ -328,7 +328,7 @@ public class PostFragment extends Fragment implements View.OnClickListener {
                                 tmp.get(i).getContent(),
                                 tmp.get(i).getCreatedAt()));
                     }
-                    recyclerView.setAdapter(new CommentAdapter(list));
+                    recyclerView.setAdapter(new CommentAdapter(list,getContext()));
                 }
             }
             @Override

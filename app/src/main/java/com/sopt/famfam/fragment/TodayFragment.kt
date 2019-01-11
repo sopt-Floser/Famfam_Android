@@ -46,7 +46,6 @@ class TodayFragment : Fragment() {
         layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
 
-
         val todayItemArrayList = ArrayList<TodayItem>()
         //        todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
         //        todayItemArrayList.add(new TodayItem(R.drawable.kim_fam_big, "김팸팸", "2019-01-17", R.drawable.famfeed_1, R.drawable.icon_emoticon, R.drawable.like, "엄마님 외 2명", "엄마랑 데이트", "댓글", "1개"));
