@@ -67,10 +67,7 @@ class FIreBaseMessagingService : FirebaseMessagingService() {
         }
         notificationManager.notify(0, notificationBuilder.build())
     }
-    override fun handleIntent(intent :Intent )
-    {
-        
-    }
+
     companion object {
         private val TAG = "MyFirebaseMsgService"
     }
