@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="16dp"
-                android:src="@drawable/icon_back" />
+                android:src="@drawable/icon_back"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -28,21 +28,19 @@
                 android:layout_centerInParent="true"
                 android:text="버전 정보"
                 android:textColor="@color/colorPrimary"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
     </RelativeLayout>
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
     >
-        <android.support.v7.widget.CardView
-                android:layout_centerHorizontal="true"
+        <ImageView
                 android:id="@+id/iv_version_appimg"
-                android:layout_marginTop="16dp"
-                android:elevation="8dp"
-                app:cardCornerRadius="32dp"
-                android:layout_width="180dp"
-                android:layout_height="180dp">
-        </android.support.v7.widget.CardView>
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/web_hi_res_512"
+        />
         <TextView
                 android:layout_marginTop="16dp"
                 android:layout_centerHorizontal="true"

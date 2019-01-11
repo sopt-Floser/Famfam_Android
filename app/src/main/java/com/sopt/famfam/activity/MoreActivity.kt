@@ -33,6 +33,16 @@ class MoreActivity : AppCompatActivity() {
             .thumbnail(0.5f)
             .into(iv_more_profile_img)
 
+        when(FamilyData.backPhoto){
+            "" -> {
+                val requestOptions2 = RequestOptions()
+                Glide.with(applicationContext)
+                    .setDefaultRequestOptions(requestOptions2)
+                    .load(R.drawable.mybackimg)
+                    .thumbnail(0.5f)
+                    .into(iv_more_bg)
+            }
+        }
         val requestOptions2 = RequestOptions()
         requestOptions1.placeholder(R.drawable.mybackimg)
         Glide.with(applicationContext)

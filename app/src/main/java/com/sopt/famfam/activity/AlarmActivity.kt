@@ -35,7 +35,9 @@ class AlarmActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm)
-
+        btn_alarm_back.setOnClickListener {
+            finish()
+        }
         getAlarmListResponse()
     }
 //    private fun setRecyclerView(){
@@ -68,7 +70,7 @@ class AlarmActivity : AppCompatActivity() {
                                     "ADD_ANNIVERSARY" -> image = R.drawable.icon_birthday
                                     "ADD_CONTENT" -> image = R.drawable.icon_newfeed
                                     "ADD_COMMENT" -> image = R.drawable.icon_new
-                                    "ADD_EMOTION" -> image = R.drawable.icon_emotion
+                                    "ADD_EMOTION" -> image = R.drawable.icon_emotion_b
                                 }
                             list.add(AlarmData(image, item.content))
                         } else {

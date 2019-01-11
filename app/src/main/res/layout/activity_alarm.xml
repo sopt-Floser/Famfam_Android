@@ -16,7 +16,7 @@
                 android:gravity="center_vertical">
 
             <ImageView
-                    android:id="@+id/btn_back"
+                    android:id="@+id/btn_alarm_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -29,24 +29,31 @@
                     android:layout_centerInParent="true"
                     android:text="알림"
                     android:textColor="#656565"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
 
     <LinearLayout
-            android:layout_marginHorizontal="40dp"
-            android:layout_marginTop="56dp"
+            android:background="@drawable/img_home_basic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_alarm_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-        </android.support.v7.widget.RecyclerView>
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#66707070">
+            <android.support.v7.widget.RecyclerView
+                    android:paddingHorizontal="56dp"
+                    android:paddingTop="40dp"
+                    android:id="@+id/rv_alarm_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+            </android.support.v7.widget.RecyclerView>
+
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

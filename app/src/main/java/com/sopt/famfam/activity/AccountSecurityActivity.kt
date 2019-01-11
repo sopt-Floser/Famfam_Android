@@ -39,6 +39,7 @@ class AccountSecurityActivity : AppCompatActivity() {
         }
         tv_more_disconnect_btn.setOnClickListener {
             // 연결끊기
+            startActivity<MoreDisconnectActivity>()
         }
         btn_back.setOnClickListener {
             finish()

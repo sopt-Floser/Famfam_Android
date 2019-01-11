@@ -1,6 +1,7 @@
 package com.sopt.famfam.network
 
 import com.google.gson.JsonObject
+import com.sopt.famfam.delete.DeleteGroupsResponse
 import com.sopt.famfam.delete.DeleteUserResponse
 import com.sopt.famfam.get.*
 import com.sopt.famfam.post.*
@@ -44,6 +45,13 @@ interface NetworkService {
         @Header("Content-Type") content_type: String,
         @Header("Authorization") token : String
     ): Call<DeleteUserResponse>
+
+    ///users 회원탈퇴
+    @DELETE("/groups/withdraw")
+    fun deleteGroupsResponse(
+        @Header("Content-Type") content_type: String,
+        @Header("Authorization") token : String
+    ): Call<DeleteGroupsResponse>
 
     //아이디 중복체크
     @POST("/users/id")
