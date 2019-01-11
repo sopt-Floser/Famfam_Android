@@ -200,7 +200,7 @@ interface NetworkService {
         @Header("Authorization") token : String,
         @Header("Content-Type") content_type : String,
         @Path("contentIdx") contentIdx : Int,
-        @Body body : JSONObject
+        @Body() body: JsonObject
     ) : Call<PostWriteCommentResponse>
 //
 //    //게시물 상세 보기

@@ -12,5 +12,7 @@ data class Comments(
     val content : String,
     val createdAt : String,
     val contentIdx : Int,
-    val userIdx : Int
+    val userIdx : Int,
+    val userName : String,
+    val userProfile :String
 )

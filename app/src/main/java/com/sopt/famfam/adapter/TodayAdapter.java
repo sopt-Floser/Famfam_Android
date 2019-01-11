@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
@@ -110,6 +111,8 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         todayViewHolder.posted_time.setText((1900+date.getYear())+"."+(date.getMonth()+1)+"."+date.getDate());
         todayViewHolder.vp.setAdapter(new PagerAdapter(fragmentManager,context, todayItemArrayList.get(position).post_img,position));
         todayViewHolder.vp.setId(1+position);
+        todayViewHolder.vp.setOffscreenPageLimit(5);
+
         if (mViewPagerState.containsKey(position)) {
             todayViewHolder.vp.setCurrentItem(mViewPagerState.get(position));
         }
@@ -136,7 +139,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public int getItemCount() {  return todayItemArrayList.size(); }
 
-    private class PagerAdapter extends FragmentStatePagerAdapter {
+    private class PagerAdapter extends FragmentPagerAdapter {
         ArrayList<Fragment> frags =new ArrayList<Fragment>();
         Context context = null;
         ArrayList<Photos>  list;

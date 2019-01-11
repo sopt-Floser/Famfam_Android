@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.bumptech.glide.Glide;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.sopt.famfam.R;
 import com.sopt.famfam.activity.EditPostActivity;
 import com.sopt.famfam.adapter.CommentAdapter;
@@ -106,6 +108,9 @@ public class PostFragment extends Fragment implements View.OnClickListener {
             public void onClick(View view) {
                 try {
                     getWriteCommentResponse(item.post_img.get(0).getContentIdx(),editText.getText().toString());
+                    Log.d("comment",editText.getText().toString());
+                    editText.setText("");
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -159,6 +164,7 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         //포스트 사진 뷰페이저
         viewPager = (ViewPager)view.findViewById(R.id.vp_post_img);
         viewPager.setAdapter(new PagerAdapter(getChildFragmentManager(),getContext(),item.post_img));
+        viewPager.setOffscreenPageLimit(5);
         viewPager.addOnPageChangeListener(onPageChangeListener);
 
         //뷰페이저 인디케이터
@@ -248,7 +254,7 @@ public class PostFragment extends Fragment implements View.OnClickListener {
                 break;
         }
     }
-    private class PagerAdapter extends FragmentStatePagerAdapter {
+    private class PagerAdapter extends FragmentPagerAdapter {
         ArrayList<Fragment> frags =new ArrayList<Fragment>();
         Context context = null;
         ArrayList<Photos>  list;
@@ -316,15 +322,15 @@ public class PostFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onResponse(Call<GetCommentListResponse> call, Response<GetCommentListResponse> response) {
                 if (response.isSuccessful()){
-                    Log.d("asd",response.body().getMessage());
+                    Log.d("asd",response.body().toString());
                     if(response.body().getData()==null)
                         return;
                     ArrayList<CommentItem> list = new ArrayList<>();
                     ArrayList<Comments> tmp  = response.body().getData();
                     for(int i=0;i<tmp.size();i++)
                     {
-                        list.add(new CommentItem(getUserDate(tmp.get(i).getUserIdx()).getProfilePhoto(),
-                                getUserDate(tmp.get(i).getUserIdx()).getUserId(),
+                        list.add(new CommentItem(tmp.get(i).getUserName(),
+                                tmp.get(i).getUserProfile(),
                                 tmp.get(i).getContent(),
                                 tmp.get(i).getCreatedAt()));
                     }
@@ -337,14 +343,18 @@ public class PostFragment extends Fragment implements View.OnClickListener {
             }
         });
     }
-    private void getWriteCommentResponse(int contentIdx,String message) throws JSONException {
+    private void getWriteCommentResponse(final int contentIdx, String message) throws JSONException {
 
-        Call<PostWriteCommentResponse> getBoardListResponse = ApplicationController.instance.networkService.postWriteCommentResponse(FamilyData.token, "application/json",contentIdx,new JSONObject().put("content",message));
+        JSONObject jsonObject  = new JSONObject();
+        jsonObject.put("content", message);
+        JsonObject gsonObject = (JsonObject)(new JsonParser().parse(jsonObject.toString()));
+        Call<PostWriteCommentResponse> getBoardListResponse = ApplicationController.instance.networkService.postWriteCommentResponse(FamilyData.token, "application/json",contentIdx,gsonObject);
         getBoardListResponse.enqueue(new Callback<PostWriteCommentResponse>() {
             @Override
             public void onResponse(Call<PostWriteCommentResponse> call, Response<PostWriteCommentResponse> response) {
                 if (response.isSuccessful()){
                     Log.d("asd",response.body().getMessage());
+                    getCommentListResponse(contentIdx);
                     if(response.body().getData()==null)
                         return;
 

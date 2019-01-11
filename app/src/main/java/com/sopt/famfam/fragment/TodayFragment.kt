@@ -122,10 +122,10 @@ class TodayFragment : Fragment() {
                                 con[i].photos,
                                 R.drawable.icon_emoticon,
                                 R.drawable.like,
-                                "엄마님 외 2명",
+                                "",
                                 con[i].content.content,
                                 "댓글",
-                                "1개"
+                                con[i].content.commentCount.toString()+"개"
                             )
                         )
 

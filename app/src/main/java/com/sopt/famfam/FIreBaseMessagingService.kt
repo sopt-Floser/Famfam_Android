@@ -20,6 +20,7 @@ class FIreBaseMessagingService : FirebaseMessagingService() {
 
     private val channelId = "channel"
     internal var channelName = "alert"
+
     override fun onMessageReceived(remoteMessage: RemoteMessage?) {
         Log.d(TAG, "From: " + remoteMessage!!.from!!)
 
@@ -66,7 +67,10 @@ class FIreBaseMessagingService : FirebaseMessagingService() {
         }
         notificationManager.notify(0, notificationBuilder.build())
     }
-
+    override fun handleIntent(intent :Intent )
+    {
+        
+    }
     companion object {
         private val TAG = "MyFirebaseMsgService"
     }
