@@ -1,2 +1,2 @@
-include ':app', ':calendar'
+include ':app', ':calendar-debug'
 
