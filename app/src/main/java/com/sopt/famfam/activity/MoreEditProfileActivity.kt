@@ -254,14 +254,28 @@ class MoreEditProfileActivity : AppCompatActivity() {
                 Log.e("edit Fail", t.toString())
             }
             override fun onResponse(call: Call<PutEditProfileResponse>, response: Response<PutEditProfileResponse>) {
+                Log.d("널인가요?", response.body().toString())
                 if (response.body()!!.message == "회원 정보 수정 성공") {
                     FamilyData.userName = tv_more_editprofile_nickname.text.toString()
                     FamilyData.sexType = sexType
                     FamilyData.statusMessage = tv_more_editprofile_statusmessage.text.toString()
                     FamilyData.birthday = birthDay
                     finish()
-                } else {
+                } else if (response.body()!!.message == "회원을 찾을 수 없습니다") {
                     Log.e("error", "error")
+                    toast("회원을 찾을 수 없습니다")
+                    startActivity<MoreActivity>()
+                    finish()
+                } else if(response.body()!!.message == "기념일을 찾을 수 없습니다."){
+                    toast("그룹 존재하지 않음")
+                    startActivity<MoreActivity>()
+                    finish()
+                } else if (response.body()!!.message == "데이터베이스 에러") {
+                    toast("데이터베이스 에러")
+                    startActivity<MoreActivity>()
+                    finish()
+                } else if (response.body()!!.message == "서버 내부 에러"){
+                    toast("서버 내부 에러")
                     startActivity<MoreActivity>()
                     finish()
                 }

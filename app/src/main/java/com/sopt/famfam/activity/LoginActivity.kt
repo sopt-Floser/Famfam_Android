@@ -98,7 +98,7 @@ class LoginActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call<PostLogInResponse>, response: Response<PostLogInResponse>) {
                     Log.d("uuuu1", response.message())
-                    if (response.isSuccessful) {
+                    if (response.body()!!.message == "로그인 성공") {
                         Log.d("Login", response.body().toString())
                         if(response.body()!!.status==400)
                             return
@@ -138,7 +138,6 @@ class LoginActivity : AppCompatActivity() {
                         )
                         //저번 시간에 배웠던 SharedPreference에 토큰을 저장! 왜냐하면 토큰이 필요한 통신에 사용하기 위해서!!
                         SharedPreferenceController.setAuthorization(this@LoginActivity, token)
-                        toast(SharedPreferenceController.getAuthorization(this@LoginActivity))
                         getGroupMemberListResponse()
 //                        startActivity<MainActivity>()
 ////                        finish()
@@ -150,6 +149,14 @@ class LoginActivity : AppCompatActivity() {
                             startActivity<MainActivity>()
                             finish()
                         }
+                    } else if (response.body()!!.message == "로그인 실패") {
+                        toast("아이디 또는 비밀번호가 맞지 않습니다!")
+                    } else if (response.body()!!.message == "NULL 에러") {
+                        toast("NULL 에러")
+                    } else if (response.body()!!.message == "데이터베이스 에러") {
+                        toast("데이터베이스 에러")
+                    } else if (response.body()!!.message == "서버 내부 에러") {
+                        toast("서버 내부 에러")
                     }
                 }
             })

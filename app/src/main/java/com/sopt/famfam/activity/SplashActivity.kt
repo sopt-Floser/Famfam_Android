@@ -106,7 +106,6 @@ class SplashActivity : AppCompatActivity() {
                                     FamilyData.sexType
                         )
                         SharedPreferenceController.setAuthorization(this@SplashActivity, token)
-                        toast(SharedPreferenceController.getAuthorization(this@SplashActivity))
                         val groupIdx = FamilyData.groupId.toString()
                         Log.e("uuuu1", groupIdx)
                         if (groupIdx == "-1") {

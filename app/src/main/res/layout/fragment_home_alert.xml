@@ -40,7 +40,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/icon_calender_white"
-                            android:visibility="visible"/>
+                            android:visibility="invisible"/>
                     <TextView
                             android:id="@+id/history_text1"
                             android:layout_gravity="center_vertical"
@@ -64,7 +64,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/icon_calender_white"
-                            android:visibility="visible"/>
+                            android:visibility="invisible"/>
                     <TextView
                             android:id="@+id/history_text2"
                             android:layout_gravity="center_vertical"
@@ -88,7 +88,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/icon_calender_white"
-                            android:visibility="visible"/>
+                            android:visibility="invisible"/>
                     <TextView
                             android:id="@+id/history_text3"
                             android:layout_gravity="center_vertical"
@@ -112,7 +112,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/icon_calender_white"
-                            android:visibility="visible"/>
+                            android:visibility="invisible"/>
                     <TextView
                             android:id="@+id/history_text4"
                             android:layout_gravity="center_vertical"
@@ -136,7 +136,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/icon_calender_white"
-                            android:visibility="visible"/>
+                            android:visibility="invisible"/>
                     <TextView
                             android:id="@+id/history_text5"
                             android:layout_gravity="center_vertical"
@@ -160,7 +160,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/icon_calender_white"
-                            android:visibility="visible"/>
+                            android:visibility="invisible"/>
                     <TextView
                             android:id="@+id/history_text6"
                             android:layout_gravity="center_vertical"

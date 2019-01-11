@@ -47,61 +47,150 @@ class HomeAlertFrament : Fragment() {
                     for (item in data) {
                         if (i == 0) {
                             when (response.body()!!.data.histories[0].historyType) {
-                                "ADD_SCHEDULE" -> history_image1.setImageResource(R.drawable.icon_calender_white)
-                                "ADD_ANNIVERSARY" -> history_image1.setImageResource(R.drawable.icon_birthday_w)
-                                "ADD_CONTENT" -> history_image1.setImageResource(R.drawable.icon_newfeed_w)
-                                "ADD_COMMENT" -> history_image1.setImageResource(R.drawable.icon_new_w)
-                                "ADD_EMOTION" -> history_image1.setImageResource(R.drawable.icon_emotion_w)
+                                "ADD_SCHEDULE" -> {
+                                    history_image1.setImageResource(R.drawable.icon_calender_white)
+                                    history_image1.visibility = View.VISIBLE
+                                }
+                                "ADD_ANNIVERSARY" ->{
+                                    history_image1.setImageResource(R.drawable.icon_birthday_w)
+                                    history_image1.visibility = View.VISIBLE
+                                }
+                                "ADD_CONTENT" -> {
+                                    history_image1.setImageResource(R.drawable.icon_newfeed_w)
+                                    history_image1.visibility = View.VISIBLE
+                                }
+                                "ADD_COMMENT" -> {
+                                    history_image1.setImageResource(R.drawable.icon_new_w)
+                                    history_image1.visibility = View.VISIBLE
+                                }
+                                "ADD_EMOTION" -> {
+                                    history_image1.setImageResource(R.drawable.icon_emotion_w)
+                                    history_image1.visibility = View.VISIBLE
+                                }
                             }
                             history_text1.text = response.body()!!.data.histories[0].content
                         } else if (i == 1) {
                             when (response.body()!!.data.histories[1].historyType) {
-                                "ADD_SCHEDULE" -> history_image2.setImageResource(R.drawable.icon_calender_white)
-                                "ADD_ANNIVERSARY" -> history_image2.setImageResource(R.drawable.icon_birthday_w)
-                                "ADD_CONTENT" -> history_image2.setImageResource(R.drawable.icon_newfeed_w)
-                                "ADD_COMMENT" -> history_image2.setImageResource(R.drawable.icon_new_w)
-                                "ADD_EMOTION" -> history_image2.setImageResource(R.drawable.icon_emotion_w)
+                                "ADD_SCHEDULE" -> {
+                                    history_image2.setImageResource(R.drawable.icon_calender_white)
+                                    history_image2.visibility = View.VISIBLE
+                                }
+                                "ADD_ANNIVERSARY" -> {
+                                    history_image2.setImageResource(R.drawable.icon_birthday_w)
+                                    history_image2.visibility = View.VISIBLE
+                                }
+                                "ADD_CONTENT" -> {
+                                    history_image2.setImageResource(R.drawable.icon_newfeed_w)
+                                    history_image2.visibility = View.VISIBLE
+                                }
+                                "ADD_COMMENT" -> {
+                                    history_image2.setImageResource(R.drawable.icon_new_w)
+                                    history_image2.visibility = View.VISIBLE
+                                }
+                                "ADD_EMOTION" -> {
+                                    history_image2.setImageResource(R.drawable.icon_emotion_w)
+                                    history_image2.visibility = View.VISIBLE
+                                }
                             }
                             history_text2.text = response.body()!!.data.histories[1].content
                         } else if (i == 2) {
                             when (response.body()!!.data.histories[2].historyType) {
-                                "ADD_SCHEDULE" -> history_image3.setImageResource(R.drawable.icon_calender_white)
-                                "ADD_ANNIVERSARY" -> history_image3.setImageResource(R.drawable.icon_birthday_w)
-                                "ADD_CONTENT" -> history_image3.setImageResource(R.drawable.icon_newfeed_w)
-                                "ADD_COMMENT" -> history_image3.setImageResource(R.drawable.icon_new_w)
-                                "ADD_EMOTION" -> history_image3.setImageResource(R.drawable.icon_emotion_w)
+                                "ADD_SCHEDULE" -> {
+                                    history_image3.setImageResource(R.drawable.icon_calender_white)
+                                    history_image3.visibility = View.VISIBLE
+                                }
+                                "ADD_ANNIVERSARY" -> {
+                                    history_image3.setImageResource(R.drawable.icon_birthday_w)
+                                    history_image3.visibility = View.VISIBLE
+                                }
+                                "ADD_CONTENT" -> {
+                                    history_image3.setImageResource(R.drawable.icon_newfeed_w)
+                                    history_image3.visibility = View.VISIBLE
+                                }
+                                "ADD_COMMENT" -> {
+                                    history_image3.setImageResource(R.drawable.icon_new_w)
+                                    history_image3.visibility = View.VISIBLE
+                                }
+                                "ADD_EMOTION" -> {
+                                    history_image3.setImageResource(R.drawable.icon_emotion_w)
+                                    history_image3.visibility = View.VISIBLE
+                                }
                             }
                             history_text3.text = response.body()!!.data.histories[2].content
                         } else if (i == 3) {
                             when (response.body()!!.data.histories[3].historyType) {
-                                "ADD_SCHEDULE" -> history_image4.setImageResource(R.drawable.icon_calender_white)
-                                "ADD_ANNIVERSARY" -> history_image4.setImageResource(R.drawable.icon_birthday_w)
-                                "ADD_CONTENT" -> history_image4.setImageResource(R.drawable.icon_newfeed_w)
-                                "ADD_COMMENT" -> history_image4.setImageResource(R.drawable.icon_new_w)
-                                "ADD_EMOTION" -> history_image4.setImageResource(R.drawable.icon_emotion_w)
+                                "ADD_SCHEDULE" -> {
+                                    history_image4.setImageResource(R.drawable.icon_calender_white)
+                                    history_image4.visibility = View.VISIBLE
+                                }
+                                "ADD_ANNIVERSARY" -> {
+                                    history_image4.setImageResource(R.drawable.icon_birthday_w)
+                                    history_image4.visibility = View.VISIBLE
+                                }
+                                "ADD_CONTENT" -> {
+                                    history_image4.setImageResource(R.drawable.icon_newfeed_w)
+                                    history_image4.visibility = View.VISIBLE
+                                }
+                                "ADD_COMMENT" -> {
+                                    history_image4.setImageResource(R.drawable.icon_new_w)
+                                    history_image4.visibility = View.VISIBLE
+                                }
+                                "ADD_EMOTION" -> {
+                                    history_image4.setImageResource(R.drawable.icon_emotion_w)
+                                    history_image4.visibility = View.VISIBLE
+                                }
                             }
                             history_text4.text = response.body()!!.data.histories[3].content
                         } else if (i == 4) {
                             when (response.body()!!.data.histories[4].historyType) {
-                                "ADD_SCHEDULE" -> history_image5.setImageResource(R.drawable.icon_calender_white)
-                                "ADD_ANNIVERSARY" -> history_image5.setImageResource(R.drawable.icon_birthday_w)
-                                "ADD_CONTENT" -> history_image5.setImageResource(R.drawable.icon_newfeed_w)
-                                "ADD_COMMENT" -> history_image5.setImageResource(R.drawable.icon_new_w)
-                                "ADD_EMOTION" -> history_image5.setImageResource(R.drawable.icon_emotion_w)
+                                "ADD_SCHEDULE" -> {
+                                    history_image5.setImageResource(R.drawable.icon_calender_white)
+                                    history_image5.visibility = View.VISIBLE
+                                }
+                                "ADD_ANNIVERSARY" -> {
+                                    history_image5.setImageResource(R.drawable.icon_birthday_w)
+                                    history_image5.visibility = View.VISIBLE
+                                }
+                                "ADD_CONTENT" -> {
+                                    history_image5.setImageResource(R.drawable.icon_newfeed_w)
+                                    history_image5.visibility = View.VISIBLE
+                                }
+                                "ADD_COMMENT" -> {
+                                    history_image5.setImageResource(R.drawable.icon_new_w)
+                                    history_image5.visibility = View.VISIBLE
+                                }
+                                "ADD_EMOTION" -> {
+                                    history_image5.setImageResource(R.drawable.icon_emotion_w)
+                                    history_image5.visibility = View.VISIBLE
+                                }
                             }
                             history_text5.text = response.body()!!.data.histories[4].content
                         } else {
                             when (response.body()!!.data.histories[5].historyType) {
-                                "ADD_SCHEDULE" -> history_image6.setImageResource(R.drawable.icon_calender_white)
-                                "ADD_ANNIVERSARY" -> history_image6.setImageResource(R.drawable.icon_birthday_w)
-                                "ADD_CONTENT" -> history_image6.setImageResource(R.drawable.icon_newfeed_w)
-                                "ADD_COMMENT" -> history_image6.setImageResource(R.drawable.icon_new_w)
-                                "ADD_EMOTION" -> history_image6.setImageResource(R.drawable.icon_emotion_w)
+                                "ADD_SCHEDULE" -> {
+                                    history_image6.setImageResource(R.drawable.icon_calender_white)
+                                    history_image6.visibility = View.VISIBLE
+                                }
+                                "ADD_ANNIVERSARY" -> {
+                                    history_image6.setImageResource(R.drawable.icon_birthday_w)
+                                    history_image6.visibility = View.VISIBLE
+                                }
+                                "ADD_CONTENT" -> {
+                                    history_image6.setImageResource(R.drawable.icon_newfeed_w)
+                                    history_image6.visibility = View.VISIBLE
+                                }
+                                "ADD_COMMENT" -> {
+                                    history_image6.setImageResource(R.drawable.icon_new_w)
+                                    history_image6.visibility = View.VISIBLE
+                                }
+                                "ADD_EMOTION" -> {
+                                    history_image6.setImageResource(R.drawable.icon_emotion_w)
+                                    history_image6.visibility = View.VISIBLE
+                                }
                             }
                             history_text6.text = response.body()!!.data.histories[5].content
                         }
                         i++
-
                     }
 //                    히스토리 타입
 //                            일정 추가 ADD_SCHEDULE /

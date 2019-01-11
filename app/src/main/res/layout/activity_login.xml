@@ -44,7 +44,11 @@
                     android:layout_marginLeft="56dp"
                     android:layout_width="170dp"
                     android:layout_height="48dp"
+                    android:singleLine="true"
                     android:background="#86a7ed"
+                    android:textColor="#dbdbdb"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
             />
 
         </RelativeLayout>
@@ -68,6 +72,11 @@
                     android:layout_width="170dp"
                     android:layout_height="48dp"
                     android:background="#86a7ed"
+                    android:singleLine="true"
+                    android:inputType="textPassword"
+                    android:textColor="#dbdbdb"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
             />
 
 
