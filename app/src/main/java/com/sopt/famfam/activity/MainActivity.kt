@@ -95,6 +95,11 @@ class MainActivity : AppCompatActivity() {
         getUserResponse()
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        getUserResponse()
+    }
+
 
     override fun onBackPressed() {
         var curFrags = adapter.getItem(index).childFragmentManager

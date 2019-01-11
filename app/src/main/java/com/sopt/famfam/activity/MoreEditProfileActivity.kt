@@ -90,7 +90,10 @@ class MoreEditProfileActivity : AppCompatActivity() {
         super.onResume()
         getUserResponse()
     }
-
+    override fun onRestart() {
+        super.onRestart()
+        getUserResponse()
+    }
 
 
 //    var nickname : Editable =

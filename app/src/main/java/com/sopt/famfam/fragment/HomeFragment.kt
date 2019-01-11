@@ -40,6 +40,7 @@ class HomeFragment : Fragment() {
     lateinit var FamilyListAdapter: FamilyListAdapter
     override fun onResume() {
         super.onResume()
+        getUserResponse()
     }
 
     val networkService: NetworkService by lazy {
@@ -53,14 +54,22 @@ class HomeFragment : Fragment() {
         // 가족 리스트 통신
         var view = inflater.inflate(R.layout.fragment_home, container, false)
         view.tv_home_user_name.text = FamilyData.userName
-        val requestOptions1 = RequestOptions()
-        requestOptions1.placeholder(R.drawable.myimg)
+        if(FamilyData.profilePhoto == ""){
+            val requestOptions1 = RequestOptions()
+            Glide.with(this.context!!)
+                .setDefaultRequestOptions(requestOptions1)
+                .load(R.drawable.myimg)
+                .thumbnail(0.5f)
+                .into(view.iv_home_famliy_my)
+        } else {
+            val requestOptions1 = RequestOptions()
+            Glide.with(this.context!!)
+                .setDefaultRequestOptions(requestOptions1)
+                .load(FamilyData.profilePhoto)
+                .thumbnail(0.5f)
+                .into(view.iv_home_famliy_my)
+        }
 
-        Glide.with(this.context!!)
-            .setDefaultRequestOptions(requestOptions1)
-            .load(FamilyData.profilePhoto)
-            .thumbnail(0.5f)
-            .into(view.iv_home_famliy_my)
         Log.d("이미지", FamilyData.profilePhoto)
         // 패밀리 붙이기
         familylist = view.rv_home_family
