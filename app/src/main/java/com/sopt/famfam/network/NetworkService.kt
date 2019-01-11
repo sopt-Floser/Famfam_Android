@@ -10,6 +10,7 @@ import com.sopt.famfam.put.PutResetPwResponse
 import com.sopt.famfam.put.PutUserPhotoResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -199,7 +200,7 @@ interface NetworkService {
         @Header("Authorization") token : String,
         @Header("Content-Type") content_type : String,
         @Path("contentIdx") contentIdx : Int,
-        @Body content : String
+        @Body body : JSONObject
     ) : Call<PostWriteCommentResponse>
 //
 //    //게시물 상세 보기

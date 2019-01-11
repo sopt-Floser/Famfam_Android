@@ -86,6 +86,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         todayViewHolder.i=position;
         final int p=position;
         Glide.with(context).load(todayItemArrayList.get(position).profile).into(todayViewHolder.profile);
+        Log.d("today",todayItemArrayList.get(position).profile);
         todayViewHolder.profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

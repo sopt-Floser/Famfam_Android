@@ -31,6 +31,8 @@ import com.sopt.famfam.get.Photos;
 import com.sopt.famfam.indicator.CircleAnimIndicator;
 import com.sopt.famfam.network.ApplicationController;
 import com.sopt.famfam.post.PostWriteCommentResponse;
+import org.json.JSONException;
+import org.json.JSONObject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -102,7 +104,11 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.btn_post_comment).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getWriteCommentResponse(item.post_img.get(0).getContentIdx(),editText.getText().toString());
+                try {
+                    getWriteCommentResponse(item.post_img.get(0).getContentIdx(),editText.getText().toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
         //게시물 수정,삭제
@@ -331,8 +337,9 @@ public class PostFragment extends Fragment implements View.OnClickListener {
             }
         });
     }
-    private void getWriteCommentResponse(int contentIdx,String message){
-        Call<PostWriteCommentResponse> getBoardListResponse = ApplicationController.instance.networkService.postWriteCommentResponse(FamilyData.token, "application/json",contentIdx,message);
+    private void getWriteCommentResponse(int contentIdx,String message) throws JSONException {
+
+        Call<PostWriteCommentResponse> getBoardListResponse = ApplicationController.instance.networkService.postWriteCommentResponse(FamilyData.token, "application/json",contentIdx,new JSONObject().put("content",message));
         getBoardListResponse.enqueue(new Callback<PostWriteCommentResponse>() {
             @Override
             public void onResponse(Call<PostWriteCommentResponse> call, Response<PostWriteCommentResponse> response) {
