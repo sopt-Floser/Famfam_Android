@@ -149,7 +149,6 @@ class MainActivity : AppCompatActivity() {
                         FamilyData.profilePhoto = response.body()!!.data.profilePhoto
                         FamilyData.backPhoto = response.body()!!.data.backPhoto
                         Log.d("uuuu1", FamilyData.profilePhoto)
-                        toast(FamilyData.profilePhoto)
                     } else {
                         toast("fail")
                     }

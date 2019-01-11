@@ -98,6 +98,13 @@ interface NetworkService {
         @Header("Authorization") token : String
     ) : Call<GetGroupsCreateCodeResponse>
 
+    // 미션 조회
+    @GET("/mission")
+    fun getMissioneResponse (
+        @Header("Content-Type") content_type : String,
+        @Header("Authorization") token : String
+    ) : Call<GetMissionResponse>
+
     //감정표현 추가/수
     @POST("/feels/contents/{contentIdx}")
     fun postFeelResponse(

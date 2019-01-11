@@ -53,7 +53,7 @@ class FIreBaseMessagingService : FirebaseMessagingService() {
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle("팸팸")
-            .setContentText(URLDecoder.decode(messageBody, "utf-8"))
+            .setContentText(URLDecoder.decode(messageBody, "UTF-8"))
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
             .setContentIntent(pendingIntent)

@@ -84,13 +84,13 @@ class SplashActivity : AppCompatActivity() {
                         when(user_profilePhoto){
                             null -> FamilyData.profilePhoto = ""
                         }
-                        FamilyData.profilePhoto = response.body()!!.data.user.profilePhoto
+                        FamilyData.profilePhoto = user_profilePhoto
                         Log.d("uuuu1", "로그인"+FamilyData.profilePhoto)
                         val user_backPhoto = response.body()!!.data.user.backPhoto
                         when(user_backPhoto){
                             null -> FamilyData.backPhoto = ""
                         }
-                        FamilyData.backPhoto = response.body()!!.data.user.backPhoto
+                        FamilyData.backPhoto = user_backPhoto
                         FamilyData.sexType = response.body()!!.data.user.sexType
                         Log.e("uuuu1", token)
 

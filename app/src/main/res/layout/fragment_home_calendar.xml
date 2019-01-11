@@ -13,35 +13,44 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
             <TextView
+                    android:id="@+id/mission_title"
                     android:layout_marginTop="16dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="이번주 당신의 미션은"
                     android:textColor="#4a4a4a"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:visibility="visible"
+                    android:textStyle="bold"
+            />
             <RelativeLayout
                     android:layout_marginTop="8dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 <TextView
-                        android:id="@+id/user_nickname"
+                        android:id="@+id/targetuser_nickname"
+                        android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="엄마"
-                        android:textColor="#4a4a4a"/>
+                        android:textColor="#4a4a4a"
+                        android:visibility="visible"/>
                 <TextView
-                        android:layout_toRightOf="@+id/user_nickname"
+                        android:id="@+id/targetuser_nickname_suffix"
+                        android:layout_marginTop="8dp"
+                        android:layout_toRightOf="@+id/targetuser_nickname"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="님께"
+                        android:visibility="visible"
                         android:textColor="#4a4a4a"
                 />
             </RelativeLayout>
             <TextView
-                    android:layout_marginTop="8dp"
                     android:id="@+id/mission"
+                    android:layout_marginTop="8dp"
                     android:layout_gravity="center_horizontal"
                     android:textSize="24sp"
                     android:textColor="#4a4a4a"
@@ -49,6 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="좋아하는 책 선물하기"
+                    android:visibility="visible"
             />
             <ImageView
                     android:id="@+id/mission_image"
