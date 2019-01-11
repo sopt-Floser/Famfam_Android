@@ -44,10 +44,7 @@ public class PostFirstFragment extends Fragment {
 
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_post_first, container, false);
-        options.diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true);
         image = view.findViewById(R.id.iv_post_mainimage);
-
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

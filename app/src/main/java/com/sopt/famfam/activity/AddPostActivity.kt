@@ -1,5 +1,6 @@
 package com.sopt.famfam.activity
 
+import android.app.ProgressDialog
 import android.content.ContentUris
 import android.content.Context
 import android.content.pm.PackageManager
@@ -38,6 +39,7 @@ import java.util.*
 class AddPostActivity : AppCompatActivity() {
     private var photoSize = 0
     private var list: ArrayList<Uri>? = null
+    var mProgressDialog:ProgressDialog?=null
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -78,7 +80,10 @@ class AddPostActivity : AppCompatActivity() {
 
 
         // 전송 버튼
-        findViewById<View>(R.id.tvNext).setOnClickListener { getWriteBoardResponse(list!!)}
+        findViewById<View>(R.id.tvNext).setOnClickListener {
+            mProgressDialog = ProgressDialog.show(this,"잠시만 기다려 주세요.","",true);
+            getWriteBoardResponse(list!!)
+        }
 
     }
 
@@ -108,9 +113,12 @@ class AddPostActivity : AppCompatActivity() {
             postWriteBoardResponse.enqueue(object : Callback<PostWriteContentResponse> {
                 override fun onFailure(call: Call<PostWriteContentResponse>, t: Throwable) {
                     Log.e("asd", t.toString())
+                    mProgressDialog!!.dismiss()
+                    toast("업로드 실패")
                 }
                 override fun onResponse(call: Call<PostWriteContentResponse>, response: Response<PostWriteContentResponse>) {
                     Log.d("asd","asdhhh"+response.body().toString())
+                    mProgressDialog!!.dismiss()
                     if (response.isSuccessful) {
                         toast(response.body()!!.message)
                         finish()

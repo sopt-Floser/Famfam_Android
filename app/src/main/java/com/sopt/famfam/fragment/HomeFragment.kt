@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.iid.FirebaseInstanceId
 import com.sopt.famfam.R
 import com.sopt.famfam.activity.CodeGeneratorActivity
@@ -22,6 +23,7 @@ import com.sopt.famfam.activity.MoreActivity
 import com.sopt.famfam.activity.MoreEditProfileActivity
 import com.sopt.famfam.adapter.FamilyListAdapter
 import com.sopt.famfam.adapter.item.FamilyListItem
+import com.sopt.famfam.adapter.item.RoomItem
 import com.sopt.famfam.database.FamilyData
 import com.sopt.famfam.database.User
 import com.sopt.famfam.get.GetGroupUserResponse
@@ -153,6 +155,11 @@ class HomeFragment : Fragment() {
                     familylist!!.adapter = FamilyListAdapter(context!!, list)
                     familylist!!.layoutManager =
                             LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
+                    var database = FirebaseDatabase.getInstance()
+                    var databaseReference = database.getReference("RoomUser")
+                    var chat = RoomItem(FirebaseInstanceId.getInstance().getToken()!!,FamilyData.userId.toInt(),FamilyData.userName!!)
+                    databaseReference.child(FamilyData.groupId.toString()).child(FamilyData.userId).push().setValue(chat) //databaseReference를 이용해 데이터 푸쉬
+
                     Log.d("asd", "여긴되나요")
                 }
             }

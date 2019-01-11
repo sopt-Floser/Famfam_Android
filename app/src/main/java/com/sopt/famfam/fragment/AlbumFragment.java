@@ -1,6 +1,7 @@
 package com.sopt.famfam.fragment;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
 import com.sopt.famfam.R;
 import com.sopt.famfam.adapter.AlbumAdapter;
 import com.sopt.famfam.adapter.item.AlbumItem;
@@ -52,6 +54,9 @@ public class AlbumFragment extends Fragment {
 
         TextView display_name = view.findViewById(R.id.display_name);
         display_name.setText(getUserDate(idx).getUserName());
+
+        ImageView iv_profile = view.findViewById(R.id.iv_profile_photo);
+        Glide.with(getContext()).load(getUserDate(idx).getProfilePhoto()).into(iv_profile);
 
         TextView tv_album_statusmessage = view.findViewById(R.id.tv_album_statusmessage);
         tv_album_statusmessage.setText(getUserDate(idx).getUserName());

@@ -114,8 +114,9 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        PagerAdapter adap = new PagerAdapter(fragmentManager,context, todayItemArrayList.get(position).post_img,position);
         todayViewHolder.posted_time.setText((1900+date.getYear())+"."+(date.getMonth()+1)+"."+date.getDate());
+
+        PagerAdapter adap = new PagerAdapter(fragmentManager,context, todayItemArrayList.get(position).post_img,position);
         todayViewHolder.vp.setAdapter(adap);
         adap.notifyDataSetChanged();
         Random rand = new Random();
