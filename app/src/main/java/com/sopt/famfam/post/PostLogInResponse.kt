@@ -13,6 +13,7 @@ data class LoginData(
 
 data class LoginUser(
     val userId: String,
+    val userIdx: Int,
     val userName: String,
     val profilePhoto: String ="",
     val backPhoto: String ="",

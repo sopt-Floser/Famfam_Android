@@ -105,6 +105,7 @@ class LoginActivity : AppCompatActivity() {
                         val token = response.body()!!.data.token
                         FamilyData.groupId = response.body()!!.data.user.groupIdx
                         FamilyData.userId = response.body()!!.data.user.userId
+                        FamilyData.userIdx = response.body()!!.data.user.userIdx
                         FamilyData.userName = response.body()!!.data.user.userName
                         FamilyData.token = token
                         FamilyData.statusMessage = response.body()!!.data.user.statusMessage

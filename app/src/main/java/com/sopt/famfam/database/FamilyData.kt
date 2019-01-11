@@ -1,6 +1,7 @@
 package com.sopt.famfam.database
 
 internal object FamilyData {
+    var userIdx : Int = 0
     var userName: String? = "김팸팸"
     var groupId: Int = 0
     var groupIdx :String = ""
