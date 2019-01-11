@@ -18,6 +18,7 @@ import com.sopt.famfam.activity.AddPostActivity
 import com.sopt.famfam.adapter.TodayAdapter
 import com.sopt.famfam.adapter.item.TodayItem
 import com.sopt.famfam.database.FamilyData
+import com.sopt.famfam.database.User
 import com.sopt.famfam.get.*
 import com.sopt.famfam.network.ApplicationController
 import gun0912.tedbottompicker.TedBottomPicker
@@ -91,6 +92,13 @@ class TodayFragment : Fragment() {
             super.onViewRecycled(holder);
         }
     */
+    private fun getUserDate(idx: Int): User {
+        for (i in FamilyData.users.indices) {
+            if (FamilyData.users[i].userIdx == idx)
+                return FamilyData.users[i]
+        }
+        return FamilyData.users[0]
+    }
     private fun getCotentListResponse() {
         val getBoardListResponse =
             ApplicationController.instance.networkService.getContentListResponse(FamilyData.token, 0, 30)
@@ -110,7 +118,7 @@ class TodayFragment : Fragment() {
                         val profile = "test"
                         todayItemArrayList.add(
                             TodayItem(
-                                con[i].content.userIdx, profile,
+                                con[i].content.userIdx, getUserDate(con[i].content.userIdx).profilePhoto,
                                 con[i].userName, con[i].content.createdAt,
                                 con[i].photos,
                                 R.drawable.icon_emoticon,
