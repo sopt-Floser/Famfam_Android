@@ -25,10 +25,12 @@ import com.sopt.famfam.adapter.item.FamilyListItem
 import com.sopt.famfam.database.FamilyData
 import com.sopt.famfam.database.User
 import com.sopt.famfam.get.GetGroupUserResponse
+import com.sopt.famfam.get.GetUserResponse
 import com.sopt.famfam.network.ApplicationController
 import com.sopt.famfam.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,16 +49,19 @@ class HomeFragment : Fragment() {
     var familylist: RecyclerView? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         getGroupMemberListResponse()
+        getUserResponse()
         // 가족 리스트 통신
         var view = inflater.inflate(R.layout.fragment_home, container, false)
         view.tv_home_user_name.text = FamilyData.userName
         val requestOptions1 = RequestOptions()
         requestOptions1.placeholder(R.drawable.myimg)
-        Glide.with(context!!)
+
+        Glide.with(this.context!!)
             .setDefaultRequestOptions(requestOptions1)
             .load(FamilyData.profilePhoto)
             .thumbnail(0.5f)
             .into(view.iv_home_famliy_my)
+        Log.d("이미지", FamilyData.profilePhoto)
         // 패밀리 붙이기
         familylist = view.rv_home_family
 
@@ -106,18 +111,36 @@ class HomeFragment : Fragment() {
                     for (item in data) {
                         Log.d("uuuu1", item.toString())
                         if (item.profilePhoto.isNullOrEmpty()) {
-                            list.add(FamilyListItem(item.userIdx, "https://s3.ap-northeast-2.amazonaws.com/testfamfam/default/profile.png", item.userName))
+                            list.add(
+                                FamilyListItem(
+                                    item.userIdx,
+                                    "https://s3.ap-northeast-2.amazonaws.com/testfamfam/default/profile.png",
+                                    item.userName
+                                )
+                            )
                         } else {
                             list.add(FamilyListItem(item.userIdx, item.profilePhoto, item.userName))
-                            Log.d("asdphoto",item.profilePhoto)
+                            Log.d("asdphoto", item.profilePhoto)
                         }
                     }
-                    FamilyData.users= ArrayList<User>()
+                    FamilyData.users = ArrayList<User>()
                     for (user in data) {
-                        FamilyData.users.add(User(user.userIdx,user.userId,user.userName,user.userPhone,user.birthday,user.sexType,user.statusMessage,
-                                "","",user.groupIdx))
+                        FamilyData.users.add(
+                            User(
+                                user.userIdx,
+                                user.userId,
+                                user.userName,
+                                user.userPhone,
+                                user.birthday,
+                                user.sexType,
+                                user.statusMessage,
+                                "",
+                                "",
+                                user.groupIdx
+                            )
+                        )
                     }
-                    familylist!!.adapter=FamilyListAdapter(context!!,list)
+                    familylist!!.adapter = FamilyListAdapter(context!!, list)
                     familylist!!.layoutManager = LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
                     Log.d("asd", "여긴되나요")
                 }
@@ -149,6 +172,31 @@ class HomeFragment : Fragment() {
 
         override fun getCount(): Int {
             return Integer.MAX_VALUE
+        }
+    }
+
+    private fun getUserResponse() {
+        if (FamilyData.token != null) {
+            Log.d("uuuu1", FamilyData.token)
+            val getUserResponse =
+                networkService.getUserResponse("application/json", FamilyData.token)
+
+            getUserResponse.enqueue(object : Callback<GetUserResponse> {
+                override fun onFailure(call: Call<GetUserResponse>, t: Throwable) {
+                    Log.e("uuuu1", t.toString())
+                }
+
+                override fun onResponse(call: Call<GetUserResponse>, response: Response<GetUserResponse>) {
+                    if (response.body()!!.message == "회원 정보 조회 성공") {
+                        FamilyData.profilePhoto = response.body()!!.data.profilePhoto
+                        FamilyData.backPhoto = response.body()!!.data.backPhoto
+                        Log.d("uuuu1", FamilyData.profilePhoto)
+                        toast(FamilyData.profilePhoto)
+                    } else {
+                        toast("fail")
+                    }
+                }
+            })
         }
     }
 
