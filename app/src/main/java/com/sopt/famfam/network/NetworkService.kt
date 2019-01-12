@@ -35,6 +35,7 @@ interface NetworkService {
     //자동로그인
     @GET("/login")
     fun getLoginResponse(
+        @Header("User-Agent") userAgent : String,
         @Header("Content-Type") content_type: String,
         @Header("Authorization") token : String
     ): Call<GetLogInResponse>

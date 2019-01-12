@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.LinearLayout
 import com.airbnb.lottie.LottieAnimationView
+import com.google.firebase.iid.FirebaseInstanceId
 import com.sopt.famfam.R
 import com.sopt.famfam.adapter.FamilyListAdapter
 import com.sopt.famfam.adapter.item.FamilyListItem
@@ -64,7 +65,7 @@ class SplashActivity : AppCompatActivity() {
         if (token.isNotEmpty()) {
             Log.d("uuuu1", "들어온다2")
             Log.d("uuuu1", token)
-            val getLoginResponse = networkService.getLoginResponse("application/json", token)
+            val getLoginResponse = networkService.getLoginResponse(FirebaseInstanceId.getInstance().getToken()!!,"application/json", token)
             getLoginResponse.enqueue(object : Callback<GetLogInResponse> {
                 override fun onFailure(call: Call<GetLogInResponse>, t: Throwable) {
                     Log.e("Login fail", t.toString())
