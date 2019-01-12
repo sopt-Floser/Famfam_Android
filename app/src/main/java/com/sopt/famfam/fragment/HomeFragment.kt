@@ -44,6 +44,7 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         getUserResponse()
+        getGroupMemberListResponse()
     }
 
     val networkService: NetworkService by lazy {
