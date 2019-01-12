@@ -73,6 +73,7 @@ class MoreActivity : AppCompatActivity() {
 
         btn_more_alert_setting.setOnClickListener {
             // 알람 성정
+            startActivity<AlertSettingActivity>()
         }
 
         btn_more_cc.setOnClickListener {

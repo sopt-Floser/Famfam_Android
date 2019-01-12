@@ -1,6 +1,8 @@
 package com.sopt.famfam.fragment
 
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -11,8 +13,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.app.ActivityCompat
 import com.sopt.famfam.R
 import com.sopt.famfam.activity.AddPostActivity
+import com.sopt.famfam.adapter.Permissions
 import com.sopt.famfam.adapter.TodayAdapter
 import com.sopt.famfam.adapter.item.TodayItem
 import com.sopt.famfam.database.FamilyData
@@ -22,6 +26,7 @@ import com.sopt.famfam.network.ApplicationController
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 import java.util.*
 
 class TodayFragment : Fragment() {
@@ -29,6 +34,42 @@ class TodayFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var layoutManager: RecyclerView.LayoutManager
 
+    //권한 갯수 확인
+    fun checkPermissionsArray(permissions: Array<String>): Boolean {
+
+        for (i in permissions.indices) {
+            val check = permissions[i]
+            if (!checkPermissions(check)) {
+                return false
+            }
+        }
+        return true
+    }
+
+    //권한 단일 요청
+    fun checkPermissions(permission: String): Boolean {
+
+        val permissionRequest = ActivityCompat.checkSelfPermission(context!!, permission)
+
+        return if (permissionRequest != PackageManager.PERMISSION_GRANTED) {
+            false
+        } else {
+            true
+        }
+    }
+    companion object {
+
+        private val VERIFY_PERMISSIONS_REQUEST = 1
+    }
+    //권한 한번에 요청
+    fun verifyPermissions(permissions: Array<String>) {
+
+        ActivityCompat.requestPermissions(
+            activity as Activity,
+            permissions,
+            VERIFY_PERMISSIONS_REQUEST
+        )
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //프래그먼트 이동
         val AllPhotoFragment = Fragment()
@@ -51,8 +92,13 @@ class TodayFragment : Fragment() {
         val btnAddPost = rootView.findViewById<View>(R.id.btn_today_addPost) as ImageView
 
         btnAddPost.setOnClickListener {
-            val intent = Intent(activity, AddPostActivity::class.java)
-            startActivity(intent)
+            if (checkPermissionsArray(com.sopt.famfam.adapter.Permissions.PERMISSIONS)) {
+                val intent = Intent(activity, AddPostActivity::class.java)
+                startActivity(intent)
+            } else {
+                verifyPermissions(Permissions.PERMISSIONS)
+            }
+
         }
 
         // 사진 전체보기 버튼
@@ -98,6 +144,13 @@ class TodayFragment : Fragment() {
         return FamilyData.users[0]
     }
     private fun getCotentListResponse() {
+        try{
+            Log.d("asd",FamilyData.token);
+        }catch (e : Exception)
+        {
+            return
+        }
+
         val getBoardListResponse =
             ApplicationController.instance.networkService.getContentListResponse(FamilyData.token, 0, 30)
         getBoardListResponse.enqueue(object : Callback<GetContentListResponse> {

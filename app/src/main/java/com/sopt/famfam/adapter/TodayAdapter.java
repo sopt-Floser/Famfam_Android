@@ -238,7 +238,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     else {
                         tv_count.setText(response.body().getData().getFirstUserName() + "님");
                         Glide.with(context).load(getEmo(response.body().getData().getFeelTypes().get(0).getFeelType())).into(emo2);
-                        emo2.setVisibility(View.INVISIBLE);
+                        emo1.setVisibility(View.INVISIBLE);
                     }
 
                 }

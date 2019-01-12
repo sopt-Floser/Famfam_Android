@@ -51,6 +51,7 @@ class ChatActivity : AppCompatActivity() {
 
         btn_chat_send.setOnClickListener{
             val chat = ChatItem(FamilyData.userIdx,FamilyData.userName!!, et_chat_comment.getText().toString(),sdf.format(time),0) //ChatDTO를 이용하여 데이터를 묶는다.
+            if(!et_chat_comment.text.equals(""))
             databaseReference.child(FamilyData.groupId.toString()).push().setValue(chat) //databaseReference를 이용해 데이터 푸쉬
             et_chat_comment.setText("")
         }

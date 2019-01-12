@@ -84,6 +84,9 @@ class AddPostActivity : AppCompatActivity() {
             mProgressDialog = ProgressDialog.show(this,"잠시만 기다려 주세요.","",true);
             getWriteBoardResponse(list!!)
         }
+        iv_add_post.setOnClickListener{
+            bottomSheetDialogFragment.show(supportFragmentManager)
+        }
 
     }
 

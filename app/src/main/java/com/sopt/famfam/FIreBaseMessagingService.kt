@@ -15,6 +15,7 @@ import android.util.Log
 import com.sopt.famfam.activity.ChatActivity
 import com.sopt.famfam.activity.MainActivity
 import org.json.JSONObject
+import java.lang.Exception
 import java.net.URLDecoder
 
 class FIreBaseMessagingService : FirebaseMessagingService() {
@@ -46,10 +47,16 @@ class FIreBaseMessagingService : FirebaseMessagingService() {
 
     private fun sendNotification(messageBody: String?, tag : String?) {
         Log.d("fire",messageBody+" "+tag)
-        var json = JSONObject(messageBody)
-        var message = json.getString("message")
-        var type = json.getInt("type");
-        var intent = Intent(this, MainActivity::class.java)
+        var message=""
+        var type = 0
+        try {
+            var json = JSONObject(messageBody)
+            message = json.getString("message")
+            type = json.getInt("type");
+        }catch (e : Exception){
+            message=messageBody!!;
+        }
+            var intent = Intent(this, MainActivity::class.java)
 
         if(type==1)
         {

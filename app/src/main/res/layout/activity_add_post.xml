@@ -77,10 +77,10 @@
                         android:layout_height="140dp"
                         android:id="@+id/iv_add_post"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/img_sky"/>
+                        android:src="@drawable/picture_x"/>
                 <TextView
                         android:id="@+id/tv_add_post_count"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_alignRight="@id/iv_add_post"
                         android:layout_width="wrap_content"
