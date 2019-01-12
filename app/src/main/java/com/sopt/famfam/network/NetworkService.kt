@@ -159,6 +159,13 @@ interface NetworkService {
             @Header("Authorization") token : String
     ) : Call<GetGroupUserResponse>
 
+    // 감정표현  조회
+    @GET("/feels/contents/{contentIdx}")
+    fun getFeelResponse(
+        @Header("Authorization") token : String,
+        @Path("contentIdx") contentIdx: Int
+    ) : Call<GetFeelResponse>
+
     // 감정표현 수 조회
     @GET("/feels/count/week")
     fun getFeelCountResponse(

@@ -128,7 +128,7 @@ class LoginActivity : AppCompatActivity() {
                         SharedPreferenceController.setLoginData(
                             this@LoginActivity,
                             FamilyData.groupId.toString() + "," +
-                                    FamilyData.userId + "," +
+                                    FamilyData.userIdx + "," +
                                     FamilyData.userName + "," +
                                     FamilyData.statusMessage + "," +
                                     FamilyData.birthday + "," +

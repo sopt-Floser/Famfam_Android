@@ -86,6 +86,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                         android:fadingEdge="none"
+                        android:overScrollMode="never"
                         android:layout_marginLeft="24dp"
                         android:id="@+id/rv_home_family"
                         android:layout_width="match_parent"

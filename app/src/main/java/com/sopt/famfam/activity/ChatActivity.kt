@@ -41,7 +41,7 @@ class ChatActivity : AppCompatActivity() {
                 KeyEvent.KEYCODE_ENTER -> {
                     if (keyEvent.action == 1)
                         return@OnKeyListener true
-                    val chat = ChatItem(FamilyData.userId.toString(),FamilyData.userName!!, et_chat_comment.getText().toString(),sdf.format(time),0) //ChatDTO를 이용하여 데이터를 묶는다.
+                    val chat = ChatItem(FamilyData.userIdx,FamilyData.userName!!, et_chat_comment.getText().toString(),sdf.format(time),0) //ChatDTO를 이용하여 데이터를 묶는다.
                     databaseReference.child(FamilyData.groupId.toString()).push().setValue(chat) //databaseReference를 이용해 데이터 푸쉬
                     et_chat_comment.setText("")
                 }
@@ -50,7 +50,7 @@ class ChatActivity : AppCompatActivity() {
         })
 
         btn_chat_send.setOnClickListener{
-            val chat = ChatItem(FamilyData.userId.toString(),FamilyData.userName!!, et_chat_comment.getText().toString(),sdf.format(time),0) //ChatDTO를 이용하여 데이터를 묶는다.
+            val chat = ChatItem(FamilyData.userIdx,FamilyData.userName!!, et_chat_comment.getText().toString(),sdf.format(time),0) //ChatDTO를 이용하여 데이터를 묶는다.
             databaseReference.child(FamilyData.groupId.toString()).push().setValue(chat) //databaseReference를 이용해 데이터 푸쉬
             et_chat_comment.setText("")
         }
@@ -65,7 +65,7 @@ class ChatActivity : AppCompatActivity() {
         databaseReference.child(FamilyData.groupId.toString()).addChildEventListener(object : ChildEventListener {  // message는 child의 이벤트를 수신합니다.
             override fun onChildAdded(dataSnapshot: DataSnapshot, s: String?) {
                 val chatData = dataSnapshot.getValue(ChatItem::class.java)  // chatData를 가져오고
-                if((chatData as ChatItem).id==FamilyData.userId)
+                if((chatData as ChatItem).idx==FamilyData.userIdx)
                     chatData.type=0
                 else
                     chatData.type=1

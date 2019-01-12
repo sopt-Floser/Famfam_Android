@@ -12,7 +12,9 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
 import android.util.Log
+import com.sopt.famfam.activity.ChatActivity
 import com.sopt.famfam.activity.MainActivity
+import org.json.JSONObject
 import java.net.URLDecoder
 
 class FIreBaseMessagingService : FirebaseMessagingService() {
@@ -34,7 +36,7 @@ class FIreBaseMessagingService : FirebaseMessagingService() {
         }
         if (remoteMessage.notification != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.notification!!.body!!)
-            sendNotification(remoteMessage.notification!!.body)
+            sendNotification(remoteMessage.notification!!.body,remoteMessage.notification!!.tag)
         }
     }
 
@@ -42,8 +44,17 @@ class FIreBaseMessagingService : FirebaseMessagingService() {
         Log.d(TAG, "Short lived task is done.")
     }
 
-    private fun sendNotification(messageBody: String?) {
-        val intent = Intent(this, MainActivity::class.java)
+    private fun sendNotification(messageBody: String?, tag : String?) {
+        Log.d("fire",messageBody+" "+tag)
+        var json = JSONObject(messageBody)
+        var message = json.getString("message")
+        var type = json.getInt("type");
+        var intent = Intent(this, MainActivity::class.java)
+
+        if(type==1)
+        {
+            intent = Intent(this, ChatActivity::class.java)
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(
             this, 0, intent,
@@ -54,7 +65,7 @@ class FIreBaseMessagingService : FirebaseMessagingService() {
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentTitle("팸팸")
-            .setContentText(URLDecoder.decode(messageBody, "UTF-8"))
+            .setContentText(URLDecoder.decode(message, "UTF-8"))
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
             .setContentIntent(pendingIntent)

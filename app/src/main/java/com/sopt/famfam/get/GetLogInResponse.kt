@@ -13,6 +13,7 @@ data class Login(
 
 data class Auto(
         val userId: String,
+        val userIdx: Int,
         val userName: String,
         val profilePhoto: String ="",
         val backPhoto: String ="",

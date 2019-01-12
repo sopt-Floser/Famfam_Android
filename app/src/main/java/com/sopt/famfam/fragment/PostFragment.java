@@ -28,6 +28,7 @@ import com.sopt.famfam.database.FamilyData;
 import com.sopt.famfam.database.User;
 import com.sopt.famfam.get.Comments;
 import com.sopt.famfam.get.GetCommentListResponse;
+import com.sopt.famfam.get.GetFeelResponse;
 import com.sopt.famfam.get.Photos;
 import com.sopt.famfam.indicator.CircleAnimIndicator;
 import com.sopt.famfam.network.ApplicationController;
@@ -53,7 +54,7 @@ public class PostFragment extends Fragment implements View.OnClickListener {
     RecyclerView.LayoutManager layoutManager;
     ScrollView scrollView;
     RelativeLayout emotionbar;
-    ImageView emotion_on, emotion_off, emotion_smile, emotion_sad, emotion_amazing, emotion_like, iv_photo;
+    ImageView emotion_on, emotion_off, emotion_smile, emotion_sad, emotion_amazing, emotion_like, iv_photo, feel1,feel2;
     TextView post_comment, username, tv_username, tv_caption;
     EditText editText;
     PopupWindow popupWindow;
@@ -94,7 +95,49 @@ public class PostFragment extends Fragment implements View.OnClickListener {
             }
         });
     }
+    private int getEmo(int num)
+    {
+        if(num ==0)
+            return R.id.btn_emotion_smile;
+        else if(num ==1)
+            return R.id.btn_emotion_sad;
+        else if(num ==2)
+            return R.id.btn_emotion_amazing;
+        else
+            return R.id.btn_emotion_like;
+    }
+    private void getFeelResponse(int idx, final TextView tv_count, final ImageView emo1, final ImageView emo2) {
+        Call<GetFeelResponse> getBoardListResponse = ApplicationController.instance.networkService.getFeelResponse(FamilyData.token, idx);
+        getBoardListResponse.enqueue(new Callback<GetFeelResponse>() {
+            @Override
+            public void onResponse(Call<GetFeelResponse> call, Response<GetFeelResponse> response) {
+                if (response.isSuccessful()) {
+                    int count =response.body().getData().getFeelCount();
+                    if(count==0) {
 
+                        Glide.with(getContext()).load("").into(emo1);
+                        Glide.with(getContext()).load("").into(emo2);
+                        return;
+                    }
+                    if(count>1)
+                    {
+                        tv_count.setText(response.body().getData().getFirstUserName()+"님 외 "+(count-1)+"명");
+                        Glide.with(getContext()).load(getEmo(response.body().getData().getTypes().get(0).getFeelType())).into(emo1);
+                        Glide.with(getContext()).load(getEmo(response.body().getData().getTypes().get(1).getFeelType())).into(emo2);
+                    }
+                    else
+                        tv_count.setText(response.body().getData().getFirstUserName()+"님");
+                    Glide.with(getContext()).load(getEmo(response.body().getData().getTypes().get(0).getFeelType())).into(emo1);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetFeelResponse> call, Throwable t) {
+                // Code...
+            }
+        });
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_post, container, false);
@@ -107,8 +150,13 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         tv_username = view.findViewById(R.id.tv_username);
         tv_username.setText(item.name);
 
+        feel1 =view.findViewById(R.id.iv_feel);
+        feel2 =view.findViewById(R.id.iv_feel2);
+        TextView tv_act = view.findViewById(R.id.emotion_activation_Layout);
+        getFeelResponse(item.post_img.get(0).getContentIdx(),tv_act,feel1,feel2
+        );
         iv_photo = view.findViewById(R.id.iv_profile_photo);
-        Glide.with(this).load(item.profile).into(iv_photo);
+        Glide.with(getContext()).load(item.profile).into(iv_photo);
 
         tv_caption=view.findViewById(R.id.tv_post_caption);
         tv_caption.setText(item.caption);
@@ -125,6 +173,8 @@ public class PostFragment extends Fragment implements View.OnClickListener {
         emotion_sad.setOnClickListener(this);
         emotion_amazing.setOnClickListener(this);
         emotion_like.setOnClickListener(this);
+
+
 
         editText = view.findViewById(R.id.et_comment);
         view.findViewById(R.id.btn_post_comment).setOnClickListener(new View.OnClickListener() {

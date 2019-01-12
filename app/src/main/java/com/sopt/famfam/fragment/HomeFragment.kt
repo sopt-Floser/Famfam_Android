@@ -121,6 +121,8 @@ class HomeFragment : Fragment() {
                     var list = ArrayList<FamilyListItem>();
                     var i: Int = 0
                     for (item in data) {
+                        if(FamilyData.userIdx==item.userIdx)
+                            continue
                         Log.d("uuuu1", item.toString())
                         if (item.profilePhoto.isNullOrEmpty()) {
                             list.add(
@@ -157,8 +159,8 @@ class HomeFragment : Fragment() {
                             LinearLayoutManager(context, LinearLayout.HORIZONTAL, false)
                     var database = FirebaseDatabase.getInstance()
                     var databaseReference = database.getReference("RoomUser")
-                    var chat = RoomItem(FirebaseInstanceId.getInstance().getToken()!!,FamilyData.userId.toInt(),FamilyData.userName!!)
-                    databaseReference.child(FamilyData.groupId.toString()).child(FamilyData.userId).push().setValue(chat) //databaseReference를 이용해 데이터 푸쉬
+                    var chat = RoomItem(FirebaseInstanceId.getInstance().getToken()!!,FamilyData.userIdx,FamilyData.userName!!)
+                    databaseReference.child(FamilyData.groupId.toString()).child(FamilyData.userIdx.toString()).setValue(chat) //databaseReference를 이용해 데이터 푸쉬
 
                     Log.d("asd", "여긴되나요")
                 }

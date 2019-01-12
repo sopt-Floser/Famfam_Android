@@ -1,6 +1,7 @@
 package com.sopt.famfam.adapter.item;
 
 import com.sopt.famfam.get.Photos;
+import com.sopt.famfam.get.Types;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ public class TodayItem {
     public String caption;
     public String comment;
     public String comment_count;
+    public Types types;
 
     public TodayItem(int useridx, String profile, String name, String posted_time, ArrayList<Photos>  post_img, int emotion, int feel, String img_likes, String caption, String comment, String comment_count) {
         this.profile = profile;

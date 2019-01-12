@@ -76,7 +76,7 @@ class SplashActivity : AppCompatActivity() {
                         Log.d("uuuu1", response.body().toString())
                         val token = response.body()!!.data.token
                         FamilyData.groupId = response.body()!!.data.user.groupIdx
-                        FamilyData.userId = response.body()!!.data.user.userId
+                        FamilyData.userIdx = response.body()!!.data.user.userIdx
                         FamilyData.userName = response.body()!!.data.user.userName
                         FamilyData.token = token
                         FamilyData.statusMessage = response.body()!!.data.user.statusMessage
@@ -99,7 +99,7 @@ class SplashActivity : AppCompatActivity() {
                         SharedPreferenceController.setLoginData(
                             this@SplashActivity,
                             FamilyData.groupId.toString() + "," +
-                                    FamilyData.userId + "," +
+                                    FamilyData.userIdx + "," +
                                     FamilyData.userName + "," +
                                     FamilyData.statusMessage + "," +
                                     FamilyData.birthday + "," +
@@ -155,6 +155,8 @@ class SplashActivity : AppCompatActivity() {
                     }
                     FamilyData.users = ArrayList<User>()
                     for (user in data) {
+                        if(FamilyData.userIdx==user.userIdx)
+                            continue
                         FamilyData.users.add(
                             User(
                                 user.userIdx,
