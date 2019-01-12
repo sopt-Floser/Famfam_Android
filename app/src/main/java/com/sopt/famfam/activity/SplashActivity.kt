@@ -68,6 +68,8 @@ class SplashActivity : AppCompatActivity() {
             getLoginResponse.enqueue(object : Callback<GetLogInResponse> {
                 override fun onFailure(call: Call<GetLogInResponse>, t: Throwable) {
                     Log.e("Login fail", t.toString())
+                    toast("서버연결 실패")
+                    finish()
                 }
 
                 override fun onResponse(call: Call<GetLogInResponse>, response: Response<GetLogInResponse>) {
@@ -131,6 +133,7 @@ class SplashActivity : AppCompatActivity() {
         postLogInResponse.enqueue(object : Callback<GetGroupUserResponse> {
             override fun onFailure(call: Call<GetGroupUserResponse>, t: Throwable) {
                 Log.e("Login fail", t.toString())
+
             }
 
             override fun onResponse(call: Call<GetGroupUserResponse>, response: Response<GetGroupUserResponse>) {

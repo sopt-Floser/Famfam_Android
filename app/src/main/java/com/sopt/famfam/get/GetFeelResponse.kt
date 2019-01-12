@@ -12,7 +12,7 @@ data class GetFeelResponse(
 )
 
 data class Feel(
-    val types : ArrayList<Types>,
+    val feelTypes : ArrayList<Types>,
     val firstUserName : String,
     val feelCount : Int
 

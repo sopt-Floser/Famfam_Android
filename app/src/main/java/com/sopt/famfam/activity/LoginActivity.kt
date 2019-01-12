@@ -94,6 +94,7 @@ class LoginActivity : AppCompatActivity() {
             postLogInResponse.enqueue(object : Callback<PostLogInResponse> {
                 override fun onFailure(call: Call<PostLogInResponse>, t: Throwable) {
                     Log.e("Login fail", t.toString())
+                    toast("ID/PW를 확인해주세요")
                 }
 
                 override fun onResponse(call: Call<PostLogInResponse>, response: Response<PostLogInResponse>) {

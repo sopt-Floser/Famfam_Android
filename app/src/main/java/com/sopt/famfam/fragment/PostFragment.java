@@ -98,37 +98,46 @@ public class PostFragment extends Fragment implements View.OnClickListener {
     private int getEmo(int num)
     {
         if(num ==0)
-            return R.id.btn_emotion_smile;
+            return R.drawable.smile;
         else if(num ==1)
-            return R.id.btn_emotion_sad;
+            return R.drawable.sad;
         else if(num ==2)
-            return R.id.btn_emotion_amazing;
+            return R.drawable.amazing;
         else
-            return R.id.btn_emotion_like;
+            return R.drawable.like;
     }
     private void getFeelResponse(int idx, final TextView tv_count, final ImageView emo1, final ImageView emo2) {
+
         Call<GetFeelResponse> getBoardListResponse = ApplicationController.instance.networkService.getFeelResponse(FamilyData.token, idx);
         getBoardListResponse.enqueue(new Callback<GetFeelResponse>() {
             @Override
             public void onResponse(Call<GetFeelResponse> call, Response<GetFeelResponse> response) {
                 if (response.isSuccessful()) {
+                    Log.d("asd",response.body().toString());
+
+                    if(response.body().getStatus()==204) {
+
+                        emo1.setVisibility(View.INVISIBLE);
+                        emo2.setVisibility(View.INVISIBLE);
+                        return;
+                    }
                     int count =response.body().getData().getFeelCount();
                     if(count==0) {
-
-                        Glide.with(getContext()).load("").into(emo1);
-                        Glide.with(getContext()).load("").into(emo2);
+                        emo1.setVisibility(View.INVISIBLE);
+                        emo2.setVisibility(View.INVISIBLE);
                         return;
                     }
                     if(count>1)
                     {
                         tv_count.setText(response.body().getData().getFirstUserName()+"님 외 "+(count-1)+"명");
-                        Glide.with(getContext()).load(getEmo(response.body().getData().getTypes().get(0).getFeelType())).into(emo1);
-                        Glide.with(getContext()).load(getEmo(response.body().getData().getTypes().get(1).getFeelType())).into(emo2);
+                        Glide.with(getContext()).load(getEmo(response.body().getData().getFeelTypes().get(0).getFeelType())).into(emo2);
+                        Glide.with(getContext()).load(getEmo(response.body().getData().getFeelTypes().get(1).getFeelType())).into(emo1);
                     }
-                    else
-                        tv_count.setText(response.body().getData().getFirstUserName()+"님");
-                    Glide.with(getContext()).load(getEmo(response.body().getData().getTypes().get(0).getFeelType())).into(emo1);
-
+                    else {
+                        tv_count.setText(response.body().getData().getFirstUserName() + "님");
+                        Glide.with(getContext()).load(getEmo(response.body().getData().getFeelTypes().get(0).getFeelType())).into(emo2);
+                        emo2.setVisibility(View.INVISIBLE);
+                    }
                 }
             }
 
@@ -152,9 +161,8 @@ public class PostFragment extends Fragment implements View.OnClickListener {
 
         feel1 =view.findViewById(R.id.iv_feel);
         feel2 =view.findViewById(R.id.iv_feel2);
-        TextView tv_act = view.findViewById(R.id.emotion_activation_Layout);
-        getFeelResponse(item.post_img.get(0).getContentIdx(),tv_act,feel1,feel2
-        );
+        TextView tv_act = view.findViewById(R.id.tv_image_likes);
+        getFeelResponse(item.post_img.get(0).getContentIdx(),tv_act,feel1,feel2);
         iv_photo = view.findViewById(R.id.iv_profile_photo);
         Glide.with(getContext()).load(item.profile).into(iv_photo);
 
@@ -181,7 +189,8 @@ public class PostFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 try {
-                    getWriteCommentResponse(item.post_img.get(0).getContentIdx(),editText.getText().toString());
+                    if(editText.getText().toString().equals("")==false)
+                        getWriteCommentResponse(item.post_img.get(0).getContentIdx(),editText.getText().toString());
                     Log.d("comment",editText.getText().toString());
                     editText.setText("");
 

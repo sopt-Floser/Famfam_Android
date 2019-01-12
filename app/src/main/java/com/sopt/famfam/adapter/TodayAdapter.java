@@ -137,7 +137,7 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         todayViewHolder.emotion_lay2.setImageResource(todayItemArrayList.get(position).feel);
         todayViewHolder.img_likes.setText(todayItemArrayList.get(position).img_likes);
 
-        getFeelResponse(todayItemArrayList.get(0).post_img.get(0).getContentIdx(),  todayViewHolder.img_likes,todayViewHolder.emotion_lay1,todayViewHolder.emotion_lay2);
+        getFeelResponse(todayItemArrayList.get(position).post_img.get(0).getContentIdx(),  todayViewHolder.img_likes,todayViewHolder.emotion_lay1,todayViewHolder.emotion_lay2);
         if(todayViewHolder.cation.equals("")||todayViewHolder.cation==null)
             todayViewHolder.cation.setText("내용 없음");
         else
@@ -201,13 +201,13 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private int getEmo(int num)
     {
         if(num ==0)
-            return R.id.btn_emotion_smile;
+            return R.drawable.smile;
         else if(num ==1)
-            return R.id.btn_emotion_sad;
+            return R.drawable.sad;
         else if(num ==2)
-            return R.id.btn_emotion_amazing;
+            return R.drawable.amazing;
         else
-            return R.id.btn_emotion_like;
+            return R.drawable.like;
     }
     private void getFeelResponse(int idx, final TextView tv_count, final ImageView emo1, final ImageView emo2) {
         Call<GetFeelResponse> getBoardListResponse = ApplicationController.instance.networkService.getFeelResponse(FamilyData.token, idx);
@@ -215,22 +215,31 @@ public class TodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             @Override
             public void onResponse(Call<GetFeelResponse> call, Response<GetFeelResponse> response) {
                 if (response.isSuccessful()) {
+                    Log.d("asd",response.body().toString());
+                    if(response.body().getStatus()==204) {
+
+                        emo1.setVisibility(View.INVISIBLE);
+                        emo2.setVisibility(View.INVISIBLE);
+                        return;
+                    }
                     int count =response.body().getData().getFeelCount();
                     if(count==0) {
+                        emo1.setVisibility(View.INVISIBLE);
+                        emo2.setVisibility(View.INVISIBLE);
 
-                        Glide.with(context).load("").into(emo1);
-                        Glide.with(context).load("").into(emo2);
                         return;
                     }
                     if(count>1)
                     {
                         tv_count.setText(response.body().getData().getFirstUserName()+"님 외 "+(count-1)+"명");
-                        Glide.with(context).load(getEmo(response.body().getData().getTypes().get(0).getFeelType())).into(emo1);
-                        Glide.with(context).load(getEmo(response.body().getData().getTypes().get(1).getFeelType())).into(emo2);
+                        Glide.with(context).load(getEmo(response.body().getData().getFeelTypes().get(0).getFeelType())).into(emo2);
+                        Glide.with(context).load(getEmo(response.body().getData().getFeelTypes().get(1).getFeelType())).into(emo1);
                     }
-                    else
-                        tv_count.setText(response.body().getData().getFirstUserName()+"님");
-                    Glide.with(context).load(getEmo(response.body().getData().getTypes().get(0).getFeelType())).into(emo1);
+                    else {
+                        tv_count.setText(response.body().getData().getFirstUserName() + "님");
+                        Glide.with(context).load(getEmo(response.body().getData().getFeelTypes().get(0).getFeelType())).into(emo2);
+                        emo2.setVisibility(View.INVISIBLE);
+                    }
 
                 }
             }
