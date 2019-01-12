@@ -1,14 +1,31 @@
 package com.sopt.famfam.adapter
 
 import android.content.Context
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.iid.FirebaseInstanceId
 import com.sopt.famfam.R
 import com.sopt.famfam.adapter.item.ChatItem
+import com.sopt.famfam.adapter.item.FamilyListItem
+import com.sopt.famfam.adapter.item.RoomItem
+import com.sopt.famfam.database.FamilyData
+import com.sopt.famfam.database.User
+import com.sopt.famfam.get.GetGroupUserResponse
+import com.sopt.famfam.network.ApplicationController
+import com.sopt.famfam.network.NetworkService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -18,8 +35,9 @@ val PHOTO = 2
 val EMOTICON = 3
 val VIDEO = 4
 val SYSTEM = 5
-
+// iv_chat_profile
 class ChatAdapter(var context: Context, var list: ArrayList<ChatItem>) : RecyclerView.Adapter<ChatAdapter.Holder>() {
+
     var preItemType = 0;
     override fun onCreateViewHolder(p0: ViewGroup, viewType: Int): Holder {
         var view: View? = null
@@ -37,6 +55,8 @@ class ChatAdapter(var context: Context, var list: ArrayList<ChatItem>) : Recycle
         } else if (viewType == SYSTEM) {
             view = LayoutInflater.from(context).inflate(R.layout.item_chat_me, p0, false)
         }
+
+
         return Holder(view, viewType)
     }
 
@@ -71,6 +91,31 @@ class ChatAdapter(var context: Context, var list: ArrayList<ChatItem>) : Recycle
                     holder.nickname.visibility = View.GONE
                 }
             }
+            val otheridx = list.get(position).idx
+            var familyListItem = FamilyData.users
+            for(i in familyListItem){
+                if(i.userIdx == otheridx) {
+                    val otherPhoto = i.profilePhoto
+                    Log.d("123123", i.userIdx.toString())
+                    Log.d("123123", familyListItem.toString())
+                    if(i.profilePhoto == ""){
+                        val requestOptions = RequestOptions()
+                        Glide.with(context)
+                            .setDefaultRequestOptions(requestOptions)
+                            .load(R.drawable.myimg)
+                            .thumbnail(0.5f)
+                            .into(holder.profile)
+                    }else {
+                        val requestOptions = RequestOptions()
+                        Glide.with(context)
+                            .setDefaultRequestOptions(requestOptions)
+                            .load(otherPhoto)
+                            .thumbnail(0.5f)
+                            .into(holder.profile)
+                    }
+                }
+            }
+
             holder.content.text = list.get(position).content
             holder.nickname.text = list.get(position).name
             val dt = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
@@ -87,6 +132,7 @@ class ChatAdapter(var context: Context, var list: ArrayList<ChatItem>) : Recycle
 
         }
     }
+
 
     class Holder(var view: View?, var viewType: Int) : RecyclerView.ViewHolder(view!!) {
         lateinit var nickname: TextView
