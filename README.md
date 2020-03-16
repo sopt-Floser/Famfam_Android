@@ -9,5 +9,5 @@
 
 <br><br>
 ## Flowchart
-![image](fhttps://github.com/sopt-Floser/FamFam_iOS/blob/master/famfam_introduce.png)
+![image](https://github.com/sopt-Floser/FamFam_iOS/blob/master/famfam_introduce.png)
 #
