@@ -4,10 +4,10 @@
 
 <br><br>
 ## Introduce
-![image](famfam_introduce.png)
+![image](https://github.com/sopt-Floser/FamFam_iOS/blob/master/famfam_flowchart.jpg)
 #
 
 <br><br>
 ## Flowchart
-![image](famfam_flowchart.jpg)
+![image](fhttps://github.com/sopt-Floser/FamFam_iOS/blob/master/famfam_introduce.png)
 #
